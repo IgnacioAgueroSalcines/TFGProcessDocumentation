@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  20 SEP 2017 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  24 SEP 2017 11:43
 entering extended mode
 **./anteproyecto.tex
 (anteproyecto.tex
@@ -485,63 +485,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 25.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 25.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 25.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 25.
 
 Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 31.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 31.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 31.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 31.
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--31
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
 <images/mvp.png, id=13, 257.46187pt x 237.88875pt>
 File: images/mvp.png Graphic file (type png)
  <use images/mvp.png>
-Package pdftex.def Info: images/mvp.png used on input line 42.
+Package pdftex.def Info: images/mvp.png used on input line 48.
 (pdftex.def)             Requested size: 257.46123pt x 237.88815pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
 <images/schema.png, id=15, 163.3302pt x 127.1952pt>
 File: images/schema.png Graphic file (type png)
  <use images/schema.png>
-Package pdftex.def Info: images/schema.png used on input line 50.
+Package pdftex.def Info: images/schema.png used on input line 56.
 (pdftex.def)             Requested size: 163.32979pt x 127.19489pt.
 
 [3 <./images/mvp.png> <./images/schema.png>] (anteproyecto.aux
@@ -549,19 +559,19 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 2648 strings out of 493323
- 34486 string characters out of 3139060
+ 2649 strings out of 493323
+ 34494 string characters out of 3139060
  102636 words of memory out of 3000000
- 6166 multiletter control sequences out of 15000+200000
+ 6167 multiletter control sequences out of 15000+200000
  7887 words of font info for 28 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,30p,504b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,8n,30p,404b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmr8.pfb>
-Output written on anteproyecto.pdf (3 pages, 82530 bytes).
+Output written on anteproyecto.pdf (3 pages, 83247 bytes).
 PDF statistics:
  37 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
