@@ -10,7 +10,8 @@
 \graphicspath{ {images/} }
 
 %datos del documento
-\title{Anteproyecto de Trabajo de Fin de Grado}
+\title{Especificación Gráfica de Procesos de Recuperación de Datos en LUCA
+}
 \author{Ignacio Agüero Salcines}
 
 
@@ -19,25 +20,67 @@
 	\maketitle
 	
 	\newpage
-	
-	{\Large Contexto del proyecto}\\
-	
-Esta es una empresa que se dedica al consulting informático,y que dentro de ella, se desarrolla LUCA.\\
 
+	{\Large Contexto y  Motivación del proyecto}\\
 
- LUCA es un producto que abstrae al usuario de las consultas a las diversas fuentes de datos (ya sean servicios, bases de datos, o similar) bajo un único lenguaje común. Este producto permite crear y gestionar consultas.\\
-
-
- Actualmente surge la necesidad de poder anidar los diversos procesos\footnote{Un proceso se explica como una entidad que por sí misma tiene la capacidad de realizar llamadas a servicio para recoger datos en función de unas variables de entrada y de salida.} independientes entre sí, así como la dificultad para organizarlos, interactuar y ejecutarlos.\\
+	Las empresas actuales utilizan ya no un único sistema de información que de
+	soporte a sus procesos de trabajo, sino un  ecosistema de sistemas información
+	que dan soporte a diferentes procesos de negocio ejecutados dentro de dicha
+	organización. Como consecuencia de esta nueva situación, cuando un usuario
+	quiere obtener una información concreta cuyos datos residen en varios de estos
+	sistemas, necesita acceder a cada uno de estos sistemas, extraer de cada
+	sistema la información que precisa, filtrarla y unificarla para finalmente
+	obtener los datos requeridos.\\
 	
-	Este proyecto pretende crear un componente de procesos genérico, el cual será capaz de crear diagramas donde el usuario enlace sea capaz de enlazar los diferentes procesos entre sí, utilizando para ello variables de entrada y de salida, así como ejecutarlos y obtener respuestas de ellos.\\
+	Por ejemplo, una tienda de electrodomésticos podría tener sistemas informáticos
+	diferentes para el departamento de atención al cliente, para el departamento
+	técnico de postventa y para el departamento de compras y adquisiciones.
+	Por tanto, para conocer el estado actual de una reparación, podríamos necesitar:
+	(1) acceder al primer sistema para obtener el identificador de la incidencia y
+	en qué fase de su gestión se encuentra; (2) comprobado que la incidencia está
+	actualmente en reparación, recuperaríamos otro sistema el estado detallado de
+	la reparación, comprobando que está a la espera de una pieza; y (3) finalmente
+	accederíamos al sistema de compra y adquisiciones para comprobar cuando está
+	prevista la entrega de dicha pieza. Los sistemas de almacenamiento de la
+	información puede ser diversos, incluyendo desde un servicio web, una base de
+	datos relacional, un repositorio de ficheros accesible vía FTP o una base de
+	datos NoSQL.\\
+ 
 	
-	Entre las características que se le exigen es que sea lo mas configurable posible y estar preparado para posibles incrementos futuros.
-	Además se pretende que dicho proyecto sea fácil de usar e intuitivo, es decir, altamente usable.\\
+	Con el objeto de facilitar este proceso de recuperación de información
+	almecenada en sistemas y fuentes de datos hetereogéneas, dentro de la empresa
+	CIC, se está desarrollando una aplicación denominada LUCA. Para
+	facilitar este proceso de recuperación de información, LUCA proporciona un
+	lenguaje común para todas las fuentes de datos a unificar, permitiendo al
+	usuario abstraerse de los detalles de cada fuente.
 	
-	Este componente será capaz de proveer una soporte gráfico (mediante una herramienta o motor gráfico llamado GO.JS) y lógico para llevar a cabo la funcionalidad final.\\
+	Actualmente LUCA proporciona mecanismos o abstracciones para permitir al
+	usuario recuperar de manera uniforme información de diferentes fuentes de datos.
+	Utilizando el ejemplo anterior, LUCA actualmente propociona mecanismos para
+	recuperar información, de la misma forma y mediante las mismas primitivas, de
+	los tres sistemas previamente descritos, aunque sus sistemas de almacenamiento
+	sean radicalmente diferentes.
 	
-	A parte del componente genérico, se pretende realizar una integración en una aplicación ya existente, donde se incorporara la funcionalidad descrita. Demostrará así su fácil integración y usabilidad.\\
+	No obstante, LUCA actualmente sólo es capaz recuperar información de una única
+	fuente de datos a la vez. Por tanto, cuando es necesario combinar
+	información procedente de distintas fuentes, tal como ocurre en el ejemplo
+	descrito, el propio usuario es el que debe realizar dicho
+	proceso de composición, ejecutando cada consulta a mano, y utilizando las
+	salidas de cada una de ellas como las entradas de las siguientes.
+	
+	
+		\begin{center}
+		\includegraphics[width=12cm]{images/ejemploDiagrama}\\
+	\end{center}
+	
+	
+	El objetivo de este proyecto es facilitar dicho proceso de composición al
+	usuario mediante el desarrollo de un mecanismo gráfico para la especificación
+	de estos procesos de composición de consultas.
+	
+	Dado que la empresa solicita que este editor gráfico sea utilizable vía web,
+	se desarrollará utilizando la librería gráfica Javscript Go.JS y el framework
+	Vaadin.
 	
 	\newpage
 	{\Large Arquitectura y/o tecnologías del proyecto}\\

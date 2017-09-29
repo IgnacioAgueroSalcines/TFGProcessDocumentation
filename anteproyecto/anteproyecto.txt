@@ -21,19 +21,33 @@
 	\newpage
 	
 	{\Large Contexto del proyecto}\\
+El proyecto presente está propuesto desde CIC. Esta es una empresa que se dedica al consulting informático,y que dentro de ella, se desarrolla LUCA.\\
+
+
+ LUCA es un producto que abstrae al usuario de realizar consultas individuales a los diversos recursos para obtener datos(ya sean servicios, bases de datos, o similar) bajo un único lenguaje común. Este producto permite crear y gestionar consultas. De esta forma el usuario solo se comunica con LUCA para obtener cualquier tipo de información.\\
+
+	{\Large Motivación del proyecto}\\
+
+ Actualmente surge la necesidad de poder anidar los diversos procesos\footnote{Un proceso se explica como una entidad que por sí misma tiene la capacidad de realizar llamadas a servicio para recoger datos en función de unas variables de entrada y de salida.} independientes entre sí, así como la dificultad para organizarlos, interactuar y ejecutarlos.\\
+ 
+ Esto significa que cuando el usuario desea realizar una consulta a una fuente, y utilizar dichos resultados para poner en marcha una nueva, este debe de realizar las consultas separadas y pasar los datos de entrada manualmente. De esta forma para realizar dicho ejemplo, los pasos a seguir por el usuario lo obligan a estar navegando por las diferentes funcionalidades de la aplicación para alcanzar su objetivo.\\
+ 
+ 	{\Large Solución propuesta}\\
 	
-	El proyecto presente está propuesto desde CIC. Esta es una empresa que se dedica al consulting informático,y que dentro de ella, se desarrolla LUCA.\\ LUCA es un producto que abstrae al usuario de las consultas a las diversas fuentes de datos (ya sean servicios, bases de datos, o similar) bajo un único lenguaje común. Este producto permite crear y gestionar consultas.\\
+	Este proyecto decide centrar al usuario en una sola ventana de diálogo desde la que se pueda acceder a las diferentes consultas ya configuradas para crear flujos de ejecución de las mismas para obtener los resultados deseados.\\
 	
-	Actualmente surge la necesidad de poder anidar las diversas consultas en procesos\footnote{Un proceso se explica como una entidad que por sí misma tiene la capacidad de realizar llamadas a servicio para recoger datos en función de unas variables de entrada y de salida, es decir, es capaz de agrupar la funcionalidad de las diversas consultas en lazando entradas y salidas.} independientes entre sí, así como la dificultad para organizarlos, interactuar y ejecutarlos.\\
+	Pretende crear un componente de procesos genérico, el cual permitirá crear diagramas donde el usuario sea capaz de enlazar los diferentes procesos entre sí, utilizando para ello variables de entrada y de salida, así como ejecutarlos y obtener información de ellos.\\
 	
-	Este proyecto pretende crear un componente de procesos genérico, el cual será capaz de crear diagramas donde el usuario enlace sea capaz de enlazar los diferentes procesos entre sí, utilizando para ello variables de entrada y de salida, así como ejecutarlos y obtener respuestas de ellos.\\
+		\begin{center}
+		\includegraphics[width=12cm]{images/ejemploDiagrama}\\
+	\end{center}
 	
-	Entre las características que se le exigen es que sea lo mas configurable posible y estar preparado para posibles incrementos futuros.
+	
+	Entre las características que se le exigen es que sea lo mas configurable posible y estar preparado para posibles futuros incrementos.
 	Además se pretende que dicho proyecto sea fácil de usar e intuitivo, es decir, altamente usable.\\
 	
 	Este componente será capaz de proveer una soporte gráfico (mediante una herramienta o motor gráfico llamado GO.JS) y lógico para llevar a cabo la funcionalidad final.\\
 	
-	A parte del componente genérico, se pretende realizar una integración en una aplicación ya existente, donde se incorporara la funcionalidad descrita. Demostrará así su fácil integración y usabilidad.\\
 	
 	\newpage
 	{\Large Arquitectura y/o tecnologías del proyecto}\\
