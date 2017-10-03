@@ -1,0 +1,113 @@
+%clase del documento
+\documentclass[a4paper,12pt]{article}
+
+%paquete de idioma y codificación de caracteres
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{afterpage}
+
+% soporte gráfico
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+%datos del documento
+\author{Ignacio Agüero Salcines}
+\title{Especificación Gráfica de Procesos de Recuperación de Datos en LUCA}
+
+\setcounter{secnumdepth}{0} 
+\setcounter{tocdepth}{1} 
+
+\newcounter{ns}
+\addtocounter{ns}{1} 
+
+
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+
+	
+		\vspace*{-1in}
+
+	
+			\begin{figure}[htb]
+				\begin{center}
+					\includegraphics[width=8cm]{logoFacultadInformatica}
+				\end{center}
+			\end{figure}
+	
+			FACULTAD DE CIENCIAS\\
+
+			\vspace*{0.2in}
+
+			\begin{Huge}
+				\textbf{Aplicación Web para la Gestión de Procesos del Producto LUCA desarrollado en la empresa CIC} \\
+			\end{Huge}
+			\vspace*{0.3in}
+			\begin{large}
+				Web Application\\
+			\end{large}
+			\vspace*{0.3in}
+			\rule{80mm}{0.1mm}\\
+			\vspace*{0.1in}
+			\begin{large}
+				Supervisado por: \\
+				Pablo Barreiro \\
+			\end{large}
+			\end{center}
+		
+			\afterpage{\null\newpage}
+			\newpage
+			
+		
+			\pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
+			\begin{flushright}
+				\textit{Dedicado a \\
+					mi familia}
+			\end{flushright}
+		
+			\afterpage{\null\newpage}
+			\newpage
+
+		
+			\begin{Large}
+		
+				\textbf{Pagina con información de la facultad} \\
+			\end{Large}
+			\include{Presentación}
+		
+		
+			\afterpage{\null\newpage}
+			\newpage
+			
+			\include{Agradecimientos}
+
+			\afterpage{\null\newpage}
+			\newpage
+			
+			\include{Resumen}
+			
+			\afterpage{\null\newpage}
+			\newpage
+			
+			\include{Preface}
+			
+			\afterpage{\null\newpage}
+			\newpage		
+		
+			
+			\tableofcontents % indice de contenidos
+			
+			\cleardoublepage
+			
+		
+
+
+		
+	
+
+	\end{titlepage}
+
+\end{document}
+
+

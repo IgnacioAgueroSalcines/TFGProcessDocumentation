@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  2 OCT 2017 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  2 OCT 2017 18:15
 entering extended mode
-**./anteproyecto.tex
-(anteproyecto.tex
+**./memoria.tex
+(memoria.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -402,38 +402,41 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(anteproyecto.aux
+\c@ns=\count90
+
+(memoria.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-)
-\openout1 = `anteproyecto.aux'.
+ (Agradecimientos.aux) (Resumen.aux) (Preface.aux))
+\openout1 = `memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Info: Redefining \. on input line 19.
-LaTeX Info: Redefining \% on input line 19.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count90
+\scratchcounter=\count91
 \scratchdimen=\dimen106
 \scratchbox=\box28
-\nofMPsegments=\count91
-\nofMParguments=\count92
+\nofMPsegments=\count92
+\nofMParguments=\count93
 \everyMPshowfont=\toks19
-\MPscratchCnt=\count93
+\MPscratchCnt=\count94
 \MPscratchDim=\dimen107
-\MPnumerator=\count94
-\makeMPintoPDFobject=\count95
+\MPnumerator=\count95
+\makeMPintoPDFobject=\count96
 \everyMPtoPDFconversion=\toks20
 ) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -480,76 +483,85 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 21.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 21.
+<images/logoFacultadInformatica.png, id=1, 119.44624pt x 130.4875pt>
+File: images/logoFacultadInformatica.png Graphic file (type png)
+
+<use images/logoFacultadInformatica.png>
+Package pdftex.def Info: images/logoFacultadInformatica.png used on input line 
+35.
+(pdftex.def)             Requested size: 227.62204pt x 248.67943pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/logoFacultadInfo
+rmatica.png>] [2] [1] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
+[3]
+\openout2 = `Presentaci.tex'.
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--35
+ (Presentaci.tex) [4
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--49
-
- []
-
-[2] <images/ejemploDiagrama.png, id=10, 673.51625pt x 292.09125pt>
-File: images/ejemploDiagrama.png Graphic file (type png)
-
-<use images/ejemploDiagrama.png>
-Package pdftex.def Info: images/ejemploDiagrama.png used on input line 74.
-(pdftex.def)             Requested size: 341.43306pt x 148.07317pt.
- [3 <./images/ejemploDiagrama.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
-
- []
+] [5
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+]
+\openout2 = `Agradecimientos.aux'.
+
+ (Agradecimientos.tex) [6] [7
+
+
+]
+\openout2 = `Resumen.aux'.
+
+ (Resumen.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
  []
 
-<images/mvp.png, id=16, 257.46187pt x 237.88875pt>
-File: images/mvp.png Graphic file (type png)
- <use images/mvp.png>
-Package pdftex.def Info: images/mvp.png used on input line 92.
-(pdftex.def)             Requested size: 257.46123pt x 237.88815pt.
+) [8] [9
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+]
+\openout2 = `Preface.aux'.
+
+ (Preface.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 6--93
 
  []
 
-<images/schema.png, id=17, 163.3302pt x 127.1952pt>
-File: images/schema.png Graphic file (type png)
- <use images/schema.png>
-Package pdftex.def Info: images/schema.png used on input line 100.
-(pdftex.def)             Requested size: 163.32979pt x 127.19489pt.
+[10] (memoria.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@toc=\write3
+\openout3 = `memoria.toc'.
 
-[4 <./images/mvp.png> <./images/schema.png>] (anteproyecto.aux
+ [11
+
+] [12
+
+] (memoria.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-) ) 
+ (Presentaci.tex) (Agradecimientos.aux) (Resumen.aux) (Preface.aux)) ) 
 Here is how much of TeX's memory you used:
- 2656 strings out of 493323
- 34778 string characters out of 3139060
- 105145 words of memory out of 3000000
- 6175 multiletter control sequences out of 15000+200000
- 5449 words of font info for 20 fonts, out of 3000000 for 9000
+ 2681 strings out of 493323
+ 34985 string characters out of 3139060
+ 101886 words of memory out of 3000000
+ 6172 multiletter control sequences out of 15000+200000
+ 6409 words of font info for 23 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,7n,30p,404b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on anteproyecto.pdf (4 pages, 63887 bytes).
+ 39i,5n,30p,546b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmti12.pfb>
+Output written on memoria.pdf (14 pages, 67390 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
