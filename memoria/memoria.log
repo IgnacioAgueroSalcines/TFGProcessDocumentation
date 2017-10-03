@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  3 OCT 2017 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  3 OCT 2017 19:02
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -514,16 +514,17 @@ LaTeX Info: Redefining \% on input line 1.
 
 ] [3
 
-] [1
+] [4] [5
 
-] (memoria.aux
+] [1] [2] [3] [4] [5]
+[6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] (memoria.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
  2650 strings out of 493323
  34421 string characters out of 3139060
- 103153 words of memory out of 3000000
+ 104153 words of memory out of 3000000
  6164 multiletter control sequences out of 15000+200000
  5152 words of font info for 19 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -531,9 +532,9 @@ Here is how much of TeX's memory you used:
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on memoria.pdf (6 pages, 44088 bytes).
+Output written on memoria.pdf (23 pages, 57733 bytes).
 PDF statistics:
- 33 PDF objects out of 1000 (max. 8388607)
+ 88 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
