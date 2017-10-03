@@ -23,90 +23,84 @@
 
 
 \begin{document}
-	\begin{titlepage}
-		\begin{center}
-
 	
-		\vspace*{-1in}
-
+	\pagestyle{empty}
+	\tableofcontents
+	\cleardoublepage
 	
-			\begin{figure}[htb]
-				\begin{center}
-					\includegraphics[width=8cm]{logoFacultadInformatica}
-				\end{center}
-			\end{figure}
+	\pagestyle{plain}
 	
-			FACULTAD DE CIENCIAS\\
-
-			\vspace*{0.2in}
-
-			\begin{Huge}
-				\textbf{Aplicación Web para la Gestión de Procesos del Producto LUCA desarrollado en la empresa CIC} \\
-			\end{Huge}
-			\vspace*{0.3in}
-			\begin{large}
-				Web Application\\
-			\end{large}
-			\vspace*{0.3in}
-			\rule{80mm}{0.1mm}\\
-			\vspace*{0.1in}
-			\begin{large}
-				Supervisado por: \\
-				Pablo Barreiro \\
-			\end{large}
-			\end{center}
-		
-			\afterpage{\null\newpage}
-			\newpage
-			
-		
-			\pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
-			\begin{flushright}
-				\textit{Dedicado a \\
-					mi familia}
-			\end{flushright}
-		
-			\afterpage{\null\newpage}
-			\newpage
-
-		
-			\begin{Large}
-		
-				\textbf{Pagina con información de la facultad} \\
-			\end{Large}
-			\include{Presentación}
-		
-		
-			\afterpage{\null\newpage}
-			\newpage
-			
-			\include{Agradecimientos}
-
-			\afterpage{\null\newpage}
-			\newpage
-			
-			\include{Resumen}
-			
-			\afterpage{\null\newpage}
-			\newpage
-			
-			\include{Preface}
-			
-			\afterpage{\null\newpage}
-			\newpage		
-		
-			
-			\tableofcontents % indice de contenidos
-			
-			\cleardoublepage
-			
-		
-
-
-		
+	\listoffigures
+	\listoftables
+	\thispagestyle{empty}
+	\cleardoublepage
+	
+	\pagenumbering{roman}
+	\section*{Agradecimientos}
+	Me gustaría dar agradecimientos a mi familia y facultad, ya que sin ellos esto no habría sido posible nada de estos.
+	
+	\vspace{5mm}
+	
+	\noindent Es importante agradecer también a CIC Consulting Informático por permitirme la oportunidad de realizar el desarrollo del proyecto en su empresa, sin olvidarme de mis compañeros de LUCA, que han sido un gran apoyo durante el mismo..
+	
+	\vspace{5mm}
+	
+	\noindent Para finalizar, me gustaría gradecer a mi mentor Pablo, por guiarme durante el desarrollo del proyecto con eficacia y ayudarme a afrontar este trabajo de fin de grado.
+	\cleardoublepage
+	
+	\section*{Resumen}
+	Las empresas actuales utilizan ya no un único sistema de información que de	soporte a sus procesos de trabajo, sino un  ecosistema de sistemas información que dan soporte a diferentes procesos de negocio ejecutados dentro de dicha organización. Como consecuencia de esta nueva situación, cuando un usuario	quiere obtener una información concreta cuyos datos residen en varios de estos
+	sistemas, necesita acceder a cada uno de estos sistemas, extraer de cada sistema la información que precisa, filtrarla y unificarla para finalmente	obtener los datos requeridos.
+	
+	\vspace{5mm}
+	
+	Por ejemplo, una tienda de electrodomésticos podría tener sistemas informáticos diferentes para el departamento de atención al cliente, para el departamento técnico de postventa y para el departamento de compras y adquisiciones.Por tanto, para conocer el estado actual de una reparación, podríamos necesitar:
+		\begin{itemize}
+			\item  Acceder al primer sistema para obtener el identificador de la incidencia y en qué fase de su gestión se encuentra.
+			\item  Comprobado que la incidencia está actualmente en reparación, recuperaríamos otro sistema el estado detallado de la reparación, comprobando que está a la espera de una pieza.
+			\item Finalmente accederíamos al sistema de compra y adquisiciones para comprobar cuando está prevista la entrega de dicha pieza. Los sistemas de almacenamiento de la información puede ser diversos, incluyendo desde un servicio web, una base de datos relacional, un repositorio de ficheros accesible vía FTP o una base de datos NoSQL.
+		\end{itemize}
+	
+	\vspace{5mm}
+	
+	El objetivo de este proyecto es facilitar dicho proceso de composición al usuario mediante el desarrollo de un mecanismo gráfico para la especificación de estos procesos de composición de consultas.
 	
 
-	\end{titlepage}
+	\vspace{5mm}
+	
+	\textbf{Palabras clave}: 
+	\cleardoublepage
+	
+	\section*{Preface}
+
+	
+
+	\textbf{Keywords}:
+	\cleardoublepage
+	
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+	\section{Introducción}
+	En los últimos años, el volumen de datos que una empresa o entidad necesita y/o es capaz de gestionar o manipular, aumenta de forma vertiginosa. Además del volumen de datos a manipular, nos damos cuenta de que para acceder a lo diversos datos es necesario muchas veces establecer comunicaciones con los diversos recursos existentes para alcanzar el objetivo.
+	
+	\vspace{5mm}
+	
+	
+	 Con el objeto de facilitar este proceso de recuperación de información almecenada en sistemas y fuentes de datos hetereogéneas, dentro de la empresa	CIC, se está desarrollando una aplicación denominada LUCA. Para	facilitar este proceso de recuperación de información, LUCA proporciona un lenguaje común para todas las fuentes de datos a unificar, permitiendo al
+	usuario abstraerse de los detalles de cada fuente.
+	
+	\vspace{5mm}
+	
+	 Actualmente LUCA proporciona mecanismos o abstracciones para permitir al	usuario recuperar de manera uniforme información de diferentes fuentes de datos.	Utilizando el ejemplo anterior, LUCA actualmente propociona mecanismos para
+	recuperar información, de la misma forma y mediante las mismas primitivas, de los tres sistemas previamente descritos, aunque sus sistemas de almacenamiento sean radicalmente diferentes.
+	
+	\vspace{5mm}
+	
+	 No obstante, LUCA actualmente sólo es capaz recuperar información de una única fuente de datos a la vez. Por tanto, cuando es necesario combinar información procedente de distintas fuentes, tal como ocurre en el ejemplo descrito, el propio usuario es el que debe realizar dicho	proceso de composición, ejecutando cada consulta a mano, y utilizando las salidas de cada una de ellas como las entradas de las siguientes.
+	
+
+
 
 \end{document}
 
