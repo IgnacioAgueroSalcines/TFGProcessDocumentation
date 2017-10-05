@@ -6,25 +6,53 @@
 \usepackage[utf8]{inputenc}
 \usepackage{afterpage}
 
+\usepackage{cite} % para contraer referencias
+\usepackage{fancyhdr} % para encabezados y pie de pagina
+
 % soporte gráfico
-\usepackage{graphicx}
+\usepackage{graphicx} % figuras
+\usepackage{subfigure} % subfiguras
 \graphicspath{ {images/} }
 
 %datos del documento
 \author{Ignacio Agüero Salcines}
 \title{Especificación Gráfica de Procesos de Recuperación de Datos en LUCA}
 
-\setcounter{secnumdepth}{0} 
-\setcounter{tocdepth}{1} 
-
-\newcounter{ns}
-\addtocounter{ns}{1} 
-
-\setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+% encabezados
+\lhead[\thepage]{CAPÍTULO \thechapter. \rightmark}
+\chead[]{}
+\rhead[CAPÍTULO \thechapter. \leftmark]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% pie de pagina
+\lfoot[]{\today}
+\cfoot[]{}
+\rfoot[Ignacio Agüero]{}
+\renewcommand{\footrulewidth}{0pt}
+
+% primera pagina de un capitulo
+\fancypagestyle{plain}{
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{\thepage}
+	\fancyfoot[L]{}
+	\fancyfoot[C]{}
+	\fancyfoot[R]{}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+\pagestyle{fancy}
 
 
 \begin{document}
+	
+	\lhead[\thepage]{CAPÍTULO \thechapter. \rightmark}
+	\rhead[CAPÍTULO \thechapter. \leftmark]{\thepage}
 	
 	\pagestyle{empty}
 	\tableofcontents
@@ -95,7 +123,9 @@
 	
 	\section{Introducción}
 	
-	En los últimos años, el volumen de datos que una empresa o entidad necesita y/o es capaz de gestionar o manipular, aumenta de forma vertiginosa. Además del volumen de datos a manipular, nos damos cuenta de que para acceder a lo diversos datos es necesario muchas veces establecer comunicaciones con los diversos recursos existentes para alcanzar el objetivo.
+	
+	
+	En los últimos años, el volumen de datos que una empresa o entidad necesita y/o es capaz de gestionar o manipular, ha aumentado de forma vertiginosa. Además del volumen de datos a manipular, nos damos cuenta de que para acceder a lo diversos datos es necesario muchas veces establecer comunicaciones con los diversos recursos existentes para alcanzar el objetivo.
 	
 	\vspace{5mm}
 	
@@ -120,6 +150,11 @@
 	 
 	 Dado que la empresa solicita que este editor gráfico sea utilizable vía web, se desarrollará utilizando la librería gráfica Javscript Go.JS y el framework Vaadin.
 	 
+	 	\subsection{Planificación del proyecto}
+	 
+	 
+		\subsection{Estructura del documento}
+	 
 	  \afterpage{\null\newpage}
 	 \newpage
 	 
@@ -130,6 +165,7 @@
 	\afterpage{\null\newpage}
 	\newpage
 	
+
 	 \section{Análisis y documentación}
 	 
 	 	\subsection{GO.JS}
@@ -138,12 +174,12 @@
 	 		\begin{figure}[h]
 	 			\centering
 	 			\includegraphics[scale=1]{gojs.jpeg}
-	 			\caption{Framework GO.JS}
+	 			\caption{GO.JS Logo}\label{fig:gojs}
 	 		\end{figure}
 	 	
 	 	
 	 		\subsubsection{¿Qué es GO.JS?}
-	 			GoJS es una biblioteca de JavaScript con múltiples funciones para implementar diagramas interactivos personalizados y visualizaciones complejas en navegadores y plataformas web modernos.
+	 			Go.JS \cite{gojs} es una biblioteca de JavaScript con múltiples funciones para implementar diagramas interactivos personalizados y visualizaciones complejas en navegadores y plataformas web modernos.
 	 	
 	 		\subsubsection{¿Porqué GO.JS?}
 	 		 GoJS facilita la construcción de diagramas de JavaScript de nodos, enlaces y grupos complejos con plantillas y diseños personalizables.
@@ -158,11 +194,46 @@
 	 
 	 
 	 	\subsection{Vaadin}
+	 	
+	 		\begin{figure}[h]
+	 			\centering
+	 			\includegraphics[scale=1]{Vaadin-logo.png}
+	 			\caption{Vaadin Logo}\label{fig:Vaadin-logo}
+	 		\end{figure}
+ 		
+ 			\subsubsection{¿Qué es GO.JS?}
+ 				Vaadin\cite{vaadin} es un framework de desarrollo de SPA que permite escribir el código de dichas aplicaciones en Java o en cualquier otro lenguaje soportado por la JVM 1.6+. Esto permite la programación de la interfaz gráfica en lenguajes como Java 8, Scala o Groovy, por ejemplo.
+ 			
+ 			\subsubsection{Características}
+ 				Uno de las características diferenciadores de Vaadin es que, contrario a las librerías y frameworks de JavaScript típicas, presenta una arquitectura centrada en el servidor, lo que implica que la mayoría de la lógica es ejecutada en los servidores remotos. Del lado del cliente, Vaadin está construido encima de Google Web Toolkit, con el que puede extenderse.
+ 	
+ 			\subsubsection{Aplicación}
+ 				En este proyecto, Vaadin se encargara de realizar la comunicación entre el cliente y el servidor. De esta forma, será capaz de enviar y recibir datos, eventos y peticiones entre el componente Javascript (cliente) y el servidor.
+ 			
+ 			
+	 			\begin{figure}[h]
+	 				\centering
+	 				\includegraphics[scale=1.5]{schema.png}
+	 				\caption{Esquema Cliente-Servidor}\label{fig:schema}
+	 			\end{figure}
+ 			
+ 		
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
 	\section{Diseño Arquitectónico}
+	
+	El diseño arquitectónico va a describir tanto la estructura arquitectónica del componente de procesos implementado con GO.js, tanto su integración en el producto LUCA, el cual, requiere de un diseño paralelo que implementar.
+	
+	\vspace{5mm}
+	
+	Para poder diferenciar estos dos diseños, el componente que implementa GO.JS se nombrará como 'Process Component' y el diseño del producto LUCA que integra el Process Component se llamara 'LUCA Process'.
+	
+		\subsection{Process Component}
+		
+		
+		\subsection{Luca Process}
 	
 	\afterpage{\null\newpage}
 	\newpage
@@ -179,15 +250,16 @@
 	\newpage
 	
 	
-	\section{Introducción}
 	
-	\afterpage{\null\newpage}
-	\newpage
-	
-	
-	\section{Sumario}
+	\section{Conclusión}
 
 
+	\clearpage
+	
+	\bibliographystyle{acm}
+	\bibliography{Bibliografia}
+	
+	\clearpage
 
 \end{document}
 
