@@ -1,5 +1,5 @@
 %clase del documento
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{book}
 
 %paquete de idioma y codificación de caracteres
 \usepackage[spanish]{babel}
@@ -14,6 +14,9 @@
 \usepackage{subfigure} % subfiguras
 \graphicspath{ {images/} }
 
+%indice dentro de secciones
+\usepackage{minitoc}
+
 %datos del documento
 \author{Ignacio Agüero Salcines}
 \title{Especificación Gráfica de Procesos de Recuperación de Datos en LUCA}
@@ -27,6 +30,7 @@
 	
 	
 	\pagestyle{empty}
+	\dominitoc% Inicializacion
 	\tableofcontents
 	\cleardoublepage
 	
@@ -38,7 +42,7 @@
 	\cleardoublepage
 	
 	\pagenumbering{roman}
-	\section*{Agradecimientos}
+	\chapter*{Agradecimientos}
 	Me gustaría dar agradecimientos a mi familia y facultad, ya que sin ellos esto no habría sido posible nada de estos.
 	
 	\vspace{5mm}
@@ -54,7 +58,7 @@
 	\newpage
 	
 	
-	\section*{Resumen}
+	\chapter*{Resumen}
 	Las empresas actuales utilizan ya no un único sistema de información que de	soporte a sus procesos de trabajo, sino un  ecosistema de sistemas información que dan soporte a diferentes procesos de negocio ejecutados dentro de dicha organización. Como consecuencia de esta nueva situación, cuando un usuario	quiere obtener una información concreta cuyos datos residen en varios de estos
 	sistemas, necesita acceder a cada uno de estos sistemas, extraer de cada sistema la información que precisa, filtrarla y unificarla para finalmente	obtener los datos requeridos.
 	
@@ -80,7 +84,7 @@
 	\afterpage{\null\newpage}
 	\newpage
 	
-	\section*{Preface}
+	\chapter*{Preface}
 
 	
 
@@ -93,11 +97,11 @@
 	\afterpage{\null\newpage}
 	\newpage
 	
-	\section{Introducción}
+	\chapter{Introducción}
 	
-	Esta sección del documento se propone a describir, en leves pinceladas, los objetivos principales que el proyecto debe de completar.
+	Este capítulo del documento se propone a describir, en leves pinceladas, los objetivos principales que el proyecto debe de completar.
 	
-		\subsection{Introducción}
+		\section{Introducción}
 	
 	
 			En los últimos años, el volumen de datos que una empresa o entidad necesita y/o es capaz de gestionar o manipular, ha aumentado de forma vertiginosa. Además del volumen de datos a manipular, nos damos cuenta de que para acceder a lo diversos datos es necesario muchas veces establecer comunicaciones con los diversos recursos existentes para alcanzar el objetivo.
@@ -117,7 +121,7 @@
 			 El objetivo de este proyecto es facilitar dicho proceso de composición al usuario mediante el desarrollo de un mecanismo gráfico para la especificación de estos procesos de composición de consultas.
 			 
 	 
-	 	\subsection{Planificación del proyecto}
+	 	\section{Planificación del proyecto}
 	 	
 	 	En este apartado se describe la metodología de desarrollo que ha sido utilizada para la cumplimentación del proyecto. 
 	 	
@@ -164,7 +168,7 @@
  		 
 	 
 	 
-		\subsection{Estructura del documento}
+		\section{Estructura del documento}
 		
 		Esta sección se propone describir la ingeniería de requisitos llevada a cabo, así como, profundizar en el diseño arquitectónico. También como introducción inicial, se relatará de forma breve y concisa la librería javascript GO.JS y el framework Vaadin.
 		
@@ -179,16 +183,86 @@
 	 \newpage
 	 
 	
+
+	\chapter{Ingeniería de Requisitos}
 	
-	\section{Ingeniería de Requisitos}
+	Este capítulo describe el proceso de captura de requisitos, así como, el modelado de los requisitos tanto funcionales como no funcionales.
+	
+	\minitoc
+	
+	
+	
+		\section{Introducción}
+		
+		El capítulo actual se propone explicar de forma detallada la fase de ingeniería de requisitos, en la que se recoge toda la información necesaria relativa a los requisitos para poder presentar al stakeholder los objetivos o requerimentos que debe de tener la aplicación para poder considerarse como completada.
+		
+		\vspace{5mm}
+		
+		Por tanto, teniendo en cuenta lo citado anteriormente, este capítulo tratará primero el proceso de captura de requisitos llevado a cabo, para posteriormente, mostrar y detallar el modelado de requisitos subyacente de la etapa anterior.
+		
+		\section{Captura de requisitos}
+		
+		En la presente sección se describe el proceso de identificación de requisitos que nuestra aplicación debe de completar o satisfacer. 
+		
+		\vspace{5mm}
+		
+		Dado que la aplicación a construir es un incremento de un producto ya existente, no hace falta identificar la fuente de los requisitos ya que es el propio gerente o impulsor de dicho incremento el stakeholder, junto con el jefe del proyecto, los objetivos conjuntos de la captura de información y de los propios requisitos.
+		
+		\vspace{5mm}
+		
+		A raíz de una demostración del producto actual LUCA, y de la reunión para la captura de requisitos con el gerente y de la empresa CIC, así como del jefe de proyecto bajo el que estuvo supervisado el proyecto actual, se muestra el resultado del proceso de la captura de requisitos llevada a cabo. 
+		
+		\vspace{5mm}
+		
+		Cabe explicar también, que este proyecto se funda en la implementación o desarrollo de dos componentes. Uno  representa una herramienta focalizada en el ámbito grafico para la creación, borrado y actualización, en términos genrales, manipulación gráfica de los elementos constituyentes del proyecto. El otro represente un proyecto incremento del actual producto LUCA, centrado en la gestión de los procesos y elementos hijos.
+		
+		
+		\begin{table}[htbp]
+			\begin{center}
+				\begin{tabular}{|l|l|}
+					\hline
+					Referencia & Requisito \\
+					\hline \hline
+					REF-01 & Los usuarios podrán consultar los datos referentes a un proceso. \\ \hline
+					REF-02 & Los usuarios podrán actualizar o modificar los datos de los procesos. \\ \hline
+					REF-03 & Los usuarios podrán persistir los nuevos procesos creados. \\ \hline
+					REF-04 & Los usuarios podrán crear, a partir de las consultas almacenadas en el sistema, una jerarquía de procesos constituidos por elementos hijos. \\ \hline
+				\end{tabular}
+				\caption{Conjunto de Requisitos del Proyecto}
+				\label{tabla:requisitosProceso}
+			\end{center}
+		\end{table}
+	
+	
+		\begin{table}[htbp]
+			\begin{center}
+				\begin{tabular}{|l|l|}
+					\hline
+					Referencia & Requisito \\
+					\hline \hline
+
+				\end{tabular}
+				\caption{Conjunto de Requisitos del Componente Gráfico}
+				\label{tabla:requisitosHerramientaProceso}
+			\end{center}
+		\end{table}
+	
+	
+		\section{Modelado de requisitos}
+	
+
+	
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
 
-	 \section{Análisis y documentación}
+	 \chapter{Análisis y documentación}
+	 Este capítulo describe...
 	 
-	 	\subsection{GO.JS}
+	 \minitoc
+	 
+	 	\section{GO.JS}
 	 		
 	 		
 	 		\begin{figure}[h]
@@ -198,22 +272,22 @@
 	 		\end{figure}
 	 	
 	 	
-	 		\subsubsection{¿Qué es GO.JS?}
+	 		\subsection{¿Qué es GO.JS?}
 	 			Go.JS \cite{gojs} es una biblioteca de JavaScript con múltiples funciones para implementar diagramas interactivos personalizados y visualizaciones complejas en navegadores y plataformas web modernos.
 	 	
-	 		\subsubsection{¿Porqué GO.JS?}
+	 		\subsection{¿Porqué GO.JS?}
 	 		 GoJS facilita la construcción de diagramas de JavaScript de nodos, enlaces y grupos complejos con plantillas y diseños personalizables.
 	 		
 	 		
-	 		\subsubsection{Características}
+	 		\subsection{Características}
 	 		GoJS ofrece muchas características avanzadas para la interactividad del usuario, tales como arrastrar y soltar, copiar y pegar, edición de texto en el lugar, información sobre herramientas, menús contextuales, diseños automáticos, plantillas, vinculación y modelos de datos, administración de estado transaccional y deshacer, paletas , vistas generales, controladores de eventos, comandos y un sistema de herramientas extensible para operaciones personalizadas.
 	 		
 	 	
-	 		\subsubsection{Explicación}
+	 		\subsection{Explicación}
 	 		GoJS ofrece muchas características avanzadas para la interactividad del usuario, tales como arrastrar y soltar, copiar y pegar, edición de texto en el lugar, información sobre herramientas, menús contextuales, diseños automáticos, plantillas, vinculación y modelos de datos, administración de estado transaccional y deshacer, paletas , vistas generales, controladores de eventos, comandos y un sistema de herramientas extensible para operaciones personalizadas.
 	 
 	 
-	 	\subsection{Vaadin}
+	 	\section{Vaadin}
 	 	
 	 		\begin{figure}[h]
 	 			\centering
@@ -221,13 +295,13 @@
 	 			\caption{Vaadin Logo}\label{fig:Vaadin-logo}
 	 		\end{figure}
  		
- 			\subsubsection{¿Qué es GO.JS?}
+ 			\subsection{¿Qué es GO.JS?}
  				Vaadin\cite{vaadin} es un framework de desarrollo de SPA que permite escribir el código de dichas aplicaciones en Java o en cualquier otro lenguaje soportado por la JVM 1.6+. Esto permite la programación de la interfaz gráfica en lenguajes como Java 8, Scala o Groovy, por ejemplo.
  			
- 			\subsubsection{Características}
+ 			\subsection{Características}
  				Uno de las características diferenciadores de Vaadin es que, contrario a las librerías y frameworks de JavaScript típicas, presenta una arquitectura centrada en el servidor, lo que implica que la mayoría de la lógica es ejecutada en los servidores remotos. Del lado del cliente, Vaadin está construido encima de Google Web Toolkit, con el que puede extenderse.
  	
- 			\subsubsection{Aplicación}
+ 			\subsection{Aplicación}
  				En este proyecto, Vaadin se encargara de realizar la comunicación entre el cliente y el servidor. De esta forma, será capaz de enviar y recibir datos, eventos y peticiones entre el componente Javascript (cliente) y el servidor.
  			
  			
@@ -242,36 +316,51 @@
 	\afterpage{\null\newpage}
 	\newpage
 	
-	\section{Diseño Arquitectónico}
+	\chapter{Diseño Arquitectónico}
 	
 	El diseño arquitectónico va a describir tanto la estructura arquitectónica del componente de procesos implementado con GO.js, tanto su integración en el producto LUCA, el cual, requiere de un diseño paralelo que implementar.
+	
+	
+	\minitoc
 	
 	\vspace{5mm}
 	
 	Para poder diferenciar estos dos diseños, el componente que implementa GO.JS se nombrará como 'Process Component' y el diseño del producto LUCA que integra el Process Component se llamara 'LUCA Process'.
 	
-		\subsection{Process Component}
+		\section{Process Component}
 		
 		
-		\subsection{Luca Process}
+		\section{Luca Process}
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
-	\section{Implementación}
+	\chapter{Implementación}
+	
+	Este capítulo describe...
+	
+	\minitoc
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
 	
-	\section{Pruebas}
+	\chapter{Pruebas}
+	
+	Este capítulo describe...
+	
+	\minitoc
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
 	
 	
-	\section{Conclusión}
+	\chapter{Conclusión}
+	
+	Este capítulo describe...
+	
+	\minitoc
 
 
 	\clearpage
