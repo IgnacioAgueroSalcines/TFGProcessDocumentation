@@ -6,6 +6,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{afterpage}
 
+%figuras en un lugar determinado
+\usepackage{float}
+
 \usepackage{cite} % para contraer referencias
 \usepackage{fancyhdr} % para encabezados y pie de pagina
 
@@ -216,40 +219,65 @@
 		
 		Cabe explicar también, que este proyecto se funda en la implementación o desarrollo de dos componentes. Uno  representa una herramienta focalizada en el ámbito grafico para la creación, borrado y actualización, en términos genrales, manipulación gráfica de los elementos constituyentes del proyecto. El otro represente un proyecto incremento del actual producto LUCA, centrado en la gestión de los procesos y elementos hijos.
 		
+		\vspace{5mm}
+		A continuación se muestra, por cada componente, una tabla desglosando los diferentes requisitos , y posteriormente, una breve explicación general del mismo:
 		
-		\begin{table}[htbp]
+		
+		\begin{table}[H]
 			\begin{center}
 				\begin{tabular}{|l|l|}
 					\hline
 					Referencia & Requisito \\
 					\hline \hline
-					REF-01 & Los usuarios podrán consultar los datos referentes a un proceso. \\ \hline
-					REF-02 & Los usuarios podrán actualizar o modificar los datos de los procesos. \\ \hline
-					REF-03 & Los usuarios podrán persistir los nuevos procesos creados. \\ \hline
-					REF-04 & Los usuarios podrán crear, a partir de las consultas almacenadas en el sistema, una jerarquía de procesos constituidos por elementos hijos. \\ \hline
+					REF-01 & Los usuarios podrán consultar los datos referentes a los diversos elementos o cajas. \\ \hline
+					REF-02 & Los usuarios podrán modificar los datos de los elementos. \\ \hline
+					REF-03 & Los usuarios podrán persistir los nuevos elementos creados. \\ \hline
+					REF-04 & Los usuarios podrán concatenar los diferentes elementos ( procesos, subprocesos y condicionales) para formar una jerarquía de elementos con una semántica propia\\ \hline
+					REF-05 & Los usuarios podrán persistir, a partir de las consultas almacenadas en el sistema, una jerarquía de procesos constituidos por elementos. \\ \hline
+
 				\end{tabular}
 				\caption{Conjunto de Requisitos del Proyecto}
 				\label{tabla:requisitosProceso}
 			\end{center}
 		\end{table}
 	
+		\vspace{5mm}
+
+		El usuario deberá de ser capaz de interactuar con los diferentes elementos existentes como son las consultas almacenadas. Desde poder crear conjunto de consultas anidadas mediante sus entradas y salidas para obtener una salida final objetivo, hasta poder modificar o eliminar los esquemas o procesos ya almacenados.
 	
-		\begin{table}[htbp]
+	
+		\begin{table}[H]
 			\begin{center}
 				\begin{tabular}{|l|l|}
 					\hline
 					Referencia & Requisito \\
 					\hline \hline
-
+					REF-01 & Los usuarios deberán de ser capaces de enlazar los diferentes elementos entre sí. \\ \hline					
+					REF-02 & Los usuarios deberán de ser capaces de seleccionar de diferentes formas los elementos así como las diversas opciones relacionadas con el \\ \hline					
+					REF-03 & Los usuarios deberán de ser capaces mover e interactuar con los diferentes elementos.\\ \hline
 				\end{tabular}
 				\caption{Conjunto de Requisitos del Componente Gráfico}
 				\label{tabla:requisitosHerramientaProceso}
 			\end{center}
 		\end{table}
 	
+		\vspace{5mm}
+	
+		El usuario podrá realizar acciones de forma gráfica como son la selección o arrastrado de los diversos elementos que conforman la estructura semántica del componente.
+	
+	
+		
+		
+		
+	
 	
 		\section{Modelado de requisitos}
+	Este apartado muestra el proceso de modelado de requisitos, los cuales fueron especificados en el apartado anterior, así como la explicación y especificación del mismo.
 	
+	//TODO
+	metodologia usada para la especificacion de los casos de usos de klaus pohl\\
+	
+	caso de uso: gestionar procesos, alta baja etc
 
 	
 	
@@ -258,14 +286,14 @@
 	
 
 	 \chapter{Análisis y documentación}
-	 Este capítulo describe...
+	 Este capítulo describe el proceso de adquisición de conocimientos necesarios para poder llevar a cabo el proceso de diseño arquitectónico y de construcción o implementacíon de la aplicación. De esta fomra se puede realizar una planificación mas cercana a la realidad y partir de unos conocimientos mínimos para empezar a elaborar el proyecto.
 	 
 	 \minitoc
 	 
 	 	\section{GO.JS}
 	 		
 	 		
-	 		\begin{figure}[h]
+	 		\begin{figure}[H]
 	 			\centering
 	 			\includegraphics[scale=1]{gojs.jpeg}
 	 			\caption{GO.JS Logo}\label{fig:gojs}
@@ -289,7 +317,7 @@
 	 
 	 	\section{Vaadin}
 	 	
-	 		\begin{figure}[h]
+	 		\begin{figure}[H]
 	 			\centering
 	 			\includegraphics[scale=1]{Vaadin-logo.png}
 	 			\caption{Vaadin Logo}\label{fig:Vaadin-logo}
@@ -305,18 +333,33 @@
  				En este proyecto, Vaadin se encargara de realizar la comunicación entre el cliente y el servidor. De esta forma, será capaz de enviar y recibir datos, eventos y peticiones entre el componente Javascript (cliente) y el servidor.
  			
  			
-	 			\begin{figure}[h]
+	 			\begin{figure}[H]
 	 				\centering
 	 				\includegraphics[scale=1.5]{schema.png}
 	 				\caption{Esquema Cliente-Servidor}\label{fig:schema}
 	 			\end{figure}
  			
- 		
+	
+	
+	\section{Spring}
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{spring.png}
+			\caption{Spring Logo}\label{fig:spring}
+		\end{figure}
+		
+		Spring\cite{spring} es un Framework que proporciona un modelo de programación y configuración integral para aplicaciones empresariales modernas basadas en Java y en cualquier tipo de plataforma de implementación. Un elemento clave de Spring es el soporte de infraestructura a nivel de aplicación, ya que Spring se centra abstraer a las aplicaciones empresariales del uso de diferentes frameworks para que los equipos puedan centrarse en la lógica empresarial a nivel de aplicación, sin lazos innecesarios con entornos de implementación específicos.
+	
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
 	\chapter{Diseño Arquitectónico}
+	
+	Tras haber adquirido la información suficiente respecto al conjunto de requisitos objetivos de satisfacción, y del conjunto de tecnologías que deben de integrarse en el proyecto, se muestra a continuación la especificación del diseño arquitectónico.
+	
+	\vspace{5mm}
 	
 	El diseño arquitectónico va a describir tanto la estructura arquitectónica del componente de procesos implementado con GO.js, tanto su integración en el producto LUCA, el cual, requiere de un diseño paralelo que implementar.
 	
@@ -328,6 +371,13 @@
 	Para poder diferenciar estos dos diseños, el componente que implementa GO.JS se nombrará como 'Process Component' y el diseño del producto LUCA que integra el Process Component se llamara 'LUCA Process'.
 	
 		\section{Process Component}
+		
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.25]{Process-Component.jpg}
+			\caption{Diagrama de clases}\label{fig:Process-Component}
+		\end{figure}
 		
 		
 		\section{Luca Process}

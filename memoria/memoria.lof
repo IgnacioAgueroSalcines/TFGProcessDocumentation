@@ -8,12 +8,14 @@
 \contentsline {xchapter}{An\IeC {\'a}lisis y documentaci\IeC {\'o}n}{13}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces GO.JS Logo}}{14}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Vaadin Logo}}{15}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema Cliente-Servidor}}{15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema Cliente-Servidor}}{16}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Spring Logo}}{16}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{17}
+\contentsline {xchapter}{Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{19}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de clases}}{20}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{19}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{23}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Pruebas}{21}
+\contentsline {xchapter}{Pruebas}{25}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusi\IeC {\'o}n}{23}
+\contentsline {xchapter}{Conclusi\IeC {\'o}n}{27}

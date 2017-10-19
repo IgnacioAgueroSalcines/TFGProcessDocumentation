@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  10 OCT 2017 19:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  19 OCT 2017 19:36
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -371,6 +371,14 @@ Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@partial=\box26
 \AP@footins=\box27
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count90
+\float@exts=\toks18
+\float@box=\box28
+\@float@everytoks=\toks19
+\@floatcapt=\box29
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
@@ -394,7 +402,7 @@ Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
+\KV@toks@=\toks20
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
@@ -416,7 +424,7 @@ Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count90
+\Gread@gobject=\count91
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
@@ -429,10 +437,10 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigbottomskip=\skip54
 \subfigcapmargin=\dimen107
 \subfiglabelskip=\skip55
-\c@subfigure=\count91
-\c@lofdepth=\count92
-\c@subtable=\count93
-\c@lotdepth=\count94
+\c@subfigure=\count92
+\c@lofdepth=\count93
+\c@subtable=\count94
+\c@lotdepth=\count95
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -458,9 +466,9 @@ Package minitoc Info: I0023
 (minitoc)             part level macros available.
 Package minitoc Info: I0003
 (minitoc)             chapter level macros available.
-\mtc@toks=\toks19
-\mtc@strutbox=\box28
-\mtc@hstrutbox=\box29
+\mtc@toks=\toks21
+\mtc@strutbox=\box30
+\mtc@hstrutbox=\box31
 Package minitoc Info: I0002
 (minitoc)             Autoconfiguration of extensions.
 \openout3 = `memoria.mtc0'.
@@ -477,10 +485,10 @@ Package minitoc Info: I0031
 
 \openout3 = `memoria.mtc0'.
 
-\c@mtc=\count95
-\c@minitocdepth=\count96
-\c@ptc=\count97
-\c@parttocdepth=\count98
+\c@mtc=\count96
+\c@minitocdepth=\count97
+\c@ptc=\count98
+\c@parttocdepth=\count99
 \ptcindent=\skip60
 Package minitoc Info: I0010
 (minitoc)             The english language is selected.
@@ -497,34 +505,34 @@ LaTeX Info: Redefining \% on input line 6.
 )
 \openout1 = `memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Info: Redefining \. on input line 29.
-LaTeX Info: Redefining \% on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Info: Redefining \. on input line 32.
+LaTeX Info: Redefining \% on input line 32.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count99
+\scratchcounter=\count100
 \scratchdimen=\dimen108
-\scratchbox=\box30
-\nofMPsegments=\count100
-\nofMParguments=\count101
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count102
+\scratchbox=\box32
+\nofMPsegments=\count101
+\nofMParguments=\count102
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count103
 \MPscratchDim=\dimen109
-\MPnumerator=\count103
-\makeMPintoPDFobject=\count104
-\everyMPtoPDFconversion=\toks21
+\MPnumerator=\count104
+\makeMPintoPDFobject=\count105
+\everyMPtoPDFconversion=\toks23
 ) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -570,17 +578,17 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\c@minilofdepth=\count105
-\c@minilotdepth=\count106
-\c@partlofdepth=\count107
-\c@partlotdepth=\count108
-\c@sectlofdepth=\count109
-\c@sectlotdepth=\count110
+\c@minilofdepth=\count106
+\c@minilotdepth=\count107
+\c@partlofdepth=\count108
+\c@partlotdepth=\count109
+\c@sectlofdepth=\count110
+\c@sectlotdepth=\count111
 Package minitoc(hints) Info: I0049
 (minitoc(hints))             ==> You requested the hints option. 
 (minitoc(hints))             Some hints are eventually given below.
 Package minitoc Info: I0024
-(minitoc)             PREPARING MINITOCS FROM memoria.toc on input line 34.
+(minitoc)             PREPARING MINITOCS FROM memoria.toc on input line 37.
 Package minitoc Info: I0033
 (minitoc)             Writing memoria.mtc1.
 \openout3 = `memoria.mtc1'.
@@ -670,10 +678,10 @@ Cap\'{\i }tulo 1.
 File: images/modelo-en-cascada.png Graphic file (type png)
 
 <use images/modelo-en-cascada.png>
-Package pdftex.def Info: images/modelo-en-cascada.png used on input line 137.
+Package pdftex.def Info: images/modelo-en-cascada.png used on input line 140.
 (pdftex.def)             Requested size: 458.71263pt x 344.78728pt.
 
-Overfull \hbox (68.71263pt too wide) in paragraph at lines 137--138
+Overfull \hbox (68.71263pt too wide) in paragraph at lines 140--141
  [][] 
  []
 
@@ -686,15 +694,26 @@ Cap\'{\i }tulo 2.
 \openout3 = `memoria.mtc'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 192.
+(Font)              <10.95> on input line 195.
 (memoria.mtc2) [9]
-Overfull \hbox (400.02264pt too wide) in paragraph at lines 222--231
+Overfull \hbox (526.92133pt too wide) in paragraph at lines 228--239
  [] 
  []
 
-[10] [11] [12
 
-]
+Overfull \hbox (383.76865pt too wide) in paragraph at lines 251--259
+ [] 
+ []
+
+
+Underfull \vbox (badness 6236) has occurred while \output is active []
+
+ [10]
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
+
+ []
+
+[11] [12]
 Cap\'{\i }tulo 3.
 \openout3 = `memoria.mtc'.
 
@@ -704,60 +723,81 @@ Cap\'{\i }tulo 3.
 File: images/gojs.jpeg Graphic file (type jpg)
 
 <use images/gojs.jpeg>
-Package pdftex.def Info: images/gojs.jpeg used on input line 270.
+Package pdftex.def Info: images/gojs.jpeg used on input line 298.
 (pdftex.def)             Requested size: 208.77946pt x 116.43471pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ [13
 
-[13] <images/Vaadin-logo.png, id=102, 451.4466pt x 109.3686pt>
+]
+[14 <./images/gojs.jpeg>]
+<images/Vaadin-logo.png, id=105, 451.4466pt x 109.3686pt>
 File: images/Vaadin-logo.png Graphic file (type png)
 
 <use images/Vaadin-logo.png>
-Package pdftex.def Info: images/Vaadin-logo.png used on input line 294.
+Package pdftex.def Info: images/Vaadin-logo.png used on input line 322.
 (pdftex.def)             Requested size: 451.44548pt x 109.36832pt.
 
-Overfull \hbox (61.44548pt too wide) in paragraph at lines 294--295
+Overfull \hbox (61.44548pt too wide) in paragraph at lines 322--323
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14 <./images/gojs.jpeg>] <images/schema.png, id=106, 163.3302pt x 127.1952pt>
+<images/schema.png, id=106, 163.3302pt x 127.1952pt>
 File: images/schema.png Graphic file (type png)
-
-<use images/schema.png>
-Package pdftex.def Info: images/schema.png used on input line 310.
+ <use images/schema.png>
+Package pdftex.def Info: images/schema.png used on input line 338.
 (pdftex.def)             Requested size: 244.99467pt x 190.79233pt.
- [15 <./images/Vaadin-logo.png> <./images/schema.png>]
-[16]
+
+[15 <./images/Vaadin-logo.png>]
+<images/spring.png, id=112, 803.0pt x 260.975pt>
+File: images/spring.png Graphic file (type png)
+ <use images/spring.png>
+Package pdftex.def Info: images/spring.png used on input line 348.
+(pdftex.def)             Requested size: 401.49902pt x 130.48718pt.
+
+Overfull \hbox (11.49902pt too wide) in paragraph at lines 348--349
+ [][] 
+ []
+
+[16 <./images/schema.png> <./images/spring.png>] [17] [18
+
+]
 Cap\'{\i }tulo 4.
 \openout3 = `memoria.mtc'.
 
 \openout3 = `memoria.mtc'.
 
-(memoria.mtc4) [17
+(memoria.mtc4)
+<images/Process-Component.jpg, id=124, 1537.745pt x 944.52875pt>
+File: images/Process-Component.jpg Graphic file (type jpg)
 
-] [18]
+<use images/Process-Component.jpg>
+Package pdftex.def Info: images/Process-Component.jpg used on input line 378.
+(pdftex.def)             Requested size: 384.4353pt x 236.1316pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]
+[20 <./images/Process-Component.jpg>] [21] [22
+
+]
 Cap\'{\i }tulo 5.
 Package minitoc Info: I0006
-(minitoc)             memoria.mtc5 is empty on input line 343.
-[19
-
-] [20]
+(minitoc)             memoria.mtc5 is empty on input line 393.
+[23] [24]
 Cap\'{\i }tulo 6.
 Package minitoc Info: I0006
-(minitoc)             memoria.mtc6 is empty on input line 353.
-[21
+(minitoc)             memoria.mtc6 is empty on input line 403.
+[25
 
-] [22]
+] [26]
 Cap\'{\i }tulo 7.
 Package minitoc Info: I0006
-(minitoc)             memoria.mtc7 is empty on input line 364.
-[23
+(minitoc)             memoria.mtc7 is empty on input line 414.
+[27
 
-] (memoria.bbl [24
+] (memoria.bbl [28
 
 
 ]
@@ -772,36 +812,46 @@ Overfull \hbox (107.29596pt too wide) in paragraph at lines 8--11
 s/spring-vaadin-hibernate-tutorial-8-el-patron-mvp/\OT1/cmr/m/n/12 . 
  []
 
-) [25]
+) [29]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the memoria.maf file.
 \openout3 = `memoria.maf'.
 
-Package minitoc(hints) Info: I0019
-(minitoc(hints))             No hints have been written 
-(minitoc(hints))             in the memoria.log file..
- (memoria.aux
+Package minitoc(hints) Info: I0053
+(minitoc(hints))             You have loaded the float package; 
+(minitoc(hints))             please be aware that the minitoc package 
+(minitoc(hints))             facilities can not be used for new types 
+(minitoc(hints))             of floats defined by the float package.
+
+
+Package minitoc(hints) Warning: W0024
+(minitoc(hints))                Some hints have been written 
+(minitoc(hints))                in the memoria.log file.
+
+[30
+
+] (memoria.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 4661 strings out of 493323
- 61526 string characters out of 3139060
- 146776 words of memory out of 3000000
- 7909 multiletter control sequences out of 15000+200000
+ 4734 strings out of 493323
+ 62589 string characters out of 3139060
+ 149143 words of memory out of 3000000
+ 7975 multiletter control sequences out of 15000+200000
  10194 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,9n,43p,566b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,9n,43p,584b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (41 pages, 181400 bytes).
+Output written on memoria.pdf (46 pages, 399922 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
+ 186 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
