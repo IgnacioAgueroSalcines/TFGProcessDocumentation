@@ -20,7 +20,9 @@
 \contentsline {section}{\numberline {3.3}Spring}{16}
 \contentsline {chapter}{\numberline {4}Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{19}
 \contentsline {section}{\numberline {4.1}Process Component}{20}
-\contentsline {section}{\numberline {4.2}Luca Process}{20}
+\contentsline {section}{\numberline {4.2}Luca Process}{21}
 \contentsline {chapter}{\numberline {5}Implementaci\IeC {\'o}n}{23}
-\contentsline {chapter}{\numberline {6}Pruebas}{25}
-\contentsline {chapter}{\numberline {7}Conclusi\IeC {\'o}n}{27}
+\contentsline {section}{\numberline {5.1}Process-Component}{24}
+\contentsline {section}{\numberline {5.2}Luca-Process}{24}
+\contentsline {chapter}{\numberline {6}Pruebas}{27}
+\contentsline {chapter}{\numberline {7}Conclusi\IeC {\'o}n}{29}

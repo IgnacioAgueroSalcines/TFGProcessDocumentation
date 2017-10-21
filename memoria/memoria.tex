@@ -366,7 +366,6 @@
 	
 	\minitoc
 	
-	\vspace{5mm}
 	
 	Para poder diferenciar estos dos diseños, el componente que implementa GO.JS se nombrará como 'Process Component' y el diseño del producto LUCA que integra el Process Component se llamara 'LUCA Process'.
 	
@@ -381,15 +380,44 @@
 		
 		
 		\section{Luca Process}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.25]{Luca-Process.jpg}
+			\caption{Diagrama de clases}\label{fig:Luca-Process}
+		\end{figure}
 	
 	\afterpage{\null\newpage}
 	\newpage
 	
 	\chapter{Implementación}
 	
-	Este capítulo describe...
+	El capítulo presente describe el proceso llevado a cabo para realizar la implementación tanto del componente gráfico (Process-Component) como del componente de Luca (Luca-Process).
+	
+	\vspace{5mm}
+	
+	A continuación, se declara un breve desglose de los dos componentes con los fragmentos que han sido implementados para poder satisfacer los el diseño arquitectónico.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.25]{esquema_proyecto.png}
+		\caption{Estructuración en módulos}\label{fig:esquema_proyecto}
+	\end{figure}
 	
 	\minitoc
+	
+		\section{Process-Component}
+		
+		Este fragmento del proyecto o componente se dedica exclusivamente al apartado gráfico, el cuál posee una sintaxis ya definida en el apartado del diseño arquitectónico.
+		
+		
+		\vspace{5mm}
+		
+		
+		Este componente es una herramienta que se dedica a proveer métodos para interactuar con él y además es capaz mediante escuchadores de avisar a los clientes que lo requieran sobre los eventos ocurridos sobre la interfaz gráfica.
+		
+		
+		\section{Luca-Process}
 	
 	\afterpage{\null\newpage}
 	\newpage

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  19 OCT 2017 19:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  21 OCT 2017 16:09
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -627,16 +627,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 3.
-)
-\tf@toc=\write4
-\openout4 = `memoria.toc'.
-
  [1
 
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}])
+\tf@toc=\write4
+\openout4 = `memoria.toc'.
 
-]
+ [2]
 (memoria.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -645,6 +643,7 @@ LaTeX Info: Redefining \% on input line 1.
 \openout5 = `memoria.lof'.
 
  [3
+
 
 ] [4
 
@@ -773,31 +772,48 @@ Cap\'{\i }tulo 4.
 File: images/Process-Component.jpg Graphic file (type jpg)
 
 <use images/Process-Component.jpg>
-Package pdftex.def Info: images/Process-Component.jpg used on input line 378.
+Package pdftex.def Info: images/Process-Component.jpg used on input line 377.
 (pdftex.def)             Requested size: 384.4353pt x 236.1316pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19]
-[20 <./images/Process-Component.jpg>] [21] [22
+<images/Luca-Process.jpg, id=128, 1255.69125pt x 885.3075pt>
+File: images/Luca-Process.jpg Graphic file (type jpg)
+
+<use images/Luca-Process.jpg>
+Package pdftex.def Info: images/Luca-Process.jpg used on input line 386.
+(pdftex.def)             Requested size: 313.92204pt x 221.32632pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <./images/Process-Component.jpg>] [21 <./images/Luca-Process.jpg>] [22]
+Cap\'{\i }tulo 5.
+<images/esquema_proyecto.png, id=139, 1335.99126pt x 648.4225pt>
+File: images/esquema_proyecto.png Graphic file (type png)
+
+<use images/esquema_proyecto.png>
+Package pdftex.def Info: images/esquema_proyecto.png used on input line 403.
+(pdftex.def)             Requested size: 333.997pt x 162.10522pt.
+\openout3 = `memoria.mtc'.
+
+\openout3 = `memoria.mtc'.
+
+ (memoria.mtc5) [23
+
+ <./images/esquema_proyecto.png>] [24] [25] [26
 
 ]
-Cap\'{\i }tulo 5.
-Package minitoc Info: I0006
-(minitoc)             memoria.mtc5 is empty on input line 393.
-[23] [24]
 Cap\'{\i }tulo 6.
 Package minitoc Info: I0006
-(minitoc)             memoria.mtc6 is empty on input line 403.
-[25
-
-] [26]
+(minitoc)             memoria.mtc6 is empty on input line 431.
+[27] [28]
 Cap\'{\i }tulo 7.
 Package minitoc Info: I0006
-(minitoc)             memoria.mtc7 is empty on input line 414.
-[27
+(minitoc)             memoria.mtc7 is empty on input line 442.
+[29
 
-] (memoria.bbl [28
+] (memoria.bbl [30
 
 
 ]
@@ -812,7 +828,7 @@ Overfull \hbox (107.29596pt too wide) in paragraph at lines 8--11
 s/spring-vaadin-hibernate-tutorial-8-el-patron-mvp/\OT1/cmr/m/n/12 . 
  []
 
-) [29]
+) [31]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the memoria.maf file.
@@ -829,29 +845,29 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the memoria.log file.
 
-[30
+[32
 
 ] (memoria.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 4734 strings out of 493323
- 62589 string characters out of 3139060
+ 4748 strings out of 493323
+ 62927 string characters out of 3139060
  149143 words of memory out of 3000000
- 7975 multiletter control sequences out of 15000+200000
+ 7985 multiletter control sequences out of 15000+200000
  10194 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,9n,43p,584b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,9n,43p,584b,414s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (46 pages, 399922 bytes).
+Output written on memoria.pdf (48 pages, 628547 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
+ 195 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
