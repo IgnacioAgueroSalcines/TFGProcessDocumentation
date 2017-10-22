@@ -23,6 +23,6 @@
 \contentsline {section}{\numberline {4.2}Luca Process}{21}
 \contentsline {chapter}{\numberline {5}Implementaci\IeC {\'o}n}{23}
 \contentsline {section}{\numberline {5.1}Process-Component}{24}
-\contentsline {section}{\numberline {5.2}Luca-Process}{24}
+\contentsline {section}{\numberline {5.2}Luca-Process}{25}
 \contentsline {chapter}{\numberline {6}Pruebas}{27}
 \contentsline {chapter}{\numberline {7}Conclusi\IeC {\'o}n}{29}
