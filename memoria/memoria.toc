@@ -19,8 +19,8 @@
 \contentsline {subsection}{\numberline {3.2.3}Aplicaci\IeC {\'o}n}{11}
 \contentsline {section}{\numberline {3.3}Spring}{12}
 \contentsline {chapter}{\numberline {4}Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{13}
-\contentsline {section}{\numberline {4.1}Process Component}{14}
-\contentsline {section}{\numberline {4.2}Luca Process}{15}
+\contentsline {section}{\numberline {4.1}Process Component}{13}
+\contentsline {section}{\numberline {4.2}Luca Process}{14}
 \contentsline {chapter}{\numberline {5}Implementaci\IeC {\'o}n}{17}
 \contentsline {section}{\numberline {5.1}Process-Component}{18}
 \contentsline {section}{\numberline {5.2}Luca-Process}{19}

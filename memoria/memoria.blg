@@ -11,5 +11,7 @@ Warning--entry type for "spring" isn't style-file defined
 --line 17 of file Bibliografia.bib
 Warning--entry type for "jpa" isn't style-file defined
 --line 22 of file Bibliografia.bib
+Warning--entry type for "tres-capas" isn't style-file defined
+--line 33 of file Bibliografia.bib
 Warning--I didn't find a database entry for "jpaunit"
-(There were 6 warnings)
+(There were 7 warnings)
