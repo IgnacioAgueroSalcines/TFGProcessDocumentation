@@ -2,7 +2,7 @@
 
 \bibitem{vaadin}
 {\sc {Ari Handler Gamboa}}.
-\newblock \texttt{www.adictosaltrabajo.com/tutoriales/introduccion-a-vaadin/}.
+\newblock \texttt{adictosaltrabajo.com/tutoriales/introduccion-a-vaadin/}.
 
 \bibitem{mvp}
 {\sc {Eduardo Barrio}}.
@@ -11,7 +11,11 @@
 
 \bibitem{gojs}
 {\sc {Northwoods Software}}.
-\newblock \texttt{www.gojs.net/latest/index.html}.
+\newblock \texttt{gojs.net/latest/index.html}.
+
+\bibitem{jpa}
+{\sc {Pivotal Software}}.
+\newblock \texttt{docs.spring.io/spring-data/jpa/docs/current/reference/html}.
 
 \bibitem{spring}
 {\sc {Pivotal Software}}.

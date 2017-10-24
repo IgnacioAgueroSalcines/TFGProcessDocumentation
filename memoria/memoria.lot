@@ -1,17 +1,17 @@
 \select@language {spanish}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Introducci\IeC {\'o}n}{3}
+\contentsline {xchapter}{Introducci\IeC {\'o}n}{1}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Ingenier\IeC {\'\i }a de Requisitos}{9}
-\contentsline {table}{\numberline {2.1}{\ignorespaces Conjunto de Requisitos del Proyecto}}{10}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Conjunto de Requisitos del Componente Gr\IeC {\'a}fico}}{11}
+\contentsline {xchapter}{Ingenier\IeC {\'\i }a de Requisitos}{5}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Conjunto de Requisitos del Proyecto}}{6}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Conjunto de Requisitos del Componente Gr\IeC {\'a}fico}}{7}
 \addvspace {10\p@ }
-\contentsline {xchapter}{An\IeC {\'a}lisis y documentaci\IeC {\'o}n}{13}
+\contentsline {xchapter}{An\IeC {\'a}lisis y documentaci\IeC {\'o}n}{9}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{19}
+\contentsline {xchapter}{Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{13}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Implementaci\IeC {\'o}n}{23}
+\contentsline {xchapter}{Implementaci\IeC {\'o}n}{17}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Pruebas}{27}
+\contentsline {xchapter}{Pruebas}{21}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusi\IeC {\'o}n}{29}
+\contentsline {xchapter}{Conclusiones}{23}

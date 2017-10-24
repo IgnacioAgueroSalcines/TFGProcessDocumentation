@@ -57,9 +57,7 @@
 	\noindent Para finalizar, me gustaría gradecer a mi mentor Pablo, por guiarme durante el desarrollo del proyecto con eficacia y ayudarme a afrontar este trabajo de fin de grado.
 	\cleardoublepage
 	
-	\afterpage{\null\newpage}
-	\newpage
-	
+	\clearpage
 	
 	\chapter*{Resumen}
 	Las empresas actuales utilizan ya no un único sistema de información que de	soporte a sus procesos de trabajo, sino un  ecosistema de sistemas información que dan soporte a diferentes procesos de negocio ejecutados dentro de dicha organización. Como consecuencia de esta nueva situación, cuando un usuario	quiere obtener una información concreta cuyos datos residen en varios de estos
@@ -84,8 +82,7 @@
 	\textbf{Palabras clave}: 
 	\cleardoublepage
 	
-	\afterpage{\null\newpage}
-	\newpage
+	\clearpage
 	
 	\chapter*{Preface}
 
@@ -97,8 +94,7 @@
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
 	
-	\afterpage{\null\newpage}
-	\newpage
+	\clearpage
 	
 	\chapter{Introducción}
 	
@@ -182,8 +178,7 @@
 		
 		
 	 
-	  \afterpage{\null\newpage}
-	 \newpage
+	  \clearpage
 	 
 	
 
@@ -281,8 +276,7 @@
 
 	
 	
-	\afterpage{\null\newpage}
-	\newpage
+	\clearpage
 	
 
 	 \chapter{Análisis y documentación}
@@ -352,8 +346,7 @@
 		Spring\cite{spring} es un Framework que proporciona un modelo de programación y configuración integral para aplicaciones empresariales modernas basadas en Java y en cualquier tipo de plataforma de implementación. Un elemento clave de Spring es el soporte de infraestructura a nivel de aplicación, ya que Spring se centra abstraer a las aplicaciones empresariales del uso de diferentes frameworks para que los equipos puedan centrarse en la lógica empresarial a nivel de aplicación, sin lazos innecesarios con entornos de implementación específicos.
 	
 	
-	\afterpage{\null\newpage}
-	\newpage
+	\clearpage
 	
 	\chapter{Diseño Arquitectónico}
 	
@@ -383,12 +376,11 @@
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.25]{Luca-Process.jpg}
+			\includegraphics[scale=0.35]{Luca-Process.jpg}
 			\caption{Diagrama de clases}\label{fig:Luca-Process}
 		\end{figure}
 	
-	\afterpage{\null\newpage}
-	\newpage
+	\clearpage
 	
 	\chapter{Implementación}
 	
@@ -431,38 +423,91 @@
 			El segundo fichero esencial para el funcionamiento de esta estructura es el fichero conector. Este es el encargado de declarar y configurar todos los eventos que se pueden lanzar, además de ser el encargado de realizar todos los metodos CRUD \footnote{CRUD es el acrónimo de crear, leer, actualizar y borrar, en esete contexto significa el conjunto de métodos para poder realizar dichas acciones sobre los distintos elementos existentes.}necesarios para que puedan interactuar con las propiedades configuradas en el primer fichero citado previamente.
 		\end{itemize}
 	
-	
+		Esta imagen trata de  resumir el esquema de actuación que se lleva a cabo para la comunicación entre los distinto elementos del Process-Component.
+		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=1.25]{schema.png}
 			\caption{Estructuración en módulos}\label{fig:schema}
 		\end{figure}
-	
-		Esta imagen trata de  resumir el esquema de actuación que se lleva a cabo para la comunicación entre los distinto elementos del Process-Component.
 		
 		
 		\section{Luca-Process}
 	
-	\afterpage{\null\newpage}
-	\newpage
+	\clearpage
 	
 	
 	\chapter{Pruebas}
 	
-	Este capítulo describe...
+	Este capítulo describe el proceso llevado a cabo de diseño y de implementación de las pruebas realizadas. Para este proyecto se ha decidido llevar a cabo pruebas unicamente de ámbito funcional, basándose en el modelo de pruebas en tres fases.
+	
+	\vspace{5mm}
+	
+	Todo el conjunto de pruebas utilizan el módulo JUnit \cite{jpaunit} para verificar la correcta ejecución de las pruebas.
 	
 	\minitoc
 	
-	\afterpage{\null\newpage}
-	\newpage
+		\section{Pruebas Unitarias}
+		
+		Las pruebas unitarias se focalizan en la capa de persistencia o repositorio del proyecto, debido a que en este caso, la capa de repositorio utiliza el framework JPA \cite{jpa}, el cuál garantiza ya una funcionalidad, no ha sido necesario realizar pruebas unitarias.
+		
+		\section{Pruebas de Integración}
+		
+		Las pruebas de integración se han realizado sobre la capa de negocio, concretamente la capa de servicios, del proyecto.
+		
+		\vspace{5mm}
+		
+		En estas pruebas se utilizará la capa de repositorio para persistir los elementos. Además, para cada test, se ha establecido un fichero sql que es tomado al inicio de cada test para establecer unos valores de entrada previos en la base de datos y asi poder ser utilizados dentro del test. El proceso de desarrollo de las pruebas se ha repartido en tres fases:
+		
+		\begin{itemize}
+			\item Pruebas CRUD
+			\subitem En este grupo de pruebas se ha comprobado que se puedan llevar a cabo los diversos tipos de operaciones sobre todo el conjunto de clases objetivo de persistencia. Un ejemplo de este tipo de pruebas es el siguiente: 
+			
+			\begin{figure}[H]
+				\centering
+%				\includegraphics[scale=1]{pruebasIntegracionSimples.png}
+				\caption{Pruebas de Integración del la clase Process}\label{fig:pruebasIntegracionSimples}
+			\end{figure}
+			
+			\item Guardar a partir de estructura
+			\subitem Esta parte comprueba que funciona la capacidad de la aplicación de guardar toda una estructura de clases a partir de una clase padre que contiene la información necesaria para persistir toda la estructura. Se caracteriza por recibir un objeto perteneciente al Process-Component, el cual provee de toda las clases e información para poder hacer una conversión a las clases del Luca-Process.
+			
+			
+			\begin{figure}[H]
+				\centering
+%				\includegraphics[scale=1]{pruebasIntegracionComplejas.png}
+				\caption{Prueba de Integración de Guardado Estructural}\label{fig:pruebasIntegracionComplejas}
+			\end{figure}
+		
+			\item Cargar un proceso
+			\subitem En construcción...
+			
+		\end{itemize}
+				
+		\section{Pruebas de Sistema}
+		
+		\section{Pruebas de Aceptación}
+	
+	
+	\clearpage
 	
 	
 	
-	\chapter{Conclusión}
+	\chapter{Conclusiones}
 	
-	Este capítulo describe...
+	Para finalizar, a continuación se relatan las conclusiones sacadas tras el transcurso y ejecución del proyecto.
 	
-	\minitoc
+	\vspace{5mm}
+	
+	El objetivo principal del proyecto consistía en crear un proyecto que fuese capaz de permitir al usuario de forma gráfica y sencilla crear una jerarquía de procesos para enlazar las diferentes consultas existentes en el producto LUCA. 
+	
+	\vspace{5mm}
+	
+	Tras completar con éxito la implementación del proyecto, se implanto en el producto LUCA, para comprobar el correcto funcionamiento e integración y comprobar así la correcta y eficiente satisfacción de los requerimientos impuestos al proyecto.
+	
+	\vspace{5mm}
+	
+	En el apartado persona, ha sido una gran oportunidad poder realizar este proyecto en una empresa como es CIC, ya que ayuda a tener una constancia y hábito de trabajo y nos prepara para el ámbito empresarial. Además ha sido muy satisfactorio poder trabajar con mas de una tecnología ya que aporta muchos conocimientos.
 
 
 	\clearpage
@@ -470,7 +515,6 @@
 	\bibliographystyle{acm}
 	\bibliography{Bibliografia}
 	
-	\clearpage
 
 \end{document}
 
