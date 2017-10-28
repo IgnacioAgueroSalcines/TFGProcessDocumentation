@@ -1,0 +1,52 @@
+\chapter{Pruebas}
+	
+	Este capítulo describe el proceso llevado a cabo de diseño y de implementación de las pruebas realizadas. Para este proyecto se ha decidido llevar a cabo pruebas unicamente de ámbito funcional, basándose en el modelo de pruebas en tres fases.
+	
+	\vspace{5mm}
+	
+	Todo el conjunto de pruebas utilizan el módulo JUnit \cite{jpaunit} para verificar la correcta ejecución de las pruebas.
+	
+	\minitoc
+	
+		\section{Pruebas Unitarias}
+		
+		Las pruebas unitarias se focalizan en la capa de persistencia o repositorio del proyecto, debido a que en este caso, la capa de repositorio utiliza el framework JPA \cite{jpa}, el cuál garantiza ya una funcionalidad, no ha sido necesario realizar pruebas unitarias.
+		
+		\section{Pruebas de Integración}
+		
+		Las pruebas de integración se han realizado sobre la capa de negocio, concretamente la capa de servicios, del proyecto.
+		
+		\vspace{5mm}
+		
+		En estas pruebas se utilizará la capa de repositorio para persistir los elementos. Además, para cada test, se ha establecido un fichero sql que es tomado al inicio de cada test para establecer unos valores de entrada previos en la base de datos y asi poder ser utilizados dentro del test. El proceso de desarrollo de las pruebas se ha repartido en tres fases:
+		
+		\begin{itemize}
+			\item Pruebas CRUD
+			\subitem En este grupo de pruebas se ha comprobado que se puedan llevar a cabo los diversos tipos de operaciones sobre todo el conjunto de clases objetivo de persistencia. Un ejemplo de este tipo de pruebas es el siguiente: 
+			
+			\begin{figure}[H]
+				\centering
+%				\includegraphics[scale=1]{pruebasIntegracionSimples.png}
+				\caption{Pruebas de Integración del la clase Process}\label{fig:pruebasIntegracionSimples}
+			\end{figure}
+			
+			\item Guardar a partir de estructura
+			\subitem Esta parte comprueba que funciona la capacidad de la aplicación de guardar toda una estructura de clases a partir de una clase padre que contiene la información necesaria para persistir toda la estructura. Se caracteriza por recibir un objeto perteneciente al Process-Component, el cual provee de toda las clases e información para poder hacer una conversión a las clases del Luca-Process.
+			
+			
+			\begin{figure}[H]
+				\centering
+%				\includegraphics[scale=1]{pruebasIntegracionComplejas.png}
+				\caption{Prueba de Integración de Guardado Estructural}\label{fig:pruebasIntegracionComplejas}
+			\end{figure}
+		
+			\item Cargar un proceso
+			\subitem En construcción...
+			
+		\end{itemize}
+				
+		\section{Pruebas de Sistema}
+		
+		\section{Pruebas de Aceptación}
+	
+	

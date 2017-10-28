@@ -4,6 +4,7 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Metodolog\IeC {\'\i }a En Cascada}}{2}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Ingenier\IeC {\'\i }a de Requisitos}{5}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Jerarqu\IeC {\'\i }a de Requisitos}}{7}
 \addvspace {10\p@ }
 \contentsline {xchapter}{An\IeC {\'a}lisis y documentaci\IeC {\'o}n}{9}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces GO.JS Logo}}{10}
@@ -19,8 +20,6 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{17}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{19}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Pruebas}{21}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Pruebas de Integraci\IeC {\'o}n del la clase Process}}{22}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Prueba de Integraci\IeC {\'o}n de Guardado Estructural}}{22}
-\addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{23}
+\contentsline {xchapter}{Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{21}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama de clases}}{22}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama de clases}}{23}

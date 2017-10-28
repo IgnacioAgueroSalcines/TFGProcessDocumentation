@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  24 OCT 2017 18:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  28 OCT 2017 12:00
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -674,6 +674,7 @@ LaTeX Info: Redefining \% on input line 1.
 ] [6
 
 ]
+(introductionChapter.tex
 Cap\'{\i }tulo 1.
 [1
 
@@ -682,31 +683,31 @@ Cap\'{\i }tulo 1.
 File: images/modelo-en-cascada.png Graphic file (type png)
 
 <use images/modelo-en-cascada.png>
-Package pdftex.def Info: images/modelo-en-cascada.png used on input line 136.
+Package pdftex.def Info: images/modelo-en-cascada.png used on input line 38.
 (pdftex.def)             Requested size: 458.71263pt x 344.78728pt.
 
-Overfull \hbox (68.71263pt too wide) in paragraph at lines 136--137
+Overfull \hbox (68.71263pt too wide) in paragraph at lines 38--39
  [][] 
  []
 
-[2 <./images/modelo-en-cascada.png>] [3] [4]
+[2 <./images/modelo-en-cascada.png>] [3]) [4] (requirementsChapter.tex
 Cap\'{\i }tulo 2.
 \openout3 = `memoria.mtc'.
 
 \openout3 = `memoria.mtc'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 190.
+(Font)              <10.95> on input line 6.
 (memoria.mtc2) [5
 
 
 ]
-Overfull \hbox (526.92133pt too wide) in paragraph at lines 223--234
+Overfull \hbox (526.92133pt too wide) in paragraph at lines 39--50
  [] 
  []
 
 
-Overfull \hbox (383.76865pt too wide) in paragraph at lines 246--254
+Overfull \hbox (383.76865pt too wide) in paragraph at lines 62--70
  [] 
  []
 
@@ -714,11 +715,15 @@ Overfull \hbox (383.76865pt too wide) in paragraph at lines 246--254
 Underfull \vbox (badness 6236) has occurred while \output is active []
 
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 272--274
+
+LaTeX Warning: Citation `klauspohl' on page 7 undefined on input line 90.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
 
  []
 
-[7] [8
+) [7] (documentationChapter.tex [8
 
 
 ]
@@ -731,7 +736,7 @@ Cap\'{\i }tulo 3.
 File: images/gojs.jpeg Graphic file (type jpg)
 
 <use images/gojs.jpeg>
-Package pdftex.def Info: images/gojs.jpeg used on input line 292.
+Package pdftex.def Info: images/gojs.jpeg used on input line 11.
 (pdftex.def)             Requested size: 208.77946pt x 116.43471pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -742,31 +747,31 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/Vaadin-logo.png Graphic file (type png)
 
 <use images/Vaadin-logo.png>
-Package pdftex.def Info: images/Vaadin-logo.png used on input line 316.
+Package pdftex.def Info: images/Vaadin-logo.png used on input line 35.
 (pdftex.def)             Requested size: 451.44548pt x 109.36832pt.
 
-Overfull \hbox (61.44548pt too wide) in paragraph at lines 316--317
+Overfull \hbox (61.44548pt too wide) in paragraph at lines 35--36
  [][] 
  []
 
 <images/schema.png, id=81, 163.3302pt x 127.1952pt>
 File: images/schema.png Graphic file (type png)
  <use images/schema.png>
-Package pdftex.def Info: images/schema.png used on input line 332.
+Package pdftex.def Info: images/schema.png used on input line 51.
 (pdftex.def)             Requested size: 244.99467pt x 190.79233pt.
 
 [11 <./images/Vaadin-logo.png>]
 <images/spring.png, id=86, 803.0pt x 260.975pt>
 File: images/spring.png Graphic file (type png)
  <use images/spring.png>
-Package pdftex.def Info: images/spring.png used on input line 342.
+Package pdftex.def Info: images/spring.png used on input line 61.
 (pdftex.def)             Requested size: 401.49902pt x 130.48718pt.
 
-Overfull \hbox (11.49902pt too wide) in paragraph at lines 342--343
+Overfull \hbox (11.49902pt too wide) in paragraph at lines 61--62
  [][] 
  []
 
-[12 <./images/schema.png> <./images/spring.png>]
+) [12 <./images/schema.png> <./images/spring.png>] (arcDesingChapter.tex
 Cap\'{\i }tulo 4.
 \openout3 = `memoria.mtc'.
 
@@ -776,10 +781,10 @@ Cap\'{\i }tulo 4.
 File: images/Process-Component.jpg Graphic file (type jpg)
 
 <use images/Process-Component.jpg>
-Package pdftex.def Info: images/Process-Component.jpg used on input line 375.
+Package pdftex.def Info: images/Process-Component.jpg used on input line 25.
 (pdftex.def)             Requested size: 461.32706pt x 283.36081pt.
 
-Overfull \hbox (71.32706pt too wide) in paragraph at lines 375--376
+Overfull \hbox (71.32706pt too wide) in paragraph at lines 25--26
  [][] 
  []
 
@@ -790,14 +795,15 @@ Overfull \hbox (71.32706pt too wide) in paragraph at lines 375--376
 File: images/Luca-Process.jpg Graphic file (type jpg)
 
 <use images/Luca-Process.jpg>
-Package pdftex.def Info: images/Luca-Process.jpg used on input line 394.
+Package pdftex.def Info: images/Luca-Process.jpg used on input line 44.
 (pdftex.def)             Requested size: 439.49852pt x 309.86226pt.
 
-Overfull \hbox (49.49852pt too wide) in paragraph at lines 394--395
+Overfull \hbox (49.49852pt too wide) in paragraph at lines 44--45
  [][] 
  []
 
-[14 <./images/Process-Component.jpg>] [15 <./images/Luca-Process.jpg>] [16
+[14 <./images/Process-Component.jpg>]) [15 <./images/Luca-Process.jpg>]
+(implementationChapter.tex [16
 
 
 ]
@@ -806,7 +812,7 @@ Cap\'{\i }tulo 5.
 File: images/esquema_proyecto.png Graphic file (type png)
 
 <use images/esquema_proyecto.png>
-Package pdftex.def Info: images/esquema_proyecto.png used on input line 410.
+Package pdftex.def Info: images/esquema_proyecto.png used on input line 11.
 (pdftex.def)             Requested size: 333.997pt x 162.10522pt.
 \openout3 = `memoria.mtc'.
 
@@ -814,32 +820,44 @@ Package pdftex.def Info: images/esquema_proyecto.png used on input line 410.
 
  (memoria.mtc5) [17 <./images/esquema_proyecto.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 438.
+(Font)              <7> on input line 39.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 438.
+(Font)              <5> on input line 39.
  [18]
 File: images/schema.png Graphic file (type png)
  <use images/schema.png>
-Package pdftex.def Info: images/schema.png used on input line 445.
+Package pdftex.def Info: images/schema.png used on input line 46.
 (pdftex.def)             Requested size: 204.16223pt x 158.9936pt.
- [19] [20
+) [19] (arcDesingChapter.tex [20
 
 
 ]
 Cap\'{\i }tulo 6.
-
-LaTeX Warning: Citation `jpaunit' on page 21 undefined on input line 461.
-
 \openout3 = `memoria.mtc'.
 
 \openout3 = `memoria.mtc'.
 
-(memoria.mtc6) [21] [22]
-Cap\'{\i }tulo 7.
-[23
+(memoria.mtc6)
+File: images/Process-Component.jpg Graphic file (type jpg)
+ <use images/Process-Component.jpg>
+Package pdftex.def Info: images/Process-Component.jpg used on input line 25.
+(pdftex.def)             Requested size: 461.32706pt x 283.36081pt.
 
+Overfull \hbox (71.32706pt too wide) in paragraph at lines 25--26
+ [][] 
+ []
 
-] (memoria.bbl [24
+[21] [22]
+File: images/Luca-Process.jpg Graphic file (type jpg)
+ <use images/Luca-Process.jpg>
+Package pdftex.def Info: images/Luca-Process.jpg used on input line 44.
+(pdftex.def)             Requested size: 439.49852pt x 309.86226pt.
+
+Overfull \hbox (49.49852pt too wide) in paragraph at lines 44--45
+ [][] 
+ []
+
+) [23] (memoria.bbl [24
 
 
 ]
@@ -895,13 +913,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4757 strings out of 493323
- 63069 string characters out of 3139060
+ 4773 strings out of 493323
+ 63448 string characters out of 3139060
  149143 words of memory out of 3000000
- 7992 multiletter control sequences out of 15000+200000
+ 7993 multiletter control sequences out of 15000+200000
  10194 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,9n,43p,667b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,9n,43p,702b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
@@ -910,7 +928,7 @@ onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmtt12.pfb>
-Output written on memoria.pdf (37 pages, 650320 bytes).
+Output written on memoria.pdf (37 pages, 650423 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

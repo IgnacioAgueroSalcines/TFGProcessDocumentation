@@ -24,9 +24,6 @@
 \contentsline {chapter}{\numberline {5}Implementaci\IeC {\'o}n}{17}
 \contentsline {section}{\numberline {5.1}Process-Component}{18}
 \contentsline {section}{\numberline {5.2}Luca-Process}{19}
-\contentsline {chapter}{\numberline {6}Pruebas}{21}
-\contentsline {section}{\numberline {6.1}Pruebas Unitarias}{21}
-\contentsline {section}{\numberline {6.2}Pruebas de Integraci\IeC {\'o}n}{21}
-\contentsline {section}{\numberline {6.3}Pruebas de Sistema}{22}
-\contentsline {section}{\numberline {6.4}Pruebas de Aceptaci\IeC {\'o}n}{22}
-\contentsline {chapter}{\numberline {7}Conclusiones}{23}
+\contentsline {chapter}{\numberline {6}Dise\IeC {\~n}o Arquitect\IeC {\'o}nico}{21}
+\contentsline {section}{\numberline {6.1}Process Component}{21}
+\contentsline {section}{\numberline {6.2}Luca Process}{22}
