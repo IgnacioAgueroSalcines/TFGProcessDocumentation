@@ -45,3 +45,17 @@
 			\caption{Diagrama de clases}\label{fig:Luca-Process}
 		\end{figure}
 	
+	
+	\subsection{Esquema de componentes}
+	
+	A continuación se muestra el esquema de componentes que explica la interrelación entre las diferentes capas de la aplicación con las consecutivas.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.35]{Layers.png}
+		\caption{Diagrama de Componentes}\label{fig:Layers}
+	\end{figure}
+
+	
+	En este esquema se puede apreciar que la vista del usuario se comunica con la capa de servicios a través de la interfaz del procesos, la cual a su vez se comunica con el resto de servicios y su propia interfaz de persistencia implementada con Spring Data JPA \cite{jpa}.
+	
