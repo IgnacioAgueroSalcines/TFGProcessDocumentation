@@ -1,35 +1,49 @@
 \chapter{Introducción}
 	
-	Este capítulo del documento se propone a describir, en leves pinceladas, los objetivos principales que el proyecto debe de completar.
+Este primer capítulo introduce y describe los objetivos principales del proyecto descrito en este documento así como la planificación seguida para su desarrollo.
 	
-		\section{Introducción}
+\section{Introducción}
 	
 	
-			En los últimos años, el volumen de datos que una empresa o entidad necesita y/o es capaz de gestionar o manipular, ha aumentado de forma vertiginosa. Además del volumen de datos a manipular, nos damos cuenta de que para acceder a lo diversos datos es necesario muchas veces establecer comunicaciones con los diversos recursos existentes para alcanzar el objetivo.
+En los últimos años, el volumen de datos que una empresa o entidad necesita o es capaz de gestionar o manipular ha aumentado de forma vertiginosa. Estos datos se almacenan en fuentes de diversos tipos, abarcando elementos tan dispares como bases de datos relacionales, hojas XML o repositorios FTP, a los cuales se accede mediante diferentes formas y lenguajes. Por tanto, un nuevo
+problema que debemos enfrentar, adicional al del volumen de datos a manipular, es que para acceder cierta información es necesario muchas veces establecer comunicaciones entre diferentes fuentes.
 			
-			\vspace{5mm}
+%%===================================================================%%
+%% NOTE(Pablo): Meter aquí el ejemplo del resumen de nuevo, si se
+%%              quiere más detallado
+%%===================================================================%%
 			
+Con el objetivo de facilitar este proceso de recuperación de información almacenada en sistemas y fuentes de datos hetereogéneas, dentro de la empresa CIC, se está desarrollando una aplicación denominada LUCA. Para facilitar este proceso de recuperación de información, LUCA proporciona un lenguaje común para todas las fuentes de datos a unificar, permitiendo al usuario abstraerse de los detalles de cada fuente.
+
+%%===================================================================%%
+%% NOTE(Pablo): Poner un ejemplo sencillo que muestre el
+%%              funcionamiento de LUCA
+%%===================================================================%%
+
+Actualmente LUCA proporciona mecanismos para permitir al usuario recuperar de manera uniforme información de diferentes fuentes de datos. No obstante, LUCA actualmente sólo es capaz recuperar información de una única fuente de datos a la vez. Por tanto, cuando es necesario combinar información procedente de distintas fuentes, el propio usuario es el que debe realizar dicho proceso de composición, ejecutando cada consulta a mano, y utilizando las salidas de cada una de ellas como las entradas de las siguientes.
 			
-			 Con el objeto de facilitar este proceso de recuperación de información almecenada en sistemas y fuentes de datos hetereogéneas, dentro de la empresa	CIC, se está desarrollando una aplicación denominada LUCA. Para	facilitar este proceso de recuperación de información, LUCA proporciona un lenguaje común para todas las fuentes de datos a unificar, permitiendo al
-			usuario abstraerse de los detalles de cada fuente.
-			
-			\vspace{5mm}
-			
-			 Actualmente LUCA proporciona mecanismos o abstracciones para permitir al	usuario recuperar de manera uniforme información de diferentes fuentes de datos. No obstante, LUCA actualmente sólo es capaz recuperar información de una única fuente de datos a la vez. Por tanto, cuando es necesario combinar información procedente de distintas fuentes, el propio usuario es el que debe realizar dicho	proceso de composición, ejecutando cada consulta a mano, y utilizando las salidas de cada una de ellas como las entradas de las siguientes.
-			 
-			 \vspace{5mm}
-			 
-			 El objetivo de este proyecto es facilitar dicho proceso de composición al usuario mediante el desarrollo de un mecanismo gráfico para la especificación de estos procesos de composición de consultas.
-			 
-	 
-	 	\section{Planificación del proyecto}
+%%===================================================================%%
+%% NOTE(Pablo): Poner un ejemplo cómo es el proceso de composición
+%%              a mano
+%%===================================================================%%
+
+El objetivo de este proyecto es facilitar dicho proceso de composición al usuario mediante el desarrollo de un mecanismo gráfico para la especificación de estos procesos de composición de consultas.
+
+%%===================================================================%%
+%% NOTE(Pablo): Dar algunos detalles técnicos de cómo se pretente
+%%              construir esto.
+%%===================================================================%%
+	
+\section{Planificación del proyecto}
 	 	
-	 	En este apartado se describe la metodología de desarrollo que ha sido utilizada para la cumplimentación del proyecto. 
+%%===================================================================%%
+%% NOTE(Pablo): Esta sección va fuera entera
+%%===================================================================%%
+
+Este apartado describe la metodología de desarrollo que ha sido utilizada para el desarrollo del proyecto.
 	 	
-	 	\vspace{5mm}
 	 	
-	 	
-	 	En el proyecto se optó por utilizar una metodología en cascada, en la que de forma iterativa se va puliendo el producto hasta completar los requisitos y objetivos establecidos.
+	En el proyecto se optó por utilizar una metodología en cascada, en la que de forma iterativa se va puliendo el producto hasta completar los requisitos y objetivos establecidos.
 	 	
 	 	\vspace{5mm}
 	 	
@@ -66,9 +80,9 @@
  		\vspace{5mm}
  		
  		Tras la especificación de la base de datos comenzó un proceso iterativo de implementación, verificación y pruebas en el que en función de los diversos requisitos se fue completando el proyecto.
- 		 
-	 
-	 
+ 		
+	
+	
 		\section{Estructura del documento}
 		
 		Esta sección se propone describir la ingeniería de requisitos llevada a cabo, así como, profundizar en el diseño arquitectónico. También como introducción inicial, se relatará de forma breve y concisa la librería javascript GO.JS y el framework Vaadin.
