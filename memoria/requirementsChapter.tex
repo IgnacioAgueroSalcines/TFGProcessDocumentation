@@ -1,65 +1,76 @@
+%%====================================================================
+%% NOTA(Pablo): Este capítulo va fuera entero
+%%====================================================================
+
 \chapter{Ingeniería de Requisitos}
 	
-	Este capítulo describe el proceso de captura de requisitos, así como, el modelado de los requisitos tanto funcionales como no funcionales.
+Este capítulo describe el proceso de captura de requisitos, así como, el modelado de los requisitos tanto funcionales como no funcionales.
 	
-	\minitoc
+\minitoc
 	
-	
-	
-		\section{Introducción}
+\section{Introducción}
 		
-		El capítulo actual se propone explicar de forma detallada la fase de ingeniería de requisitos, en la que se recoge toda la información necesaria y relativa a los requerimientos y objetivos que debe de tener la aplicación para poder considerarse como completada.
+El capítulo actual se propone explicar de forma detallada la fase de ingeniería de requisitos, en la que se recoge toda la información necesaria y relativa a los requerimientos y objetivos que debe de tener la aplicación para poder considerarse como completada.
 		
-		\vspace{5mm}
+Por tanto, teniendo en cuenta lo citado anteriormente, este capítulo tratará primero el proceso de captura de requisitos llevado a cabo, para posteriormente, mostrar y detallar el modelado de requisitos subyacente de la etapa anterior.
 		
-		Por tanto, teniendo en cuenta lo citado anteriormente, este capítulo tratará primero el proceso de captura de requisitos llevado a cabo, para posteriormente, mostrar y detallar el modelado de requisitos subyacente de la etapa anterior.
+\section{Captura de requisitos}
 		
-		\section{Captura de requisitos}
-		
-		En la presente sección se describe el proceso de identificación de requisitos llevado a cabo para que nuestra aplicación se pueda considerar como completada. 
-		
-		\vspace{5mm}
-		
-		Dado que la aplicación a construir es un incremento de un producto ya existente, no hace falta identificar la fuente de los requisitos ya que es el propio gerente o impulsor de dicho incremento el que actúa como stakeholder, junto con el jefe del proyecto los encargados de formar los objetivos conjuntos de la captura de información y de los propios requisitos.
-		
-		\vspace{5mm}
-		
-		A raíz de una demostración del producto actual LUCA, y de la reunión para la captura de requisitos con el gerente de la empresa CIC, así como del jefe de proyecto bajo el que estuvo supervisado el proyecto actual, se muestra el resultado del proceso de la captura de requisitos llevada a cabo. 
-		
-		\vspace{5mm}
-		
-		Cabe explicar también, que este proyecto se funda en la implementación o desarrollo de dos componentes. El primero representa una herramienta focalizada en el ámbito gráfico, cuya función es la creación, borrado y actualización de elementos que constan de variables de entradas y salidas, en términos genrales, manipulación gráfica de los elementos constituyentes del proyecto. El otro representa un proyecto incremento del actual producto LUCA, centrado en la gestión de los procesos, los cuales son creados a través de consultas y enlaces entre sus entradas y salidas.
-		
-		\vspace{5mm}
-		A continuación se muestra, por cada componente, una tabla desglosando los diferentes requisitos , y posteriormente, una breve explicación general del mismo:
-		
-		
-		\begin{table}[H]
-			\begin{center}
-				\begin{tabular}{|l|l|}
-					\hline
-					Referencia & Requisito \\
-					\hline \hline
-					REF-01 & Los usuarios podrán consultar los datos referentes a los diversos elementos o cajas. \\ \hline
-					REF-02 & Los usuarios podrán modificar los datos de los elementos. \\ \hline
-					REF-03 & Los usuarios podrán persistir los nuevos elementos creados. \\ \hline
-					REF-04 & Los usuarios podrán concatenar los diferentes elementos ( procesos, subprocesos y condicionales) para formar una jerarquía de elementos con una semántica propia\\ \hline
-					REF-05 & Los usuarios podrán persistir, a partir de las consultas almacenadas en el sistema, una jerarquía de procesos constituidos por elementos. \\ \hline
+En la presente sección se describe el proceso de identificación de requisitos llevado a cabo para que nuestra aplicación se pueda considerar como completada.
 
-				\end{tabular}
-				\caption{Conjunto de Requisitos del Proyecto}
-				\label{tabla:requisitosProceso}
-			\end{center}
-		\end{table}
-	
-		\vspace{5mm}
+%%============================================================================%%
+%% NOTE(Pablo): Los siguientes párrafos me gustan, añadirlos  a la 
+%%              sección de requisitos y allí los cambiaremos ligeramente
+%%============================================================================%%
+		
+Dado que la aplicación a construir es un incremento de un producto ya existente, no hace falta identificar la fuente de los requisitos ya que es el propio gerente o impulsor de dicho incremento el que actúa como stakeholder, junto con el jefe del proyecto los encargados de formar los objetivos conjuntos de la captura de información y de los propios requisitos.
 
-		El usuario deberá de ser capaz de interactuar con los diferentes elementos existentes, como son las consultas almacenadas. Desde poder crear conjuntos de consultas anidadas a través de sus entradas y salidas para obtener una salida final objetivo, hasta poder modificar o eliminar los esquemas o procesos ya almacenados.
+A raíz de una demostración del producto actual LUCA, y de la reunión para la captura de requisitos con el gerente de la empresa CIC, así como del jefe de proyecto bajo el que estuvo supervisado el proyecto actual, se muestra el resultado del proceso de la captura de requisitos llevada a cabo.
+		
+Cabe explicar también, que este proyecto se funda en la implementación o desarrollo de dos componentes. El primero representa una herramienta focalizada en el ámbito gráfico, cuya función es la creación, borrado y actualización de elementos que constan de variables de entradas y salidas, en términos genrales, manipulación gráfica de los elementos constituyentes del proyecto. El otro representa un proyecto incremento del actual producto LUCA, centrado en la gestión de los procesos, los cuales son creados a través de consultas y enlaces entre sus entradas y salidas.
+
+%%============================================================================%%
+%% NOTE(Pablo): Hasta aquí se preserva
+%%============================================================================%%
+
+%%============================================================================%%
+%% NOTE(Pablo): Esta tabla representa unos requisitos muy tontos y obvios, 
+%%              así que mejor quitarlos 
+%%============================================================================%%
+		
+A continuación se muestra, por cada componente, una tabla desglosando los diferentes requisitos , y posteriormente, una breve explicación general del mismo:
+		
+\begin{table}[H]
+    \begin{center}
+	   \begin{tabular}{|l|l|}
+		  \hline
+		  Referencia & Requisito \\
+		  \hline \hline
+		  REF-01 & Los usuarios podrán consultar los datos referentes a los diversos elementos o cajas. \\ \hline
+		  REF-02 & Los usuarios podrán modificar los datos de los elementos. \\ \hline
+		  REF-03 & Los usuarios podrán persistir los nuevos elementos creados. \\ \hline
+		  REF-04 & Los usuarios podrán concatenar los diferentes elementos ( procesos, subprocesos y condicionales) para formar una jerarquía de elementos con una semántica propia\\ \hline
+		  REF-05 & Los usuarios podrán persistir, a partir de las consultas almacenadas en el sistema, una jerarquía de procesos constituidos por elementos. \\ \hline
+        \end{tabular}
+		\caption{Conjunto de Requisitos del Proyecto}
+		\label{tabla:requisitosProceso}
+	\end{center}
+\end{table}
+
+%%============================================================================%%
+%% NOTE(Pablo): Este párrafo tiene sentido, así es como quiero que describas
+%%              el ámbito del proyecto.
+%%============================================================================%%
+
+El usuario deberá de ser capaz de interactuar con los diferentes elementos existentes, como son las consultas almacenadas. Desde poder crear conjuntos de consultas anidadas a través de sus entradas y salidas para obtener una salida final objetivo, hasta poder modificar o eliminar los esquemas o procesos ya almacenados.
+
+%%============================================================================%%
+%% NOTE(Pablo): Esta lista también mejor quitarla de momento.
+%%============================================================================%%
 	
-	
-		\begin{table}[H]
-			\begin{center}
-				\begin{tabular}{|l|l|}
+\begin{table}[H]
+    \begin{center}
+	   \begin{tabular}{|l|l|}
 					\hline
 					Referencia & Requisito \\
 					\hline \hline
@@ -73,22 +84,19 @@
 			\end{center}
 		\end{table}
 	
-		\vspace{5mm}
+El usuario podrá realizar acciones de forma gráfica como son la selección o arrastrado de los diversos elementos que conforman la estructura semántica del componente.
+
+%%====================================================================================%%
+%% NOTA(Pablo): De momento, como te los han dado, pasamos de modelarlos. Se modela 
+%%              sólo cuando el modelo ayuda a algo. Si no, no se modela. 
+%%====================================================================================%%
+
+
+\section{Modelado de requisitos}
+
+Este apartado muestra el proceso de modelado de requisitos, los cuales fueron especificados en el apartado anterior, así como la explicación y especificación del mismo. Además se llevará a cabo un análisis de requisitos para determinar en que nivel de la jerarquía de requisitos se encuentra.
 	
-		El usuario podrá realizar acciones de forma gráfica como son la selección o arrastrado de los diversos elementos que conforman la estructura semántica del componente.
-	
-	
-		
-		
-		
-	
-	
-		\section{Modelado de requisitos}
-	Este apartado muestra el proceso de modelado de requisitos, los cuales fueron especificados en el apartado anterior, así como la explicación y especificación del mismo. Además se llevará a cabo un análisis de requisitos para determinar en que nivel de la jerarquía de requisitos se encuentra.
-	
-	\vspace{5mm}
-	
-	El modelado de requisitos se ha regido bajo el concepto de jerarquía de requisitos escrito por Klaus Pohl \cite{klauspohl}, el cual define cinco niveles de abstracción para los requisitos desglosándolos en objetivos blandos y duros, y tareas que se corresponden con casos de uso de diferentes niveles. A continuación se muestra un esquema de jerarquía de requisitos:
+El modelado de requisitos se ha regido bajo el concepto de jerarquía de requisitos escrito por Klaus Pohl \cite{klauspohl}, el cual define cinco niveles de abstracción para los requisitos desglosándolos en objetivos blandos y duros, y tareas que se corresponden con casos de uso de diferentes niveles. A continuación se muestra un esquema de jerarquía de requisitos:
 	
 	\begin{figure}[H]
 		\centering
