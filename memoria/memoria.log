@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  13 NOV 2017 18:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  14 NOV 2017 18:28
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -699,10 +699,7 @@ Overfull \hbox (121.53485pt too wide) in paragraph at lines 81--82
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./images/capturasLuca/gestionConsultas.png>] [4 <./images/capturasLuca/eje
-cucionConsulta.png>]) [5] (documentationChapter.tex [6
-
-
-]
+cucionConsulta.png>] [5]) [6] (documentationChapter.tex
 Cap\'{\i }tulo 2.
 \openout3 = `memoria.mtc'.
 
@@ -719,7 +716,10 @@ Package pdftex.def Info: images/gojs.jpeg used on input line 11.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
+ [7
+
+
+]
 [8 <./images/gojs.jpeg>]
 <images/Vaadin-logo.png, id=76, 451.4466pt x 109.3686pt>
 File: images/Vaadin-logo.png Graphic file (type png)
@@ -816,7 +816,7 @@ iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (29 pages, 206427 bytes).
+Output written on memoria.pdf (29 pages, 208017 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
