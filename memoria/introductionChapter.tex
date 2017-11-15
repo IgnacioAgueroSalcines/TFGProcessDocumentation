@@ -141,7 +141,7 @@ Además de la explicación, se proporcionaron unos documentos técnicos tanto de
 
 \vspace{5mm}
 
-Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se centran en tres pilares:
+Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se centran en tres pilares o requisitos principales:
 
 \begin{itemize}
 	\item  Concatenación de las consultas entre si pertenecientes a un mismo proceso.
@@ -152,4 +152,86 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 La especificación de estos requisitos se encuentra en los documentos técnicos citados anteriormente.
 
 
+
+\section{Arquitectura LUCA}
+
+Esta sección se propone explicar y especificar la actual arquitectura de LUCA, así como, mostrar la integración con el componente o proyecto gráfico (Luca-Process), el cuál, a su vez, utiliza un componente javascript abstracto implementado con la librería javascript GO.JS.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{funcionamientoLuca.png}
+	\caption{Arquitectura de LUCA}\label{fig:funcionamientoLuca}
+\end{figure}
+
+
+Para comenzar, se explica a continuación la arquitectura de LUCA previa al incremento que se propone realizar.
+En la figura superior podemos observar una arquitectura en tres capas bajo el patrón modelo-vista-presentador (MVP). Este patrón se caracteriza por separar de forma clara y concisa las vistas de la lógica de negocio.
+
+\vspace{5mm}
+
+En la arquitectura mostrada podemos observar, que la capa del presenter es la encargada de realizar la comunicación y control entre la vista y el modelo, y de albergar la gestión de eventos desde la vista.
+
+\vspace{5mm}
+
+Otro aspecto importante reside en la capa de servicio. Esta capa es la encargada de recibir los datos desde las diferentes fuentes de datos, ya sea de la base de datos de LUCA, o de un recurso externo de cualquier tipo (como por ejemplo la extracción de  información de un servicio REST, SOAP o de otra base de datos ajena).
+
+\vspace{5mm}
+
+Respecto a la arquitectura tras la integración de la nueva funcionalidad, la siguiente figura describe la diferencia respecto a la figura anterior:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{arquitecturaLuca.png}
+	\caption{Nueva Arquitectura de LUCA}\label{fig:arquitecturaLuca}
+\end{figure}
+
+Como se puede apreciar, la única diferencia reside en que en esta citada nueva funcionalidad se utiliza otro proyecto aparte, el cuál se encarga de forma exclusiva de proveer componentes de visualización para poder abordar la sintaxis de procesos y subprocesos que se enlazan entre sí mediante entradas y salidas.
+
+\vspace{5mm}
+
+A continuación se muestran dos apartados que describen el funcionamiento y arquitectura del conector de LUCA y del Process-Component.
+
+\subsection{Arquitectura del Conector}
+
+
+El conector de LUCA es un componente que se encarga de recibir o recoger los datos de los diferentes recursos albergados en las diferentes fuentes de datos externas. Puede ser de diferentes tipos, como es un conector REST, SOAP, BBDD ... 
+
+\vspace{5mm}
+
+En el ejemplo posterior podemos ver un diagrama que describe dicha interacción. El conector en función del tipo va a comunicarse con un cliente diferente, ya sea el HTTPClient \cite{httpclient} de Apache o JDBC \cite{jdbc} de Oracle, para realizar la comunicación y recepción de datos con los diferentes recursos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{conectorImplementation.png}
+	\caption{Arquitectura del Conector}\label{fig:conectorImplementation}
+\end{figure}
+
+\subsection{Arquitectura del Process-Component}
+
+El Process-Component es un proyecto abstracto (debe de ser importado e implementado por un proyecto o componente padre) encargado de recibir y comunicar los eventos realizados sobre una interfaz construida a partir de la librería GO.JS.
+
+\vspace{5mm}
+
+La arquitectura del Process-Component se ostenta en dos pilares. El primero es la implementación de la lógica del propio componente y el segundo es la implementación de un conector que se comunica con una librería de GO.JS que también debe de ser definida.
+
+\vspace{5mm}
+
+La lógica del componente se basa en un estado ( el cuál alberga todos los elementos para poder formar la vista), y en una serie de acciones o comandos que se pueden realizar sobre él, y donde tras cada acción, se realiza una comunicación con el conector para que este se encargue de modificar el estado de los elementos de GO.JS.
+
+\vspace{5mm}
+
+El conector internamente se compone de la librería encargada de definir el ámbito gráfico con el que se va a trabajar, de una serie de eventos que serán trasladados a la lógica del Process-Component, y de modificar los elementos en activo en la vista bajo la orden especificada.
+
+\vspace{5mm}
+
+A continuación, se muestra una figura explicativa de dicha interacción interna entre los componentes:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{processComponentArquitectura.png}
+	\caption{Arquitectura del Process-Component}\label{fig:processComponent}
+\end{figure}
+
+Como resumen del funcionamiento del Process-Component, éste es el encargado de recibir eventos realizados sobre la interfaz gráfica, a través del conector hasta llegar a la lógica del componente para publicarlos o abstraerlos a un conjunto de elementos escuchadores que deberán de ser atendidos por el componente implementador de este Process-Component.
 	 

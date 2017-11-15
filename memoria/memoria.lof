@@ -3,14 +3,18 @@
 \contentsline {xchapter}{Introducci\IeC {\'o}n}{1}
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Vista de Gesti\IeC {\'o}n de Consultas}}{3}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Vista de Ejecuci\IeC {\'o}n de Consultas}}{4}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Arquitectura de LUCA}}{6}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Nueva Arquitectura de LUCA}}{8}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Arquitectura del Conector}}{9}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Arquitectura del Process-Component}}{10}
 \addvspace {10\p@ }
-\contentsline {xchapter}{An\IeC {\'a}lisis y Documentaci\IeC {\'o}n}{7}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces GO.JS Logo}}{8}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Vaadin Logo}}{9}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Esquema Cliente-Servidor}}{10}
+\contentsline {xchapter}{An\IeC {\'a}lisis y Documentaci\IeC {\'o}n}{13}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces GO.JS Logo}}{14}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Vaadin Logo}}{15}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Esquema Cliente-Servidor}}{16}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Process-Component}{11}
+\contentsline {xchapter}{Process-Component}{17}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Luca-Process}{13}
+\contentsline {xchapter}{Luca-Process}{19}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{15}
+\contentsline {xchapter}{Conclusiones}{21}

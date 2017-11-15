@@ -3,3 +3,6 @@
 {\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.3}Ingenier\IeC {\'\i }a de Requisitos}{\reset@font\mtcSfont 5}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.1}Proceso de integraci\IeC {\'o}n en LUCA}{\reset@font\mtcSSfont 5}}
 {\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.3.2}Definici\IeC {\'o}n de Requisitos}{\reset@font\mtcSSfont 5}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.4}Arquitectura LUCA}{\reset@font\mtcSfont 6}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.4.1}Arquitectura del Conector}{\reset@font\mtcSSfont 9}}
+{\reset@font\mtcSSfont\mtc@string\contentsline{subsection}{\noexpand \leavevmode \numberline {1.4.2}Arquitectura del Process-Component}{\reset@font\mtcSSfont 10}}

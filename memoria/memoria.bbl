@@ -1,28 +1,19 @@
 \begin{thebibliography}{1}
 
+\bibitem{httpclient}
+{\sc {Apache}}.
+\newblock \texttt{hc.apache.org/httpcomponents-client-ga/}.
+
 \bibitem{vaadin}
 {\sc {Ari Handler Gamboa}}.
 \newblock \texttt{adictosaltrabajo.com/tutoriales/introduccion-a-vaadin/}.
-
-\bibitem{mvp}
-{\sc {Eduardo Barrio}}.
-\newblock
-  \texttt{mhp-net.es/spring-vaadin-hibernate-tutorial-8-el-patron-mvp/}.
 
 \bibitem{gojs}
 {\sc {Northwoods Software}}.
 \newblock \texttt{gojs.net/latest/index.html}.
 
-\bibitem{jpa}
-{\sc {Pivotal Software}}.
-\newblock \texttt{docs.spring.io/spring-data/jpa/docs/current/reference/html}.
-
-\bibitem{spring}
-{\sc {Pivotal Software}}.
-\newblock \texttt{spring.io}.
-
-\bibitem{tres-capas}
-{\sc {Víctor Gómez}}.
-\newblock \texttt{instintobinario.com/arquitectura-en-tres-capas/}.
+\bibitem{jdbc}
+{\sc {Oracle}}.
+\newblock \texttt{www.oracle.com/technetwork/java/javase/jdbc/index.html}.
 
 \end{thebibliography}
