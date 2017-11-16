@@ -3,7 +3,7 @@
 \contentsline {xchapter}{Introducci\IeC {\'o}n}{1}
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Vista de Gesti\IeC {\'o}n de Consultas}}{3}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Vista de Ejecuci\IeC {\'o}n de Consultas}}{4}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Arquitectura de LUCA}}{6}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Arquitectura de LUCA}}{7}
 \contentsline {figure}{\numberline {1.4}{\ignorespaces Nueva Arquitectura de LUCA}}{8}
 \contentsline {figure}{\numberline {1.5}{\ignorespaces Arquitectura del Conector}}{9}
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Arquitectura del Process-Component}}{10}
@@ -14,6 +14,7 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Esquema Cliente-Servidor}}{16}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Process-Component}{17}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{18}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Luca-Process}{19}
 \addvspace {10\p@ }

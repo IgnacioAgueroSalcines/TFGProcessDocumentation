@@ -8,6 +8,15 @@
 {\sc {Ari Handler Gamboa}}.
 \newblock \texttt{adictosaltrabajo.com/tutoriales/introduccion-a-vaadin/}.
 
+\bibitem{mvp}
+{\sc {Eduardo Barrio}}.
+\newblock
+  \texttt{mhp-net.es/spring-vaadin-hibernate-tutorial-8-el-patron-mvp/}.
+
+\bibitem{junit}
+{\sc {Erich Gamma & Kent Beck}}.
+\newblock \texttt{junit.org/junit5/}.
+
 \bibitem{gojs}
 {\sc {Northwoods Software}}.
 \newblock \texttt{gojs.net/latest/index.html}.
@@ -15,5 +24,18 @@
 \bibitem{jdbc}
 {\sc {Oracle}}.
 \newblock \texttt{www.oracle.com/technetwork/java/javase/jdbc/index.html}.
+
+\bibitem{jpa}
+{\sc {Pivotal Software}}.
+\newblock \texttt{docs.spring.io/spring-data/jpa/docs/current/reference/html}.
+
+\bibitem{springTest}
+{\sc {Pivotal Software}}.
+\newblock
+  \texttt{docs.spring.io/spring/docs/current/spring-framework-reference/testing.html}.
+
+\bibitem{selenium}
+{\sc {SeleniumHQ}}.
+\newblock \texttt{www.seleniumhq.org}.
 
 \end{thebibliography}

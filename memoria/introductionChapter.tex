@@ -141,6 +141,14 @@ Además de la explicación, se proporcionaron unos documentos técnicos tanto de
 
 \vspace{5mm}
 
+Dado que la aplicación a construir es un incremento de un producto ya existente, no hace falta identificar la fuente de los requisitos ya que es el propio gerente o impulsor de dicho incremento el que actúa como stakeholder, junto con el jefe del proyecto los encargados de formar los objetivos conjuntos de la captura de información y de los propios requisitos.
+
+\vspace{5mm}
+
+Cabe explicar también, que este proyecto se funda en la implementación o desarrollo de dos componentes. El primero representa una herramienta focalizada en el ámbito gráfico, cuya función es la creación, borrado y actualización de elementos que constan de variables de entradas y salidas, en términos generales, manipulación gráfica de los elementos constituyentes del proyecto. El otro representa un proyecto incremento del actual producto LUCA, centrado en la gestión de los procesos, los cuales son creados a través de consultas y enlaces entre sus entradas y salidas.
+
+\vspace{5mm}
+
 Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se centran en tres pilares o requisitos principales:
 
 \begin{itemize}
@@ -234,4 +242,68 @@ A continuación, se muestra una figura explicativa de dicha interacción interna
 \end{figure}
 
 Como resumen del funcionamiento del Process-Component, éste es el encargado de recibir eventos realizados sobre la interfaz gráfica, a través del conector hasta llegar a la lógica del componente para publicarlos o abstraerlos a un conjunto de elementos escuchadores que deberán de ser atendidos por el componente implementador de este Process-Component.
+
+
+\section{Planificación}
+
+
+	La sección presente describe el proceso llevado a cabo para realizar la implementación tanto del componente gráfico (Process-Component) como del componente de Luca (Luca-Process).
+
+	\vspace{5mm}
+
+	El proceso que se llevó a cabo para realizar el desarrollo del proyecto se basó en dos fases:
+	
+	\begin{itemize}
+		\item  Una primera en la que se estudió el funcionamiento de la herramienta gráfica de GO.JS y después se realizó la implementación del Process-Componet.
+		\item  Una segunda en la que utilizando el componente descrito anteriormente, se implementa un incremento utilizando la lógica previa de LUCA.
+
+	\end{itemize}
+
+\subsection{Implementación}
+	A continuación se explica brevemente el proceso de implementación llevado a cabo para ambas fases:
+	\begin{itemize}
+		\item Process-Component
+			\subitem El primer paso para empezar la implementación del Process-Component, fue aprender y practicar con ejemplos y con pruebas de concepto para ver como funcionaba y aprender la sintaxis de la librería de GO.JS.
+			
+			\vspace{5mm}
+			
+			Tras este primer paso, se realizó la implementación del modelo (se puede encontrar en los documentos técnicos), para posteriormente generar una primera prueba de concepto conjunta realizando una comunicación con la librería GO.JS.
+			
+			
+			\vspace{5mm}
+			
+			Por último se implementaron los eventos y escuchadores para posteriormente centrarse en completar dicho componente.
+			
+			
+			
+		\item  Luca-Process
+			\subitem En este componente se sigue un metodología similar al anterior. Primero se crea una prueba de concepto sencilla para ver la comunicación entre los componentes para posteriormente empezar a montar todo el sistema de recepción de eventos y llamadas al componente gráfico.
+			
+			\vspace{5mm}
+			
+			El siguiente paso fue seguir el estilo arquitectónico ya existente en LUCA, utilizando el patrón MVP\cite{mvp} para crear toda la jerarquíca de capas necesarias para la comunicación con los servicios ya existentes de LUCA y la propia base de datos de LUCA.
+		
+	\end{itemize}
+
+	
+\subsection{Pruebas}
+
+	Este apartado describe el proceso de pruebas llevado a cabo para la comprobación y verificación de las diferentes funcionalidades del proyecto.
+	
+	\vspace{5mm}
+	
+	Las pruebas se centraron principalmente en el Luca-Process, ya que es el componente que alberga la mayor lógica del proyecto debido al conjunto de servicios que lo compone y a la lógica sobre los presenters desplegada.
+	
+	\vspace{5mm}
+	
+	Profundizando en las pruebas implementadas, solo se han realizado pruebas de integración por varios motivos. El primero es que las pruebas unitarias no son necesarias hacerlas ya que se centran sobre la capa de repositorio y esta capa ha sido implementada con Spring Data Jpa\cite{jpa} y ofrece ya una fiabilidad. El motivo por el que no se realizaron pruebas de sistema, aunque en una primera planificación estaban previstas hacerlas integrandolas con Selenium\cite{selenium} fue la complejidad que lleva la integración junto con Vaadin\cite{vaadin}, ya que la ventaja de programar mediante una captura de eventos sobre la vista toda la secuencia de movimiento sobre dicha vista pasa a ser programática, y debido a que había que ceñirse a unas fechas de entrega y al tiempo que llevaría dicha implementación se decidió omitirlas.
+	
+	\vspace{5mm}
+	
+	Las pruebas de integración que se llevaron a cabo se implementaron con Spring Test\cite{springTest} y JUnit\cite{junit}. Desglosando la composición de los mismos, se utilizó en cada test un fichero sql que declaraba las instrucciones de inserción de datos en la base de datos de pruebas necesarios para el correcto funcionamiento de los mismos. La base de datos de pruebas es una base de datos Mysql en local. relacional 
+ 
+
+
+
+
 	 
