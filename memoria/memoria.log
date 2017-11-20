@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  16 NOV 2017 19:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.9.18)  20 NOV 2017 18:24
 entering extended mode
 **./memoria.tex
 (memoria.tex
@@ -718,48 +718,42 @@ Overfull \hbox (217.76913pt too wide) in paragraph at lines 171--172
 Underfull \vbox (badness 1881) has occurred while \output is active []
 
  [6]
-<images/arquitecturaLuca.png, id=67, 1275.76625pt x 944.52875pt>
-File: images/arquitecturaLuca.png Graphic file (type png)
-
-<use images/arquitecturaLuca.png>
-Package pdftex.def Info: images/arquitecturaLuca.png used on input line 193.
-(pdftex.def)             Requested size: 637.88158pt x 472.26321pt.
-
-Overfull \hbox (247.88158pt too wide) in paragraph at lines 193--194
- [][] 
- []
-
-
 Underfull \vbox (badness 8019) has occurred while \output is active []
 
- [7 <./images/funcionamientoLuca.png>] [8 <./images/arquitecturaLuca.png>]
-<images/conectorImplementation.png, id=77, 731.73375pt x 673.51625pt>
+ [7 <./images/funcionamientoLuca.png>]
+<images/conectorImplementation.png, id=72, 731.73375pt x 673.51625pt>
 File: images/conectorImplementation.png Graphic file (type png)
 
 <use images/conectorImplementation.png>
 Package pdftex.def Info: images/conectorImplementation.png used on input line 2
-14.
+03.
 (pdftex.def)             Requested size: 365.86598pt x 336.7573pt.
- [9 <./images/conectorImplementation.png>] <images/processComponentArquitectura
-.png, id=82, 1150.2975pt x 382.42876pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./images/conectorImplementation.png>]
+<images/processComponentArquitectura.png, id=77, 1150.2975pt x 382.42876pt>
 File: images/processComponentArquitectura.png Graphic file (type png)
 
 <use images/processComponentArquitectura.png>
 Package pdftex.def Info: images/processComponentArquitectura.png used on input 
-line 240.
+line 229.
 (pdftex.def)             Requested size: 575.14735pt x 191.2139pt.
 
-Overfull \hbox (185.14735pt too wide) in paragraph at lines 240--241
+Overfull \hbox (185.14735pt too wide) in paragraph at lines 229--230
  [][] 
  []
 
-[10 <./images/processComponentArquitectura.png>]
-Overfull \hbox (23.81259pt too wide) in paragraph at lines 266--267
+[9 <./images/processComponentArquitectura.png>]
+Overfull \hbox (23.81259pt too wide) in paragraph at lines 255--256
 []| \OT1/cmr/m/n/12 El pri-mer pa-so pa-ra em-pe-zar la im-ple-men-ta-cion del
  Process-Component,
  []
 
-[11]) [12] (documentationChapter.tex
+[10]) [11] (documentationChapter.tex [12
+
+
+]
 Cap\'{\i }tulo 2.
 \openout3 = `memoria.mtc'.
 
@@ -767,7 +761,7 @@ Cap\'{\i }tulo 2.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 5.
-(memoria.mtc2) <images/gojs.jpeg, id=93, 208.78pt x 116.435pt>
+(memoria.mtc2) <images/gojs.jpeg, id=91, 208.78pt x 116.435pt>
 File: images/gojs.jpeg Graphic file (type jpg)
 
 <use images/gojs.jpeg>
@@ -776,12 +770,9 @@ Package pdftex.def Info: images/gojs.jpeg used on input line 11.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13
-
-
-]
+ [13]
 [14 <./images/gojs.jpeg>]
-<images/Vaadin-logo.png, id=103, 451.4466pt x 109.3686pt>
+<images/Vaadin-logo.png, id=101, 451.4466pt x 109.3686pt>
 File: images/Vaadin-logo.png Graphic file (type png)
 
 <use images/Vaadin-logo.png>
@@ -792,7 +783,7 @@ Overfull \hbox (61.44548pt too wide) in paragraph at lines 35--36
  [][] 
  []
 
-<images/schema.png, id=104, 163.3302pt x 127.1952pt>
+<images/schema.png, id=102, 163.3302pt x 127.1952pt>
 File: images/schema.png Graphic file (type png)
  <use images/schema.png>
 Package pdftex.def Info: images/schema.png used on input line 51.
@@ -815,15 +806,36 @@ Package pdftex.def Info: images/schema.png used on input line 33.
 (pdftex.def)             Requested size: 204.16223pt x 158.9936pt.
 ) [18] (LucaProcess.tex
 Cap\'{\i }tulo 4.
-) [19
+
+Overfull \hbox (9.16116pt too wide) in paragraph at lines 7--8
+[]\OT1/cmr/m/n/12 La ar-qui-tec-tu-ra de Luca-Process tras la in-te-gra-cion d
+el Process-Component,
+ []
+
+<images/arquitecturaLuca.png, id=119, 1275.76625pt x 944.52875pt>
+File: images/arquitecturaLuca.png Graphic file (type png)
+
+<use images/arquitecturaLuca.png>
+Package pdftex.def Info: images/arquitecturaLuca.png used on input line 11.
+(pdftex.def)             Requested size: 637.88158pt x 472.26321pt.
+
+Overfull \hbox (247.88158pt too wide) in paragraph at lines 11--12
+ [][] 
+ []
 
 
-] (conclusionChapter.tex [20
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19
+
+
+]
+[20 <./images/arquitecturaLuca.png>]) [21] (conclusionChapter.tex [22
 
 
 ]
 Cap\'{\i }tulo 5.
-) [21] (memoria.bbl [22
+) [23] (memoria.bbl [24
 
 
 ]
@@ -884,7 +896,7 @@ Package minitoc(hints) Warning: W0024
 (minitoc(hints))                Some hints have been written 
 (minitoc(hints))                in the memoria.log file.
 
-[23] (memoria.aux
+[25] (memoria.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 )
@@ -908,9 +920,9 @@ onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmtt12.pfb>
-Output written on memoria.pdf (35 pages, 440607 bytes).
+Output written on memoria.pdf (37 pages, 442904 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
+ 173 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
