@@ -1,1 +1,7 @@
 recursos/LaTeX/
+*.dvi
+*.aux
+*.lot
+*.synctex
+*.synctex(busy)
+*.toc
