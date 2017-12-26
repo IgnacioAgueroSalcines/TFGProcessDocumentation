@@ -5,3 +5,5 @@ recursos/LaTeX/
 *.synctex
 *.synctex(busy)
 *.toc
+memoria/memoria.pdf
+memoria/memoria.log
