@@ -15,7 +15,7 @@ Go.JS \cite{gojs} es una biblioteca de JavaScript para implementar editores grá
 %% NOTE(Pablo): Ponme un ejemplo chorra de cómo se dibuja y mueve un círculo en Go.JS y descríbelo
 %%====================================================================================================
 
-\subsection{Explicación de un ejemplo}
+\subsection{Explicación mediante ejemplo}
 
 A continuación se muestra y describe un ejemplo sencillo de creación de un diagrama que se compone de una paleta contenedora de círculos los cuales pueden ser arrastrados al diagrama para poder interactuar con ellos.
 
@@ -83,7 +83,7 @@ Para este ejemplo, se va a crear un nodo círculo. Para ello lo primero es decla
 
 \vspace{5mm}
 
-El template también se compone de un panel que de forma por defecto poseerá una forma rectangular que albergará un texto en su interior. Además, la sentencia 'new go.Binding' permite al usuario modificar una propiedad después de haber sido declarara en el template.
+El template también se compone de un panel que, de forma por defecto, poseerá una forma rectangular que albergará un texto en su interior. Además, la sentencia 'new go.Binding' permite al usuario modificar una propiedad después de haber sido declarara en el template.
 
 \vspace{5mm}
 
@@ -109,8 +109,8 @@ En esta figura se describe, al igual que la anterior, la información relativa a
 \end{figure}
 \vspace{5mm}
 
-Por último, esta figura describe la implementación de la paleta de nodos, o del conjunto de nodos que pueden ser arrastrados al diagrama para ser creados. Ésta se define bajo el mismo template que los nodos y se le añade al modelo de datos de la paleta un elemento círculo de color verde y sin texto en su interior.
+Por último, esta figura describe la implementación de la paleta de nodos, o del conjunto de nodos que pueden ser arrastrados al diagrama para ser creados. Como se puede observar, la paleta se sitúa sobre el espacio reservado o 'div' declarado con anterioridad y mencionado al inicio del ejemplo. Dicha paleta se define bajo el mismo template que los nodos y se le añade al modelo de datos de la paleta un elemento círculo de color verde y sin texto en su interior.
 
 \subsection{Conclusión}
 
-GoJs es una herramienta que permite realizar una gran cantidad y combinación de figuras a nivel gráfico, además de proveer mecanismos para establecer una lógica de ejecución interna.
+GoJs es una biblioteca Javascript que incluye múltiples características para la implementación de diagramas interactivos.
