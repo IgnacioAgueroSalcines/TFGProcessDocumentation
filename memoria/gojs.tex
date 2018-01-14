@@ -1,116 +1,97 @@
-%%====================================================================================================
-%% NOTE(Pablo): Nunca se ponen los logos de la herramienta. Queda fatal, parece que quieres rellenar
-%%   espacio por rellenar. No pongas tantas subsecciones.
-%%====================================================================================================
-	 		
-
 \subsection{Introducción}
-
 
 Go.JS \cite{gojs} es una biblioteca de JavaScript para implementar editores gráficos dentro de interfaces web. GoJS facilita la implementación de funciones tales como definición de símbolos gráficos, gestión de paletas de símbolos, arrastrar y soltar (\emph{drag and drop}), copiar y pegar, edición de etiquetas de texto asociadas a símbolos gráficos, menús contextuales, función de deshacer o gestión de eventos, entre muchas otras funcionalidades.
 
-\vspace{5mm}
-	 		
-%%====================================================================================================
-%% NOTE(Pablo): Ponme un ejemplo chorra de cómo se dibuja y mueve un círculo en Go.JS y descríbelo
-%%====================================================================================================
+Para ilustrar el funcionamiento de GoJS, a continuación se muestra un ejemplo sencillo de creación de editor gráfico de grafos
+para el dibujo de círculos interconectados por flechas. Dicho editor se muestra en la Figura\ref{fig:gojssample}.
 
-\subsection{Explicación mediante ejemplo}
+%%=================================================================================================%%
+%% NOTA: Todas las imágenes con sus números de líneas y sintaxis coloreada si puede ser            %%
+%%       Hay una librearía en Latex (listing) se llama                                             %%
+%%       Puedes copiar y pegar de aquí y te vale para Javascript https://goo.gl/6CstHr             %%
+%%=================================================================================================%%
 
-A continuación se muestra y describe un ejemplo sencillo de creación de un diagrama que se compone de una paleta contenedora de círculos los cuales pueden ser arrastrados al diagrama para poder interactuar con ellos.
-
-\vspace{5mm}
-
-\begin{figure}[H]
+\begin{figure}[!tb]
 	\centering
 	\includegraphics[scale=0.75]{gojssample.png}
-	\caption{Ejemplo GoJS}\label{fig:gojssample}
+	\caption{Editor gráfico creado en GoJS}
+    \label{fig:gojssample}
 \end{figure}
 
-\vspace{5mm}
+Para empezar, cabe destacar que, para poder crear este editor, es necesario reservar dos secciones de la página HTML que lo contiene. Una sección para la paleta contenedora de los elementos gráficos del editor, que en este caso es sólo el círculo, y otra sección para el diagrama sobre el que se depositarán los elementos gráficos. 
 
-Para empezar, observando la figura anterior, cabe destacar que, para poder llevar a cabo este diagrama, es necesario reservar dos secciones del html (div). Una para la paleta de la izquierda contenedora de los elementos que son arrastrables, en este caso el círculo, y otro para el diagrama sobre el que se realizarán las acciones.
-
-
-\vspace{5mm}
-
-Para poder analizar detalladamente como se contruye a nivel Javascript la figura anterior, se irán explicando progresivamente los fragmentos del código que sean necesarios.
-
-\vspace{5mm}
-
-El elemento principal de esta estructura es el que contiene todo el resto y con el que posteriormente, en aplicaciones que integren el componente, se podrán comunicar, en este caso le llamaremos 'myDiagram'.
-
-Lo principal de este diagrama es, como en todo lenguaje, darle un esqueleto, en GoJS los elementos adquieren dicha propiedad mediante la llamada a una librería de go llamada GraphObject bajo la sentencia make. Un ejemplo sencillo de creación de un diagrama sobre el espacio reservado del html llamado 'myDiagramDiv' es el siguiente:
-
-\vspace{5mm}
-
-\begin{figure}[H]
+\begin{figure}[!tb]
 	\centering
 	\includegraphics[scale=0.90]{creacionDiagramaGoJS.png}
-	\caption{Creación Diagrama}\label{fig:creacionDiagramaGoJS}
+	\caption{Especificación del área de dibujo.}
+    \label{fig:creacionDiagramaGoJS}
 \end{figure}
 
-\vspace{5mm}
+A continuación, deben realizar una serie de acciones a nivel de Javascript para proporcionar tanto a la paleta de dibujo como al área de dibujo del comportamiento deseado. En primer lugar, crearemos una variable \texttt{\$} que dé acceso al entorno GoJS. Esto se realiza mediante la llamada a la sentencia \texttt{make} de librería \emph{GraphObject} de GoJS (Figura \ref{}, Líneas XX-YY).
 
-En la figura anterior se puede observar como se crea un diagrama. Además, se le asigna un grid o cuadrícula de fondo, así como, se le da la capacidad de poder arrastrar elementos sobre él.
+Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura \ref{}, Líneas XX-YY), asignándole un \emph{\emph{grid}} o cuadrícula de fondo (Figura \ref{}, Línea XX), especificando los colores de las líneas de la cuadrícula (Figura \ref{}, Líneas XX-YY) y dándole la capacidad de poder arrastrar elementos sobre él (Figura \ref{}, Líneas XX).
 
-\vspace{5mm}
+%%========================================================================%%
+%% NOTE(Pablo): Hasta aquí va más o menos bien la cosa, pero aquí         %%
+%%    empezamos a perder el hilo. ¿De dónde han salido los círculos y     %%
+%%    qué es un puerto. Lo normal es explicar primero cómo se añaden      %%
+%%    círculos a la paleta, qué es un puerto, la necesidad de crearlos,   %%
+%%    y luego ya cómo se crean.                                            %% 
+%%========================================================================%%
 
-Dentro del diagrama tambien se pueden crear declaraciones de variables y funciones. Un ejemplo concreto es el siguiente:
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.90]{funcionMakePort.png}
-	\caption{Función MakePort}\label{fig:funcionMakePort}
-\end{figure}
-
-En este caso, se ha creado una función para crear puertos al círculo, estos puertos se usarán para enlazar los diferentes círculos entre sí, como se puede observar se declara toda la información tanto a nivel estético como a nivel de implementación. Esta función será utilizada posteriormente en la especificación del elemento círculo.
-
-\vspace{5mm}
-
-\begin{figure}[H]
+\begin{figure}[!tb]
 	\centering
 	\includegraphics[scale=0.90]{nodeTemplate.png}
-	\caption{Node Template}\label{fig:nodeTemplate}
+	\caption{Especificación de los círculos como nodos.}
+    \label{fig:nodeTemplate}
 \end{figure}
-\vspace{5mm}
 
-La imagen anterior describe una de las partes fundamentales, la especificación de los nodos, los nodos son todos aquellos elementos de los que se va a componer el diagrama, por lo tanto, hay que ser cautos a la hora de implementarlos.
+La Figura \ref{} muestra cómo se crean los \emph{nodos} de un diagrama. Los nodos son todos aquellos elementos de los que se va a componer el diagrama. En nuestro ejemplo, estos nodos son los círculos. Para crear la definición un nodo lo primero es declarar el nodo con \texttt{\$(go.Node} (Figura \ref{}, Líneas XX). A continuación, especificamos, mediante la definición de ciertas propiedades, cómo se comportará el nodo (Figura \ref{}, Líneas XX). En nuestro caso, se indica que %% esto del template no lo entiendo muy bien. (Figura \ref{}, Líneas XX),
+y que el nodo, dentro del área de dibujo, podrá ser seleccionado, redimensionado y rotado (Figura \ref{}, Líneas XX, YY y ZZ, respectivamente).
 
-\vspace{5mm}
+%% el ejemplo se le da una localización en el template\footnote{El template es el espacio que alberga, y sobre el que se definen
+%% las estructuras que definen un nodo.}
 
-Para este ejemplo, se va a crear un nodo círculo. Para ello lo primero es declarar el nodo con '\$(go.Node' seguido de todas las propiedades que le queramos especificar. En el ejemplo se le da una localización en el template\footnote{El template es el espacio que alberga, y sobre el que se definen las estructuras que definen un nodo.} y se le da las propiedades de poder ser seleccionado, redimensionado y rotado.
+%%=========================================================================%%
+%% NOTE(Pablo): Si los nodos van a tener nombre, que se vea también en el  %%
+%%    ejemplo. ¿Ésto es necesario ponerlo siempre en Go o se puede omitir? %%
+%%=========================================================================%%
 
-\vspace{5mm}
+Cada nodo poseerá además una etiqueta de texto que permitirá especificar su nombre, denominada \emph{panel} (Figura \ref{}, Líneas XX-YY). En nuestro caso, dicho panel poseerá una forma rectangular (Figura \ref{}, Líneas XX) y una fuente con unas características determinadas. 
 
-El template también se compone de un panel que, de forma por defecto, poseerá una forma rectangular que albergará un texto en su interior. Además, la sentencia 'new go.Binding' permite al usuario modificar una propiedad después de haber sido declarara en el template.
+Una vez definidas las propiedades básicas de un nodo, el siguiente paso es definir cómo enlazar dichos nodos. Para ello debemos definir dos elementos: \emph{puertos} y \emph{enlaces}. Los puertos de un nodo son los puntos de un nodo desde los cuáles dicho nodo se puede enlazar con otros nodos. Para añadir puertos a los círculos creamos una función determinada, la cual se muestra en la Figura \ref{}. %% Describir algo del código que aparece. 
+A continuación, añadimos cuatro llamadas a esta función a la declaración de los círculos como nodos, con el objeto de crear un puerto a cada lado del eje de un círculo (Figura \ref{}).
 
-\vspace{5mm}
+%%=========================================================================%%
+%% NOTE(Pablo): La figura donde se añaden los cuatro makePort hay que      %%
+%%   hacerla nueva                                                         %%
+%%=========================================================================%%
 
-Por ultimo, se hacen cuatro llamadas a la función descrita anteriormente, que lo que hacen es crear cuatro puertos a cada lado del eje del círculo. En esta función se crea una figura circular junto con sus propiedades de enlazado.
+%%=========================================================================%%
+%% NOTE(Pablo): ¿Por qué los parámetros tres y cuatro cambiando de true    %%
+%%   a false a veces?                                                      %%
+%%=========================================================================%%
 
-\vspace{5mm}
-
-\begin{figure}[H]
+\begin{figure}[!tb]
 	\centering
 	\includegraphics[scale=0.90]{linkTemplate.png}
-	\caption{Link Template}\label{fig:linkTemplate}
+	\caption{Especificación del comportamiento entre círculos.}
+    \label{fig:linkTemplate}
 \end{figure}
-\vspace{5mm}
 
-En esta figura se describe, al igual que la anterior, la información relativa al enlazado de los nodos. Esta vez, a los link solo se les establece un panel principal que define el tamaño del link, y otro panel secundario que establece la direccionalidad del link.
+Una vez definidos los puertos, especificamos cómo se comportarán los enlaces entre nodos, tal como muestra la Figura \ref{}. %% Comentar un poco más aquí sobre el código.
 
-\vspace{5mm}
-
-\begin{figure}[H]
+\begin{figure}[1tb]
 	\centering
 	\includegraphics[scale=0.90]{palette.png}
-	\caption{Paleta de Nodos}\label{fig:palette}
+	\caption{Paleta de Nodos}
+    \label{fig:palette}
 \end{figure}
 \vspace{5mm}
 
-Por último, esta figura describe la implementación de la paleta de nodos, o del conjunto de nodos que pueden ser arrastrados al diagrama para ser creados. Como se puede observar, la paleta se sitúa sobre el espacio reservado o 'div' declarado con anterioridad y mencionado al inicio del ejemplo. Dicha paleta se define bajo el mismo template que los nodos y se le añade al modelo de datos de la paleta un elemento círculo de color verde y sin texto en su interior.
+Por último, creamos la paleta de herramienta, tal como se muestra en la Figura \ref{}. Como se puede observar, la paleta se sitúa sobre una sección HTML denominada \emph{myPalleteDiv}. 
 
-\subsection{Conclusión}
+%% A dicha paleta asocia  los nodos y se le añade al modelo de datos de la paleta un elemento círculo de color verde y sin texto en su interior.
 
-GoJs es una biblioteca Javascript que incluye múltiples características para la implementación de diagramas interactivos.
+Una vez definidos estos elementos, nuestro editor gráfico queda implementado ya que GoJS se encargará de dibujar los elementos sobre el área de dibujo cuando estos son seleccionados en la paleta, permitiendo arrastrarlos, redimensionarlos o renombrarlos, entre otras funciones. Por tanto, GoJS nos permite obtener fácilmente editores gráficos en Javascript a partir de la especificación
+de las propiedades que compondrán dicho editor. Concretamente, el editor de la Figura \ref{} se puede implementar con sólo XX líneas Javascript.     
