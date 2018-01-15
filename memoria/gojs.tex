@@ -13,23 +13,31 @@ para el dibujo de círculos interconectados por flechas. Dicho editor se muestra
 
 \begin{figure}[!tb]
 	\centering
-	\includegraphics[scale=0.75]{gojssample.png}
+	\includegraphics[scale=0.5]{gojssample.png}
 	\caption{Editor gráfico creado en GoJS}
     \label{fig:gojssample}
 \end{figure}
 
 Para empezar, cabe destacar que, para poder crear este editor, es necesario reservar dos secciones de la página HTML que lo contiene. Una sección para la paleta contenedora de los elementos gráficos del editor, que en este caso es sólo el círculo, y otra sección para el diagrama sobre el que se depositarán los elementos gráficos. 
 
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[scale=0.90]{creacionDiagramaGoJS.png}
-	\caption{Especificación del área de dibujo.}
-    \label{fig:creacionDiagramaGoJS}
-\end{figure}
+\begin{lstlisting}[language=JavaScript]
+myDiagram =
+	$(go.Diagram, "myDiagramDiv",  
+	{
+		grid: $(go.Panel, "Grid",
+			$(go.Shape, "LineH", { stroke: "lightgray", strokeWidth: 0.5 }),
+			$(go.Shape, "LineH", { stroke: "gray", strokeWidth: 0.5, interval: 10 }),
+			$(go.Shape, "LineV", { stroke: "lightgray", strokeWidth: 0.5 }),
+			$(go.Shape, "LineV", { stroke: "gray", strokeWidth: 0.5, interval: 10 })
+		),
+		allowDrop: true,         
+	}
+);
+\end{lstlisting}
 
 A continuación, deben realizar una serie de acciones a nivel de Javascript para proporcionar tanto a la paleta de dibujo como al área de dibujo del comportamiento deseado. En primer lugar, crearemos una variable \texttt{\$} que dé acceso al entorno GoJS. Esto se realiza mediante la llamada a la sentencia \texttt{make} de librería \emph{GraphObject} de GoJS (Figura \ref{}, Líneas XX-YY).
 
-Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura \ref{}, Líneas XX-YY), asignándole un \emph{\emph{grid}} o cuadrícula de fondo (Figura \ref{}, Línea XX), especificando los colores de las líneas de la cuadrícula (Figura \ref{}, Líneas XX-YY) y dándole la capacidad de poder arrastrar elementos sobre él (Figura \ref{}, Líneas XX).
+Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura \ref{}, Líneas XX-YY), asignándole un \emph{grid} o cuadrícula de fondo (Figura \ref{}, Línea XX), especificando los colores de las líneas de la cuadrícula (Figura \ref{}, Líneas XX-YY) y dándole la capacidad de poder arrastrar elementos sobre él (Figura \ref{}, Líneas XX).
 
 %%========================================================================%%
 %% NOTE(Pablo): Hasta aquí va más o menos bien la cosa, pero aquí         %%
@@ -39,12 +47,34 @@ Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada 
 %%    y luego ya cómo se crean.                                            %% 
 %%========================================================================%%
 
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[scale=0.90]{nodeTemplate.png}
-	\caption{Especificación de los círculos como nodos.}
-    \label{fig:nodeTemplate}
-\end{figure}
+\begin{lstlisting}[language=JavaScript]
+myDiagram.nodeTemplate =
+	$(go.Node, "Spot",
+	{ locationSpot: go.Spot.Center },
+	new go.Binding("location").makeTwoWay(go.Point.stringify),
+	{ selectable: true, selectionAdornmentTemplate: nodeSelectionAdornmentTemplate },
+	{ resizable: true, resizeObjectName: "PANEL", resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
+	{ rotatable: true, rotateAdornmentTemplate: nodeRotateAdornmentTemplate },
+
+	$(go.Panel, "Auto",
+	{ name: "PANEL" },
+	$(go.Shape,  
+	{
+		portId: "", 
+		fromLinkable: true, toLinkable: true, cursor: "pointer",
+	},
+		new go.Binding("figure"),
+		new go.Binding("fill")),
+	$(go.TextBlock,
+	{
+		maxSize: new go.Size(50, 50),
+		editable: true
+	},
+	new go.Binding("text").makeTwoWay())
+	)
+);
+\end{lstlisting}
+
 
 La Figura \ref{} muestra cómo se crean los \emph{nodos} de un diagrama. Los nodos son todos aquellos elementos de los que se va a componer el diagrama. En nuestro ejemplo, estos nodos son los círculos. Para crear la definición un nodo lo primero es declarar el nodo con \texttt{\$(go.Node} (Figura \ref{}, Líneas XX). A continuación, especificamos, mediante la definición de ciertas propiedades, cómo se comportará el nodo (Figura \ref{}, Líneas XX). En nuestro caso, se indica que %% esto del template no lo entiendo muy bien. (Figura \ref{}, Líneas XX),
 y que el nodo, dentro del área de dibujo, podrá ser seleccionado, redimensionado y rotado (Figura \ref{}, Líneas XX, YY y ZZ, respectivamente).
@@ -57,7 +87,7 @@ y que el nodo, dentro del área de dibujo, podrá ser seleccionado, redimensiona
 %%    ejemplo. ¿Ésto es necesario ponerlo siempre en Go o se puede omitir? %%
 %%=========================================================================%%
 
-Cada nodo poseerá además una etiqueta de texto que permitirá especificar su nombre, denominada \emph{panel} (Figura \ref{}, Líneas XX-YY). En nuestro caso, dicho panel poseerá una forma rectangular (Figura \ref{}, Líneas XX) y una fuente con unas características determinadas. 
+Cada nodo poseerá además una etiqueta de texto que permitirá especificar su nombre, denominada \emph{panel} (Figura~\ref{}, Líneas XX-YY). En nuestro caso, dicho panel poseerá una forma rectangular (Figura \ref{}, Líneas XX) y una fuente con unas características determinadas. 
 
 Una vez definidas las propiedades básicas de un nodo, el siguiente paso es definir cómo enlazar dichos nodos. Para ello debemos definir dos elementos: \emph{puertos} y \emph{enlaces}. Los puertos de un nodo son los puntos de un nodo desde los cuáles dicho nodo se puede enlazar con otros nodos. Para añadir puertos a los círculos creamos una función determinada, la cual se muestra en la Figura \ref{}. %% Describir algo del código que aparece. 
 A continuación, añadimos cuatro llamadas a esta función a la declaración de los círculos como nodos, con el objeto de crear un puerto a cada lado del eje de un círculo (Figura \ref{}).
@@ -72,22 +102,42 @@ A continuación, añadimos cuatro llamadas a esta función a la declaración de 
 %%   a false a veces?                                                      %%
 %%=========================================================================%%
 
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[scale=0.90]{linkTemplate.png}
-	\caption{Especificación del comportamiento entre círculos.}
-    \label{fig:linkTemplate}
-\end{figure}
+
+\begin{lstlisting}[language=JavaScript]
+myDiagram.linkTemplate =
+	$(go.Link, 
+		$(go.Shape,  
+		{ isPanelMain: true, strokeWidth: 2 }),
+		$(go.Shape,  
+		{ toArrow: "Standard", stroke: null }
+	)
+)
+\end{lstlisting}
+
 
 Una vez definidos los puertos, especificamos cómo se comportarán los enlaces entre nodos, tal como muestra la Figura \ref{}. %% Comentar un poco más aquí sobre el código.
 
-\begin{figure}[1tb]
-	\centering
-	\includegraphics[scale=0.90]{palette.png}
-	\caption{Paleta de Nodos}
-    \label{fig:palette}
-\end{figure}
-\vspace{5mm}
+
+
+\begin{lstlisting}[language=JavaScript]
+myPalette =
+	$(go.Palette, "myPaletteDiv",  
+	{
+		nodeTemplateMap: myDiagram.nodeTemplateMap,  
+		linkTemplate: 
+		$(go.Link,
+			$(go.Shape, 
+			{ isPanelMain: true, strokeWidth: 2 }),
+			$(go.Shape,  
+			{ toArrow: "Standard", stroke: null })
+		),
+		model: new go.GraphLinksModel([  
+			{ text: "Name", figure: "Circle", fill: "#00AD5F" },
+			{ text: "Name", figure: "Rectangle", fill: "lightgray" }
+			])
+		}
+);
+\end{lstlisting}
 
 Por último, creamos la paleta de herramienta, tal como se muestra en la Figura \ref{}. Como se puede observar, la paleta se sitúa sobre una sección HTML denominada \emph{myPalleteDiv}. 
 

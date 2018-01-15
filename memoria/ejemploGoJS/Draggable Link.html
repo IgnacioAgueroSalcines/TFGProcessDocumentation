@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://gojs.net/latest/samples/draggableLink.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draggable Link</title>
+<meta name="description" content="Drag a link to reconnect it. Nodes have custom Adornments for selection, resizing, and reshaping.">
+<!-- Copyright 1998-2018 by Northwoods Software Corporation. -->
+
+<script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="./Draggable Link_files/go.js.descarga"></script><style></style>
+<script src="./Draggable Link_files/goSamples.js.descarga"></script><script src="./Draggable Link_files/highlight.js.descarga"></script><script src="./Draggable Link_files/jquery.min.js.descarga"></script><script src="./Draggable Link_files/bootstrap.min.js.descarga"></script><link type="text/css" rel="stylesheet" href="./Draggable Link_files/bootstrap.min.css"><link type="text/css" rel="stylesheet" href="./Draggable Link_files/highlight.css"><link type="text/css" rel="stylesheet" href="./Draggable Link_files/main.css">  <!-- this is only for the GoJS Samples framework -->
+<script id="code">
+  function init() {
+    var $ = go.GraphObject.make;  
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",  
+        {
+          grid: $(go.Panel, "Grid",
+                  $(go.Shape, "LineH", { stroke: "lightgray", strokeWidth: 0.5 }),
+                  $(go.Shape, "LineH", { stroke: "gray", strokeWidth: 0.5, interval: 10 }),
+                  $(go.Shape, "LineV", { stroke: "lightgray", strokeWidth: 0.5 }),
+                  $(go.Shape, "LineV", { stroke: "gray", strokeWidth: 0.5, interval: 10 })
+                ),
+          allowDrop: true,         
+        });
+
+  
+    function makePort(name, spot, output, input) {
+      return $(go.Shape, "Circle",
+               {
+                  desiredSize: new go.Size(7, 7),
+                  alignment: spot,  
+                  alignmentFocus: spot,  
+                  portId: name,  
+                  fromSpot: spot, toSpot: spot, 
+                  fromLinkable: output, toLinkable: input,  
+                  cursor: "pointer"  
+               });
+    }
+
+    var nodeSelectionAdornmentTemplate =
+      $(go.Adornment, "Auto",
+        $(go.Shape, { fill: null, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] }),
+        $(go.Placeholder)
+      );
+
+    var nodeResizeAdornmentTemplate =
+      $(go.Adornment, "Spot",
+        { locationSpot: go.Spot.Right },
+        $(go.Placeholder),
+        $(go.Shape, { alignment: go.Spot.TopLeft, cursor: "nw-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.Top, cursor: "n-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.TopRight, cursor: "ne-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+
+        $(go.Shape, { alignment: go.Spot.Left, cursor: "w-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.Right, cursor: "e-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+
+        $(go.Shape, { alignment: go.Spot.BottomLeft, cursor: "se-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.Bottom, cursor: "s-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.BottomRight, cursor: "sw-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" })
+      );
+
+    var nodeRotateAdornmentTemplate =
+      $(go.Adornment,
+        { locationSpot: go.Spot.Center, locationObjectName: "CIRCLE" },
+        $(go.Shape, "Circle", { name: "CIRCLE", cursor: "pointer", desiredSize: new go.Size(7, 7), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { geometryString: "M3.5 7 L3.5 30", isGeometryPositioned: true, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] })
+      );
+
+    myDiagram.nodeTemplate =
+      $(go.Node, "Spot",
+        { locationSpot: go.Spot.Center },
+        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        { selectable: true, selectionAdornmentTemplate: nodeSelectionAdornmentTemplate },
+        { resizable: true, resizeObjectName: "PANEL", resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
+        { rotatable: true, rotateAdornmentTemplate: nodeRotateAdornmentTemplate },
+        new go.Binding("angle").makeTwoWay(),
+
+        $(go.Panel, "Auto",
+          { name: "PANEL" },
+          new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
+          $(go.Shape,  
+            {
+              portId: "", 
+              fromLinkable: true, toLinkable: true, cursor: "pointer",
+            },
+            new go.Binding("figure"),
+            new go.Binding("fill")),
+          $(go.TextBlock,
+            {
+              font: "bold 11pt Helvetica, Arial, sans-serif",
+              margin: 8,
+              maxSize: new go.Size(50, 50),
+              wrap: go.TextBlock.WrapFit,
+              editable: true
+            },
+            new go.Binding("text").makeTwoWay())
+        ),
+        makePort("T", go.Spot.Top, false, true),
+        makePort("L", go.Spot.Left, true, true),
+        makePort("R", go.Spot.Right, true, true),
+        makePort("B", go.Spot.Bottom, true, false),
+      );
+
+    var linkSelectionAdornmentTemplate =
+      $(go.Adornment, "Link",
+        $(go.Shape,
+         
+          { isPanelMain: true, fill: null, stroke: "deepskyblue", strokeWidth: 0 }) 
+      );
+
+    myDiagram.linkTemplate =
+      $(go.Link, 
+        $(go.Shape,  
+          { isPanelMain: true, strokeWidth: 2 }),
+        $(go.Shape,  
+          { toArrow: "Standard", stroke: null })
+       
+      )
+
+    
+    myPalette =
+      $(go.Palette, "myPaletteDiv",  
+        {
+          nodeTemplateMap: myDiagram.nodeTemplateMap,  
+          linkTemplate: 
+            $(go.Link,
+              
+              $(go.Shape, 
+                { isPanelMain: true, strokeWidth: 2 }),
+              $(go.Shape,  
+                { toArrow: "Standard", stroke: null })
+            ),
+          model: new go.GraphLinksModel([  
+            { text: "Name", figure: "Circle", fill: "#00AD5F" },
+            { text: "Name", figure: "Rectangle", fill: "lightgray" },
+            
+          ]
+          )
+        });
+  }
+
+
+  function TopRotatingTool() {
+    go.RotatingTool.call(this);
+  }
+  go.Diagram.inherit(TopRotatingTool, go.RotatingTool);
+
+  /** @override */
+  TopRotatingTool.prototype.updateAdornments = function(part) {
+    go.RotatingTool.prototype.updateAdornments.call(this, part);
+    var adornment = part.findAdornment("Rotating");
+    if (adornment !== null) {
+      adornment.location = part.rotateObject.getDocumentPoint(new go.Spot(0.5, 0, 0, -30));  // above middle top
+    }
+  };
+
+  /** @override */
+  TopRotatingTool.prototype.rotate = function(newangle) {
+    go.RotatingTool.prototype.rotate.call(this, newangle + 90);
+  };
+  // end of TopRotatingTool class
+  
+</script>
+<style></style></head>
+<body onload="init()">
+
+
+
+<div id="navtop">  <!-- non-fixed navbar -->  <nav id="non-fixed-nav" class="navbar navbar-inverse navbar-top">    <div class="container-fluid">      <div class="navbar-header">        <div class="navheader-container">          <div class="navheader-collapse" data-toggle="collapse" data-target="#navbar">            <a id="toplogo" class="navbar-brand" href="https://gojs.net/latest/index.html">GoJS</a>            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">              <span class="sr-only">Toggle navigation</span>              <span class="icon-bar"></span>              <span class="icon-bar"></span>              <span class="icon-bar"></span>            </button>          </div>        </div>      </div>      <div id="navbar" class="navbar-collapse collapse">        <ul class="nav navbar-nav navbar-right">          <li><a href="https://gojs.net/latest/index.html">Home</a></li>          <li><a href="https://gojs.net/latest/learn/index.html">Learn</a></li>          <li><a href="https://gojs.net/latest/samples/index.html">Samples</a></li>          <li><a href="https://gojs.net/latest/intro/index.html">Intro</a></li>          <li><a href="https://gojs.net/latest/api/index.html" target="api">API</a></li>          <li><a href="https://www.nwoods.com/components/evalform.htm">Register</a></li>          <li><a href="https://gojs.net/latest/doc/download.html">Download</a></li>          <li><a href="https://forum.nwoods.com/c/gojs">Forum</a></li>          <li><a href="https://www.nwoods.com/contact.html" onclick="ga(&#39;send&#39;,&#39;event&#39;,&#39;Outbound Link&#39;,&#39;click&#39;,&#39;contact&#39;);">Contact</a></li>          <li class="buy"><a href="https://www.nwoods.com/sales/index.html" onclick="ga(&#39;send&#39;,&#39;event&#39;,&#39;Outbound Link&#39;,&#39;click&#39;,&#39;buy&#39;);">Buy</a></li>          <li class="activate"><a href="https://www.nwoods.com/app/activate.aspx?sku=gojs">Activate</a></li>        </ul>      </div><!--/.nav-collapse -->    </div>  </nav></div><div class="container-fluid"><div id="navindex" class="col-md-2">  <div class="sidebar-nav">    <div class="navbar navbar-default" role="navigation">      <div class="navbar-header">        <div class="navheader-container">          <div class="navheader-collapse" data-toggle="collapse" data-target="#DiagramNavbar">            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#DiagramNavbar">              <span class="sr-only">Toggle navigation</span>              <span class="icon-bar"></span>              <span class="icon-bar"></span>              <span class="icon-bar"></span>            </button>          </div>          <span class="navbar-brand">Samples</span>        </div>      </div>      <div id="DiagramNavbar" class="navbar-collapse collapse sidebar-navbar-collapse">        <ul id="sections" class="classList nav navbar-nav">          <li><a href="https://gojs.net/latest/samples/index.html"><b>Index</b></a></li>          <li><a href="https://gojs.net/latest/samples/minimal.html">Minimal<span class="samplespan"><img height="200" src="./Draggable Link_files/minimal.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/basic.html">Basic<span class="samplespan"><img height="200" src="./Draggable Link_files/basic.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/classHierarchy.html">Class Hierarchy<span class="samplespan"><img height="200" src="./Draggable Link_files/classHierarchy.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/DOMTree.html">DOM Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/DOMTree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/visualTree.html">Visual Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/visualTree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/shapes.html">Shapes<span class="samplespan"><img height="200" src="./Draggable Link_files/shapes.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/icons.html">SVG Icons<span class="samplespan"><img height="200" src="./Draggable Link_files/icons.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/arrowheads.html">Arrowheads<span class="samplespan"><img height="200" src="./Draggable Link_files/arrowheads.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/navigation.html">Navigation<span class="samplespan"><img height="200" src="./Draggable Link_files/navigation.png"></span></a></li>          <hr>          <li><a href="https://gojs.net/latest/samples/familyTree.html">Family Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/familyTree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/localView.html">Local View<span class="samplespan"><img height="200" src="./Draggable Link_files/localView.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/decisionTree.html">Decision Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/decisionTree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/incrementalTree.html">Incremental Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/incrementalTree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/doubleTree.html">Double Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/doubleTree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/orgChartStatic.html">OrgChart (Static)<span class="samplespan"><img height="200" src="./Draggable Link_files/orgChartStatic.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/orgChartEditor.html">OrgChart Editor<span class="samplespan"><img height="200" src="./Draggable Link_files/orgChartEditor.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/mindMap.html">Mind Map<span class="samplespan"><img height="200" src="./Draggable Link_files/mindMap.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/tournament.html">Tournament<span class="samplespan"><img height="200" src="./Draggable Link_files/tournament.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/treeView.html">Tree View<span class="samplespan"><img height="200" src="./Draggable Link_files/treeView.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/genogram.html">Genogram<span class="samplespan"><img height="200" src="./Draggable Link_files/genogram.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/IVRtree.html">IVR Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/IVRtree.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/parseTree.html">Parse Tree<span class="samplespan"><img height="200" src="./Draggable Link_files/parseTree.png"></span></a></li>          <hr>          <li><a href="https://gojs.net/latest/samples/beatPaths.html">Beat Paths<span class="samplespan"><img height="200" src="./Draggable Link_files/beatPaths.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/conceptMap.html">Concept Map<span class="samplespan"><img height="200" src="./Draggable Link_files/conceptMap.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/euler.html">Euler Diagram<span class="samplespan"><img height="200" src="./Draggable Link_files/euler.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/dataVisualization.html">Data Visualization<span class="samplespan"><img height="200" src="./Draggable Link_files/dataVisualization.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/entityRelationship.html">Entity Relationship<span class="samplespan"><img height="200" src="./Draggable Link_files/entityRelationship.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/friendWheel.html">Friend Wheel<span class="samplespan"><img height="200" src="./Draggable Link_files/friendWheel.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/radial.html">Recentering Radial<span class="samplespan"><img height="200" src="./Draggable Link_files/radial.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/radialPartition.html">Radial Partition<span class="samplespan"><img height="200" src="./Draggable Link_files/radialPartition.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/distances.html">Distances and Paths<span class="samplespan"><img height="200" src="./Draggable Link_files/distances.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/sankey.html">Sankey<span class="samplespan"><img height="200" src="./Draggable Link_files/sankey.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/PERT.html">PERT<span class="samplespan"><img height="200" src="./Draggable Link_files/PERT.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/gantt.html">Gantt<span class="samplespan"><img height="200" src="./Draggable Link_files/gantt.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/shopFloorMonitor.html">Shop Floor Monitor<span class="samplespan"><img height="200" src="./Draggable Link_files/shopFloorMonitor.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/kittenMonitor.html">Kitten Monitor<span class="samplespan"><img height="200" src="./Draggable Link_files/kittenMonitor.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/grouping.html">Grouping<span class="samplespan"><img height="200" src="./Draggable Link_files/grouping.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/swimBands.html">Layer Bands<span class="samplespan"><img height="200" src="./Draggable Link_files/swimBands.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/swimLanes.html">Swim Lanes<span class="samplespan"><img height="200" src="./Draggable Link_files/swimLanes.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/umlClass.html">UML Class<span class="samplespan"><img height="200" src="./Draggable Link_files/umlClass.png"></span></a></li>          <hr>          <li><a href="https://gojs.net/latest/samples/flowchart.html">Flowchart<span class="samplespan"><img height="200" src="./Draggable Link_files/flowchart.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/pageFlow.html">Page Flow<span class="samplespan"><img height="200" src="./Draggable Link_files/pageFlow.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/processFlow.html">Process Flow<span class="samplespan"><img height="200" src="./Draggable Link_files/processFlow.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/systemDynamics.html">System Dynamics<span class="samplespan"><img height="200" src="./Draggable Link_files/systemDynamics.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/stateChart.html">State Chart<span class="samplespan"><img height="200" src="./Draggable Link_files/stateChart.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/kanban.html">Kanban Board<span class="samplespan"><img height="200" src="./Draggable Link_files/kanban.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/sequentialFunction.html">Sequential Function<span class="samplespan"><img height="200" src="./Draggable Link_files/sequentialFunction.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/grafcet.html">Grafcet Diagrams<span class="samplespan"><img height="200" src="./Draggable Link_files/grafcet.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/sequenceDiagram.html">Sequence Diagram<span class="samplespan"><img height="200" src="./Draggable Link_files/sequenceDiagram.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/logicCircuit.html">Logic Circuit<span class="samplespan"><img height="200" src="./Draggable Link_files/logicCircuit.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/records.html">Record Mapper<span class="samplespan"><img height="200" src="./Draggable Link_files/records.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/dataFlow.html">Data Flow<span class="samplespan"><img height="200" src="./Draggable Link_files/dataFlow.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/dynamicPorts.html">Dynamic Ports<span class="samplespan"><img height="200" src="./Draggable Link_files/dynamicPorts.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/planogram.html">Planogram<span class="samplespan"><img height="200" src="./Draggable Link_files/planogram.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/seatingChart.html">Seating Chart<span class="samplespan"><img height="200" src="./Draggable Link_files/seatingChart.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/regrouping.html">Regrouping<span class="samplespan"><img height="200" src="./Draggable Link_files/regrouping.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/pipes.html">Pipes<span class="samplespan"><img height="200" src="./Draggable Link_files/pipes.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/draggableLink.html" class="selected">Draggable Link<span class="samplespan"><img height="200" src="./Draggable Link_files/draggableLink.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/linksToLinks.html">Links to Links<span class="samplespan"><img height="200" src="./Draggable Link_files/linksToLinks.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/updateDemo.html">Update Demo<span class="samplespan"><img height="200" src="./Draggable Link_files/updateDemo.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/contentAlign.html">Content Alignment<span class="samplespan"><img height="200" src="./Draggable Link_files/contentAlign.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/htmlInteraction.html">HTML Interaction<span class="samplespan"><img height="200" src="./Draggable Link_files/htmlInteraction.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/customContextMenu.html">Context Menu<span class="samplespan"><img height="200" src="./Draggable Link_files/customContextMenu.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/canvases.html">Canvases<span class="samplespan"><img height="200" src="./Draggable Link_files/canvases.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/comments.html">Comments<span class="samplespan"><img height="200" src="./Draggable Link_files/comments.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/gLayout.html">Grid Layout<span class="samplespan"><img height="200" src="./Draggable Link_files/gLayout.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/tLayout.html">Tree Layout<span class="samplespan"><img height="200" src="./Draggable Link_files/tLayout.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/fdLayout.html">Force Directed<span class="samplespan"><img height="200" src="./Draggable Link_files/fdLayout.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/ldLayout.html">Layered Digraph<span class="samplespan"><img height="200" src="./Draggable Link_files/ldLayout.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/cLayout.html">Circular Layout<span class="samplespan"><img height="200" src="./Draggable Link_files/cLayout.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/interactiveForce.html">Interactive Force<span class="samplespan"><img height="200" src="./Draggable Link_files/interactiveForce.png"></span></a></li>          <li><a href="https://gojs.net/latest/extensions/Fishbone.html">GoJS Extensions<span class="samplespan"><img height="200" src="./Draggable Link_files/Fishbone.png"></span></a></li>          <li><a href="https://gojs.net/latest/samples/all.html">Complete List</a></li>        </ul>      </div>    </div>  </div></div><div id="sample" class="col-md-10">
+  <div style="width: 100%; display: flex; justify-content: space-between">
+    <div id="myPaletteDiv" style="width: 105px; margin-right: 2px; background-color: whitesmoke; border: 1px solid black; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); cursor: auto;"><canvas tabindex="0" width="103" height="618" style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; width: 103px; height: 618px; cursor: auto;">This text is displayed if your browser does not support the Canvas HTML element.</canvas><div style="position: absolute; overflow: auto; width: 103px; height: 618px; z-index: 1;"><div style="position: absolute; width: 1px; height: 1px;"></div></div></div>
+    <div id="myDiagramDiv" style="flex-grow: 1; height: 620px; border: 1px solid black; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); cursor: auto;"><canvas tabindex="0" width="797" height="618" style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; width: 797px; height: 618px; cursor: auto;">This text is displayed if your browser does not support the Canvas HTML element.</canvas><div style="position: absolute; overflow: auto; width: 797px; height: 618px; z-index: 1;"><div style="position: absolute; width: 1px; height: 1px;"></div></div></div>
+  </div>
+  <p>
+    This sample demonstrates the ability for the user to drag around a Link as if it were a Node.
+    When either end of the link passes over a valid port, the port is highlighted.
+  </p>
+  <p>
+    The link-dragging functionality is enabled by setting some or all of the following properties:
+    <a href="https://gojs.net/latest/api/symbols/DraggingTool.html#dragsLink" target="api">DraggingTool.dragsLink</a>, <a href="https://gojs.net/latest/api/symbols/LinkingTool.html#isUnconnectedLinkValid" target="api">LinkingTool.isUnconnectedLinkValid</a>, and
+    <a href="https://gojs.net/latest/api/symbols/RelinkingTool.html#isUnconnectedLinkValid" target="api">RelinkingTool.isUnconnectedLinkValid</a>.
+  </p>
+  <p>
+    Note that a Link is present in the <a href="https://gojs.net/latest/api/symbols/Palette.html" target="api">Palette</a> so that it too can be dragged out and onto
+    the main Diagram.  Because links are not automatically routed when either end is not connected
+    with a Node, the route is provided explicitly when that Palette item is defined.
+  </p>
+  <p>
+    This also demonstrates several custom Adornments:
+    <a href="https://gojs.net/latest/api/symbols/Part.html#selectionAdornmentTemplate" target="api">Part.selectionAdornmentTemplate</a>, <a href="https://gojs.net/latest/api/symbols/Part.html#resizeAdornmentTemplate" target="api">Part.resizeAdornmentTemplate</a>, and
+    <a href="https://gojs.net/latest/api/symbols/Part.html#rotateAdornmentTemplate" target="api">Part.rotateAdornmentTemplate</a>.
+  </p>
+  <p>
+    Finally this sample demonstrates saving and restoring the <a href="https://gojs.net/latest/api/symbols/Diagram.html#position" target="api">Diagram.position</a> as a property
+    on the <a href="https://gojs.net/latest/api/symbols/Model.html#modelData" target="api">Model.modelData</a> object that is automatically saved and restored when calling <a href="https://gojs.net/latest/api/symbols/Model.html#toJson" target="api">Model.toJson</a>
+    and <a href="https://gojs.net/latest/api/symbols/Model.html#fromJson" target="api">Model.fromJson</a>.
+  </p>
+  <div>
+    <div>
+      <button id="SaveButton" onclick="save()" disabled="">Save</button>
+      <button onclick="load()">Load</button>
+      Diagram Model saved in JSON format:
+    </div>
+    <textarea id="mySavedModel" style="width:100%;height:300px">{ "class": "go.GraphLinksModel",
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [
+ ],
+  "linkDataArray": [
+ ]}
+    </textarea>
+  </div>
+<div><p style="display: none;"><a href="javascript:goViewSource()">View this sample page's source in-page</a></p><p><a href="https://github.com/NorthwoodsSoftware/GoJS/blob/master/samples/draggableLink.html" target="_blank">View this sample page's source on GitHub</a></p></div><div class="footer">GoJS® version 1.8.9. Copyright © 1998-2018 by Northwoods Software Corporation.</div><pre class="javascript hljs ">
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">if</span> (window.goSamples) goSamples();  <span class="hljs-comment">// init for these samples -- you don't need to call this</span>
+    <span class="hljs-keyword">var</span> $ = go.GraphObject.make;  <span class="hljs-comment">// for conciseness in defining templates</span>
+
+    myDiagram =
+      $(go.Diagram, <span class="hljs-string">"myDiagramDiv"</span>,  <span class="hljs-comment">// must name or refer to the DIV HTML element</span>
+        {
+          grid: $(go.Panel, <span class="hljs-string">"Grid"</span>,
+                  $(go.Shape, <span class="hljs-string">"LineH"</span>, { stroke: <span class="hljs-string">"lightgray"</span>, strokeWidth: <span class="hljs-number">0.5</span> }),
+                  $(go.Shape, <span class="hljs-string">"LineH"</span>, { stroke: <span class="hljs-string">"gray"</span>, strokeWidth: <span class="hljs-number">0.5</span>, interval: <span class="hljs-number">10</span> }),
+                  $(go.Shape, <span class="hljs-string">"LineV"</span>, { stroke: <span class="hljs-string">"lightgray"</span>, strokeWidth: <span class="hljs-number">0.5</span> }),
+                  $(go.Shape, <span class="hljs-string">"LineV"</span>, { stroke: <span class="hljs-string">"gray"</span>, strokeWidth: <span class="hljs-number">0.5</span>, interval: <span class="hljs-number">10</span> })
+                ),
+          allowDrop: <span class="hljs-literal">true</span>,  <span class="hljs-comment">// must be true to accept drops from the Palette</span>
+          <span class="hljs-string">"draggingTool.dragsLink"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-string">"draggingTool.isGridSnapEnabled"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-string">"linkingTool.isUnconnectedLinkValid"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-string">"linkingTool.portGravity"</span>: <span class="hljs-number">20</span>,
+          <span class="hljs-string">"relinkingTool.isUnconnectedLinkValid"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-string">"relinkingTool.portGravity"</span>: <span class="hljs-number">20</span>,
+          <span class="hljs-string">"relinkingTool.fromHandleArchetype"</span>:
+            $(go.Shape, <span class="hljs-string">"Diamond"</span>, { segmentIndex: <span class="hljs-number">0</span>, cursor: <span class="hljs-string">"pointer"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">8</span>, <span class="hljs-number">8</span>), fill: <span class="hljs-string">"tomato"</span>, stroke: <span class="hljs-string">"darkred"</span> }),
+          <span class="hljs-string">"relinkingTool.toHandleArchetype"</span>:
+            $(go.Shape, <span class="hljs-string">"Diamond"</span>, { segmentIndex: -<span class="hljs-number">1</span>, cursor: <span class="hljs-string">"pointer"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">8</span>, <span class="hljs-number">8</span>), fill: <span class="hljs-string">"darkred"</span>, stroke: <span class="hljs-string">"tomato"</span> }),
+          <span class="hljs-string">"linkReshapingTool.handleArchetype"</span>:
+            $(go.Shape, <span class="hljs-string">"Diamond"</span>, { desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">7</span>, <span class="hljs-number">7</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+          rotatingTool: $(TopRotatingTool),  <span class="hljs-comment">// defined below</span>
+          <span class="hljs-string">"rotatingTool.snapAngleMultiple"</span>: <span class="hljs-number">15</span>,
+          <span class="hljs-string">"rotatingTool.snapAngleEpsilon"</span>: <span class="hljs-number">15</span>,
+          <span class="hljs-string">"undoManager.isEnabled"</span>: <span class="hljs-literal">true</span>
+        });
+
+    <span class="hljs-comment">// when the document is modified, add a "*" to the title and enable the "Save" button</span>
+    myDiagram.addDiagramListener(<span class="hljs-string">"Modified"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
+      <span class="hljs-keyword">var</span> button = document.getElementById(<span class="hljs-string">"SaveButton"</span>);
+      <span class="hljs-keyword">if</span> (button) button.disabled = !myDiagram.isModified;
+      <span class="hljs-keyword">var</span> idx = document.title.indexOf(<span class="hljs-string">"*"</span>);
+      <span class="hljs-keyword">if</span> (myDiagram.isModified) {
+        <span class="hljs-keyword">if</span> (idx &lt; <span class="hljs-number">0</span>) document.title += <span class="hljs-string">"*"</span>;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (idx &gt;= <span class="hljs-number">0</span>) document.title = document.title.substr(<span class="hljs-number">0</span>, idx);
+      }
+    });
+
+    <span class="hljs-comment">// Define a function for creating a "port" that is normally transparent.</span>
+    <span class="hljs-comment">// The "name" is used as the GraphObject.portId, the "spot" is used to control how links connect</span>
+    <span class="hljs-comment">// and where the port is positioned on the node, and the boolean "output" and "input" arguments</span>
+    <span class="hljs-comment">// control whether the user can draw links from or to the port.</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makePort</span><span class="hljs-params">(name, spot, output, input)</span> {</span>
+      <span class="hljs-comment">// the port is basically just a small transparent square</span>
+      <span class="hljs-keyword">return</span> $(go.Shape, <span class="hljs-string">"Circle"</span>,
+               {
+                  fill: <span class="hljs-literal">null</span>,  <span class="hljs-comment">// not seen, by default; set to a translucent gray by showSmallPorts, defined below</span>
+                  stroke: <span class="hljs-literal">null</span>,
+                  desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">7</span>, <span class="hljs-number">7</span>),
+                  alignment: spot,  <span class="hljs-comment">// align the port on the main Shape</span>
+                  alignmentFocus: spot,  <span class="hljs-comment">// just inside the Shape</span>
+                  portId: name,  <span class="hljs-comment">// declare this object to be a "port"</span>
+                  fromSpot: spot, toSpot: spot,  <span class="hljs-comment">// declare where links may connect at this port</span>
+                  fromLinkable: output, toLinkable: input,  <span class="hljs-comment">// declare whether the user may draw links to/from here</span>
+                  cursor: <span class="hljs-string">"pointer"</span>  <span class="hljs-comment">// show a different cursor to indicate potential link point</span>
+               });
+    }
+
+    <span class="hljs-keyword">var</span> nodeSelectionAdornmentTemplate =
+      $(go.Adornment, <span class="hljs-string">"Auto"</span>,
+        $(go.Shape, { fill: <span class="hljs-literal">null</span>, stroke: <span class="hljs-string">"deepskyblue"</span>, strokeWidth: <span class="hljs-number">1.5</span>, strokeDashArray: [<span class="hljs-number">4</span>, <span class="hljs-number">2</span>] }),
+        $(go.Placeholder)
+      );
+
+    <span class="hljs-keyword">var</span> nodeResizeAdornmentTemplate =
+      $(go.Adornment, <span class="hljs-string">"Spot"</span>,
+        { locationSpot: go.Spot.Right },
+        $(go.Placeholder),
+        $(go.Shape, { alignment: go.Spot.TopLeft, cursor: <span class="hljs-string">"nw-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+        $(go.Shape, { alignment: go.Spot.Top, cursor: <span class="hljs-string">"n-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+        $(go.Shape, { alignment: go.Spot.TopRight, cursor: <span class="hljs-string">"ne-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+
+        $(go.Shape, { alignment: go.Spot.Left, cursor: <span class="hljs-string">"w-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+        $(go.Shape, { alignment: go.Spot.Right, cursor: <span class="hljs-string">"e-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+
+        $(go.Shape, { alignment: go.Spot.BottomLeft, cursor: <span class="hljs-string">"se-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+        $(go.Shape, { alignment: go.Spot.Bottom, cursor: <span class="hljs-string">"s-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+        $(go.Shape, { alignment: go.Spot.BottomRight, cursor: <span class="hljs-string">"sw-resize"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> })
+      );
+
+    <span class="hljs-keyword">var</span> nodeRotateAdornmentTemplate =
+      $(go.Adornment,
+        { locationSpot: go.Spot.Center, locationObjectName: <span class="hljs-string">"CIRCLE"</span> },
+        $(go.Shape, <span class="hljs-string">"Circle"</span>, { name: <span class="hljs-string">"CIRCLE"</span>, cursor: <span class="hljs-string">"pointer"</span>, desiredSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">7</span>, <span class="hljs-number">7</span>), fill: <span class="hljs-string">"lightblue"</span>, stroke: <span class="hljs-string">"deepskyblue"</span> }),
+        $(go.Shape, { geometryString: <span class="hljs-string">"M3.5 7 L3.5 30"</span>, isGeometryPositioned: <span class="hljs-literal">true</span>, stroke: <span class="hljs-string">"deepskyblue"</span>, strokeWidth: <span class="hljs-number">1.5</span>, strokeDashArray: [<span class="hljs-number">4</span>, <span class="hljs-number">2</span>] })
+      );
+
+    myDiagram.nodeTemplate =
+      $(go.Node, <span class="hljs-string">"Spot"</span>,
+        { locationSpot: go.Spot.Center },
+        <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"location"</span>, <span class="hljs-string">"loc"</span>, go.Point.parse).makeTwoWay(go.Point.stringify),
+        { selectable: <span class="hljs-literal">true</span>, selectionAdornmentTemplate: nodeSelectionAdornmentTemplate },
+        { resizable: <span class="hljs-literal">true</span>, resizeObjectName: <span class="hljs-string">"PANEL"</span>, resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
+        { rotatable: <span class="hljs-literal">true</span>, rotateAdornmentTemplate: nodeRotateAdornmentTemplate },
+        <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"angle"</span>).makeTwoWay(),
+        <span class="hljs-comment">// the main object is a Panel that surrounds a TextBlock with a Shape</span>
+        $(go.Panel, <span class="hljs-string">"Auto"</span>,
+          { name: <span class="hljs-string">"PANEL"</span> },
+          <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"desiredSize"</span>, <span class="hljs-string">"size"</span>, go.Size.parse).makeTwoWay(go.Size.stringify),
+          $(go.Shape, <span class="hljs-string">"Rectangle"</span>,  <span class="hljs-comment">// default figure</span>
+            {
+              portId: <span class="hljs-string">""</span>, <span class="hljs-comment">// the default port: if no spot on link data, use closest side</span>
+              fromLinkable: <span class="hljs-literal">true</span>, toLinkable: <span class="hljs-literal">true</span>, cursor: <span class="hljs-string">"pointer"</span>,
+              fill: <span class="hljs-string">"white"</span>,  <span class="hljs-comment">// default color</span>
+              strokeWidth: <span class="hljs-number">2</span>
+            },
+            <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"figure"</span>),
+            <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"fill"</span>)),
+          $(go.TextBlock,
+            {
+              font: <span class="hljs-string">"bold 11pt Helvetica, Arial, sans-serif"</span>,
+              margin: <span class="hljs-number">8</span>,
+              maxSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">160</span>, <span class="hljs-literal">NaN</span>),
+              wrap: go.TextBlock.WrapFit,
+              editable: <span class="hljs-literal">true</span>
+            },
+            <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"text"</span>).makeTwoWay())
+        ),
+        <span class="hljs-comment">// four small named ports, one on each side:</span>
+        makePort(<span class="hljs-string">"T"</span>, go.Spot.Top, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>),
+        makePort(<span class="hljs-string">"L"</span>, go.Spot.Left, <span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>),
+        makePort(<span class="hljs-string">"R"</span>, go.Spot.Right, <span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>),
+        makePort(<span class="hljs-string">"B"</span>, go.Spot.Bottom, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>),
+        { <span class="hljs-comment">// handle mouse enter/leave events to show/hide the ports</span>
+          mouseEnter: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e, node)</span> {</span> showSmallPorts(node, <span class="hljs-literal">true</span>); },
+          mouseLeave: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e, node)</span> {</span> showSmallPorts(node, <span class="hljs-literal">false</span>); }
+        }
+      );
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">showSmallPorts</span><span class="hljs-params">(node, show)</span> {</span>
+      node.ports.each(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(port)</span> {</span>
+        <span class="hljs-keyword">if</span> (port.portId !== <span class="hljs-string">""</span>) {  <span class="hljs-comment">// don't change the default port, which is the big shape</span>
+          port.fill = show ? <span class="hljs-string">"rgba(0,0,0,.3)"</span> : <span class="hljs-literal">null</span>;
+        }
+      });
+    }
+
+    <span class="hljs-keyword">var</span> linkSelectionAdornmentTemplate =
+      $(go.Adornment, <span class="hljs-string">"Link"</span>,
+        $(go.Shape,
+          <span class="hljs-comment">// isPanelMain declares that this Shape shares the Link.geometry</span>
+          { isPanelMain: <span class="hljs-literal">true</span>, fill: <span class="hljs-literal">null</span>, stroke: <span class="hljs-string">"deepskyblue"</span>, strokeWidth: <span class="hljs-number">0</span> })  <span class="hljs-comment">// use selection object's strokeWidth</span>
+      );
+
+    myDiagram.linkTemplate =
+      $(go.Link,  <span class="hljs-comment">// the whole link panel</span>
+        { selectable: <span class="hljs-literal">true</span>, selectionAdornmentTemplate: linkSelectionAdornmentTemplate },
+        { relinkableFrom: <span class="hljs-literal">true</span>, relinkableTo: <span class="hljs-literal">true</span>, reshapable: <span class="hljs-literal">true</span> },
+        {
+          routing: go.Link.AvoidsNodes,
+          curve: go.Link.JumpOver,
+          corner: <span class="hljs-number">5</span>,
+          toShortLength: <span class="hljs-number">4</span>
+        },
+        <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"points"</span>).makeTwoWay(),
+        $(go.Shape,  <span class="hljs-comment">// the link path shape</span>
+          { isPanelMain: <span class="hljs-literal">true</span>, strokeWidth: <span class="hljs-number">2</span> }),
+        $(go.Shape,  <span class="hljs-comment">// the arrowhead</span>
+          { toArrow: <span class="hljs-string">"Standard"</span>, stroke: <span class="hljs-literal">null</span> }),
+        $(go.Panel, <span class="hljs-string">"Auto"</span>,
+          <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"visible"</span>, <span class="hljs-string">"isSelected"</span>).ofObject(),
+          $(go.Shape, <span class="hljs-string">"RoundedRectangle"</span>,  <span class="hljs-comment">// the link shape</span>
+            { fill: <span class="hljs-string">"#F8F8F8"</span>, stroke: <span class="hljs-literal">null</span> }),
+          $(go.TextBlock,
+            {
+              textAlign: <span class="hljs-string">"center"</span>,
+              font: <span class="hljs-string">"10pt helvetica, arial, sans-serif"</span>,
+              stroke: <span class="hljs-string">"#919191"</span>,
+              margin: <span class="hljs-number">2</span>,
+              minSize: <span class="hljs-keyword">new</span> go.Size(<span class="hljs-number">10</span>, <span class="hljs-literal">NaN</span>),
+              editable: <span class="hljs-literal">true</span>
+            },
+            <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"text"</span>).makeTwoWay())
+        )
+      );
+
+    load();  <span class="hljs-comment">// load an initial diagram from some JSON text</span>
+
+    <span class="hljs-comment">// initialize the Palette that is on the left side of the page</span>
+    myPalette =
+      $(go.Palette, <span class="hljs-string">"myPaletteDiv"</span>,  <span class="hljs-comment">// must name or refer to the DIV HTML element</span>
+        {
+          maxSelectionCount: <span class="hljs-number">1</span>,
+          nodeTemplateMap: myDiagram.nodeTemplateMap,  <span class="hljs-comment">// share the templates used by myDiagram</span>
+          linkTemplate: <span class="hljs-comment">// simplify the link template, just in this Palette</span>
+            $(go.Link,
+              { <span class="hljs-comment">// because the GridLayout.alignment is Location and the nodes have locationSpot == Spot.Center,</span>
+                <span class="hljs-comment">// to line up the Link in the same manner we have to pretend the Link has the same location spot</span>
+                locationSpot: go.Spot.Center,
+                selectionAdornmentTemplate:
+                  $(go.Adornment, <span class="hljs-string">"Link"</span>,
+                    { locationSpot: go.Spot.Center },
+                    $(go.Shape,
+                      { isPanelMain: <span class="hljs-literal">true</span>, fill: <span class="hljs-literal">null</span>, stroke: <span class="hljs-string">"deepskyblue"</span>, strokeWidth: <span class="hljs-number">0</span> }),
+                    $(go.Shape,  <span class="hljs-comment">// the arrowhead</span>
+                      { toArrow: <span class="hljs-string">"Standard"</span>, stroke: <span class="hljs-literal">null</span> })
+                  )
+              },
+              {
+                routing: go.Link.AvoidsNodes,
+                curve: go.Link.JumpOver,
+                corner: <span class="hljs-number">5</span>,
+                toShortLength: <span class="hljs-number">4</span>
+              },
+              <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"points"</span>),
+              $(go.Shape,  <span class="hljs-comment">// the link path shape</span>
+                { isPanelMain: <span class="hljs-literal">true</span>, strokeWidth: <span class="hljs-number">2</span> }),
+              $(go.Shape,  <span class="hljs-comment">// the arrowhead</span>
+                { toArrow: <span class="hljs-string">"Standard"</span>, stroke: <span class="hljs-literal">null</span> })
+            ),
+          model: <span class="hljs-keyword">new</span> go.GraphLinksModel([  <span class="hljs-comment">// specify the contents of the Palette</span>
+            { text: <span class="hljs-string">"Start"</span>, figure: <span class="hljs-string">"Circle"</span>, fill: <span class="hljs-string">"#00AD5F"</span> },
+            { text: <span class="hljs-string">"Step"</span> },
+            { text: <span class="hljs-string">"DB"</span>, figure: <span class="hljs-string">"Database"</span>, fill: <span class="hljs-string">"lightgray"</span> },
+            { text: <span class="hljs-string">"???"</span>, figure: <span class="hljs-string">"Diamond"</span>, fill: <span class="hljs-string">"lightskyblue"</span> },
+            { text: <span class="hljs-string">"End"</span>, figure: <span class="hljs-string">"Circle"</span>, fill: <span class="hljs-string">"#CE0620"</span> },
+            { text: <span class="hljs-string">"Comment"</span>, figure: <span class="hljs-string">"RoundedRectangle"</span>, fill: <span class="hljs-string">"lightyellow"</span> }
+          ], [
+            <span class="hljs-comment">// the Palette also has a disconnected Link, which the user can drag-and-drop</span>
+            { points: <span class="hljs-keyword">new</span> go.List(go.Point).addAll([<span class="hljs-keyword">new</span> go.Point(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-keyword">new</span> go.Point(<span class="hljs-number">30</span>, <span class="hljs-number">0</span>), <span class="hljs-keyword">new</span> go.Point(<span class="hljs-number">30</span>, <span class="hljs-number">40</span>), <span class="hljs-keyword">new</span> go.Point(<span class="hljs-number">60</span>, <span class="hljs-number">40</span>)]) }
+          ])
+        });
+  }
+
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TopRotatingTool</span><span class="hljs-params">()</span> {</span>
+    go.RotatingTool.call(<span class="hljs-keyword">this</span>);
+  }
+  go.Diagram.inherit(TopRotatingTool, go.RotatingTool);
+
+  <span class="hljs-comment">/** @override */</span>
+  TopRotatingTool.prototype.updateAdornments = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(part)</span> {</span>
+    go.RotatingTool.prototype.updateAdornments.call(<span class="hljs-keyword">this</span>, part);
+    <span class="hljs-keyword">var</span> adornment = part.findAdornment(<span class="hljs-string">"Rotating"</span>);
+    <span class="hljs-keyword">if</span> (adornment !== <span class="hljs-literal">null</span>) {
+      adornment.location = part.rotateObject.getDocumentPoint(<span class="hljs-keyword">new</span> go.Spot(<span class="hljs-number">0.5</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">30</span>));  <span class="hljs-comment">// above middle top</span>
+    }
+  };
+
+  <span class="hljs-comment">/** @override */</span>
+  TopRotatingTool.prototype.rotate = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(newangle)</span> {</span>
+    go.RotatingTool.prototype.rotate.call(<span class="hljs-keyword">this</span>, newangle + <span class="hljs-number">90</span>);
+  };
+  <span class="hljs-comment">// end of TopRotatingTool class</span>
+
+
+  <span class="hljs-comment">// Show the diagram's model in JSON format that the user may edit</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">save</span><span class="hljs-params">()</span> {</span>
+    saveDiagramProperties();  <span class="hljs-comment">// do this first, before writing to JSON</span>
+    document.getElementById(<span class="hljs-string">"mySavedModel"</span>).value = myDiagram.model.toJson();
+    myDiagram.isModified = <span class="hljs-literal">false</span>;
+  }
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span><span class="hljs-params">()</span> {</span>
+    myDiagram.model = go.Model.fromJson(document.getElementById(<span class="hljs-string">"mySavedModel"</span>).value);
+    loadDiagramProperties();  <span class="hljs-comment">// do this after the Model.modelData has been brought into memory</span>
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saveDiagramProperties</span><span class="hljs-params">()</span> {</span>
+    myDiagram.model.modelData.position = go.Point.stringify(myDiagram.position);
+  }
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadDiagramProperties</span><span class="hljs-params">(e)</span> {</span>
+    <span class="hljs-comment">// set Diagram.initialPosition, not Diagram.position, to handle initialization side-effects</span>
+    <span class="hljs-keyword">var</span> pos = myDiagram.model.modelData.position;
+    <span class="hljs-keyword">if</span> (pos) myDiagram.initialPosition = go.Point.parse(pos);
+  }
+</pre><pre class=" hljs xml">
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"sample"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%; display: flex; justify-content: space-between"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"myPaletteDiv"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 105px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"myDiagramDiv"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"flex-grow: 1; height: 620px; border: solid 1px black"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    This sample demonstrates the ability for the user to drag around a Link as if it were a Node.
+    When either end of the link passes over a valid port, the port is highlighted.
+  <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    The link-dragging functionality is enabled by setting some or all of the following properties:
+    <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>DraggingTool.dragsLink<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>LinkingTool.isUnconnectedLinkValid<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>, and
+    <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>RelinkingTool.isUnconnectedLinkValid<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    Note that a Link is present in the <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Palette<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span> so that it too can be dragged out and onto
+    the main Diagram.  Because links are not automatically routed when either end is not connected
+    with a Node, the route is provided explicitly when that Palette item is defined.
+  <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    This also demonstrates several custom Adornments:
+    <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Part.selectionAdornmentTemplate<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Part.resizeAdornmentTemplate<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>, and
+    <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Part.rotateAdornmentTemplate<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    Finally this sample demonstrates saving and restoring the <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Diagram.position<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span> as a property
+    on the <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Model.modelData<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span> object that is automatically saved and restored when calling <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Model.toJson<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+    and <span class="hljs-tag">&lt;<span class="hljs-title">a</span>&gt;</span>Model.fromJson<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"SaveButton"</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">"save()"</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onclick</span>=<span class="hljs-value">"load()"</span>&gt;</span>Load<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+      Diagram Model saved in JSON format:
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"mySavedModel"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width:100%;height:300px"</span>&gt;</span>{ "class": "go.GraphLinksModel",
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [
+ ],
+  "linkDataArray": [
+ ]}
+    <span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+
+</pre></div></div><div style="top: 0px; z-index: 10002; position: fixed; display: none; text-align: center; left: 25%; width: 50%; background-color: rgb(245, 245, 245); padding: 16px; border: 16px solid rgb(68, 68, 68); border-radius: 10px; margin-top: 10px;"></div><div style="z-index: 10001; position: fixed; display: none; top: 0px; left: 0px; width: 100%; height: 100%; background-color: black; opacity: 0.8;"></div></body></html>
