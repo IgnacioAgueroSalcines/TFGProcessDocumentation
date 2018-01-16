@@ -122,14 +122,7 @@
       $(go.Palette, "myPaletteDiv",  
         {
           nodeTemplateMap: myDiagram.nodeTemplateMap,  
-          linkTemplate: 
-            $(go.Link,
-              
-              $(go.Shape, 
-                { isPanelMain: true, strokeWidth: 2 }),
-              $(go.Shape,  
-                { toArrow: "Standard", stroke: null })
-            ),
+
           model: new go.GraphLinksModel([  
             { text: "Name", figure: "Circle", fill: "#00AD5F" },
             { text: "Name", figure: "Rectangle", fill: "lightgray" },

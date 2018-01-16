@@ -12,9 +12,11 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Creaci\IeC {\'o}n de un Diagrama}}{15}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Asignaci\IeC {\'o}n de la variable \texttt {\$}}}{15}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Declaraci\IeC {\'o}n del patr\IeC {\'o}n del Nodo}}{16}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Declaraci\IeC {\'o}n del patr\IeC {\'o}n del Link}}{17}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Creaci\IeC {\'o}n de la Paleta de Nodos}}{17}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Esquema Cliente-Servidor}}{19}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Funci\IeC {\'o}n MakePort}}{17}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Patr\IeC {\'o}n Nodo con Puertos}}{18}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Declaraci\IeC {\'o}n del patr\IeC {\'o}n del Link}}{19}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Creaci\IeC {\'o}n de la Paleta de Nodos}}{19}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Esquema Cliente-Servidor}}{20}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Process-Component}{21}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{22}
