@@ -17,11 +17,16 @@
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Declaraci\IeC {\'o}n del patr\IeC {\'o}n del Link}}{19}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Creaci\IeC {\'o}n de la Paleta de Nodos}}{19}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Esquema Cliente-Servidor}}{20}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Interacci\IeC {\'o}n Vaadin}}{21}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Componente Vaadin}}{22}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Estado Componente Vaadin}}{22}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Llamada al conector}}{22}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Conector}}{23}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Process-Component}{21}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{22}
+\contentsline {xchapter}{Process-Component}{25}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{26}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Luca-Process}{23}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Nueva Arquitectura de LUCA}}{24}
+\contentsline {xchapter}{Luca-Process}{27}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Nueva Arquitectura de LUCA}}{28}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{27}
+\contentsline {xchapter}{Conclusiones}{31}
