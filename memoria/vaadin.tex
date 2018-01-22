@@ -1,21 +1,23 @@
-\subsection{Introducción}
-	Vaadin\cite{vaadin} es un framework de desarrollo de SPA que permite escribir el código de dichas aplicaciones en Java o en cualquier otro lenguaje soportado por la JVM 1.6+. Esto permite la programación de la interfaz gráfica en lenguajes como Java 8, Scala o Groovy, por ejemplo.
+\emph{Vaadin}~\cite{vaadin} es un \textbf{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en tecnologías web como HTML ()~\cite{}, CSS ()~\cite{}, Javascript~\cite{}, HTTP~\cite{} o AJAX ()~\cite{}.
 
+Una de las características diferenciadores de \texttt{Vaadin} es que, al contrario de las librerías de JavaScript tradicionales, \emph{Vaadin} también contempla la parte del servidor, por lo se generan tanto las llamadas al servidor desde la interfaz gráfica (\emph{front-end}) como la recepción y tratamiento de esas llamadas en la parte del servidor (\emph{back-end}). El proyecto LUCA está desarrollado sobre \emph{Vaadin}, por lo que los diferentes elementos desarrollados en este trabajo necesitan comunicarse y correr sobre Vaadin. 
 
-	Una de las características diferenciadores de Vaadin es que, contrario a las librerías y frameworks de JavaScript típicas, presenta una arquitectura centrada en el servidor, lo que implica que la mayoría de la lógica es ejecutada en los servidores remotos. Del lado del cliente, Vaadin está construido encima de Google Web Toolkit, con el que puede extenderse.
+%%========================================================================%%
+%% NOTE(Pablo): Rehacerla en castellano o poner de dónde se ha copiado    %%
+%%   Prefiero lo primero                                                  %%
+%%   ¿Esta figura se referencia desde el texto?                           %%
+%%========================================================================%%
 
+\begin{figure}[!tb]
+    \centering
+	\includegraphics[scale=1.5]{schema.png}
+	\caption{Arquitectura Básica de Vaadin}
+\label{fig:schema}
+\end{figure}
 
-	En este proyecto, Vaadin se encargara de realizar la comunicación entre el cliente y el servidor. De esta forma, será capaz de enviar y recibir datos, eventos y peticiones entre el componente Javascript (cliente) y el servidor.
+El primer paso para comprender el funcionamiento de \emph{Vaadin} es entender su arquitectura básica (Figura~\ref{fig:vaadinInteraction)} representa brevemente esta interacción. Como podemos observar, se consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
 
-
-	\begin{figure}[!tb]
-		\centering
-		\includegraphics[scale=1.5]{schema.png}
-		\caption{Esquema Cliente-Servidor}\label{fig:schema}
-	\end{figure}
  			
-\subsection{Ejemplo}
- 	La finalidad de este ejemplo es realizar una sencilla comunicación entre un componente Javascript y un proyecto implementado en Java utilizando para ello el soporte de Vaadin. Por lo tanto se creaará un componente en Vaadin que podrá ser utilizado posteriormente en diversos proyectos.
  	
  	\begin{figure}[!tb]
  		\centering
@@ -23,14 +25,12 @@
  		\caption{Interacción Vaadin}\label{fig:vaadinInteraction}
  	\end{figure}
  	
- 	El primer paso es diferenciar las partes que actúan en esta comunicación, para ello la Figura~\ref{fig:vaadinInteraction} representa brevemente esta interacción. Como podemos observar, se consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
  	
  	
- 	\subsubsection{Java Project}
  			
- 	En este proyecto la pieza central que será la encargada de comunicarse con el conector será un componente abstracto que implementa Vaadin para llevar a cabo esta finalidad. 
- 	
- 	Este componente consta de dos partes, por un lado tiene una clase que extiende de \emph{AbstractJavaScriptComponent} (Figura~\ref{fig:componenteVaadin}~,~Línea 2) que será la pieza que posea el contexto para comunicarse con el conector, además, en esta parte se especificarán todos los ficheros javascript u hojas de estilo que sean necesarios (Figura~\ref{fig:componenteVaadin}~,~Línea 1). Por otro lado el estado de dicho componente, que se encargará de asegurar la integridad de los elementos que existen dentro del componente y extenderá de \emph{JavaScriptComponentState} (Figura~\ref{fig:estadoComponenteVaadin}~,~Línea 1).
+ En este proyecto la pieza central que será la encargada de comunicarse con el conector será un componente abstracto que implementa \emph{Vaadin} para llevar a cabo esta finalidad.
+
+Este componente consta de dos partes, por un lado tiene una clase que extiende de \emph{AbstractJavaScriptComponent} (Figura~\ref{fig:componenteVaadin}~,~Línea 2) que será la pieza que posea el contexto para comunicarse con el conector, además, en esta parte se especificarán todos los ficheros javascript u hojas de estilo que sean necesarios (Figura~\ref{fig:componenteVaadin}~,~Línea 1). Por otro lado el estado de dicho componente, que se encargará de asegurar la integridad de los elementos que existen dentro del componente y extenderá de \emph{JavaScriptComponentState} (Figura~\ref{fig:estadoComponenteVaadin}~,~Línea 1).
  	
  	\begin{figure}[!tb]
  		\centering
@@ -50,8 +50,8 @@
  		\caption{Componente Vaadin}
  		\label{fig:componenteVaadin}
  	\end{figure}
- 
- 
+
+
  \begin{figure}[!tb]
  	\centering
  	\begin{lstlisting}[language=Java]
@@ -99,7 +99,7 @@
  			var mycomponent = new mylibrary.MyComponent(this.getElement());
 		 	
 		 	this.onStateChange = function() {
-		 		mycomponent.content = this.getState().content; 
+		 		mycomponent.content = this.getState().content;
 		 	}
 		 	
 		 	this.updateState = function(content){
