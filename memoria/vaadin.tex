@@ -96,7 +96,8 @@ Este componente consta de dos partes, por un lado tiene una clase que extiende d
  		\begin{lstlisting}[language=JavaScript]
  		window.urlPaquete_connector = function() {
 
- 			var mycomponent = new mylibrary.MyComponent(this.getElement());
+ 			var mycomponent = 
+ 			    new mylibrary.MyComponent(this.getElement());
 		 	
 		 	this.onStateChange = function() {
 		 		mycomponent.content = this.getState().content;
