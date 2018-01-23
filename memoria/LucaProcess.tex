@@ -18,21 +18,17 @@ Como se puede apreciar, la única diferencia reside en que en esta citada nueva 
 
 En esta sección se describe el proceso de desarrollo o implementación del componente de LUCA que integra el componente gráfico.
 
-\vspace{5mm}
 
 El primer paso para empezar a comprender el diseño y arquitectura de LUCA, fue realizar una pequeña prueba de concepto aplicando el patrón MVP\cite{mvp} e importando el componente gráfico para mostrar un proceso provisional, comprobando así el comportamiento del componente.
 
 
-\vspace{5mm} 
 
 Una vez comprobado el funcionamiento, se comienza la implementación por capas del proyecto, creando la capa controladora junto con sus anotaciones de seguridad, la capa de servicio que realiza llamadas a la capa de repositorio (implementada con Spring Data\cite{jpa}) para acceder a la base de datos, así como, al resto de servicios ya existentes en LUCA para la obtención de datos y ejecución de consultas. También se realizaron e implementaron, como se citó en la introducción, el conjunto de pruebas sobre la capa de servicio.
 
-\vspace{5mm} 
 
 
 Con la solidez de las capas de datos implementadas, se prosiguió con el diseño de la capa de presentación para componer todas las vistas y los presentadores necesarios. Para ello hubo que, siguiendo el diseño preestablecido, diseñar para cada vista principal(aquellas vistas que albergan al resto y que forman una unidad de interacción completa, por ejemplo la vista de gestión de procesos, de creación o de ejecución) un conjunto de vistas de acciones y de una vista de visualización de datos, cada una implementada con una pareja de vista presentador.
 
-\vspace{5mm} 
 
 Finalmente, tras realizar la implementación de componente, se realizó un comprobación y satisfacción de los requisitos generales descritos en la introducción.
 

@@ -1,21 +1,9 @@
 \chapter{Introducción}
-
-%%=================================================================%%
-%% NOTA(Pablo): Cambiar esto para que quede más coherente con la 
-%%    nueva estructura del tfg
-%%=================================================================%%
 	
 Este primer capítulo describe de forma general la información principal y relevante para poder comprender el funcionamiento del producto actual LUCA, así como los objetivos del proyecto a desarrollar junto con la explicación y motivación del mismo.
 	
 \section{Introducción}
 
-El Trabajo Fin de Grado descrito en este documento ha consistido en ...
-
-%%==========================================================================================
-%% NOTE(Pablo): Aquí poner una intro general del proyecto sin meterse en detalles. Esto
-%%   se deja para escribir al final de todo el documento. En caso de que haya problemas te
-%%   lo escribo yo directamente.
-%%==========================================================================================
 
 Dado que el presente trabajo se enmarca dentro del proyecto LUCA, para poder comprender los objetivos de este Trabajo Fin de Grado, se hace necesario describir primero dicho proyecto, lo cual se realiza en la siguiente sección.
 
@@ -25,15 +13,6 @@ Dado que el presente trabajo se enmarca dentro del proyecto LUCA, para poder com
 
 En los últimos años, el volumen de datos recogidos y manipulados por las empresas ha aumentado de forma vertiginosa. Estos datos se han ido almacenando en diferentes tipos de fuentes conforme las empresas crecían y sus sistemas evolucionaban y se fusionaban. Como resultado de  este proceso no es extraño actualmente encontrar empresas que tengan sus datos almacenados en sistemas tan dispares como bases de datos relacionales, hojas XML o repositorios FTP.
 
-%%==========================================================================================
-%% NOTE(Pablo): Redundante con lo de abajo, lo elimino
-%%==========================================================================================
-%%
-%% Para poder recuperar cierta información necesitamos en ocasiones acceder a varios de estos sistemas y combinar la información
-%% procedente de ellos. Dado que cada una de estas fuentes tiene sus propios mecanismos y lenguajes de acceso, este proceso de
-%% recuperación de la información puede resultar bastante complejo y tedioso.
-%%
-%%===========================================================================================
 
 Como consecuencia de esta nueva situación, cuando un usuario quiere obtener una información concreta cuyos datos residen en varios de estos sistemas, éste necesita acceder a cada uno de estos sistemas, extraer de cada sistema la información que precisa, y finalmente filtrarla y unificarla para finalmente obtener los datos requeridos.
 
@@ -62,9 +41,6 @@ A continuación, se detalla brevemente el funcionamiento de LUCA. Para ello, uti
 
 Al abrir LUCA, nos encontramos con una primera vista (Figura~\ref{fig:gestionConsulta})que proporciona una serie de consultas predefinidas que el usuario tiene disponibles para ejecutar. Estas consultas predefinidas representan procesos de recuperación de información que el usuario realizará habitualmente contra diversos sistemas. En este ejemplo introductorio, se muestran sólo dos consultas: \emph{Flota Estimaciones} e \emph{Información Parada}.
 
-%%==========================================================================================
-%% NOTE(Pablo): Describir brevemente qué hace cada consulta.
-%%==========================================================================================
 
 Al seleccionar una consulta, se iniciaría el proceso de ejecución de la misma, para lo cual se abre una nueva interfaz. En primer lugar, debemos proporcionar a la consulta requeriría los datos de entrada necesarios para su ejecución. Por ejemplo, en el caso de la consulta \emph{Información Parada} (Figura~\ref{fig:gestionConsulta}, etiqueta 1) sería necesario proporcionar el identificador de la parada de la que queremos obtener información. Una vez introducido dicho identificador, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:gestionConsulta}, etiqueta 2). La consulta tiene definido internamente cómo acceder al servicio REST, por lo que dicho proceso se realiza de manera transparente al usuario. Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, hemos optado por visualizar el resultado de la consulta en formato JSON (Figura~\ref{fig:gestionConsulta}, etiqueta 3).
 
@@ -76,10 +52,6 @@ Para poder realizar esta tarea, el creador de consultas accedería a interfaz de
 
 Lo importante de este proceso es que, una vez definida la consulta, ésta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
-%%==========================================================================================
-%% NOTE(Pablo): ¿Dónde en esta interfaz se describe la URL del servicio al cual se accede
-%%               y dónde se indica que es un REST y no otra cosa?
-%%==========================================================================================
 
 	\begin{figure}[H]
 		\centering
@@ -91,14 +63,6 @@ Lo importante de este proceso es que, una vez definida la consulta, ésta se pue
 
 Actualmente, LUCA proporciona mecanismos para permitir al usuario recuperar de manera uniforme información de diferentes fuentes de datos. No obstante, LUCA por el momento sólo es capaz recuperar información de una única fuente de datos a la vez. Por tanto, cuando es necesario combinar información procedente de distintas fuentes, el propio usuario es el que debe realizar dicho proceso de composición a mano, ejecutando él cada consulta, y utilizando las salidas de cada una de ellas como entradas para las siguientes.
 
-%%==========================================================================================
-%% NOTE(Pablo): Intentar poner un proceso de composición con el sistema de TUS anterior, o
-%%      hacer que el ejemplo anterior haga las consultas contra la cadena de
-%%      electrodomésticos. Para ello puedes crearte de manera rápida una serie de servicios
-%%      falsos (que devuelvan siempre lo mismo), y ejecutar LUCA contra dichos servicios.
-%%      Para el ejemplo anterior sería más interesante llenar la interfaz de consultas.
-%%      Al verse sólo dos da la sensación de ejemplo artificial poco real.
-%%==========================================================================================
 
 Un ejemplo de dicho proceso de composición sería la necesidad de un dependiente de una tienda de electrodomésticos de obtener la edad de los usuarios que compraron lavadoras durante el mes pasado. Actualmente, la secuencia de consultas que debería de realizar serían las siguientes:
 
@@ -121,55 +85,10 @@ El segundo objetivo, que es el que implica una mayor complejidad, consiste en fa
 
 Para refinar estos dos grandes objetivos en una serie de requisitos más concretos, se llevó a cabo en primer lugar una reunión con el Jefe y el Gerente del proyecto. El objetivo de dicha reunión era conocer LUCA en profundidad. A continuación, dado que la fase de Ingeniería de Requisitos para este proyecto ya había sido realizada por la propia empresa, se nos proporcionaron unos documentos técnicos con los requisitos técnicos tanto para la ejecución de procesos como para el desarrollo del componente gráfico de especificación de procesos. Estos documentos pueden encontrarse en el Anexo adjunto a la memoria.
 
-%% \section{Ingeniería de Requisitos}
-
-%% En esta sección se contará el proceso llevado a cabo para aprender o entender la estructuración y definición de requisitos de la actual LUCA, así como la propia descripción de los requisitos que serán necesarios para la implementación del proyecto a realizar.
-
-%% \subsection{Proceso de integración en LUCA}
-
-%% El primer paso llevado a cabo para la introducción en el producto de LUCA y entender así su funcionamiento, fue una reunión con
-%% el Jefe de Proyecto y con el Gerente para describir, analizar y explicar todos los aspectos de LUCA.
-
-%% \subsection{Definición de Requisitos}
-
-%%==========================================================================================
-%% NOTE(Pablo): No dejes listas abiertas como "consultas y demás"
-%%==========================================================================================
-
-%% Una vez aclarados los términos del actual LUCA, se abordó el incremento que se quería llevar a cabo, del que parte este Trabajo %% de Fin de Grado. Se explicaron los términos de Proceso, variables de entradas y de salidas, consultas y demás.
-
-%% Además de la explicación,
-
-%%===========================================================================================
-%% NOTE(Pablo): Esto es mejor eliminarlo, no aporta información importante y suena a enrolle
-%%===========================================================================================
-
-%% Dado que la aplicación a construir es un incremento de un producto ya existente, no hace falta identificar
-%% la fuente de los requisitos ya que es el propio gerente o impulsor de dicho incremento el que actúa como
-%% stakeholder, junto con el jefe del proyecto los encargados de formar los objetivos conjuntos de la captura
-%% de información y de los propios requisitos.
-
-%%===========================================================================================
-%% NOTE(Pablo): Esto es redundante, ya se ha dicho antes
-%%===========================================================================================
-%%
-%% Cabe explicar también, que este proyecto se funda en la implementación o desarrollo de
-%% dos componentes. El primero representa una herramienta focalizada en el ámbito gráfico,
-%% cuya función es la creación, borrado y actualización de elementos que constan de
-%% variables de entradas y salidas, en términos generales, manipulación gráfica de los
-%% elementos constituyentes del proyecto. El otro representa un proyecto incremento del
-%% actual producto LUCA, centrado en la gestión de los procesos, los cuales son creados
-%% a través de consultas y enlaces entre sus entradas y salidas.
-%%
-%%===========================================================================================
 
 Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se centran en tres pilares o requisitos principales:
 
-%%==========================================================================================
-%% NOTE(Pablo): No entiendo ninguna de estos tres elementos. Desarrollalos un poco, si
-%%   sale algo interesante lo dejamos, sino lo quitamos. Si me puedes pasar los documentos
-%%   técnicos mejor, así le echo un ojo y te digo que se puede sacar de ahí.
-%%==========================================================================================
+
 
 \begin{itemize}
 	\item  Concatenación de las consultas entre si pertenecientes a un mismo proceso.
@@ -177,28 +96,12 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 	\item Aplicar criterios de navegación a partir de los resultados de salidas.
 \end{itemize}
 
-%% La especificación de estos requisitos se encuentra en los documentos técnicos citados anteriormente.
-
-%%==========================================================================================
-%% NOTE(Pablo): Meter algún párrafo de enlace
-%%==========================================================================================
 
 \section{Arquitectura LUCA}
 
-%%==========================================================================================
-%% NOTE(Pablo): No menciones todavía Go.JS y céntrate en LUCA.
-%%==========================================================================================
 
 Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{} con objeto de que se pueda entender su funcionamiento y cómo el trabajo descrito en este documento se integra en dicha arquitectura. LUCA sigue una arquitectura de tres capas donde la vista de presentación se estructura de acuerdo al patrón \emph{Model-View-Presenter} (MVP).
-%%==========================================================================================
-%% NOTE(Pablo): No menciones todavía Go.JS y céntrate en LUCA.
-%%==========================================================================================
-%%
-%% así como, mostrar la integración con el componente o proyecto gráfico (Luca-Process), el cuál, a su vez, utiliza un
-%% componente javascript abstracto implementado con la librería javascript GO.JS.
-%%
-%% Este patrón se caracteriza por separar de forma clara y concisa las vistas de la lógica de negocio.
-%%==========================================================================================
+
 
 \begin{figure}[!tb]
 	\centering
@@ -207,34 +110,6 @@ Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{
     \label{fig:funcionamientoLuca}
 \end{figure}
 
-%%==========================================================================================
-%% NOTE(Pablo): Aquí describe "algo" en LUCA que pase por diversas capas, usando ese algo
-%%   como ejemplo para describir la funcionalidad de cada capa. En lengiaje simple, llano y
-%%   directo. Frases cortas.
-%%==========================================================================================
-
-%%==========================================================================================
-%% NOTE(Pablo): Lo describes como si se lo contases a alguien que no sabe nada de esto
-%% Con esta frase lo único que haces es despistarlo
-%%==========================================================================================
-%%
-%% En la arquitectura mostrada podemos observar, que la capa del presenter es la encargada
-%% de realizar la comunicación y control entre la vista y el modelo, y de albergar la
-%% gestión de eventos desde la vista.
-%%
-%% Otro aspecto importante reside en la capa de servicio. Esta capa es la encargada de
-%% recibir los datos desde las diferentes fuentes de datos, ya sea de la base de datos de
-%% LUCA, o de un recurso externo de cualquier tipo (como por ejemplo la extracción de
-%% información de un servicio REST, SOAP o de otra base de datos ajena).
-%%
-%%
-%% A continuación se muestran dos apartados que describen el funcionamiento y arquitectura
-%% del conector de LUCA y del Process-Component.
-%%
-
-%%==========================================================================================
-%% NOTE(Pablo): Esto no aporta nada, ni el texto ni la imagen. Eliminarlo
-%%==========================================================================================
 
 
 \subsection{Arquitectura del Conector}
