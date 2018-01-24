@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{httpclient}
 {\sc {Apache}}.
@@ -17,6 +17,26 @@
 {\sc {Erich Gamma And Kent Beck}}.
 \newblock \texttt{junit.org/junit5/}.
 
+\bibitem{http}
+{\sc {Mozilla}}.
+\newblock \texttt{developer.mozilla.org/en-US/docs/Web/HTTP}.
+
+\bibitem{css}
+{\sc {Mozilla}}.
+\newblock \texttt{developer.mozilla.org/es/docs/Web/CSS}.
+
+\bibitem{ajax}
+{\sc {Mozilla}}.
+\newblock \texttt{developer.mozilla.org/es/docs/Web/Guide/AJAX}.
+
+\bibitem{html}
+{\sc {Mozilla}}.
+\newblock \texttt{developer.mozilla.org/es/docs/Web/HTML}.
+
+\bibitem{javascript}
+{\sc {Mozilla}}.
+\newblock \texttt{developer.mozilla.org/es/docs/Web/JavaScript}.
+
 \bibitem{gojs}
 {\sc {Northwoods Software}}.
 \newblock \texttt{gojs.net/latest/index.html}.
@@ -34,8 +54,21 @@
 \newblock
   \texttt{docs.spring.io/spring/docs/current/spring-framework-reference/testing.html}.
 
+\bibitem{ria}
+{\sc {Russell Kay}}.
+\newblock
+  \texttt{computerworld.com/article/2551058/networking/rich-internet-applications.html}.
+
 \bibitem{selenium}
 {\sc {SeleniumHQ}}.
 \newblock \texttt{www.seleniumhq.org}.
+
+\bibitem{abstractComponentVaadin}
+{\sc {Vaadin}}.
+\newblock \texttt{vaadin.com/api/com/vaadin/ui/AbstractComponent.html}.
+
+\bibitem{componentVaadin}
+{\sc {Vaadin}}.
+\newblock \texttt{vaadin.com/api/com/vaadin/ui/Component.html}.
 
 \end{thebibliography}

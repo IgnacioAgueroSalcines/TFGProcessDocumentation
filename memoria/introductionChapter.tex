@@ -34,7 +34,7 @@ A continuación, se detalla brevemente el funcionamiento de LUCA. Para ello, uti
 
 \begin{figure}[!tb]
     \centering
- 	\includegraphics[scale=0.5]{capturasLuca/gestionConsultas.png}
+ 	\includegraphics[width=\linewidth]{capturasLuca/gestionConsultas.png}
 	\caption{Vista de Gestión de Consultas}
     \label{fig:gestionConsulta}
 \end{figure}
@@ -53,9 +53,9 @@ Para poder realizar esta tarea, el creador de consultas accedería a interfaz de
 Lo importante de este proceso es que, una vez definida la consulta, ésta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
 
-	\begin{figure}[H]
+	\begin{figure}[!tb]
 		\centering
-		\includegraphics[scale=0.5]{capturasLuca/ejecucionConsulta.png}
+		\includegraphics[width=\linewidth]{capturasLuca/ejecucionConsulta.png}
 		\caption{Vista de Ejecución de Consultas}\label{fig:ejecucionConsultas}
 	\end{figure}
 
@@ -105,7 +105,7 @@ Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{
 
 \begin{figure}[!tb]
 	\centering
-	\includegraphics[scale=0.5]{funcionamientoLuca.png}
+	\includegraphics[width=\linewidth]{funcionamientoLuca.png}
 	\caption{Arquitectura de LUCA}
     \label{fig:funcionamientoLuca}
 \end{figure}
@@ -119,9 +119,9 @@ El conector de LUCA es un componente que se encarga de recibir o recoger los dat
 
 En el ejemplo posterior podemos ver un diagrama que describe dicha interacción. El conector en función del tipo va a comunicarse con un cliente diferente, ya sea el HTTPClient \cite{httpclient} de Apache o JDBC \cite{jdbc} de Oracle, para realizar la comunicación y recepción de datos con los diferentes recursos.
 
-\begin{figure}[H]
+\begin{figure}[!tb]
 	\centering
-	\includegraphics[scale=0.5]{conectorImplementation.png}
+	\includegraphics[width=\linewidth]{conectorImplementation.png}
 	\caption{Arquitectura del Conector}\label{fig:conectorImplementation}
 \end{figure}
 
@@ -142,9 +142,9 @@ El conector internamente se compone de la librería encargada de definir el ámb
 
 A continuación, se muestra una figura explicativa de dicha interacción interna entre los componentes:
 
-\begin{figure}[H]
+\begin{figure}[!tb]
 	\centering
-	\includegraphics[scale=0.5]{processComponentArquitectura.png}
+	\includegraphics[width=\linewidth]{processComponentArquitectura.png}
 	\caption{Arquitectura del Process-Component}\label{fig:processComponent}
 \end{figure}
 

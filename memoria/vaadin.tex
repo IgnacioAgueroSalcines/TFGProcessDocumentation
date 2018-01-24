@@ -1,119 +1,123 @@
-\emph{Vaadin}~\cite{vaadin} es un \textbf{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en tecnologías web como HTML ()~\cite{}, CSS ()~\cite{}, Javascript~\cite{}, HTTP~\cite{} o AJAX ()~\cite{}.
 
-Una de las características diferenciadores de \texttt{Vaadin} es que, al contrario de las librerías de JavaScript tradicionales, \emph{Vaadin} también contempla la parte del servidor, por lo se generan tanto las llamadas al servidor desde la interfaz gráfica (\emph{front-end}) como la recepción y tratamiento de esas llamadas en la parte del servidor (\emph{back-end}). El proyecto LUCA está desarrollado sobre \emph{Vaadin}, por lo que los diferentes elementos desarrollados en este trabajo necesitan comunicarse y correr sobre Vaadin. 
 
-%%========================================================================%%
-%% NOTE(Pablo): Rehacerla en castellano o poner de dónde se ha copiado    %%
-%%   Prefiero lo primero                                                  %%
-%%   ¿Esta figura se referencia desde el texto?                           %%
-%%========================================================================%%
+\emph{Vaadin}~\cite{vaadin} es un \textbf{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{ria}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en tecnologías web como HTML (HyperText Markup Language)~\cite{html}, CSS (Cascading Style Sheets)~\cite{css}, Javascript~\cite{javascript}, HTTP (Hypertext Transfer Protocol)~\cite{http} o AJAX (Asynchronous JavaScript and XML)~\cite{ajax}.
 
+Una de las características diferenciadores de \texttt{Vaadin} es que, al contrario de las librerías de JavaScript tradicionales, \emph{Vaadin} también contempla la parte del servidor, por lo se generan tanto las llamadas al servidor desde la interfaz gráfica (\emph{front-end}) como la recepción y tratamiento de esas llamadas en la parte del servidor (\emph{back-end}).
+
+
+
+ 	
+ \subsection{Ejemplo Vaadin}
+ 	
 \begin{figure}[!tb]
-    \centering
-	\includegraphics[scale=1.5]{schema.png}
-	\caption{Arquitectura Básica de Vaadin}
-\label{fig:schema}
+	\centering
+	\includegraphics[width=\linewidth]{vaadinExampleImage.png}
+	\caption{Árbol de Proyectos}
+	\label{fig:vaadinExampleImage}
 \end{figure}
 
-El primer paso para comprender el funcionamiento de \emph{Vaadin} es entender su arquitectura básica (Figura~\ref{fig:vaadinInteraction)} representa brevemente esta interacción. Como podemos observar, se consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
+A continuación, se explica un ejemplo de contrucción de una jerarquía de tareas propias en la gestión de proyectos por parte de un Jefe de Proyecto (Figura~\ref{fig:vaadinExampleImage}).
 
- 			
- 	
- 	\begin{figure}[!tb]
- 		\centering
- 		\includegraphics[scale=0.5]{vaadinInteraction.png}
- 		\caption{Interacción Vaadin}\label{fig:vaadinInteraction}
- 	\end{figure}
- 	
- 	
- 	
- 			
- En este proyecto la pieza central que será la encargada de comunicarse con el conector será un componente abstracto que implementa \emph{Vaadin} para llevar a cabo esta finalidad.
+El proyecto creado para realizar el ejemplo se compone de una interfaz de usuario (Figura~\ref{fig:uiVaadin}) la cuál utiliza un componente llamado TreeGrid  (será explicado posteriormente,Figura~\ref{fig:treeGrid}) y un contenedor de datos (Figura~\ref{fig:demoContainer}).
 
-Este componente consta de dos partes, por un lado tiene una clase que extiende de \emph{AbstractJavaScriptComponent} (Figura~\ref{fig:componenteVaadin}~,~Línea 2) que será la pieza que posea el contexto para comunicarse con el conector, además, en esta parte se especificarán todos los ficheros javascript u hojas de estilo que sean necesarios (Figura~\ref{fig:componenteVaadin}~,~Línea 1). Por otro lado el estado de dicho componente, que se encargará de asegurar la integridad de los elementos que existen dentro del componente y extenderá de \emph{JavaScriptComponentState} (Figura~\ref{fig:estadoComponenteVaadin}~,~Línea 1).
- 	
- 	\begin{figure}[!tb]
- 		\centering
- 		\begin{lstlisting}[language=Java]
-	 	@JavaScript({ "connector.js" })
-	 	public class Component extends AbstractJavaScriptComponent {
-		 	public Component(String content) {
-		 		getState().content = content;
-		 	}
-		 	
-		 	@Override
-		 	protected ComponentState getState() {
-		 		return (ComponentState) super.getState();
-		 	}
-	 	}
- 		\end{lstlisting}
- 		\caption{Componente Vaadin}
- 		\label{fig:componenteVaadin}
- 	\end{figure}
+Para entrar en contexto con la implementación de un proyecto en Vaadin, es necesario recalcar que el objetivo es abstraer al usuario de todo el comportamiento gráfinco implementado en HTML o Javascript, por lo tanto, para poder crear las estructuras que finalmente desembocarán en elementos gráficos, Vaadin utiliza los llamados componentes.
 
+Un componente es una interfaz de alto nivel, todo elemento gráfico que se quiera utilizar debe de implementar y extender de las clases \emph{Component}\cite{componentVaadin} y \emph{AbstractComponent}\cite{abstractComponentVaadin}, estas constan de toda la implementación por defecto necesaria para poder mostrar un elemento.
 
- \begin{figure}[!tb]
- 	\centering
- 	\begin{lstlisting}[language=Java]
-	public class ComponentState extends JavaScriptComponentState {
-		public String content;
-	}
- 	\end{lstlisting}
- 	\caption{Estado Componente Vaadin}
- 	\label{fig:estadoComponenteVaadin}
- \end{figure}
+La Figura~\ref{fig:uiVaadin} reprensenta la interfaz gráfica que se ha implementado para el ejemplo. En ella podemos ver que se ha creado un \emph{layout} o espacio reservado en la interfaz para insertar componentes, y se le han establecido dos características, la primera es un espaciado vertical y la segunda es un espaciado horizontal (Figura~\ref{fig:uiVaadin}, Líneas~4-6).
 
+Posteriormente se declara el componente \emph{TreeGrid} que será el encargado de representar la jerarquía de elementos, además, se le ha dado un ancho y alto al elemento de 800 y 450 píxeles respectivamente (Figura~\ref{fig:uiVaadin}, Líneas~8-10).
 
-	La comunicación del componente con el conector se puede realizar de varias formas, las más comunes son:
-	\begin{itemize}
-		\item  Cambiando el estado del componente, ya que se ejecutará automáticamente una llamada en el conector por dicho cambio.
-		\item  Haciendo una llamada al conector mediante una función previamente publicada (Figura~\ref{fig:callfunction}~,~Línea 1). De esta forma se puede elegir la función a la que llamar pasando una serie de parámetros.
-	\end{itemize}
+Para que un componente muestre datos se le debe de insertar un contenedor de datos, en nuestro caso se ha creado una clase que se explicará más adelante que proporciona esta característica, y se le insertado a dicho componente (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
+
+Por último, se ha añadido el componente al \emph{layout} y este al contenido de la interfaz (Figura~\ref{fig:uiVaadin}, Líneas~15-16).
 
 \begin{figure}[!tb]
 	\centering
-	\begin{lstlisting}[language=JavaScript]
-	callFunction("updateState",content);
+	\begin{lstlisting}[language=Java]
+	@Override
+	protected void init(VaadinRequest request) {
+	
+		final VerticalLayout layout = new VerticalLayout();
+		layout.setSpacing(true);
+		layout.setMargin(true);
+		
+		final TreeGrid grid = new TreeGrid();
+		grid.setWidth(800, Unit.PIXELS);
+		grid.setHeight(450, Unit.PIXELS);
+		
+		DemoContainer container = new DemoContainer();
+		grid.setContainerDataSource(container);
+		
+		layout.addComponent(grid);
+		setContent(layout);
+	}
 	\end{lstlisting}
-	\caption{Llamada al conector}
-	\label{fig:callfunction}
+	\caption{Interfaz de Usuario Vaadin}
+	\label{fig:uiVaadin}
 \end{figure}
- 			
- 			
- 			
- 	\subsubsection{Javascript Connector}	
- 	
- 	
- 	El conector es el encargado de comunicarse con ambos lados, es decir, con el proyecto Java y el framework Javascript.
- 	
- 	Se empieza con la declaración de la localización del conector bajo la nomenclatura \emph{window+dirección+nombre del conector}, y después se especifica el conector (Figura~\ref{fig:conectorDesc}~,~Línea 1).
- 	
- 	El conector se compone principalmente de una función que se ejecuta cuando el estado del Componente en Vaadin cambia (Figura~\ref{fig:conectorDesc}~,~Líneas~04-06). Además, se le pueden añadir todas las funciones necesarias para el correcto funcionamiento (Figura~\ref{fig:conectorDesc}~,~Líneas~08-10). Como se puede observar en la Figura~\ref{fig:conectorDesc}~,~Línea~03, se crea un componente, este componente se correspondería, aplicando el caso al que se utilizará posteriormente en el proyecto, a GoJS, más concretamente a la descripción que se explica en el ejemplo del mismo.
- 	
- 	
- 	\begin{figure}[!tb]
- 		\centering
- 		\begin{lstlisting}[language=JavaScript]
- 		window.urlPaquete_connector = function() {
 
- 			var mycomponent = 
- 			    new mylibrary.MyComponent(this.getElement());
-		 	
-		 	this.onStateChange = function() {
-		 		mycomponent.content = this.getState().content;
-		 	}
-		 	
-		 	this.updateState = function(content){
-		 		mycomponent.content = content;
-		 	}
-	 	}
- 		\end{lstlisting}
- 		\caption{Conector}
- 		\label{fig:conectorDesc}
- 	\end{figure}
 
-	En conclusión, se ha explicado un ejemplo de interacción del componente Vaadin con un Framework Javascript a través de un conector Javascript.
- 	
- 	
- 	
- 			
+
+
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	public class TreeGrid extends Grid {
+		
+		@Override
+		public void setContainerDataSource(Container.Indexed container) {
+			if (container != null) {
+				if (!(container instanceof Container.Hierarchical)) {
+					container = new IndexedContainerHierarchicalWrapper(container);
+				}
+				
+				if (!(container instanceof Collapsible)) {
+					container = new ContainerCollapsibleWrapper(container);
+				}
+			}
+			super.setContainerDataSource(container);
+		}
+	}
+	\end{lstlisting}
+	\caption{Componente TreeGrid}
+	\label{fig:treeGrid}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	public class DemoContainer extends HierarchicalContainer implements Collapsible, Measurable {
+	
+		static final String PROPERTY_NAME = "Name";
+		static final String PROPERTY_HOURS = "Hours done";
+		static final String PROPERTY_MODIFIED = "Last modified";
+		
+		public DemoContainer() {
+			addContainerProperty(PROPERTY_NAME, String.class, "");
+			addContainerProperty(PROPERTY_HOURS, Integer.class, 0);
+			addContainerProperty(PROPERTY_MODIFIED, Date.class, new Date());
+			
+			for (Object[] r : DataSource.getRoot()) {
+				addItem(r);
+			}
+			
+			setItemSorter(new DemoItemSorter());
+		}
+		
+		private void setProperties(Item item, Object[] values) {
+			item.getItemProperty(PROPERTY_NAME).setValue(values[0]);
+			item.getItemProperty(PROPERTY_HOURS).setValue(values[1]);
+			item.getItemProperty(PROPERTY_MODIFIED).setValue(values[2]);
+		}
+	}
+	\end{lstlisting}
+	\caption{Contenedor TreeGrid}
+	\label{fig:demoContainer}
+\end{figure}
+

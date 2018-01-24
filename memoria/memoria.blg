@@ -1,22 +1,38 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: memoria.aux
 The style file: acm.bst
 Database file #1: Bibliografia.bib
-Warning--entry type for "vaadin" isn't style-file defined
+Warning--entry type for "componentVaadin" isn't style-file defined
 --line 2 of file Bibliografia.bib
-Warning--entry type for "gojs" isn't style-file defined
+Warning--entry type for "abstractComponentVaadin" isn't style-file defined
 --line 7 of file Bibliografia.bib
-Warning--entry type for "mvp" isn't style-file defined
+Warning--entry type for "javascript" isn't style-file defined
 --line 12 of file Bibliografia.bib
-Warning--entry type for "springTest" isn't style-file defined
+Warning--entry type for "ria" isn't style-file defined
+--line 17 of file Bibliografia.bib
+Warning--entry type for "html" isn't style-file defined
 --line 22 of file Bibliografia.bib
-Warning--entry type for "jpa" isn't style-file defined
+Warning--entry type for "http" isn't style-file defined
 --line 27 of file Bibliografia.bib
-Warning--entry type for "selenium" isn't style-file defined
+Warning--entry type for "ajax" isn't style-file defined
 --line 32 of file Bibliografia.bib
+Warning--entry type for "css" isn't style-file defined
+--line 37 of file Bibliografia.bib
+Warning--entry type for "vaadin" isn't style-file defined
+--line 42 of file Bibliografia.bib
+Warning--entry type for "gojs" isn't style-file defined
+--line 47 of file Bibliografia.bib
+Warning--entry type for "mvp" isn't style-file defined
+--line 52 of file Bibliografia.bib
+Warning--entry type for "springTest" isn't style-file defined
+--line 62 of file Bibliografia.bib
+Warning--entry type for "jpa" isn't style-file defined
+--line 67 of file Bibliografia.bib
+Warning--entry type for "selenium" isn't style-file defined
+--line 72 of file Bibliografia.bib
 Warning--entry type for "junit" isn't style-file defined
---line 38 of file Bibliografia.bib
+--line 78 of file Bibliografia.bib
 Warning--entry type for "jdbc" isn't style-file defined
---line 48 of file Bibliografia.bib
+--line 88 of file Bibliografia.bib
 Warning--entry type for "httpclient" isn't style-file defined
---line 53 of file Bibliografia.bib
-(There were 9 warnings)
+--line 93 of file Bibliografia.bib
+(There were 17 warnings)
