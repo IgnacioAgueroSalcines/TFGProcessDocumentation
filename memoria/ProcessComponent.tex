@@ -23,12 +23,6 @@ Su implementación se centra en dos pilares centrales. Por una parte se ha reali
 
 Esta imagen trata de  resumir el esquema de actuación que se lleva a cabo para la comunicación entre los distinto elementos del Process-Component.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=1.25]{schema.png}
-	\caption{Estructuración en módulos}\label{fig:schema}
-\end{figure}
-
 \subsection{Ejemplo Vaadin + Javascript}
 
 El primer paso para comprender el funcionamiento de \emph{Vaadin} es entender su arquitectura básica (Figura~\ref{fig:schema}) representa brevemente esta interacción. Como podemos observar, se consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.

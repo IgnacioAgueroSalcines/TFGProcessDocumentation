@@ -24,7 +24,7 @@ Para entrar en contexto con la implementación de un proyecto en Vaadin, es nece
 
 Un componente es una interfaz de alto nivel, todo elemento gráfico que se quiera utilizar debe de implementar y extender de las clases \emph{Component}\cite{componentVaadin} y \emph{AbstractComponent}\cite{abstractComponentVaadin}, estas constan de toda la implementación por defecto necesaria para poder mostrar un elemento.
 
-La Figura~\ref{fig:uiVaadin} reprensenta la interfaz gráfica que se ha implementado para el ejemplo. En ella podemos ver que se ha creado un \emph{layout} o espacio reservado en la interfaz para insertar componentes, y se le han establecido dos características, la primera es un espaciado vertical y la segunda es un espaciado horizontal (Figura~\ref{fig:uiVaadin}, Líneas~4-6).
+La Figura~\ref{fig:uiVaadin} reprensenta la interfaz gráfica que se ha implementado para el ejemplo. En ella podemos ver que se ha creado un \emph{layout} o espacio reservado en la interfaz para insertar componentes, y se le ha establecido dos características, la primera es un espaciado vertical y la segunda es un espaciado horizontal (Figura~\ref{fig:uiVaadin}, Líneas~4-6).
 
 Posteriormente se declara el componente \emph{TreeGrid} que será el encargado de representar la jerarquía de elementos, además, se le ha dado un ancho y alto al elemento de 800 y 450 píxeles respectivamente (Figura~\ref{fig:uiVaadin}, Líneas~8-10).
 
@@ -57,7 +57,9 @@ Por último, se ha añadido el componente al \emph{layout} y este al contenido d
 	\label{fig:uiVaadin}
 \end{figure}
 
+La clase \emph{TreeGrid} es la encargada de mostrar los datos de forma jerárquica. Para cumplimentar esta interfaz, se extiende de la clase de Vaadin \emph{Grid} la cuál permite crear una tabla de forma sencilla con solo implemetar sus métodos. Respecto a la clase \emph{TreeGrid}, con extenderla, ya es capaz de crear una lista jerárquica sobre la tabla.
 
+ Esta clase posee métodos para añadir y eliminar \emph{listeners} para contraer y expandir el árbol de elementos (Figura~\ref{fig:treeGrid}, Líneas~18-32), para \emph{settear} (Figura~\ref{fig:treeGrid}, Líneas~3-15), y el método para ver desde fuera el estado del componente (Figura~\ref{fig:treeGrid}, Líneas~35-38). El estado del \emph{TreeGrid} es una clase que contiene el identificador de la columna que está siendo modificada por el usuario (Figura~\ref{fig:treeGridState}).
 
 
 \begin{figure}[!tb]
@@ -78,13 +80,48 @@ Por último, se ha añadido el componente al \emph{layout} y este al contenido d
 			}
 			super.setContainerDataSource(container);
 		}
+		
+		
+		public void addExpandListener(ExpandEvent.ExpandListener listener) {
+			addListener(ExpandEvent.class, listener, ExpandEvent.ExpandListener.EXPAND_METHOD);
+		}
+		
+		public void removeExpandListener(ExpandEvent.ExpandListener listener) {
+			removeListener(ExpandEvent.class, listener, ExpandEvent.ExpandListener.EXPAND_METHOD);
+		}
+		
+		public void addCollapseListener(CollapseEvent.CollapseListener listener) {
+			addListener(CollapseEvent.class, listener, CollapseEvent.CollapseListener.COLLAPSE_METHOD);
+		}
+		
+		public void removeCollapseListener(CollapseEvent.CollapseListener listener) {
+			removeListener(CollapseEvent.class, listener, CollapseEvent.CollapseListener.COLLAPSE_METHOD);
+		}
+		
+		
+		@Override
+		protected TreeGridState getState() {
+			return (TreeGridState) super.getState();
+		}
 	}
 	\end{lstlisting}
 	\caption{Componente TreeGrid}
 	\label{fig:treeGrid}
 \end{figure}
 
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	public class TreeGridState extends GridState {
+		public String hierarchyColumnId;
+	}
+	\end{lstlisting}
+	\caption{Componente TreeGrid}
+	\label{fig:treeGridState}
+\end{figure}
 
+
+La última clase para explicar es \emph{DemoContainer}  (Figura~\ref{fig:demoContainer}), esta clase extiende de una clase de Vaadin llamada \emph{HierarchicalContainer} que se encarga de realizar toda la lógica para expandir y contraer los nodos, además, implementa las clases de Vaadin \emph{Collapsible} (Figura~\ref{fig:demoContainerCollapsible}) y \emph{Measurable} (Figura~\ref{fig:demoContainerMeasurable}), encargadas de colapsar el árbol de elementos y de calcular la profundidad del elemento en la jerarquía respectivamente.
 
 
 
@@ -110,14 +147,109 @@ Por último, se ha añadido el componente al \emph{layout} y este al contenido d
 			setItemSorter(new DemoItemSorter());
 		}
 		
+		private Object addItem(Object[] values) {
+			Item item = addItem((Object) values);
+			setProperties(item, values);
+			return values;
+		}
+		
+		private Object addChild(Object[] values, Object parentId) {
+			Item item = addItemAfter(parentId, values);
+			setProperties(item, values);
+			setParent(values, parentId);
+			return values;
+		}
+		
 		private void setProperties(Item item, Object[] values) {
 			item.getItemProperty(PROPERTY_NAME).setValue(values[0]);
 			item.getItemProperty(PROPERTY_HOURS).setValue(values[1]);
 			item.getItemProperty(PROPERTY_MODIFIED).setValue(values[2]);
 		}
+
+		private void addChildren(Object itemId) {
+			for (Object[] child : DataSource.getChildren(itemId)) {
+				Object childId = addChild(child, itemId);
+				if (Boolean.TRUE.equals(expandedNodes.get(childId))) {
+					addChildren(childId);
+				}
+			}
+		}
+		
+		private boolean removeChildrenRecursively(Object itemId) {
+			boolean success = true;
+			Collection<?> children2 = getChildren(itemId);
+			if (children2 != null) {
+				Object[] array = children2.toArray();
+				for (int i = 0; i < array.length; i++) {
+					boolean removeItemRecursively = removeItemRecursively(
+					this, array[i]);
+					if (!removeItemRecursively) {
+						success = false;
+					}
+				}
+			}
+			return success;	
+		}
+		
+		@Override
+		public boolean hasChildren(Object itemId) {
+			return !DataSource.isLeaf(itemId);
+		}
+		
 	}
 	\end{lstlisting}
 	\caption{Contenedor TreeGrid}
 	\label{fig:demoContainer}
+\end{figure}
+
+
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	public class DemoContainer
+	
+		...
+	
+		private Map<Object, Boolean> expandedNodes = new HashMap<>();
+			
+		@Override
+		public void setCollapsed(Object itemId, boolean collapsed) {
+			expandedNodes.put(itemId, !collapsed);	
+			if (collapsed) {
+				removeChildrenRecursively(itemId);
+			} else {
+				addChildren(itemId);
+			}
+		}
+		
+		@Override
+		public boolean isCollapsed(Object itemId) {
+			return !Boolean.TRUE.equals(expandedNodes.get(itemId));
+		}
+	}
+	\end{lstlisting}
+	\caption{Contenedor TreeGrid Collapsible}
+	\label{fig:demoContainerCollapsible}
+\end{figure}
+
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]	
+	public class DemoContainer
+	
+		...
+		@Override
+		public int getDepth(Object itemId) {
+			int depth = 0;
+			while (!isRoot(itemId)) {
+				depth ++;
+				itemId = getParent(itemId);
+			}
+			return depth;
+		}
+	}
+	\end{lstlisting}
+	\caption{Contenedor TreeGrid Measurable}
+	\label{fig:demoContainerMeasurable}
 \end{figure}
 

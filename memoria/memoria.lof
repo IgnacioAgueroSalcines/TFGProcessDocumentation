@@ -18,18 +18,20 @@
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Creaci\IeC {\'o}n de la Paleta de Nodos}}{16}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces \IeC {\'A}rbol de Proyectos}}{18}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Interfaz de Usuario Vaadin}}{19}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Componente TreeGrid}}{19}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Contenedor TreeGrid}}{20}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Componente TreeGrid}}{20}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Componente TreeGrid}}{21}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Contenedor TreeGrid}}{22}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Contenedor TreeGrid Collapsible}}{23}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Contenedor TreeGrid Measurable}}{23}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Process-Component}{21}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Estructuraci\IeC {\'o}n en m\IeC {\'o}dulos}}{22}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Interacci\IeC {\'o}n Vaadin}}{23}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Componente Vaadin}}{24}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Estado Componente Vaadin}}{24}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Llamada al conector}}{24}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Conector}}{25}
+\contentsline {xchapter}{Process-Component}{25}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Interacci\IeC {\'o}n Vaadin}}{27}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Componente Vaadin}}{27}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Estado Componente Vaadin}}{28}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Llamada al conector}}{28}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Conector}}{29}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Luca-Process}{27}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Nueva Arquitectura de LUCA}}{28}
+\contentsline {xchapter}{Luca-Process}{31}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Nueva Arquitectura de LUCA}}{32}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{31}
+\contentsline {xchapter}{Conclusiones}{35}
