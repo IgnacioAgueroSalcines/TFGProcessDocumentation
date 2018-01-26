@@ -51,8 +51,7 @@ Por último, se ha añadido el componente al \emph{layout} y este al contenido d
 		
 		layout.addComponent(grid);
 		setContent(layout);
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Interfaz de Usuario Vaadin}
 	\label{fig:uiVaadin}
 \end{figure}
@@ -101,8 +100,7 @@ La clase \emph{TreeGrid} es la encargada de mostrar los datos de forma jerárqui
 		protected TreeGridState getState() {
 			return (TreeGridState) super.getState();
 		}
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Componente TreeGrid}
 	\label{fig:treeGrid}
 \end{figure}
@@ -112,8 +110,7 @@ La clase \emph{TreeGrid} es la encargada de mostrar los datos de forma jerárqui
 	\begin{lstlisting}[language=Java]
 	public class TreeGridState extends GridState {
 		public String hierarchyColumnId;
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Componente TreeGrid}
 	\label{fig:treeGridState}
 \end{figure}
@@ -194,8 +191,7 @@ La última clase para explicar es \emph{DemoContainer}  (Figura~\ref{fig:demoCon
 			return !DataSource.isLeaf(itemId);
 		}
 		
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Contenedor TreeGrid}
 	\label{fig:demoContainer}
 \end{figure}
@@ -224,8 +220,7 @@ La última clase para explicar es \emph{DemoContainer}  (Figura~\ref{fig:demoCon
 		public boolean isCollapsed(Object itemId) {
 			return !Boolean.TRUE.equals(expandedNodes.get(itemId));
 		}
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Contenedor TreeGrid Collapsible}
 	\label{fig:demoContainerCollapsible}
 \end{figure}
@@ -245,8 +240,7 @@ La última clase para explicar es \emph{DemoContainer}  (Figura~\ref{fig:demoCon
 			}
 			return depth;
 		}
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Contenedor TreeGrid Measurable}
 	\label{fig:demoContainerMeasurable}
 \end{figure}
