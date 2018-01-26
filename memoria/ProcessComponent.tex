@@ -35,7 +35,7 @@ El primer paso para comprender el funcionamiento de \emph{Vaadin} es entender su
 
 En este proyecto la pieza central que será la encargada de comunicarse con el conector será un componente abstracto que implementa \emph{Vaadin} para llevar a cabo esta finalidad.
 
-Este componente consta de dos partes, por un lado tiene una clase que extiende de \emph{AbstractJavaScriptComponent} (Figura~\ref{fig:componenteVaadin}~,~Línea 2) que será la pieza que posea el contexto para comunicarse con el conector, además, en esta parte se especificarán todos los ficheros javascript u hojas de estilo que sean necesarios (Figura~\ref{fig:componenteVaadin}~,~Línea 1). Por otro lado el estado de dicho componente, que se encargará de asegurar la integridad de los elementos que existen dentro del componente y extenderá de \emph{JavaScriptComponentState} (Figura~\ref{fig:estadoComponenteVaadin}~,~Línea 1).
+Este componente consta de dos partes, por un lado tiene una clase que extiende de \emph{AbstractJavaScriptComponent} (Figura~\ref{fig:componenteVaadin}~,~Línea 2) que será la pieza que posea el contexto para comunicarse con el conector, además, en esta parte se especificarán todos los ficheros Javascript u hojas de estilo que sean necesarios (Figura~\ref{fig:componenteVaadin}~,~Línea 1). Por otro lado el estado de dicho componente, que se encargará de asegurar la integridad de los elementos que existen dentro del componente y extenderá de \emph{JavaScriptComponentState} (Figura~\ref{fig:estadoComponenteVaadin}~,~Línea 1).
 
 \begin{figure}[!tb]
 	\centering

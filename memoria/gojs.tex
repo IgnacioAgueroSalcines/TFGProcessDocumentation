@@ -2,13 +2,6 @@ Go.JS~\cite{gojs} es una biblioteca de JavaScript para implementar editores grá
 
 Para ilustrar el funcionamiento de GoJS, a continuación se mostrará a modeo de ejemplo cómo crear un editor gráfico para diseñar unos pseudo diagramas de flujo compuestos por círculos y rectángulos interconectados por flechas. Dicho editor se muestra en la Figura~\ref{fig:gojssample}.
 
-%%=======================================================================%%
-%% NOTA(Pablo): Haz esta imagen más compacta, en general, las imágenes   %%
-%%     cuanto más compactas sea mejor. La imagen se puede quedar en un   %%
-%%     tercio de lo que ocupa.                                           %%
-%% Con [width=\linewidth] es más fácil ajustarla al ancho de la página   %%
-%%=======================================================================%%
-
 \begin{figure}[!tb]
 	\centering
 	\includegraphics[width=\linewidth]{gojssample.png}
@@ -29,11 +22,6 @@ A continuación, se debe realizar una serie de acciones a nivel de Javascript pa
 	\label{fig:asignacionDollar}
 \end{figure}
 
-%%==========================================================================%%
-%% NOTA(Pablo): Formatea esto para que se lea mejor, que no se desborden    %%
-%%    las líneas                                                            %%
-%%==========================================================================%% 
-
 Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura~\ref{fig:creacionDiagrama}, Líneas~01-13), asignándole un \emph{grid} o cuadrícula de fondo (Figura~\ref{fig:creacionDiagrama}, Líneas~04-09), especificando los colores de las líneas de la cuadrícula (mediante la propiedad \emph{stroke}) y dándole la capacidad de poder arrastrar elementos sobre él (Figura~\ref{fig:creacionDiagrama}, Línea~10).
 
 \begin{figure}[!tb]
@@ -50,8 +38,7 @@ Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada 
 			),
 			allowDrop: true,
 		}
-	);
-	\end{lstlisting}
+	);\end{lstlisting}
 	\caption{Creación de un diagrama en GoJS}
 	\label{fig:creacionDiagrama}
 \end{figure}
@@ -63,21 +50,35 @@ A continuación deberemos definir lo que en GoJS se conoce como la \emph{plantil
 	\begin{lstlisting}[language=JavaScript]
 	myDiagram.nodeTemplate =
 		$(go.Node, "Spot",
-		{ locationSpot: go.Spot.Center },
+		{ 
+			locationSpot: go.Spot.Center 
+		},
 		new go.Binding("location").makeTwoWay(go.Point.stringify),
-		{ selectable: true, selectionAdornmentTemplate: nodeSelectionAdornmentTemplate },
-		{ resizable: true, resizeObjectName: "PANEL", resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
-		{ rotatable: true, rotateAdornmentTemplate: nodeRotateAdornmentTemplate },
+		{ 
+			selectable: true, 
+			selectionAdornmentTemplate: nodeSelectionAdornment 
+		},
+		{ 
+			resizable: true, 
+			resizeObjectName: "PANEL", 
+			resizeAdornmentTemplate: nodeResizeAdornment 
+		},
+		{ 
+			rotatable: true, 
+			rotateAdornmentTemplate: nodeRotateAdornment 
+		},
 	
 		$(go.Panel, "Auto",
-		{ name: "PANEL" },
+		{ 
+			name: "PANEL" 
+		},
 		$(go.Shape,
 		{
 			portId: "",
 			fromLinkable: true, toLinkable: true, cursor: "pointer",
 		},
-			new go.Binding("figure"),
-			new go.Binding("fill")),
+		new go.Binding("figure"),
+		new go.Binding("fill")),
 		$(go.TextBlock,
 		{
 			maxSize: new go.Size(50, 50),
@@ -85,8 +86,7 @@ A continuación deberemos definir lo que en GoJS se conoce como la \emph{plantil
 		},
 		new go.Binding("text").makeTwoWay())
 		)
-	);
-	\end{lstlisting}
+	);\end{lstlisting}
 \caption{Declaración del patrón del Nodo}
 \label{fig:patronNodo}
 \end{figure}
@@ -112,8 +112,7 @@ Una vez definidas las propiedades básicas de un nodo, el siguiente paso es defi
 			fromLinkable: true, toLinkable: true,
 			cursor: "pointer"
 		});
-	}
-	\end{lstlisting}
+	}\end{lstlisting}
 	\caption{Función MakePort}
 	\label{fig:funcionMakeport}
 \end{figure}
@@ -131,9 +130,7 @@ Para añadir puertos a los nodos se ha creado una función una función llamada 
 		makePort("L", go.Spot.Left),
 		makePort("R", go.Spot.Right),
 		makePort("B", go.Spot.Bottom)
-	);
-	
-	\end{lstlisting}
+	);\end{lstlisting}
 	\caption{Patrón Nodo con Puertos}
 	\label{fig:patronNodoFinal}
 \end{figure}
@@ -150,8 +147,7 @@ Una vez definidos los puertos, especificamos cómo se comportarán los enlaces e
 			$(go.Shape,
 			{ toArrow: "Standard", stroke: null }
 		)
-	)
-	\end{lstlisting}
+	)\end{lstlisting}
 \caption{Declaración del patrón del Link}
 \label{fig:patronlink}
 \end{figure}
@@ -165,12 +161,19 @@ myPalette =
 	{
 		nodeTemplateMap: myDiagram.nodeTemplateMap,
 		model: new go.GraphLinksModel([
-			{ text: "Name", figure: "Circle", fill: "#00AD5F" },
-			{ text: "Name", figure: "Rectangle", fill: "lightgray" }
+			{ 
+				text: "Name", 
+				figure: "Circle", 
+				fill: "#00AD5F" 
+			},
+			{ 
+				text: "Name", 
+				figure: "Rectangle", 
+				fill: "lightgray" 
+			}
 			])
 		}
-);
-\end{lstlisting}
+);\end{lstlisting}
 \caption{Creación de la Paleta de Nodos}
 \label{fig:paletaNodos}
 \end{figure}
