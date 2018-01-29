@@ -20,7 +20,9 @@ Su implementación se centra en dos pilares. Por una parte se ha realizado un pr
 
 \subsection{Ejemplo Vaadin + Javascript}
 
-El primer paso para comprender el funcionamiento de \emph{Vaadin} es entender su arquitectura básica. Como podemos observar en la Figura~\ref{fig:schema}, consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
+Como se explicó anteriormente, \emph{Vaadin} se encarga de abstraer al usuario del mundo Javascript, sin embargo, hay funcionalidades que \emph{Vaadin} no es capaz de alcanzar, en estos casos se utilizan componentes Javascript para enriquecer la aplicación.
+
+El primer paso para comprender el funcionamiento de \emph{Vaadin} junto a componentes Javascript es entender su arquitectura básica. Como podemos observar en la Figura~\ref{fig:schema}, consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
 
 
 
@@ -76,8 +78,7 @@ La comunicación del componente con el conector se puede realizar de varias form
 \begin{figure}[!tb]
 	\centering
 	\begin{lstlisting}[language=JavaScript]
-	callFunction("updateState",content);
-	\end{lstlisting}
+	callFunction("updateState",content);\end{lstlisting}
 	\caption{Llamada al conector}
 	\label{fig:callfunction}
 \end{figure}
@@ -89,7 +90,7 @@ La comunicación del componente con el conector se puede realizar de varias form
 
 El conector es el encargado de comunicarse con ambos lados, es decir, con el proyecto Java y el framework Javascript.
 
-Se empieza con la declaración de la localización del conector bajo la nomenclatura \emph{window+dirección+nombre del conector}, y después se especifica el conector (Figura~\ref{fig:conectorDesc}~,~Línea 1).
+Se empieza con una cabecera, que declara la correspondencia del conector con el componente abstracto Javascript, bajo la nomenclatura \emph{window}+dirección+nombre del conector, y después se especifica el conector (Figura~\ref{fig:conectorDesc}~,~Línea 1).
 
 El conector se compone principalmente de una función que se ejecuta cuando el estado del Componente en Vaadin cambia (Figura~\ref{fig:conectorDesc}~,~Líneas~4-6). Además, se le pueden añadir todas las funciones necesarias para el correcto funcionamiento (Figura~\ref{fig:conectorDesc}~,~Líneas~8-10). Como se puede observar en la Figura~\ref{fig:conectorDesc}~,~Línea~3, se crea un componente, este componente se correspondería, aplicando el caso al que se utilizará posteriormente en el proyecto, a \emph{GoJS}.
 
@@ -114,4 +115,4 @@ El conector se compone principalmente de una función que se ejecuta cuando el e
 	\label{fig:conectorDesc}
 \end{figure}
 
-En conclusión, se ha explicado un ejemplo de interacción del componente Vaadin con un Framework Javascript a través de un conector Javascript.
+En conclusión, se ha explicado un ejemplo de interacción del componente Vaadin con un Framework Javascript.
