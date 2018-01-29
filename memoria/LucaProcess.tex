@@ -1,35 +1,31 @@
 \chapter{Luca-Process}
 	
-Este capitulo describe el proceso de desarrollo e integración del componente gráfico (Process-Component). Se analizarán los aspectos del diseño y arquitectura a realizar así como las etapas de desarrollo del mismo.
+Este capitulo describe el proceso de desarrollo e integración del componente gráfico \emph{Process-Component}. Se analizarán los aspectos del diseño y arquitectura a realizar así como las etapas de desarrollo del mismo.
 	
-\section{Arquitectura}
 
-La arquitectura  de Luca-Process tras la integración del Process-Component, cambia ligera o mínimamente respecto a la arquitectura demostrada en la introducción. La siguiente figura describe la diferencia respecto a la figura anterior:
+El proyecto estará basado en una arquitectura en tres capas. La capa de servicios se comunicará con la capa de repositorio y con una serie de conectores que actuarán de intermediarios con recursos externos al sistema. Además, la capa de presentación utilizará el proyecto implementado con \emph{GoJS} como componente integrado en la interfaz (Figura~\ref{fig:arquitecturaLuca}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{arquitecturaLuca.png}
+	\includegraphics[width=\linewidth]{arquitecturaLuca.png}
 	\caption{Nueva Arquitectura de LUCA}\label{fig:arquitecturaLuca}
 \end{figure}
 
-Como se puede apreciar, la única diferencia reside en que en esta citada nueva funcionalidad se utiliza otro proyecto aparte, el cuál se encarga de forma exclusiva de proveer componentes de visualización para poder abordar la sintaxis de procesos y subprocesos que se enlazan entre sí mediante entradas y salidas.
 
-\section{Desarrollo}
-
-En esta sección se describe el proceso de desarrollo o implementación del componente de LUCA que integra el componente gráfico.
+El primer paso para empezar a comprender el diseño y arquitectura de LUCA, es entender el patrón MVP\cite{mvp} utilizado.
+A nivel de síntesis, el patrón MVP(\emph{Model View Presenter}) consta de tres capas. La capa del \emph{Modelo} es la encargada de albergar toda la lógica de negocio. La capa de la \emph{Vista} posee la capacidad de mostrar datos sobre las diferentes vistas. Por último, la capa de \emph{Presentación} realiza las labores de capa intermedia entre las citadas anteriormente y es capaz de conectar la interfaz gráfica con los daos.
 
 
-El primer paso para empezar a comprender el diseño y arquitectura de LUCA, fue realizar una pequeña prueba de concepto aplicando el patrón MVP\cite{mvp} e importando el componente gráfico para mostrar un proceso provisional, comprobando así el comportamiento del componente.
+Entrando en el territorio propio de las capas, \emph{LUCA} se compone de tres capas bien diferenciadas:
+
+\begin{enumerate}
+	\item Capa de Presentación \subitem Esta capa es la encargada de mostrar los datos sobre la interfaz.
+	\item Capa de Servicio \subitem Esta capa se ocupa de obtener los deatos de las diversas fuentes o recursos, ya bien sea comunicándose con la capa de repositorio, o con los diversos conectores hacia fuentes de datos externas. Además, esta capa se divide realmente en dos capas, la mencionada anteriormente, y otra por encima llamada \emph{Controladora} que controla todos los aspectos derivados de la seguridad en el acceso a datos.
+	\item Capa de repositorio \subitem Esta capa es la encargada de comunicarse con la base de datos, asi como, de implementar entre otras funciones, los filtros de petición de datos (un ejemplo de filtro sería obtener los datos de los procesos que se encuentren en un estado determinado). Además, se implementa con \emph{Spring Data}\cite{jpa}, que se encarga de asegurar la correcta comunicación con la base de datos.
+\end{enumerate}
 
 
 
-Una vez comprobado el funcionamiento, se comienza la implementación por capas del proyecto, creando la capa controladora junto con sus anotaciones de seguridad, la capa de servicio que realiza llamadas a la capa de repositorio (implementada con Spring Data\cite{jpa}) para acceder a la base de datos, así como, al resto de servicios ya existentes en LUCA para la obtención de datos y ejecución de consultas. También se realizaron e implementaron, como se citó en la introducción, el conjunto de pruebas sobre la capa de servicio.
-
-
-
-Con la solidez de las capas de datos implementadas, se prosiguió con el diseño de la capa de presentación para componer todas las vistas y los presentadores necesarios. Para ello hubo que, siguiendo el diseño preestablecido, diseñar para cada vista principal(aquellas vistas que albergan al resto y que forman una unidad de interacción completa, por ejemplo la vista de gestión de procesos, de creación o de ejecución) un conjunto de vistas de acciones y de una vista de visualización de datos, cada una implementada con una pareja de vista presentador.
-
-
-Finalmente, tras realizar la implementación de componente, se realizó un comprobación y satisfacción de los requisitos generales descritos en la introducción.
+La capa de servicio se compone tambien de un conjunto de pruebas para asegurar su funcionamiento. Sobre la capa de repositorio no es necesario realizar pruebas ya que \emph{Spring Data} asegura su integridad y funcionamiento. Sin embargo, sobre la capa de presentación no se realizaron pruebas automatizadas debido a su complejidad y a que era necesario ajustarse a las fechas de entrega del proyecto.
 
 
