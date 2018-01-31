@@ -30,7 +30,7 @@ Para aliviar esta situación, dentro de la empresa CIC, se está desarrollando u
 
 \subsection{Funcionamiento de LUCA}
 
-A continuación, se detalla brevemente el funcionamiento de LUCA. Para ello, utilizaremos como ejemplo el proceso de recuperación de información de un servicio REST. Concretamente, se utilizará el servicio REST que proporciona información de la flota de autobuses de Santander (TUS). Dicho servicio permite obtener, a partir del identificador de una parada de autobús, información relativa a dicha parada, como, por ejemplo, su localización.
+A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para ello, utilizaremos como ejemplo una consulta al \emph{opendata} del Transporte Urbano Santander (TUS). Concretamente realizaremos una consulta sobre un servicio permite obtener, a partir del identificador de una parada de autobús, información relativa a dicha parada, como, por ejemplo, su localización.
 
 \begin{figure}[!tb]
     \centering
@@ -39,16 +39,19 @@ A continuación, se detalla brevemente el funcionamiento de LUCA. Para ello, uti
     \label{fig:gestionConsulta}
 \end{figure}
 
-Al abrir LUCA, nos encontramos con una primera vista (Figura~\ref{fig:gestionConsulta})que proporciona una serie de consultas predefinidas que el usuario tiene disponibles para ejecutar. Estas consultas predefinidas representan procesos de recuperación de información que el usuario realizará habitualmente contra diversos sistemas. En este ejemplo introductorio, se muestran sólo dos consultas: \emph{Flota Estimaciones} e \emph{Información Parada}.
+En el menu principal de LUCA, nos aparece una vista con un conjunto de consultas que el usuario ha marcado como favoritas, es decir, que suele utilizar con frecuencia. Para el ejemplo realizaremos una consulta al \emph{opendata} del Transporte Urbano Santander, primero se explicará como crear una consulta para posteriormente explicar su ejecución.
 
-
-Al seleccionar una consulta, se iniciaría el proceso de ejecución de la misma, para lo cual se abre una nueva interfaz. En primer lugar, debemos proporcionar a la consulta requeriría los datos de entrada necesarios para su ejecución. Por ejemplo, en el caso de la consulta \emph{Información Parada} (Figura~\ref{fig:gestionConsulta}, etiqueta 1) sería necesario proporcionar el identificador de la parada de la que queremos obtener información. Una vez introducido dicho identificador, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:gestionConsulta}, etiqueta 2). La consulta tiene definido internamente cómo acceder al servicio REST, por lo que dicho proceso se realiza de manera transparente al usuario. Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, hemos optado por visualizar el resultado de la consulta en formato JSON (Figura~\ref{fig:gestionConsulta}, etiqueta 3).
-
-La principal ventaja que aporta LUCA es que el proceso de ejecución de consultas es opaco para el usuario que la ejecuta. El usuario sólo tiene que proporcionar los parámetros necesarios de entrada y seleccionar un formato de salida. Por tanto, el proceso de ejecución de consultas es exactamente el mismo con independencia de la fuente a la cual se accede.
+En la vista de gestión de consultas (Figura~\ref{fig:gestionConsulta}) se pueden realizar las operaciones propias de la gestión, como es crear, modificar, eliminar o ejecutar entre otras.
 
 No obstante, para que dichas consultas pueden ser ejecutadas, cómo llevar a cabo las mismas debe haber sido especificado previamente. Para ello, un usuario con conocimientos suficientes para ello, al que denominaremos en adelante el \emph{creador de consultas}, debe haber especificado cómo ejecutar cada consulta a bajo nivel.
 
 Para poder realizar esta tarea, el creador de consultas accedería a interfaz dedicada a esta tarea (ver Figura~\ref{}). En esta interfaz, definiría primero las variables de entrada y salida de la consulta (Figura~\ref{}, etiqueta 1). A continuación, especificaría cómo llevar a cabo dicha consulta a bajo nivel. Para ello puede utilizar una serie de facilidades y primitivas proporcionadas por LUCA. Para ejemplo, en el caso de la consulta \emph{Información Parada}, utilizando estas facilidades se especificaría el el recurso a obtener y el tipo de llamada HTTP a realizar, un \emph{GET} en nuestro caso.
+
+Tras guardar la consulta se puede ejecutar directamente desde la ventana de creación, sin embargo, si la consulta ya ha sido ejecutada previamente y el usuario la ha publicado (tras ejecutar una consulta desde la ventana de creación, si se ha ejecutado correctamente se le permite al usuario cambiar su estado de edición a publicada), el usuario puede ir a la ventada de ejecución de consultas, y desde ahí ejecutarla.
+
+La principal ventaja que aporta LUCA es que el proceso de ejecución de consultas es opaco para el usuario que la ejecuta. El usuario sólo tiene que proporcionar los parámetros necesarios de entrada y seleccionar un formato de salida. Por tanto, el proceso de ejecución de consultas es exactamente el mismo con independencia de la fuente a la cual se accede.
+
+Por ejemplo, en el caso de la consulta \emph{Información Parada} (Figura~\ref{fig:gestionConsulta}, etiqueta 1) sería necesario proporcionar el identificador de la parada de la que queremos obtener información. Una vez introducido dicho identificador, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:gestionConsulta}, etiqueta 2). La consulta tiene definido internamente cómo acceder al servicio REST, por lo que dicho proceso se realiza de manera transparente al usuario. Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, hemos optado por visualizar el resultado de la consulta en formato JSON (Figura~\ref{fig:gestionConsulta}, etiqueta 3).
 
 Lo importante de este proceso es que, una vez definida la consulta, ésta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
@@ -79,7 +82,7 @@ En adelante, estas cadenas de consultas para obtener un resultado concreto las d
 
 El objetivo general de este Trabajo Fin de Grado es integrar en LUCA el concepto de \emph{proceso}. Para ello, hay que dar soporte a dos cuestiones diferentes: (1) la ejecución de los procesos; y (2) la especificación de procesos. Por tanto, el objetivo general de este trabajo se descompone en estos dos subobjetivos principales. 
 
-El primer objetivo implica poder tratar procesos en LUCA de la misma forma que se trata las consultas. Es decir, los procesos deberán aparecer en la interfaz de consultas (ver Figura\ref{}), y ejecutarse mediante el mismo procedimiento utilizado para las consultas simples (ver Apartado\ref{}). Obviamente, la complejidad de ejecutar una proceso es mayor que la de ejecutar una consulta, ya que necesitamos ejecutar varias consultas, guardar resultados intermedios y utilizar estos resultados como entradas para otras consultas.
+El primer objetivo implica poder tratar procesos en LUCA de la misma forma que se trata las consultas. Es decir, los procesos deberán aparecer como en las consultas bajo una pestaña de gestión y otra de ejecución. Obviamente, la complejidad de ejecutar una proceso es mayor que la de ejecutar una consulta, ya que necesitamos ejecutar varias consultas, guardar resultados intermedios y utilizar estos resultados como entradas para otras consultas.
 
 El segundo objetivo, que es el que implica una mayor complejidad, consiste en facilitar la especificación de procesos en LUCA. Para que un proceso pueda ser ejecutado, primero debe ser especificado, indicando qué consultas lo componen y cómo se relacionan. De acuerdo con los deseos expresados por los responsables del proyecto LUCA y la empresa CIC, dicho mecanismo de especificación debía ser gráfico, permitiendo así componer consultas de manera visual mediante la interconexión de las salidas de unas con las entradas de otras.
 
@@ -91,8 +94,8 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 
 
 \begin{itemize}
-	\item  Concatenación de las consultas entre si pertenecientes a un mismo proceso.
-	\item  Visualización del progreso de ejecución del proceso.
+	\item Concatenación de las consultas entre si pertenecientes a un mismo proceso.
+	\item Visualización del progreso de ejecución del proceso.
 	\item Aplicar criterios de navegación a partir de los resultados de salidas.
 \end{itemize}
 
@@ -100,7 +103,7 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 \section{Arquitectura LUCA}
 
 
-Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{} con objeto de que se pueda entender su funcionamiento y cómo el trabajo descrito en este documento se integra en dicha arquitectura. LUCA sigue una arquitectura de tres capas donde la vista de presentación se estructura de acuerdo al patrón \emph{Model-View-Presenter} (MVP).
+Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{fig:funcionamientoLuca} con objeto de que se pueda entender su funcionamiento y cómo el trabajo descrito en este documento se integra en dicha arquitectura. LUCA sigue una arquitectura de tres capas donde la vista de presentación se estructura de acuerdo al patrón \emph{Model-View-Presenter} (MVP).
 
 
 \begin{figure}[!tb]
@@ -163,38 +166,9 @@ La sección presente describe el proceso llevado a cabo para realizar el desarro
 El proceso que se llevó a cabo para realizar el desarrollo del proyecto se basó en dos fases:
 	
 \begin{itemize}
-		\item  Una primera en la que se estudió el funcionamiento de la herramienta gráfica de GO.JS y después se realizó la implementación del Process-Componet.
-		\item  Una segunda en la que utilizando el componente descrito anteriormente, se implementa un incremento utilizando la lógica previa de LUCA.
-	\end{itemize}
-
-%%==========================================================================================
-%% NOTE(Pablo): Esto tan detallado no va aquí y no tiene mucho sentido tenerlo aquí. 
-%%   Habría que hablar algo más de que se ha hecho como dos subproyectos diferenciados, 
-%%   y que cada proyecto se ha hecho de manera incremental, pero algo informal, sin definir
-%%   sprints. Cuando esté claro lo anterior, esta parte te la escribo yo. 
-%%==========================================================================================
-
-\subsection{Implementación}
-	A continuación se explica brevemente el proceso de implementación llevado a cabo para ambas fases:
-	\begin{itemize}
-		\item Process-Component
-			\subitem El primer paso para empezar la implementación del Process-Component, fue aprender y practicar con ejemplos y con pruebas de concepto para ver como funcionaba y aprender la sintaxis de la librería de GO.JS.
-			
-			Tras este primer paso, se realizó la implementación del modelo (se puede encontrar en los documentos técnicos), para posteriormente generar una primera prueba de concepto conjunta realizando una comunicación con la librería GO.JS.
-			
-			
-			Por último se implementaron los eventos y escuchadores para posteriormente centrarse en completar dicho componente.
-			
-			
-			
-		\item  Luca-Process
-			\subitem En este componente se sigue un metodología similar al anterior. Primero se crea una prueba de concepto sencilla para ver la comunicación entre los componentes para posteriormente empezar a montar todo el sistema de recepción de eventos y llamadas al componente gráfico.
-			
-			\vspace{5mm}
-			
-			El siguiente paso fue seguir el estilo arquitectónico ya existente en LUCA, utilizando el patrón MVP\cite{mvp} para crear toda la jerarquíca de capas necesarias para la comunicación con los servicios ya existentes de LUCA y la propia base de datos de LUCA.
-		
-	\end{itemize}
+	\item  Una primera en la que se estudió el funcionamiento de la herramienta gráfica de GO.JS y después se realizó la implementación del Process-Componet utilizando para ello una integración de Vaadin con la herramienta GO.JS.
+	\item  Una segunda en la que utilizando el componente descrito anteriormente, se crearon las funcionalidades de gestión y de ejecución de procesos.
+\end{itemize}
 
 
 %%==========================================================================================
@@ -203,18 +177,13 @@ El proceso que se llevó a cabo para realizar el desarrollo del proyecto se bas�
 %%==========================================================================================
 	
 \subsection{Pruebas}
-
-	Este apartado describe el proceso de pruebas llevado a cabo para la comprobación y verificación de las diferentes funcionalidades del proyecto.
 	
-	\vspace{5mm}
 	
 	Las pruebas se centraron principalmente en el Luca-Process, ya que es el componente que alberga la mayor lógica del proyecto debido al conjunto de servicios que lo compone y a la lógica sobre los presenters desplegada.
 	
-	\vspace{5mm}
 	
 	Profundizando en las pruebas implementadas, solo se han realizado pruebas de integración por varios motivos. El primero es que las pruebas unitarias no son necesarias hacerlas ya que se centran sobre la capa de repositorio y esta capa ha sido implementada con Spring Data Jpa\cite{jpa} y ofrece ya una fiabilidad. El motivo por el que no se realizaron pruebas de sistema, aunque en una primera planificación estaban previstas hacerlas integrandolas con Selenium\cite{selenium} fue la complejidad que lleva la integración junto con Vaadin\cite{vaadin}, ya que la ventaja de programar mediante una captura de eventos sobre la vista toda la secuencia de movimiento sobre dicha vista pasa a ser programática, y debido a que había que ceñirse a unas fechas de entrega y al tiempo que llevaría dicha implementación se decidió omitirlas.
-	
-	\vspace{5mm}
+
 	
 	Las pruebas de integración que se llevaron a cabo se implementaron con Spring Test\cite{springTest} y JUnit\cite{junit}. Desglosando la composición de los mismos, se utilizó en cada test un fichero sql que declaraba las instrucciones de inserción de datos en la base de datos de pruebas necesarios para el correcto funcionamiento de los mismos. La base de datos de pruebas es una base de datos Mysql en local. relacional
 
