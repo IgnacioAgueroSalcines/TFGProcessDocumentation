@@ -25,7 +25,10 @@ Entrando en el territorio propio de las capas, \emph{LUCA} se compone de tres ca
 \end{enumerate}
 
 
+\section{Pruebas}
 
-La capa de servicio se compone tambien de un conjunto de pruebas para asegurar su funcionamiento. Sobre la capa de repositorio no es necesario realizar pruebas ya que \emph{Spring Data} asegura su integridad y funcionamiento. Sin embargo, sobre la capa de presentación no se realizaron pruebas automatizadas debido a su complejidad y a que era necesario ajustarse a las fechas de entrega del proyecto.
+La capa de servicio se compone también de un conjunto de pruebas para asegurar su funcionamiento. Sobre la capa de repositorio no es necesario realizar pruebas ya que \emph{Spring Data} asegura su integridad y funcionamiento. Sin embargo, sobre la capa de presentación no se realizaron pruebas automatizadas debido a su complejidad y a que era necesario ajustarse a las fechas de entrega del proyecto.
+
+Las pruebas implementaron y ejecutaron sobre una base de datos en local. Para ello, cada test se compone de un script SQL para introducir los datos previos al test que serán necesarios, y después se ejecuta el test, comprobando mediante \emph{JUnit}\cite{junit} que los resultados son los adecuados.
 
 
