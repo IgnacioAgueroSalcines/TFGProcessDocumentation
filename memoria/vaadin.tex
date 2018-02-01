@@ -1,13 +1,10 @@
 
 
-\emph{Vaadin}~\cite{vaadin} es un \textbf{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{ria}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en tecnologías web como HTML (HyperText Markup Language)~\cite{html}, CSS (Cascading Style Sheets)~\cite{css}, Javascript~\cite{javascript}, HTTP (Hypertext Transfer Protocol)~\cite{http} o AJAX (Asynchronous JavaScript and XML)~\cite{ajax}.
+\emph{Vaadin}~\cite{vaadin} es un \emph{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{ria}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en tecnologías web como HTML (\emph{HyperText Markup Language})~\cite{html}, CSS (\emph{Cascading Style Sheets})~\cite{css}, Javascript~\cite{javascript}, HTTP (\emph{Hypertext Transfer Protocol})~\cite{http} o AJAX (\emph{Asynchronous JavaScript and XML})~\cite{ajax}.
 
-Una de las características diferenciadores de \texttt{Vaadin} es que, al contrario de las librerías de JavaScript tradicionales, \emph{Vaadin} también contempla la parte del servidor, por lo se generan tanto las llamadas al servidor desde la interfaz gráfica (\emph{front-end}) como la recepción y tratamiento de esas llamadas en la parte del servidor (\emph{back-end}).
+Una de las características diferenciadores de \emph{Vaadin} es que, al contrario de las librerías de JavaScript tradicionales, \emph{Vaadin} también contempla la parte del servidor, por lo se generan tanto las llamadas al servidor desde la interfaz gráfica (\emph{front-end}) como la recepción y tratamiento de esas llamadas en la parte del servidor (\emph{back-end}).
 
-
-
- 	
- \subsection{Ejemplo Vaadin}
+Para abstraer al usuario de elementos relacionados con HTML o Javascript, Vaadin utiliza los llamados \emph{componentes}. Un componente representa un elemento gráfico o \emph{widget}. Para el desarrollo de los componentes, Vaadin proporciona una serie de clases reutilizables que contienen los infraestructura necesaria para facilitar su traducción a código HTML y Javascript. Para crear \emph{componentes}, los desarrolladores de Vaddin deben simplemente extender estas clases.
  	
 \begin{figure}[!tb]
 	\centering
@@ -15,22 +12,6 @@ Una de las características diferenciadores de \texttt{Vaadin} es que, al contra
 	\caption{Árbol de Proyectos}
 	\label{fig:vaadinExampleImage}
 \end{figure}
-
-A continuación, se explica un ejemplo de construcción de un árbol de tareas propias en la gestión de proyectos por parte de un Jefe de Proyecto (Figura~\ref{fig:vaadinExampleImage}).
-
-El proyecto creado para realizar el ejemplo se compone de una interfaz de usuario (Figura~\ref{fig:uiVaadin}) la cuál utiliza un componente llamado \emph{TreeGrid}  (Figura~\ref{fig:treeGrid}) y un contenedor de datos (Figura~\ref{fig:demoContainer}).
-
-Para entrar en contexto con la implementación de un proyecto en Vaadin, es necesario recalcar que el objetivo es abstraer al usuario de todo el comportamiento gráfinco implementado en HTML o Javascript, por lo tanto, para poder crear las estructuras que finalmente desembocarán en elementos gráficos, Vaadin utiliza los llamados componentes.
-
-Un componente es una interfaz de alto nivel, todo elemento gráfico que se quiera utilizar debe de implementar y extender de las clases \emph{Component}\cite{componentVaadin} y \emph{AbstractComponent}\cite{abstractComponentVaadin}, éstas constan de toda la implementación por defecto necesaria para poder mostrar un elemento.
-
-La Figura~\ref{fig:uiVaadin} reprensenta la interfaz gráfica que se ha implementado para el ejemplo. En ella podemos ver que se ha creado un \emph{layout} o espacio reservado en la interfaz para insertar componentes, y se le ha establecido dos características, la primera es un espaciado entre los componentes y la segunda es un márgen sobre los cuatro lados del componente (Figura~\ref{fig:uiVaadin}, Líneas~4-6).
-
-Posteriormente se declara el componente \emph{TreeGrid} que será el encargado de representar la jerarquía de elementos, además, se le ha dado un ancho y alto al elemento de 800 y 450 píxeles respectivamente (Figura~\ref{fig:uiVaadin}, Líneas~8-10).
-
-Para que un componente muestre datos se le debe de insertar un contenedor de datos, en nuestro caso se ha creado una clase que se explicará más adelante que proporciona esta característica, y se le insertado a dicho componente (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
-
-Por último, se ha añadido el componente al \emph{layout} y este al contenido de la interfaz (Figura~\ref{fig:uiVaadin}, Líneas~15-16).
 
 \begin{figure}[!tb]
 	\centering
@@ -51,75 +32,151 @@ Por último, se ha añadido el componente al \emph{layout} y este al contenido d
 		
 		layout.addComponent(grid);
 		setContent(layout);
-	}\end{lstlisting}
+	}
+    \end{lstlisting}
+    \vspace{-15pt}
 	\caption{Interfaz de Usuario Vaadin}
 	\label{fig:uiVaadin}
 \end{figure}
 
-La clase \emph{TreeGrid} es la encargada de mostrar los datos de forma jerárquica. Para cumplimentar esta interfaz, se extiende de la clase de Vaadin \emph{Grid} la cuál permite crear una tabla de forma sencilla con solo implemetar sus métodos. Respecto a la clase \emph{TreeGrid}, con extenderla, ya es capaz de crear una lista jerárquica sobre la tabla. Esta clase posee métodos para añadir y eliminar \emph{listeners} para contraer y expandir el árbol de elementos (Figura~\ref{fig:treeGrid}, Líneas~18-32), para \emph{settear} (Figura~\ref{fig:treeGrid}, Líneas~3-15), y el método para ver desde fuera el estado del componente (Figura~\ref{fig:treeGrid}, Líneas~35-38). El estado del \emph{TreeGrid} es una clase que contiene el identificador de la columna que está siendo modificada por el usuario (Figura~\ref{fig:treeGridState}).
+A continuación, se explica el funcionamiento de Vaadin mediante la construcción, a modo de ejemplo, de un árbol de tareas propio de la gestión de proyectos  (Figura~\ref{fig:vaadinExampleImage}).
 
+Para construir este ejemplo, en primer lugar definimos su interfaz gráfica. (Figura~\ref{fig:treeGrid}). Para crear dicha interfaz gráfica, nos basamos en un componente gráfico, o \emph{widget}, denominado \emph{TreeGrid}  (Figura~\ref{fig:treeGrid}, Línea 8). Como puede observarse, este componente gráfico se usa directamente desde código Java, tal como se crearía una interfaz Java de escritorio, utilizando elementos propios de Java como los \emph{layouts} (Figura~\ref{fig:uiVaadin}, Líneas~4\-6) y no siendo necesario escribir nada en Javascript o HTML. Este componente mostrará los datos proporcionados por el contenedor de datos \texttt{DemoContainer} (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
 
-\begin{figure}[!tb]
-	\centering
-	\begin{lstlisting}[language=Java]
-	public class TreeGrid extends Grid {
-		
-		@Override
-		public void setContainerDataSource(Container.Indexed container) {
-			if (container != null) {
-				if (!(container instanceof Container.Hierarchical)) {
-					container = new IndexedContainerHierarchicalWrapper(container);
-				}
-				
-				if (!(container instanceof Collapsible)) {
-					container = new ContainerCollapsibleWrapper(container);
-				}
-			}
-			super.setContainerDataSource(container);
-		}
-		
-		
-		public void addExpandListener(ExpandEvent.ExpandListener listener) {
-			addListener(ExpandEvent.class, listener, ExpandEvent.ExpandListener.EXPAND_METHOD);
-		}
-		
-		public void removeExpandListener(ExpandEvent.ExpandListener listener) {
-			removeListener(ExpandEvent.class, listener, ExpandEvent.ExpandListener.EXPAND_METHOD);
-		}
-		
-		public void addCollapseListener(CollapseEvent.CollapseListener listener) {
-			addListener(CollapseEvent.class, listener, CollapseEvent.CollapseListener.COLLAPSE_METHOD);
-		}
-		
-		public void removeCollapseListener(CollapseEvent.CollapseListener listener) {
-			removeListener(CollapseEvent.class, listener, CollapseEvent.CollapseListener.COLLAPSE_METHOD);
-		}
-		
-		
-		@Override
-		protected TreeGridState getState() {
-			return (TreeGridState) super.getState();
-		}
-	}\end{lstlisting}
-	\caption{Componente TreeGrid}
-	\label{fig:treeGrid}
-\end{figure}
+%%============================================================================%%
+%% NOTA(Pablo): Cambiale el nombre a DemoContiner y que se llame algo como    %%
+%%    TaskContainer o similar.                                                %%                
+%%============================================================================%%
 
-\begin{figure}[!tb]
-	\centering
-	\begin{lstlisting}[language=Java]
-	public class TreeGridState extends GridState {
-		public String hierarchyColumnId;
-	}\end{lstlisting}
-	\caption{Componente TreeGrid}
-	\label{fig:treeGridState}
-\end{figure}
+%%============================================================================%%
+%% NOTA(Pablo): Estos detalles se pueden omitir                               %%
+%%============================================================================%%
+%%
+%% La Figura~\ref{fig:uiVaadin} representa la interfaz gráfica que se ha 
+%% implementado para el ejemplo. En ella podemos ver que se ha creado un 
+%% \emph{layout} o espacio reservado en la interfaz para insertar componentes, 
+%% y se le ha establecido dos características, la primera es un espaciado 
+%% entre los componentes y la segunda es un márgen sobre los cuatro lados del
+%% componente .
+%%
+%% Posteriormente se declara el componente \emph{TreeGrid} que será el 
+%% encargado de representar la jerarquía de elementos, además, se le ha dado un 
+%% ancho y alto al elemento de 800 y 450 píxeles respectivamente 
+%% (Figura~\ref{fig:uiVaadin}, Líneas~8-10).
+%%
+%%
+%% Para que un componente muestre datos se le debe de insertar un contenedor 
+%% de datos, en nuestro caso se ha creado una clase que se explicará más 
+%% adelante que proporciona esta característica, y se le insertado a dicho 
+%% componente.
+%%
+%%
+%% Por último, se ha añadido el componente al \emph{layout} y este al contenido 
+%% de la interfaz (Figura~\ref{fig:uiVaadin}, Líneas~15-16).
+%%
+%%============================================================================%%
 
+%%============================================================================%%
+%% NOTA(Pablo): Este detalle se puede omitir. Demasiado bajo nivel para lo    %%
+%%    que queremos contar. El concepto de que se programa como si fuese Java  %%
+%%    ya ha quedado claro. 
+%%============================================================================%%
+%%
+%% La clase \emph{TreeGrid} es la encargada de mostrar los datos de forma 
+%% jerárquica. Para implementar esta interfaz, se extiende de la clase de 
+%% Vaadin \emph{Grid} la cuál permite crear una tabla de forma sencilla con 
+%% solo implemetar sus métodos. Respecto a la clase \emph{TreeGrid}, con 
+%% extenderla, ya es capaz de crear una lista jerárquica sobre la tabla. Esta 
+%% clase posee métodos para añadir y eliminar \emph{listeners} para contraer 
+%% y expandir el árbol de elementos (Figura~\ref{fig:treeGrid}, Líneas~18-32), 
+%% para \emph{settear} (Figura~\ref{fig:treeGrid}, Líneas~3-15), y el método 
+%% para ver desde fuera el estado del componente (Figura~\ref{fig:treeGrid}, 
+%% Líneas~35-38). El estado del \emph{TreeGrid} es una clase que contiene el 
+%% identificador de la columna que está siendo modificada por el usuario 
+%% (Figura~\ref{fig:treeGridState}).
+%%
+%%
+%%
+%% \begin{figure}[!tb]
+%%	\centering
+%% 	\begin{lstlisting}[language=Java]
+%%	public class TreeGrid extends Grid {
+%%		
+%%		@Override
+%%		public void setContainerDataSource(Container.Indexed container) {
+%%			if (container != null) {
+%%				if (!(container instanceof Container.Hierarchical)) {
+%%					container = new IndexedContainerHierarchicalWrapper(container);
+%%				}
+%%				
+%%				if (!(container instanceof Collapsible)) {
+%%					container = new ContainerCollapsibleWrapper(container);
+%%				}
+%%			}
+%%			super.setContainerDataSource(container);
+%%		}
+%%		
+%%		
+%%		public void addExpandListener(ExpandEvent.ExpandListener listener) {
+%%			addListener(ExpandEvent.class, listener, 
+%% ExpandEvent.ExpandListener.EXPAND_METHOD);
+%%
+%%		}
+%%
+%%		
+%%		public void removeExpandListener(ExpandEvent.ExpandListener listener) {
+%%			removeListener(ExpandEvent.class, listener, 
+%% ExpandEvent.ExpandListener.EXPAND_METHOD);
+%%		}
+%%		
+%%		public void addCollapseListener(CollapseEvent.CollapseListener listener) {
+%%
+%%			addListener(CollapseEvent.class, listener, 
+%% CollapseEvent.CollapseListener.COLLAPSE_METHOD);
+%%
+%%		}
+%% 
+%%		
+%%		public void removeCollapseListener(CollapseEvent.CollapseListener listener) {
+%%			removeListener(CollapseEvent.class, listener, 
+%% CollapseEvent.CollapseListener.COLLAPSE_METHOD);
+%%
+%%		}
+%%		
+%%		
+%%		@Override
+%%		protected TreeGridState getState() {
+%%			return (TreeGridState) super.getState();
+%%		}
+%%	}\end{lstlisting}
+%%	\caption{Componente TreeGrid}
+%%	\label{fig:treeGrid}
+%% \end{figure}
+%%
+%%
+%% \begin{figure}[!tb]
+%%	\centering
+%% \begin{lstlisting}[language=Java]
+%%	public class TreeGridState extends GridState {
+%%		public String hierarchyColumnId;
+%%	}\end{lstlisting}
+%%	\caption{Componente TreeGrid}
+%%	\label{fig:treeGridState}
+%% \end{figure}
+%% 
+%%================================================================================
 
-La última clase para explicar es \emph{DemoContainer}  (Figura~\ref{fig:demoContainer}), esta clase extiende de una clase de Vaadin llamada \emph{HierarchicalContainer} que se encarga de realizar toda la lógica para expandir y contraer los nodos, además, implementa las clases de Vaadin \emph{Collapsible} (Figura~\ref{fig:demoContainerCollapsible}) y \emph{Measurable} (Figura~\ref{fig:demoContainerMeasurable}), encargadas de colapsar el árbol de elementos y de calcular la profundidad del elemento en la jerarquía respectivamente.
+La clase \emph{DemoContainer} (Figura~\ref{fig:demoContainer}) es la que proporcionará
+los datos que se muestran en el \emph{grid}. Esta clase extiende de una clase de Vaadin llamada \emph{HierarchicalContainer} y se encarga de implementar toda la lógica para expandir y contraer los nodos. Además, implementa las interfaces de Vaadin \emph{Collapsible} (Figura~\ref{fig:demoContainerCollapsible}) y \emph{Measurable} (Figura~\ref{fig:demoContainerMeasurable}), encargadas de contraer el árbol de elementos y de calcular la profundidad del elemento en la jerarquía, respectivamente.
 
-
-
+%%=================================================================================%%
+%% NOTA(Pablo): Este listing es muy largo. Ver qué se puede quitar. No hace falta  %%
+%%    mostrar cada línea de código, se pueden poner "..." para omitir líneas de    %%
+%%    código irrelevantes.                                                         %%
+%%                                                                                 %%
+%%    Mirar si el Collapsible y el Measurable son estrictamente necesario, porque  %%
+%%    hacen esto muy largo y difícil de entender.                                  %%  
+%%=================================================================================%%
 
 \begin{figure}[!tb]
 	\centering
@@ -245,6 +302,10 @@ La última clase para explicar es \emph{DemoContainer}  (Figura~\ref{fig:demoCon
 	\label{fig:demoContainerMeasurable}
 \end{figure}
 
+%%===============================================================================%%
+%% NOTE(Pablo): No se muestra nada de la interacción con el servidor. Sería      %%
+%%    conveniente aladir algo.                                                   %%
+%%===============================================================================%%
 
 Con estas indicaciones se ha creado un ejemplo sencillo de composición de elementos jerárquicos entre sí utilizando Vaadin, como podemos ver ha facilitado mucho su implementación respecto a una configuración basada en \emph{HTML} o \emph{Javascript}.
 
