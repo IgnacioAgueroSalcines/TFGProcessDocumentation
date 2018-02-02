@@ -1,11 +1,13 @@
 \select@language {spanish}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Introducci\IeC {\'o}n}{1}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Vista de Gesti\IeC {\'o}n de Consultas}}{3}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Vista de Ejecuci\IeC {\'o}n de Consultas}}{4}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Arquitectura de LUCA}}{7}
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Arquitectura del Conector}}{8}
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Arquitectura del Process-Component}}{9}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Menu Principal LUCA}}{3}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Vista de Gesti\IeC {\'o}n de Consultas}}{3}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Creaci\IeC {\'o}n de una Consulta}}{4}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Vista de Ejecuci\IeC {\'o}n de Consultas}}{5}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Arquitectura de LUCA}}{7}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Arquitectura del Conector}}{8}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Arquitectura del Process-Component}}{9}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Antecedentes}{11}
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Editor gr\IeC {\'a}fico creado en GoJS}}{12}
