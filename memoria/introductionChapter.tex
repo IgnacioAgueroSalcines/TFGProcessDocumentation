@@ -116,7 +116,7 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 
 \section{Arquitectura LUCA}
 
-LUCA se basa en una arquitectura en tres capas utlizando el patrón \emph{Model-View-Presenter} o MVP\cite{mvp} (Figura \ref{fig:funcionamientoLuca}). Este patrón esta orientado a crear interfaces de usuario y además ayuda a separar la lógica de la aplicación. 
+LUCA se basa en una arquitectura en tres capas utlizando el patrón \emph{Model-View-Presenter} o MVP\cite{mvp} (Figura \ref{fig:funcionamientoLuca}). Este patrón esta orientado a crear interfaces de usuario y su objetivo es separar la lógica de la aplicación. 
 
 \begin{itemize}
 	\item Modelo \subitem Es el encargado de gestionar los datos.
@@ -158,13 +158,14 @@ Por ejemplo, si una consulta se realiza sobre un servicio \emph{REST}, cuando el
 
 \subsection{Arquitectura del Process-Component}
 
-El Process-Component es un proyecto abstracto (debe de ser importado e implementado por un proyecto o componente padre) encargado de recibir y comunicar los eventos realizados sobre una interfaz construida a partir de la librería GO.JS.
+El Process-Component es un proyecto independiente a LUCA y que deberá de ser implementado. Su objetivo es fundamentalmente ejercer las labores de la vista, y se in componente encargado de mostrar elementos en pantalla. 
 
-La arquitectura del Process-Component se ostenta en dos pilares. El primero es la implementación de la lógica del propio componente y el segundo es la implementación de un conector que se comunica con una librería de GO.JS que también debe de ser definida.
+La arquitectura del Process-Component se ostenta en dos pilares. El primero la lógica de negocio del propio componente y el segundo es un fichero conector que se comunica con una librería de \emph{GO.JS} que también debe de ser definida.
 
-La lógica del componente se basa en un estado ( el cuál alberga todos los elementos para poder formar la vista), y en una serie de acciones o comandos que se pueden realizar sobre él, y donde tras cada acción, se realiza una comunicación con el conector para que este se encargue de modificar el estado de los elementos de GO.JS.
+Este componente se compone de un modelo de datos que deberá de ser implementado por cualquier proyecto que quiera usarlo. Su principal característica es poseer un conjunto de métodos encargados de crear, modificar y eliminar los diferentes elementos que serán plasmados en la vista. Este modelo será traducido a un conjunto de clases diseñadas específicamente para ser enviadas al \emph{Conector} para que este visualice los datos.
 
-El conector internamente se compone de la librería encargada de definir el ámbito gráfico con el que se va a trabajar, de una serie de eventos que serán trasladados a la lógica del Process-Component, y de modificar los elementos en activo en la vista bajo la orden especificada.
+
+El \emph{Conector} internamente importa la librería gráfica \emph{GoJS} (será explicada en apartados posteriores) y se encargará insertar, modificar o eliminar los elementos del modelo de esta librería. Por lo tanto actuará de intermediario entre el modelo del \emph{Process-Component} y de \emph{GoJS}.
 
 A continuación, se muestra una figura explicativa de dicha interacción interna entre los componentes:
 
@@ -174,13 +175,8 @@ A continuación, se muestra una figura explicativa de dicha interacción interna
 	\caption{Arquitectura del Process-Component}\label{fig:processComponent}
 \end{figure}
 
-Como resumen del funcionamiento del Process-Component, éste es el encargado de recibir eventos realizados sobre la interfaz gráfica, a través del conector hasta llegar a la lógica del componente para publicarlos o abstraerlos a un conjunto de elementos escuchadores que deberán de ser atendidos por el componente implementador de este Process-Component.
+Como resumen del funcionamiento del Process-Component, éste es el encargado de recibir eventos realizados sobre la interfaz gráfica, a través del conector hasta llegar a la lógica del componente donde se tratarán y de realizar modificaciones sobre la vista.
 
-%%==========================================================================================
-%% NOTE(Pablo): Relacionar esto con los dos subjetivos. Estos dos componentes que se 
-%%   mencionan habría que citarlos antes. Esta sección se reescribirá cuando lo anterior
-%%   tenga sentido.  
-%%==========================================================================================
 
 \section{Planificación}
 
