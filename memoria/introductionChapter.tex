@@ -30,7 +30,7 @@ Para aliviar esta situación, dentro de la empresa CIC, se está desarrollando u
 
 \subsection{Funcionamiento de LUCA}
 
-A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para ello, utilizaremos como ejemplo una consulta al \emph{opendata} del Transporte Urbano Santander (TUS). Concretamente realizaremos una consulta sobre un servicio permite obtener, a partir del identificador de una parada de autobús, información relativa a dicha parada, como, por ejemplo, su localización.
+A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para ello, utilizaremos como ejemplo una consulta a la base de datos de LUCA, esta consulta obtendrá los procesos en función de un estado (los estados pueden ser en edición, publicado, es decir, preparada para ser ejecutada, o borrado). 
 
 \begin{figure}[!tb]
     \centering
@@ -39,7 +39,7 @@ A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para el
     \label{fig:menuLuca}
 \end{figure}
 
-En el menu principal de LUCA, nos aparece una vista con un conjunto de consultas que el usuario ha marcado como favoritas (Figura~\ref{fig:menuLuca}), es decir, que suele utilizar con frecuencia. Para el ejemplo realizaremos una consulta al \emph{opendata} del Transporte Urbano Santander, primero se explicará como crear una consulta para posteriormente explicar su ejecución.
+En el menu principal de LUCA, nos aparece una vista con un conjunto de consultas que el usuario ha marcado como favoritas (Figura~\ref{fig:menuLuca}), es decir, que suele utilizar con frecuencia. Como se dijo anteriormente, se utilizará la consulta de los procesos por estado.
 
 \begin{figure}[!tb]
 	\centering
@@ -50,7 +50,7 @@ En el menu principal de LUCA, nos aparece una vista con un conjunto de consultas
 
 En la vista de gestión de consultas (Figura~\ref{fig:gestionConsultas}) se pueden realizar las operaciones propias de la gestión, como es crear, modificar, eliminar o ejecutar entre otras.
 
-No obstante, para que dichas consultas pueden ser ejecutadas, cómo llevar a cabo las mismas debe haber sido especificado previamente. Para ello, un usuario con conocimientos suficientes para ello, al que denominaremos en adelante el \emph{creador de consultas}, debe haber especificado cómo ejecutar cada consulta a bajo nivel.
+No obstante, para que dichas consultas pueden ser ejecutadas, es necesario un usuario con conocimientos suficientes para ello, al que denominaremos en adelante el \emph{creador de consultas}.
 
 \begin{figure}[!tb]
 	\centering
@@ -59,13 +59,13 @@ No obstante, para que dichas consultas pueden ser ejecutadas, cómo llevar a cab
 	\label{fig:creacionConsulta}
 \end{figure}
 
-Para poder realizar esta tarea, el creador de consultas accedería a interfaz dedicada a esta tarea (ver Figura~\ref{fig:creacionConsulta}). En esta interfaz, definiría primero las variables de entrada y salida de la consulta (Figura~\ref{fig:creacionConsulta}, etiqueta 1). A continuación, especificaría cómo llevar a cabo dicha consulta a bajo nivel. Para ello puede utilizar una serie de facilidades y primitivas proporcionadas por LUCA. Para ejemplo, en el caso de la consulta \emph{Información Parada}, utilizando estas facilidades se especificaría el el recurso a obtener y el tipo de llamada HTTP a realizar, un \emph{GET} en nuestro caso.
+Para poder realizar esta tarea, el creador de consultas accedería a la interfaz dedicada a esta tarea (ver Figura~\ref{fig:creacionConsulta}). En esta interfaz, definiría primero las variables de entrada y salida de la consulta (Figura~\ref{fig:creacionConsulta}, etiqueta 1). A continuación, especificaría cómo llevar a cabo dicha consulta a bajo nivel. Para ello puede utilizar una serie de facilidades y primitivas proporcionadas por LUCA. Para la consulta ejemplo, utilizando estas facilidades, se especifica que se desea obtener el nombre, la descripción, el nombre de la tarea asíncrona y el usuario, y se establece como variable de entrada el estado del proceso.
 
-Tras guardar la consulta se puede ejecutar directamente desde la ventana de creación, sin embargo, si la consulta ya ha sido ejecutada previamente y el usuario la ha publicado (tras ejecutar una consulta desde la ventana de creación, si se ha ejecutado correctamente se le permite al usuario cambiar su estado de edición a publicada), el usuario puede ir a la ventada de ejecución de consultas, y desde ahí ejecutarla.
+Tras guardar la consulta se puede ejecutar directamente desde la ventana de creación, sin embargo, si la consulta ya ha sido ejecutada previamente y el usuario la ha publicado (tras ejecutar una consulta desde la ventana de creación, si se ha ejecutado correctamente se le permite al usuario cambiar su estado de edición a publicada, esto significa que la consulta está preparada para ser ejecutada), el usuario puede ir a la ventada de ejecución de consultas, y desde ahí ejecutarla.
 
 La principal ventaja que aporta LUCA es que el proceso de ejecución de consultas es opaco para el usuario que la ejecuta. El usuario sólo tiene que proporcionar los parámetros necesarios de entrada y seleccionar un formato de salida. Por tanto, el proceso de ejecución de consultas es exactamente el mismo con independencia de la fuente a la cual se accede.
 
-Por ejemplo, en el caso de la consulta \emph{Información Parada} (Figura~\ref{fig:ejecucionConsulta}, etiqueta 1) sería necesario proporcionar el identificador de la parada de la que queremos obtener información. Una vez introducido dicho identificador, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:ejecucionConsulta}, etiqueta 2). La consulta tiene definido internamente cómo acceder al servicio REST, por lo que dicho proceso se realiza de manera transparente al usuario. Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, hemos optado por visualizar el resultado de la consulta en formato JSON (Figura~\ref{fig:ejecucionConsulta}, etiqueta 3).
+Por ejemplo, en el caso de la consulta \emph{Get Procesos Por Estado} sería necesario proporcionar el estado de los procesos de los que queremos obtener información. Una vez introducido dicho estado, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:ejecucionConsulta}, etiqueta 2). Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, se muestra como una tabla ya que es una consulta a base de datos (Figura~\ref{fig:ejecucionConsulta}, etiqueta 3).
 
 Lo importante de este proceso es que, una vez definida la consulta, ésta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
