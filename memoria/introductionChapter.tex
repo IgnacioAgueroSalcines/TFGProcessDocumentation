@@ -116,8 +116,22 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 
 \section{Arquitectura LUCA}
 
+LUCA se basa en una arquitectura en tres capas utlizando el patrón \emph{Model-View-Presenter} o MVP\cite{mvp} (Figura \ref{fig:funcionamientoLuca}). Este patrón esta orientado a crear interfaces de usuario y además ayuda a separar la lógica de la aplicación. 
 
-Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{fig:funcionamientoLuca} con objeto de que se pueda entender su funcionamiento y cómo el trabajo descrito en este documento se integra en dicha arquitectura. LUCA sigue una arquitectura de tres capas donde la vista de presentación se estructura de acuerdo al patrón \emph{Model-View-Presenter} (MVP).
+\begin{itemize}
+	\item Modelo \subitem Es el encargado de gestionar los datos.
+	\item Vista \subitem Se encarga de mostrar datos y crear interfaces.
+	\item Presentador \subitem Es una capa situada entre el \emph{Modelo} y la \emph{Vista} y se encarga de conectar ambas.
+\end{itemize}
+
+Las capas de las que se compone LUCA son:
+\begin{itemize}
+	\item Presentación \subitem Es la encargada de presentar los datos a la interfaz, ademas de comunicar los eventos ocurridos ocurridos en la vista a la capa de negocio. Fijándonos en el patrón \emph{MVP} descrito anteriormente, esta capa se correspondería con las vistas.
+	\item Negocio \subitem Esta capa se encarga de gestionar la lógica de la aplicación y se correspondería con el presentador en el patrón \emph{MVP}.
+	\item Persistencia \subitem Esta capa se encarga de almacenar, obtener, modificar y eliminar los datos. En el patrón \emph{MVP} encaja con el Modelo, aunque esta capa tiene más características. En LUCA, esta capa se divide en tres subcapas inferiores. La capa  controladora, encargada mayoritariamente de la seguridad en el acceso a datos. La capa de servicio, encargada de acceder a las fuentes de información para obtener los datos. Y por último la capa de repositorio, encargada de acceder a la base de datos. La capa de servicio es la encargada de decidir el lugar de donde obtener los datos, por lo tanto, dependiendo de la naturaleza de la consulta, esta capa se comunicará con un \emph{Conector} (se explicará posteriormente) o con la base de datos.
+\end{itemize}
+
+Todas las capas son independientes entre sí, por lo que permite que la aplicación sea muy modular y sostenible.
 
 
 \begin{figure}[!tb]
@@ -132,20 +146,15 @@ Esta sección explica la actual arquitectura de LUCA, mostrada en la Figura\ref{
 \subsection{Arquitectura del Conector}
 
 
-El conector de LUCA es un componente que se encarga de recibir o recoger los datos de los diferentes recursos albergados en las diferentes fuentes de datos externas. Puede ser de diferentes tipos, como es un conector REST, SOAP o de acceso a bases de datos
+El conector de LUCA es un componente que se encarga de recibir los datos de los diferentes recursos albergados en las diferentes fuentes de datos externas. En función del tipo de recurso con el que va a comunicarse, utilizará un tipo de conector u otro, ya sea el \emph{HTTPClient} \cite{httpclient} de \emph{Apache} o \emph{JDBC} \cite{jdbc} de \emph{Oracle}. En la figura \ref{fig:conectorImplementation} podemos ver un diagrama que describe dicha interacción.
 
-En el ejemplo posterior podemos ver un diagrama que describe dicha interacción. El conector en función del tipo va a comunicarse con un cliente diferente, ya sea el HTTPClient \cite{httpclient} de Apache o JDBC \cite{jdbc} de Oracle, para realizar la comunicación y recepción de datos con los diferentes recursos.
+Por ejemplo, si una consulta se realiza sobre un servicio \emph{REST}, cuando el presenter pida a la capa de servicios ejecutar una consulta, esta se comunicará con el conector \emph{HTTPClient} y no con la capa de repositorio, para poder realizar la consulta contra dicho servicio.
 
 \begin{figure}[!tb]
 	\centering
 	\includegraphics[width=\linewidth]{conectorImplementation.png}
 	\caption{Arquitectura del Conector}\label{fig:conectorImplementation}
 \end{figure}
-
-%%==========================================================================================
-%% NOTE(Pablo): ¿Esto de donde sale? Esto es de tu proyecto, no es de LUCA, por lo que
-%%   yo no lo mencionaría aquí. Aparte, se entiende regular o nada
-%%==========================================================================================
 
 \subsection{Arquitectura del Process-Component}
 
