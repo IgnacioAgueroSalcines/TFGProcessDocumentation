@@ -22,14 +22,14 @@ Su implementación se centra en dos pilares. Por una parte se ha realizado un pr
 
 Como se explicó anteriormente, \emph{Vaadin} se encarga de abstraer al usuario del mundo Javascript, sin embargo, hay funcionalidades que \emph{Vaadin} no es capaz de alcanzar, en estos casos se utilizan componentes Javascript para enriquecer la aplicación.
 
-El primer paso para comprender el funcionamiento de \emph{Vaadin} junto a componentes Javascript es entender su arquitectura básica. Como podemos observar en la Figura~\ref{fig:schema}, consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
+El primer paso para comprender el funcionamiento de \emph{Vaadin} junto a componentes Javascript es entender su arquitectura básica. Como podemos observar en la Figura~\ref{fig:interaction}, consta de tres módulos bien diferenciados. El primer módulo se corresponde con el proyecto implementado en Java. El segundo con el conector en javascript que servirá de comunicador o intermediario entre la librería Javascript y el proyecto. El último se corresponde con la librería Javascript, un ejemplo de esta es GoJS, explicada previamente, por lo tanto, no se mencionará más de ella más allá de que es la encargada del entorno gráfico.
 
 
 
 \begin{figure}[!tb]
 	\centering
-	\includegraphics[width=\linewidth]{schema.png}
-	\caption{Interacción Vaadin}\label{fig:schema}
+	\includegraphics[width=\linewidth]{vaadin/interaction.png}
+	\caption{Interacción Vaadin}\label{fig:interaction}
 \end{figure}
 
 

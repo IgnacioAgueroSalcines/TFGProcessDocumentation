@@ -6,6 +6,24 @@ Una de las características diferenciadores de \emph{Vaadin} es que, al contrari
 
 Para abstraer al usuario de elementos relacionados con HTML o Javascript, Vaadin utiliza los llamados \emph{componentes}. Un componente representa un elemento gráfico o \emph{widget}. Para el desarrollo de los componentes, Vaadin proporciona una serie de clases reutilizables que contienen los infraestructura necesaria para facilitar su traducción a código HTML y Javascript. Para crear \emph{componentes}, los desarrolladores de Vaddin deben simplemente extender estas clases.
 
+
+
+\subsection{Arquitectura Vaadin}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{vaadin/vaadinArch.png}
+	\caption{Esquema Modelo-Vista-Presentador en Vaadin}
+	\label{fig:vaadinMVP}
+\end{figure}
+
+El framework de Vaadin\cite{vaadinArch} separa la comunicación en dos módulos (Figura~\ref{fig:vaadinMVP}): El lado cliente y el lado servidor. El lado servidor se caracteriza por poseer toda la carga lógica de la aplicación, además de encargarse de renderizar la interfaz comunicándose con el lado cliente utilizando \emph{Ajax}\cite{ajax}. El lado cliente es el encargado de traducir todos los ficheros \emph{Java} a ficheros \emph{Javascript} que puedan ser ejecutados por un navegador y mostrados en la interfaz.
+
+Ambos módulos se comunican entre si a partir de \emph{APIs}\cite{api} propias, y tienen un modelo de componentes y elementos gráficos copia en ambos lados. De este modo si se produce un evento sobre la interfaz, el lado cliente se comunica con la \emph{API} servidora para notificarla los eventos y/o los cambios en los componentes, una vez recibida y tratada la llamada en el lado servidor, este se encarga de conectarse a la \emph{API} cliente junto con los nuevos componentes gráficos, es decir, la nueva vista, para que el lado cliente la muestre por pantalla.
+
+A raíz de este comportamiento, Vaadin suele estar ligado al patrón \emph{MVP}\cite{mvp} (explicado en el apartado de la arquitectura de LUCA) debido a que aísla la vista del modelo y las conecta a través de un intermediario que es el presentador, este se encarga de comunicarse con ambas y de ejecutar la lógica de negocio de la aplicación. De este modo cuando en la vista se produce un cambio, es notificado en el presenter, este lo gestiona (comunicándose con el modelo si es necesario) y después manda a la vista recargarse con los cambios producidos. Se puede apreciar que siguiendo este patrón, el conjunto de componentes que proporciona la vista para mostrar por pantalla estarían de forma duplicada tanto en la parte servidora como cliente a la espera de recibir eventos o ser recargadas.
+
+
 A continuación, se explica el funcionamiento de Vaadin mediante la construcción, a modo de ejemplo, de un árbol de tareas propio de la gestión de proyectos  (Figura~\ref{fig:vaadinExampleImage}).
 
 \begin{figure}[!tb]
@@ -41,7 +59,7 @@ A continuación, se explica el funcionamiento de Vaadin mediante la construcció
 	\label{fig:uiVaadin}
 \end{figure}
 
-Para construir este ejemplo, en primer lugar definimos su interfaz gráfica. Para crear dicha interfaz gráfica, nos basamos en un componente gráfico, o \emph{widget}, denominado \emph{TreeGrid}  (Figura~\ref{fig:treeGrid}, Línea 8). Como puede observarse, este componente gráfico se usa directamente desde código Java, tal como se crearía una interfaz Java de escritorio, utilizando elementos propios de Java como los \emph{layouts} (Figura~\ref{fig:uiVaadin}, Líneas~4\-6) y no siendo necesario escribir nada en Javascript o HTML. Este componente mostrará los datos proporcionados por el contenedor de datos \texttt{JobContainer} (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
+Para construir este ejemplo, en primer lugar definimos su interfaz gráfica. Para crear dicha interfaz gráfica, nos basamos en un componente gráfico, o \emph{widget}, denominado \emph{TreeGrid}  (Figura~\ref{fig:jobContainer}, Línea 8). Como puede observarse, este componente gráfico se usa directamente desde código Java, tal como se crearía una interfaz Java de escritorio, utilizando elementos propios de Java como los \emph{layouts} (Figura~\ref{fig:uiVaadin}, Líneas~4\-6) y no siendo necesario escribir nada en Javascript o HTML. Este componente mostrará los datos proporcionados por el contenedor de datos \emph{JobContainer} (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
 
 La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcionará los datos que se muestran en el \emph{grid}. Esta clase extiende de una clase de Vaadin llamada \emph{HierarchicalContainer} y se encarga de implementar toda la lógica para almacenar de forma jerárquica los nodos. Además, implementa las interfaces de Vaadin \emph{Collapsible} (Figura~\ref{fig:jobContainerCollapsible}) y \emph{Measurable} (Figura~\ref{fig:jobContainerMeasurable}), encargadas de contraer el árbol de elementos y de calcular la profundidad del elemento en la jerarquía, respectivamente.
 
@@ -124,14 +142,8 @@ La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcio
 	\label{fig:jobContainerMeasurable}
 \end{figure}
 
-Una vez creadas estas clases, utilizando \emph{Vaadin}, éstas se transforman en código \emph{HTML}, \emph{Javascript} y \emph{CSS} que pueda ser procesado en un navegador web, más una serie de llamadas \emph{AJAX} a una serie de funciones desplegadas en el servidor que se encargan de gestionar la interacción con el servidor, siguiendo la arquitectura \emph{Model-View-Presenter (MVP)}~\cite{}. La Figura~\ref{fig:vaadinMVP} muestra el funcionamiento general de este esquema.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.3\linewidth]{images/vaadin/interaction-png}
-  \caption{Esquema Modelo-Vista-Presentador en Vaadin}
-  \label{fig:vaadinMVP}
-\end{figure}
+
 
 %%==========================================================================%%
 %% NOTA(Pablo): Describir lo que representa la figura que te he puesto      %%

@@ -63,12 +63,13 @@
 {\sc {SeleniumHQ}}.
 \newblock \texttt{www.seleniumhq.org}.
 
-\bibitem{abstractComponentVaadin}
-{\sc {Vaadin}}.
-\newblock \texttt{vaadin.com/api/com/vaadin/ui/AbstractComponent.html}.
+\bibitem{vaadinArch}
+{\sc {Team Vaadin}}.
+\newblock
+  \texttt{vaadin.com/docs/v8/framework/architecture/architecture-overview.html}.
 
-\bibitem{componentVaadin}
-{\sc {Vaadin}}.
-\newblock \texttt{vaadin.com/api/com/vaadin/ui/Component.html}.
+\bibitem{api}
+{\sc {TechTerms}}.
+\newblock \texttt{techterms.com/definition/api}.
 
 \end{thebibliography}
