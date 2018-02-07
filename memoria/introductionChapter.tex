@@ -116,22 +116,18 @@ Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos
 
 \section{Arquitectura LUCA}
 
-LUCA se basa en una arquitectura en tres capas utlizando el patrón \emph{Model-View-Presenter} o MVP\cite{mvp} (Figura \ref{fig:funcionamientoLuca}). Este patrón esta orientado a crear interfaces de usuario y su objetivo es separar la lógica de la aplicación. 
+LUCA se basa en una arquitectura en tres capas utlizando el patrón \emph{Model-View-Presenter} o MVP\cite{mvp} (Figura \ref{fig:funcionamientoLuca}). Este patrón esta orientado a crear interfaces de usuario y su objetivo es separar la lógica de la aplicación. Además ayuda a realizar pruebas automatizadas de la interfaz gráfica. 
 
-\begin{itemize}
-	\item Modelo \subitem Es el encargado de gestionar los datos.
-	\item Vista \subitem Se encarga de mostrar datos y crear interfaces.
-	\item Presentador \subitem Es una capa situada entre el \emph{Modelo} y la \emph{Vista} y se encarga de conectar ambas.
-\end{itemize}
+Se compone de tres módulos independientes entre si: modelo, vista y presentador. El modelo es el encargado de gestionar los datos que van a ser mostrados o no en la interfaz. La vista es una interfaz que se encarga de mostrar datos a partir de órdenes desde el presentador, y comunica al presentador sobre los eventos ocurridos en la interfaz. Por último el presentador es una capa situada entre el \emph{Modelo} y la \emph{Vista} y se encarga de conectar ambas, recuperando los datos del repositorio o fuentes de datos para posteriormente recargar la vista. Además, define las acciones a realizar cuando se producen eventos en la interfaz sobre los diferentes componentes de la vista.
 
-Las capas de las que se compone LUCA son:
+Luca se beneficia de una arquitectura en capas independientes entre sí, que permite que la aplicación sea muy modular y escalable. Se compone de de tres capas: presentación, negocio y persistencia. A continuación se desglosa el funcionamiento de cada una:
 \begin{itemize}
-	\item Presentación \subitem Es la encargada de presentar los datos a la interfaz, ademas de comunicar los eventos ocurridos ocurridos en la vista a la capa de negocio. Fijándonos en el patrón \emph{MVP} descrito anteriormente, esta capa se correspondería con las vistas.
+	\item Presentación \subitem Es la encargada de presentar los datos a la interfaz, además de comunicar los eventos ocurridos en la vista a la capa de negocio. Fijándonos en el patrón \emph{MVP} descrito anteriormente, esta capa se correspondería con las vistas.
 	\item Negocio \subitem Esta capa se encarga de gestionar la lógica de la aplicación y se correspondería con el presentador en el patrón \emph{MVP}.
 	\item Persistencia \subitem Esta capa se encarga de almacenar, obtener, modificar y eliminar los datos. En el patrón \emph{MVP} encaja con el Modelo, aunque esta capa tiene más características. En LUCA, esta capa se divide en tres subcapas inferiores. La capa  controladora, encargada mayoritariamente de la seguridad en el acceso a datos. La capa de servicio, encargada de acceder a las fuentes de información para obtener los datos. Y por último la capa de repositorio, encargada de acceder a la base de datos. La capa de servicio es la encargada de decidir el lugar de donde obtener los datos, por lo tanto, dependiendo de la naturaleza de la consulta, esta capa se comunicará con un \emph{Conector} (se explicará posteriormente) o con la base de datos.
 \end{itemize}
 
-Todas las capas son independientes entre sí, por lo que permite que la aplicación sea muy modular y sostenible.
+
 
 
 \begin{figure}[!tb]
