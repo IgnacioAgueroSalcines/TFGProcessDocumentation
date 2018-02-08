@@ -5,34 +5,35 @@ Warning--entry type for "javascript" isn't style-file defined
 --line 12 of file Bibliografia.bib
 Warning--entry type for "ria" isn't style-file defined
 --line 17 of file Bibliografia.bib
-Warning--entry type for "html" isn't style-file defined
---line 22 of file Bibliografia.bib
-Warning--entry type for "http" isn't style-file defined
---line 27 of file Bibliografia.bib
 Warning--entry type for "ajax" isn't style-file defined
---line 32 of file Bibliografia.bib
-Warning--entry type for "css" isn't style-file defined
---line 37 of file Bibliografia.bib
+--line 22 of file Bibliografia.bib
 Warning--entry type for "vaadin" isn't style-file defined
---line 42 of file Bibliografia.bib
+--line 27 of file Bibliografia.bib
 Warning--entry type for "vaadinArch" isn't style-file defined
---line 47 of file Bibliografia.bib
+--line 32 of file Bibliografia.bib
 Warning--entry type for "gojs" isn't style-file defined
---line 52 of file Bibliografia.bib
+--line 37 of file Bibliografia.bib
 Warning--entry type for "mvp" isn't style-file defined
---line 57 of file Bibliografia.bib
+--line 42 of file Bibliografia.bib
 Warning--entry type for "springTest" isn't style-file defined
---line 67 of file Bibliografia.bib
+--line 52 of file Bibliografia.bib
 Warning--entry type for "jpa" isn't style-file defined
---line 72 of file Bibliografia.bib
+--line 57 of file Bibliografia.bib
 Warning--entry type for "selenium" isn't style-file defined
---line 77 of file Bibliografia.bib
+--line 62 of file Bibliografia.bib
 Warning--entry type for "junit" isn't style-file defined
---line 83 of file Bibliografia.bib
+--line 68 of file Bibliografia.bib
 Warning--entry type for "jdbc" isn't style-file defined
---line 93 of file Bibliografia.bib
+--line 78 of file Bibliografia.bib
 Warning--entry type for "httpclient" isn't style-file defined
---line 98 of file Bibliografia.bib
+--line 83 of file Bibliografia.bib
 Warning--entry type for "api" isn't style-file defined
---line 104 of file Bibliografia.bib
-(There were 17 warnings)
+--line 88 of file Bibliografia.bib
+Warning--entry type for "crud" isn't style-file defined
+--line 93 of file Bibliografia.bib
+Warning--entry type for "dto" isn't style-file defined
+--line 98 of file Bibliografia.bib
+Warning--I didn't find a database entry for "html"
+Warning--I didn't find a database entry for "css"
+Warning--I didn't find a database entry for "http"
+(There were 19 warnings)
