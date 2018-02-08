@@ -1,10 +1,12 @@
 \chapter{Introducción}
-	
-Este primer capítulo describe de forma general la información principal y relevante para poder comprender el funcionamiento del producto actual LUCA, así como los objetivos del proyecto a desarrollar junto con la explicación y motivación del mismo.
+
+\minitoc
 	
 \section{Introducción}
 
-Dado que el presente trabajo se enmarca dentro del proyecto LUCA, para poder comprender los objetivos de este Trabajo Fin de Grado, se hace necesario describir primero dicho proyecto, lo cual se realiza en la siguiente sección.
+%% Aquí hay que añadir un poco de paja. 
+
+El presente trabajo se enmarca dentro del proyecto LUCA. Por tanto, para poder comprender los objetivos de este Trabajo Fin de Grado, se hace necesario describir primero dicho proyecto, lo cual se realiza en la siguiente sección.
 
 \section{LUCA}
 
@@ -67,7 +69,6 @@ Por ejemplo, en el caso de la consulta \emph{Get Procesos Por Estado} sería nec
 
 Lo importante de este proceso es que, una vez definida la consulta, ésta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
-
 	\begin{figure}[!tb]
 		\centering
 		\includegraphics[width=\linewidth]{capturasLuca/ejecucionConsulta.png}
@@ -98,53 +99,35 @@ El primer objetivo implica poder tratar procesos en LUCA de la misma forma que s
 
 El segundo objetivo, que es el que implica una mayor complejidad, consiste en facilitar la especificación de procesos en LUCA. Para que un proceso pueda ser ejecutado, primero debe ser especificado, indicando qué consultas lo componen y cómo se relacionan. De acuerdo con los deseos expresados por los responsables del proyecto LUCA y la empresa CIC, dicho mecanismo de especificación debía ser gráfico, permitiendo así componer consultas de manera visual mediante la interconexión de las salidas de unas con las entradas de otras.
 
+\section{Alcance del Proyecto}
+
 Para refinar estos dos grandes objetivos en una serie de requisitos más concretos, se llevó a cabo en primer lugar una reunión con el Jefe y el Gerente del proyecto. El objetivo de dicha reunión era conocer LUCA en profundidad. A continuación, dado que la fase de Ingeniería de Requisitos para este proyecto ya había sido realizada por la propia empresa, se nos proporcionaron unos documentos técnicos con los requisitos técnicos tanto para la ejecución de procesos como para el desarrollo del componente gráfico de especificación de procesos. Estos documentos pueden encontrarse en el Anexo adjunto a la memoria.
 
+%%==============================================================================%%
+%% NOTE(Pablo): Lo de abajo se quita por simplicidad                            %%
+%%==============================================================================%%
+%%
+%% Como ya se ha mencionado, en estos documentos se pueden encontrar los
+%% requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se
+%% centran en tres pilares o requisitos principales:
+%%
+%% \begin{itemize}
+%%  	\item Concatenación de las consultas entre si pertenecientes a un
+%%            mismo proceso.
+%% 	\item Visualización del progreso de ejecución del proceso.
+%% 	\item Aplicar criterios de navegación a partir de los resultados de salidas.
+%% \end{itemize}
+%%
+%%
+%%==============================================================================%%
+%%
+%% Comentar que la arquitectura ya estaba definida, por lo que el proyecto se reduce
+%% a las fases de diseño detallado, implementación y pruebas.
+%%
+%% El proyecto genera como resultado dos módulos grande y bien diferenciados: 
+%%    Process Editor Component y (se va a cambiar). 
+%%==============================================================================%%
 
-Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se centran en tres pilares o requisitos principales:
+\section{Sumario}
 
-\begin{itemize}
-	\item Concatenación de las consultas entre si pertenecientes a un mismo proceso.
-	\item Visualización del progreso de ejecución del proceso.
-	\item Aplicar criterios de navegación a partir de los resultados de salidas.
-\end{itemize}
-
-\section{Arquitectura LUCA}
-
-\subsection{Arquitectura del Process-Component}
-
-El Process-Component es un proyecto independiente a LUCA y que deberá de ser implementado. Su objetivo es fundamentalmente ejercer las labores de la vista, y se in componente encargado de mostrar elementos en pantalla.
-
-La arquitectura del Process-Component se ostenta en dos pilares. El primero la lógica de negocio del propio componente y el segundo es un fichero conector que se comunica con una librería de \emph{GO.JS} que también debe de ser definida.
-
-Este componente se compone de un modelo de datos que deberá de ser implementado por cualquier proyecto que quiera usarlo. Su principal característica es poseer un conjunto de métodos encargados de crear, modificar y eliminar los diferentes elementos que serán plasmados en la vista. Este modelo será traducido a un conjunto de clases diseñadas específicamente para ser enviadas al \emph{Conector} para que este visualice los datos.
-
-
-El \emph{Conector} internamente importa la librería gráfica \emph{GoJS} (será explicada en apartados posteriores) y se encargará insertar, modificar o eliminar los elementos del modelo de esta librería. Por lo tanto actuará de intermediario entre el modelo del \emph{Process-Component} y de \emph{GoJS}.
-
-A continuación, se muestra una figura explicativa de dicha interacción interna entre los componentes:
-
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[width=\linewidth]{processComponentArquitectura.png}
-	\caption{Arquitectura del Process-Component}\label{fig:processComponent}
-\end{figure}
-
-Como resumen del funcionamiento del Process-Component, éste es el encargado de recibir eventos realizados sobre la interfaz gráfica, a través del conector hasta llegar a la lógica del componente donde se tratarán y de realizar modificaciones sobre la vista.
-
-	
-\subsection{Pruebas}
-	
-	
-	Las pruebas se centraron principalmente en el Luca-Process, ya que es el componente que alberga la mayor lógica del proyecto debido al conjunto de servicios que lo compone y a la lógica de negocio que incorpora.
-	
-	
-	Profundizando en las pruebas implementadas, solo se han realizado pruebas de integración por varios motivos. El primero es que las pruebas unitarias no son necesarias hacerlas ya que se centran sobre la capa de repositorio y esta capa ha sido implementada con Spring Data Jpa\cite{jpa}, este framework ofrece una comunicación con la base de datos fiable y ya ha sido probada y certificada por otros organismos, por lo tanto, no es necesario realizar pruebas de su funcionamiento. El motivo por el que no se realizaron pruebas de sistema, aunque en una primera planificación estaban previstas hacerlas integrándolas con Selenium\cite{selenium} fue la complejidad que lleva la integración junto con Vaadin\cite{vaadin}, ya que la ventaja de programar mediante una captura de eventos sobre la vista toda la secuencia de movimiento sobre dicha vista pasa a ser programática, y debido a que había que ceñirse a unas fechas de entrega y al tiempo que llevaría dicha implementación se decidió omitirlas.
-
-	
-	Las pruebas de integración que se llevaron a cabo se implementaron con Spring Test\cite{springTest} y JUnit\cite{junit}. Cada test ejecutado se compone de un fichero \emph{SQL} que cargará datos en la base de datos (en nuestro caso se utilizó una base de datos relacional) durante la ejecución, es decir, una vez finalizado el test la base de datos vuelve a su estado original, de esta forma se pueden hacer consultas a la misma sin alterar su estado para siguientes tests. Se ejecutaron pruebas sobre las acciones \emph{CRUD}\cite{crud} de cada servicio, además, se hicieron las pruebas también sobre un objeto que actúa como \emph{DTO}\cite{dto} que contiene el estado del proceso, de forma que se ha comprobado que las operaciones \emph{CRUD} sobre este objeto funciona (por ejemplo el guardado de un proceso con todos sus elementos que lo acompañan).
-
-
-
-
-	 
+%% To be written
