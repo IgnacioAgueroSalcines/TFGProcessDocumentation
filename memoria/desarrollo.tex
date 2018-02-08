@@ -71,14 +71,15 @@ Debido a la complejidad que existe para comprobar que las acciones que se realiz
 \section{Integración del editor con LUCA}
 
 %% Decribir los pasos, a nivel general, para integrar el editor básico. 
-
+Como el editor gráfico actúa como un componente propio de \emph{Vaadin}, para integrarlo en un proyecto (en nuestro caso LUCA) es tan simple como incluirlo en una vista (utilizando el ya explicado patrón \emph{Mode-View-Presenter}). Una vez que la vista ya alberga dicho componente (a partir de ahora lo llamaremos \emph{DiagramComponent}), es necesario al crear el presentador, crear una instancia del mismo. De esta forma el componente ya está preparado para ser utilizado y mostrar el diagrama. Por último sería necesario mandar las directrices de creación de un proceso y/o subprocesos, es decir, consultas que queremos utilizar, para que sean dibujadas en el editor.
 %% Mostrar captura de la interfaz
 
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra.
-
+En las siguientes iteraciones en esta etapa, se creó la vista de gestión para la creación, edición y eliminado de procesos, la vista de gestión de procesos que pueden ser ejecutados, y una nueva vista para ejecutar un proceso. Además se enriqueció la vista de gestión creada inicialmente para construir un proceso utilizando el editor gráfico.
 %% Mostrar código de algo no trivial 
 
 %% Hablar algo de pruebas. 
+Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recepción de los eventos que se producen entre el editor gráfico y LUCA. Sin embargo, no se realizó un automatización del las pruebas debido a la complejidad y tiempo necesario que requería.
 
 \section{Gestión y Persistencia de los Procesos}
 
