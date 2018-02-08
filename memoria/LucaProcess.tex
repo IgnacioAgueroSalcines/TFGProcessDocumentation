@@ -21,14 +21,8 @@ Entrando en el territorio propio de las capas, \emph{LUCA} se compone de tres ca
 \begin{enumerate}
 	\item Capa de Presentación \subitem Esta capa es la encargada de mostrar los datos sobre la interfaz.
 	\item Capa de Servicio \subitem Esta capa se ocupa de obtener los deatos de las diversas fuentes o recursos, ya bien sea comunicándose con la capa de repositorio, o con los diversos conectores hacia fuentes de datos externas. Además, esta capa se divide realmente en dos capas, la mencionada anteriormente, y otra por encima llamada \emph{Controladora} que controla todos los aspectos derivados de la seguridad en el acceso a datos.
-	\item Capa de repositorio \subitem Esta capa es la encargada de comunicarse con la base de datos, asi como, de implementar entre otras funciones, los filtros de petición de datos (un ejemplo de filtro sería obtener los datos de los procesos que se encuentren en un estado determinado). Además, se implementa con \emph{Spring Data}\cite{jpa}, que se encarga de asegurar la correcta comunicación con la base de datos.
+	\item Capa de repositorio \subitem Esta capa es la encargada de comunicarse con la base de datos, así como, de implementar entre otras funciones, los filtros de petición de datos (un ejemplo de filtro sería obtener los datos de los procesos que se encuentren en un estado determinado). Además, se implementa con \emph{Spring Data}\cite{jpa}, que se encarga de asegurar la correcta comunicación con la base de datos.
 \end{enumerate}
 
-
-\section{Pruebas}
-
-La capa de servicio se compone también de un conjunto de pruebas para asegurar su funcionamiento. Sobre la capa de repositorio no es necesario realizar pruebas ya que \emph{Spring Data} asegura su integridad y funcionamiento. Sin embargo, sobre la capa de presentación no se realizaron pruebas automatizadas debido a su complejidad y a que era necesario ajustarse a las fechas de entrega del proyecto.
-
-Las pruebas implementaron y ejecutaron sobre una base de datos en local. Para ello, cada test se compone de un script SQL para introducir los datos previos al test que serán necesarios, y después se ejecuta el test, comprobando mediante \emph{JUnit}\cite{junit} que los resultados son los adecuados.
 
 
