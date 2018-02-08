@@ -4,7 +4,6 @@ Este primer capítulo describe de forma general la información principal y rele
 	
 \section{Introducción}
 
-
 Dado que el presente trabajo se enmarca dentro del proyecto LUCA, para poder comprender los objetivos de este Trabajo Fin de Grado, se hace necesario describir primero dicho proyecto, lo cual se realiza en la siguiente sección.
 
 \section{LUCA}
@@ -12,7 +11,6 @@ Dado que el presente trabajo se enmarca dentro del proyecto LUCA, para poder com
 \subsection{Motivación}
 
 En los últimos años, el volumen de datos recogidos y manipulados por las empresas ha aumentado de forma vertiginosa. Estos datos se han ido almacenando en diferentes tipos de fuentes conforme las empresas crecían y sus sistemas evolucionaban y se fusionaban. Como resultado de  este proceso no es extraño actualmente encontrar empresas que tengan sus datos almacenados en sistemas tan dispares como bases de datos relacionales, hojas XML o repositorios FTP.
-
 
 Como consecuencia de esta nueva situación, cuando un usuario quiere obtener una información concreta cuyos datos residen en varios de estos sistemas, éste necesita acceder a cada uno de estos sistemas, extraer de cada sistema la información que precisa, y finalmente filtrarla y unificarla para finalmente obtener los datos requeridos.
 
@@ -30,7 +28,7 @@ Para aliviar esta situación, dentro de la empresa CIC, se está desarrollando u
 
 \subsection{Funcionamiento de LUCA}
 
-A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para ello, utilizaremos como ejemplo una consulta a la base de datos de LUCA, esta consulta obtendrá los procesos en función de un estado (los estados pueden ser en edición, publicado, es decir, preparada para ser ejecutada, o borrado). 
+A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para ello, utilizaremos como ejemplo una consulta a la base de datos de LUCA, esta consulta obtendrá los procesos en función de un estado (los estados pueden ser en edición, publicado, es decir, preparada para ser ejecutada, o borrado).
 
 \begin{figure}[!tb]
     \centering
@@ -94,7 +92,7 @@ En adelante, estas cadenas de consultas para obtener un resultado concreto las d
 
 \section{Objetivos del Trabajo de Fin de Grado}
 
-El objetivo general de este Trabajo Fin de Grado es integrar en LUCA el concepto de \emph{proceso}. Para ello, hay que dar soporte a dos cuestiones diferentes: (1) la ejecución de los procesos; y (2) la especificación de procesos. Por tanto, el objetivo general de este trabajo se descompone en estos dos subobjetivos principales. 
+El objetivo general de este Trabajo Fin de Grado es integrar en LUCA el concepto de \emph{proceso}. Para ello, hay que dar soporte a dos cuestiones diferentes: (1) la ejecución de los procesos; y (2) la especificación de procesos. Por tanto, el objetivo general de este trabajo se descompone en estos dos subobjetivos principales.
 
 El primer objetivo implica poder tratar procesos en LUCA de la misma forma que se trata las consultas. Es decir, los procesos deberán aparecer como en las consultas bajo una pestaña de gestión y otra de ejecución. Obviamente, la complejidad de ejecutar una proceso es mayor que la de ejecutar una consulta, ya que necesitamos ejecutar varias consultas, guardar resultados intermedios y utilizar estos resultados como entradas para otras consultas.
 
@@ -105,56 +103,17 @@ Para refinar estos dos grandes objetivos en una serie de requisitos más concret
 
 Como ya se ha mencionado, en estos documentos se pueden encontrar los requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se centran en tres pilares o requisitos principales:
 
-
-
 \begin{itemize}
 	\item Concatenación de las consultas entre si pertenecientes a un mismo proceso.
 	\item Visualización del progreso de ejecución del proceso.
 	\item Aplicar criterios de navegación a partir de los resultados de salidas.
 \end{itemize}
 
-
 \section{Arquitectura LUCA}
-
-LUCA se basa en una arquitectura en tres capas utlizando el patrón \emph{Model-View-Presenter} o MVP\cite{mvp} (Figura \ref{fig:funcionamientoLuca}). Este patrón esta orientado a crear interfaces de usuario y su objetivo es separar la lógica de la aplicación. Además ayuda a realizar pruebas automatizadas de la interfaz gráfica. 
-
-Se compone de tres módulos independientes entre si: modelo, vista y presentador. El modelo es el encargado de gestionar los datos que van a ser mostrados o no en la interfaz. La vista es una interfaz que se encarga de mostrar datos a partir de órdenes desde el presentador, y comunica al presentador sobre los eventos ocurridos en la interfaz. Por último el presentador se sitúa entre el \emph{Modelo} y la \emph{Vista} y se encarga de conectar ambas, recuperando los datos del repositorio o fuentes de datos para posteriormente recargar la vista. Además, define las acciones a realizar cuando se producen eventos en la interfaz sobre los diferentes componentes de la vista.
-
-Luca se beneficia de una arquitectura en capas independientes entre sí, que permite que la aplicación sea muy modular y escalable. Se compone de de tres capas: presentación, negocio y persistencia. A continuación se desglosa el funcionamiento de cada una:
-\begin{itemize}
-	\item Presentación \subitem Es la encargada de presentar los datos a la interfaz, además de comunicar los eventos ocurridos en la vista a la capa de negocio. Fijándonos en el patrón \emph{MVP} descrito anteriormente, esta capa se correspondería con las vistas.
-	\item Negocio \subitem Esta capa se encarga de gestionar la lógica de la aplicación y se correspondería con el presentador en el patrón \emph{MVP}.
-	\item Persistencia \subitem Esta capa se encarga de almacenar, obtener, modificar y eliminar los datos. En el patrón \emph{MVP} encaja con el Modelo, aunque esta capa tiene más características. En LUCA, esta capa se divide en tres subcapas inferiores. La capa  controladora, encargada mayoritariamente de la seguridad en el acceso a datos. La capa de servicio, encargada de acceder a las fuentes de información para obtener los datos. Y por último la capa de repositorio, encargada de acceder a la base de datos. La capa de servicio es la encargada de decidir el lugar de donde obtener los datos, por lo tanto, dependiendo de la naturaleza de la consulta, esta capa se comunicará con un \emph{Conector} (se explicará posteriormente) o con la base de datos.
-\end{itemize}
-
-
-
-
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[width=\linewidth]{funcionamientoLuca.png}
-	\caption{Arquitectura de LUCA}
-    \label{fig:funcionamientoLuca}
-\end{figure}
-
-
-
-\subsection{Arquitectura del Conector}
-
-
-El conector de LUCA es un componente que se encarga de recibir los datos de los diferentes recursos albergados en las diferentes fuentes de datos externas. En función del tipo de recurso con el que va a comunicarse, utilizará un tipo de conector u otro, ya sea el \emph{HTTPClient} \cite{httpclient} de \emph{Apache} o \emph{JDBC} \cite{jdbc} de \emph{Oracle}. En la figura \ref{fig:conectorImplementation} podemos ver un diagrama que describe dicha interacción.
-
-Por ejemplo, si una consulta se realiza sobre un servicio \emph{REST}, cuando el presenter pida a la capa de servicios ejecutar una consulta, esta se comunicará con el conector \emph{HTTPClient} y no con la capa de repositorio, para poder realizar la consulta contra dicho servicio.
-
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[width=\linewidth]{conectorImplementation.png}
-	\caption{Arquitectura del Conector}\label{fig:conectorImplementation}
-\end{figure}
 
 \subsection{Arquitectura del Process-Component}
 
-El Process-Component es un proyecto independiente a LUCA y que deberá de ser implementado. Su objetivo es fundamentalmente ejercer las labores de la vista, y se in componente encargado de mostrar elementos en pantalla. 
+El Process-Component es un proyecto independiente a LUCA y que deberá de ser implementado. Su objetivo es fundamentalmente ejercer las labores de la vista, y se in componente encargado de mostrar elementos en pantalla.
 
 La arquitectura del Process-Component se ostenta en dos pilares. El primero la lógica de negocio del propio componente y el segundo es un fichero conector que se comunica con una librería de \emph{GO.JS} que también debe de ser definida.
 
