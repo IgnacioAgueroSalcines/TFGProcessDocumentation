@@ -14,3 +14,15 @@ memoria/ejemploVaadin/eclipse/vaadinExample/.settings/
 memoria/ejemploVaadin/eclipse/.recommenders/
 *.bak
 memoria/memoriaIgnacio.prj
+
+memoria/memoria\.lof
+
+memoria/memoria\.maf
+
+memoria/memoria\.mtc1
+
+memoria/memoria\.mtc2
+
+memoria/memoria\.mtc3
+
+memoria/memoria\.synctex\.gz
