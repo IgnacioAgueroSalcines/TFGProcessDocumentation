@@ -87,10 +87,21 @@ El objetivo de este paso era que LUCA pudiese almacenar y gestionar procesos. Pa
 
 %% Explicar que ese modelo concetual de datos se implementa en Java y con JPA se 
 %% genera el esquema relacional y el puente objeto-relacional.
+Este modelo conceptual implementado en \emph{Java} utiliza un conjunto de anotaciones para indicar a \emph{JPA}\cite{jpa} que es necesario crear un conjunto de tablas sobre la base de datos relacional siguiendo las directrices que se encuentran en dicho modelo. De esta forma se cede a \emph{JPA} la automatización para la creación de las tablas, así como, de crear la interfaz de repositorio para acceder a los objetos almacenados den la base de datos. Además, esta herramienta asegura el correcto funcionamiento de la capa de persistencia, por lo tanto no será necesario crear pruebas a este nivel.
 
 %% Indicar qué ha sido necesario modificar en la capa de negocio (control de accesos)
 %% y negocio (servicio). Mostrar ejemplos de código
+La capa de negocio se subdividió en dos subcapas. La primera es la capa de control de acceso (Figura~\ref{}), esta capa se ocupa de verificar que quien desea utilizar la propia capa de negocio posea los privilegios y permisos necesarios para poder usarla, una vez verificados, esta se comunica con la capa propiamente de servicio. La segunda subcapa es propia capa de servicio (Figura~\ref{}), esta gestiona la modificación del proceso y de los diferentes elementos que posee el modelo. Para ello esta capa se comunica con una capa de persistencia que utiliza por debajo \emph{JPA} para la comunicación con la base de datos relacional.
+
+%% ejemplo controlador
+
+%%ejemplo capa servicio-> linkada al controlador
 
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra.
-
+En las consecutivas iteraciones se fue puliendo y añadiendo las funcionalidades necesarias para poder persistir el modelo de datos.
 %% Hablar algo de pruebas, y si las hay, mostrar código.
+La capa de servicio es la capa más rica en pruebas, ya que se automatizaron todos los métodos que se realizan para persistir el modelo. Para realizarlas se utilizó conjuntamente la capa de repositorio, de forma que fue necesario introducir datos en la base de datos previos a cada test. Esto se realizó mediante un fichero \emph{SQL} (Figura~\ref{}), de forma que al inicio de cada test se cargan los datos y al final de cada test la base de datos se vacía, de esta forma dicha base de datos queda preparada para la consecutiva ejecución de pruebas sin depender de las anteriores.
+
+%% ejemplo de fichero sql 
+
+%% ejemplo de prueba de insercion de un proceso
