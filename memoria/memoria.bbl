@@ -1,25 +1,8 @@
-\begin{thebibliography}{10}
-
-\bibitem{httpclient}
-{\sc {Apache: HTTPClient}}.
-\newblock \texttt{hc.apache.org/httpcomponents-client-ga/}.
+\begin{thebibliography}{1}
 
 \bibitem{vaadin}
 {\sc {Ari Handler Gamboa: Vaadin Definition}}.
 \newblock \texttt{adictosaltrabajo.com/tutoriales/introduccion-a-vaadin/}.
-
-\bibitem{dto}
-{\sc {ArquitecturaJava: DTO}}.
-\newblock \texttt{arquitecturajava.com/jpa-dto-data-transfer-object-y-jpql/}.
-
-\bibitem{mvp}
-{\sc {Eduardo Barrio: MVP}}.
-\newblock
-  \texttt{mhp-net.es/spring-vaadin-hibernate-tutorial-8-el-patron-mvp/}.
-
-\bibitem{junit}
-{\sc {Erich Gamma And Kent Beck: JUnit}}.
-\newblock \texttt{junit.org/junit5/}.
 
 \bibitem{ajax}
 {\sc {Mozilla: AJAX}}.
@@ -33,39 +16,17 @@
 {\sc {Northwoods Software: GoJS}}.
 \newblock \texttt{gojs.net/latest/index.html}.
 
-\bibitem{jdbc}
-{\sc {Oracle: JDBC}}.
-\newblock \texttt{www.oracle.com/technetwork/java/javase/jdbc/index.html}.
-
 \bibitem{jpa}
 {\sc {Pivotal Software: JPA}}.
 \newblock \texttt{docs.spring.io/spring-data/jpa/docs/current/reference/html}.
-
-\bibitem{springTest}
-{\sc {Pivotal Software: Spring Test}}.
-\newblock
-  \texttt{docs.spring.io/spring/docs/current/spring-framework-reference/testing.html}.
 
 \bibitem{ria}
 {\sc {Russell Kay: RIA}}.
 \newblock
   \texttt{computerworld.com/article/2551058/networking/rich-internet-applications.html}.
 
-\bibitem{selenium}
-{\sc {SeleniumHQ}}.
-\newblock \texttt{www.seleniumhq.org}.
-
-\bibitem{api}
-{\sc {TechTerms: API}}.
-\newblock \texttt{techterms.com/definition/api}.
-
-\bibitem{vaadinArch}
-{\sc {Vaadin: Architecture}}.
-\newblock
-  \texttt{vaadin.com/docs/v8/framework/architecture/architecture-overview.html}.
-
-\bibitem{crud}
-{\sc {Wikipedia: CRUD}}.
-\newblock \texttt{es.wikipedia.org/wiki/CRUD}.
+\bibitem{svg}
+{\sc {W3: SVG}}.
+\newblock \texttt{www.w3.org/Graphics/SVG/About.html}.
 
 \end{thebibliography}

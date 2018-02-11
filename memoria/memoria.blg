@@ -9,31 +9,13 @@ Warning--entry type for "ajax" isn't style-file defined
 --line 22 of file Bibliografia.bib
 Warning--entry type for "vaadin" isn't style-file defined
 --line 27 of file Bibliografia.bib
-Warning--entry type for "vaadinArch" isn't style-file defined
---line 32 of file Bibliografia.bib
 Warning--entry type for "gojs" isn't style-file defined
 --line 37 of file Bibliografia.bib
-Warning--entry type for "mvp" isn't style-file defined
---line 42 of file Bibliografia.bib
-Warning--entry type for "springTest" isn't style-file defined
---line 52 of file Bibliografia.bib
 Warning--entry type for "jpa" isn't style-file defined
 --line 57 of file Bibliografia.bib
-Warning--entry type for "selenium" isn't style-file defined
---line 62 of file Bibliografia.bib
-Warning--entry type for "junit" isn't style-file defined
---line 68 of file Bibliografia.bib
-Warning--entry type for "jdbc" isn't style-file defined
---line 78 of file Bibliografia.bib
-Warning--entry type for "httpclient" isn't style-file defined
---line 83 of file Bibliografia.bib
-Warning--entry type for "api" isn't style-file defined
---line 88 of file Bibliografia.bib
-Warning--entry type for "crud" isn't style-file defined
---line 93 of file Bibliografia.bib
-Warning--entry type for "dto" isn't style-file defined
---line 98 of file Bibliografia.bib
+Warning--entry type for "svg" isn't style-file defined
+--line 103 of file Bibliografia.bib
 Warning--I didn't find a database entry for "html"
 Warning--I didn't find a database entry for "css"
 Warning--I didn't find a database entry for "http"
-(There were 19 warnings)
+(There were 10 warnings)
