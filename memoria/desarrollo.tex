@@ -238,9 +238,38 @@ La capa de negocio se subdividió en dos subcapas. La primera es la capa de cont
 
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra.
 En las consecutivas iteraciones se fue puliendo y añadiendo las funcionalidades necesarias para poder persistir el modelo de datos.
+
 %% Hablar algo de pruebas, y si las hay, mostrar código.
-La capa de servicio es la capa más rica en pruebas, ya que se automatizaron todos los métodos que se realizan para persistir el modelo. Para realizarlas se utilizó conjuntamente la capa de repositorio, de forma que fue necesario introducir datos en la base de datos previos a cada test. Esto se realizó mediante un fichero \emph{SQL} (Figura~\ref{}), de forma que al inicio de cada test se cargan los datos y al final de cada test la base de datos se vacía, de esta forma dicha base de datos queda preparada para la consecutiva ejecución de pruebas sin depender de las anteriores.
+La capa de servicio es la capa más rica en pruebas, ya que se automatizaron todos los métodos que se realizan para persistir el modelo. Para realizarlas se utilizó conjuntamente la capa de repositorio, de forma que fue necesario introducir datos en la base de datos previos a cada test. Esto se realizó mediante un fichero \emph{SQL} (Figura~\ref{fig:sqlFile}), de forma que al inicio de cada test se cargan los datos y al final de cada test la base de datos se vacía, de esta forma dicha base de datos queda preparada para la consecutiva ejecución de pruebas sin depender de las anteriores.
+
+La Figura~\ref{fig:testExample} muestra el test de obtención de todos los \emph{Procesos} existentes en la base de datos. En éste se puede comprobar como se importa el fichero \emph{SQL} al test (Figura~\ref{fig:testExample}, Línea 2), el test simula una petición a la base de datos a través del servicio creado todos los \emph{procesos} (Figura~\ref{fig:testExample}, Líneas 5-8) para posteriormente comprobar que se han recibido todos los esperados (Figura~\ref{fig:testExample}, Línea 10). Además, aparece el concepto de filtro, el cuál permite (como su propio nombre indica) filtrar en función de las propiedades de un \emph{proceso}. Por ejemplo, si en el filtro se introduce un identificador, solo se traerá el \emph{proceso} coincidente con ese identificador.
 
 %% ejemplo de fichero sql 
-
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	INSERT INTO 
+	LUCA_PROCESSES(id,DESCRIPTION,NAME...)
+	VALUES(2,'process_test_desc','process_test_name',...\end{lstlisting}
+	\caption{Fichero \emph{SQL}}
+	\label{fig:sqlFile}
+\end{figure}
 %% ejemplo de prueba de insercion de un proceso
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	@Test
+	@Sql(value = "classpath:ProcessTestsIT.sql")
+	public void testGetProcesses()
+	{
+		PageRequest pageRequest = null;
+		ProcessFilter filter = new ProcessFilter();
+		List<Process> processes = processService.
+		getProcess(filter, pageRequest).asItemsList();
+		
+		assertTrue(processes.size() == 2);
+	}\end{lstlisting}
+	\caption{Ejemplo Test}
+	\label{fig:testExample}
+\end{figure}
+
