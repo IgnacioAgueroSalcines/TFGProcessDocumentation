@@ -101,20 +101,77 @@ Debido a que esta herramienta se focaliza en representar información sobre una 
 \section{Integración del editor con \emph{Vaadin}}
 
 %% Explicar que necesitamos hacer que los eventos del editor se redirijan a Vaadin
-El objetivo principal del editor gráfico de \emph{procesos} es proporcionar una interfaz, con la que otros proyectos que quieran utilizar este editor se puedan comunicar para poder gestionar los \emph{procesos}.
+El objetivo principal del editor gráfico de \emph{procesos} es proporcionar una interfaz, con la que otros proyectos que quieran utilizar este editor se puedan comunicar para poder gestionar los \emph{procesos}. En la figura~\ref{fig:vaadinComponent} se muestra el ejemplo creado para la primera integración. En ella se puede observar cómo se importan los diferentes ficheros \emph{Javascript} necesarios para utilizar el editor creado previamente (Figura~\ref{fig:vaadinComponent} Líneas 3-4). Otro aspecto importante es cómo trata los eventos que se espera que lleguen desde el editor gráfico (Figura~\ref{fig:vaadinComponent} Líneas 9-16), para cada evento se recibe un \emph{array} con los \emph{JSON} que contienen los datos de cada evento, y después se trata dicho evento en función de su objetivo. Por último se muestra como se expone un método de creación de nodos, así como, la interacción con el estado del componente para crear un nodo (Figura~\ref{fig:vaadinComponent} Líneas 18-23).
 
 %% Explicar que la redirección se hace mediante un conector en Javascript
 Para ello es necesario que exista una comunicación entre la herramienta \emph{GoJS} y \emph{Vaadin} mediante eventos. Estos eventos producidos en \emph{GoJS} son trasladados al proyecto \emph{Vaadin}, para que sean comunicados al proyecto que utilice este componente gráfico (en nuestro caso, este papel lo ocupara el producto de LUCA, que deberá decidir que eventos escuchar y como reaccionar ante ellos).
 
-Para que esta comunicación entre \emph{GoJS} y \emph{Vaadin} sea posible, es necesario un fichero que realice las funciones de conector (a partir de ahora lo llamaremos \emph{conector}), su objetivo será comunicar a \emph{Vaadin} de los eventos ocurrido en el editor gráfico y, siguiendo las órdenes de \emph{Vaadin} realizar cambios sobre la interfaz del editor gráfico. De esta forma se produce un diálogo entre ambos conceptos en base a eventos y cambios en la interfaz gráfica.
+Para que esta comunicación entre \emph{GoJS} y \emph{Vaadin} sea posible, es necesario un fichero que realice las funciones de conector (a partir de ahora lo llamaremos \emph{conector}), su objetivo será comunicar a \emph{Vaadin} de los eventos ocurrido en el editor gráfico y, siguiendo las órdenes de \emph{Vaadin} realizar cambios sobre la interfaz del editor gráfico. La Figura~\ref{fig:connector} muestra el \emph{conector} creado para la prueba de concepto. En él se puede ver cómo se crea el diagrama a partir de la librería importada de \emph{GoJS} (Figura~\ref{fig:connector} Línea 1), también se declara la actuación ante un cambio en el estado (Figura~\ref{fig:connector} Líneas 3-5), además de un ejemplo de cómo se manda un evento al componente de Vaadin (\emph{self} se refiere a dicho componente Vaadin, de forma que se puede llamar a los métodos públicos del mismo,Figura~\ref{fig:connector} Líneas 9-11)
+
+
+De esta forma se produce un diálogo entre ambos conceptos en base a eventos y cambios en la interfaz gráfica.
 
 
 %% Mostrar un trozo de código del conector muy sencillo
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	@JavaScript(
+	{ 
+		"vaadin://procesos/js/componentsLibrary.js", "vaadin://procesos/js/connectorSample.js", 
+		"vaadin://procesos/js/go.js" 
+	})
+	public class DiagramComponent extends AbstractJavaScriptComponent
+	{
+	
+		public DiagramComponent()
+		{
+			addFunction("ExternalObjectsDropped", new JavaScriptFunction(){
+				@Override
+				public void call(JsonArray arguments){...}
+			}
+			...
+		}
+	
+		public void createNode(Node node)
+		{
+			List<Node> nodes = getState().getNodes();
+			nodes.add(node);
+			getState().setNodes(nodes);
+		}
+	}\end{lstlisting}
+	\caption{Componente Vaadin}
+	\label{fig:vaadinComponent}
+\end{figure}
+
+
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	var diagramComponent = new mylibrary.DiagramComponent(element);
+	
+	this.onStateChange = function() {
+		diagramComponent.setNodes(this.getState().nodes);
+	};
+	
+	var self = this;
+	
+	myDiagram.addDiagramListener('ObjectDoubleClicked', function(properties) {
+	self.ObjectDoubleClicked(properties.diagram.position);
+	});
+	
+	...
+
+	\end{lstlisting}
+	\caption{Conector}
+	\label{fig:connector}
+\end{figure}
+
 
 %% Explicar figura del link
 \begin{figure}[!tb]
 	\centering
-	\begin{lstlisting}[language=Java]
+	\begin{lstlisting}[language=Javascript]
 	function NotPersistLinkingTool() {
 		go.LinkingTool.call(this);
 		this.name = "NotPersistLinkingTool";
