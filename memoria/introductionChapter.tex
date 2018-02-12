@@ -4,9 +4,13 @@
 	
 \section{Introducción}
 
-%% Aquí hay que añadir un poco de paja. 
+Este documento contiene la memoria del Trabajo Fin de Grado realizado por Ignacio Agüero Salcines para la obtención del título de Grado en Ingeniería Informática. Dicho trabajo Trabajo Fin de Grado fue realizado en la empresa CIC Consulting Informático, entre los meses de XXX y XXX de 2017 y 2018. Durante ese periodo el alumno realizó una carga total de trabajo de XXX, bajo la supervisión de XXX dentro del Departemento de XXX.
 
-El presente trabajo se enmarca dentro del proyecto LUCA. Por tanto, para poder comprender los objetivos de este Trabajo Fin de Grado, se hace necesario describir primero dicho proyecto, lo cual se realiza en la siguiente sección.
+El presente trabajo se enmarca concretamente dentro del proyecto LUCA. El objetivo general de dicho proyecto es proporcionar una interfaz de acceso uniforme a un conjunto de fuentes de datos heterogéneas. El proyecto LUCA, el cual se describirá en mayor profundidad en la siguiente sección, comenzó en XXX, está actualmente en fase de XXX, (si está en producción, indicar a cuántos clientes se ha vendido) e involucra a XXX trabajadores.
+
+El proyecto descrito en este trabajo se enmarca dentro del proyecto LUCA y tiene como objetivo facilitar los procesos de recuperación de información que requieren de la realización de consultas encadenadas donde las salidas de unas consultas se utilizan como entradas para otras. A este conjunto de consultas encadenadas los denominaremos en adelante \emph{procesos}. 
+
+Dado que para entender los objetivos de este proyecto es necesario antes conocer cuáles son los objetivos de LUCA y cómo funciona dicha herramienta, la siguiente sección proporciona una breve introducción a la herramienta LUCA.
 
 \section{LUCA}
 
@@ -101,7 +105,15 @@ El segundo objetivo, que es el que implica una mayor complejidad, consiste en fa
 
 \section{Alcance del Proyecto}
 
-Para refinar estos dos grandes objetivos en una serie de requisitos más concretos, se llevó a cabo en primer lugar una reunión con el Jefe y el Gerente del proyecto. El objetivo de dicha reunión era conocer LUCA en profundidad. A continuación, dado que la fase de Ingeniería de Requisitos para este proyecto ya había sido realizada por la propia empresa, se nos proporcionaron unos documentos técnicos con los requisitos técnicos tanto para la ejecución de procesos como para el desarrollo del componente gráfico de especificación de procesos. Estos documentos pueden encontrarse en el Anexo adjunto a la memoria.
+Para refinar estos dos grandes objetivos en una serie de requisitos más concretos, se llevó a cabo en primer lugar una reunión con el Jefe y el Gerente del proyecto. El objetivo de dicha reunión era conocer LUCA en profundidad. A continuación, se nos proporcionaron unos documentos técnicos con los requisitos técnicos tanto para la ejecución de procesos como para el desarrollo del componente gráfico de especificación de procesos. Estos documentos pueden encontrarse en el Anexo adjunto a la memoria. Por tanto, dado que la fase de Ingeniería de Requisitos para este proyecto ya había sido realizada por la propia empresa, no era necesario repetirla dentro de este proyecto. 
+
+Por otro lado, el proyecto a desarrollar debía integrarse dentro del proyecto LUCA, el cual ya tenía una arquitectura perfectamente definida. Por tanto, el presente proyecto simplemente debía seguir dichas pautas arquitetónicas, no siendo necesario tampoco realizar una fase de diseño arquitectónico del mismo. 
+
+Consecuentemente, el proyecto queda reducido a las fases de diseño microarquitectónico pruebas y despliegue, aunque como es lógico, ésta última fase sería responsabilidad última de la dirección técnica del proyecto LUCA, al ser éstos los encargados de mantener la integridad del producto.
+
+Estas fases de diseño y prueba se realizaron mediante un esquema de desarrollo iterativo e incremental, similar a de las metodologías ágiles, pero sin llegar a adoptar una elementos propios de un proyecto ágil, tales como un \emph{Product Backlog} o la limitación de la duración de las iteraciones a un tiempo concreto.
+
+El desarrollo del producto se dividió en varias iteraciones. En cada iteración, se añadían nuevas funcionalidades al producto, que iba creciendo en complejidad. Al final de cada iteración, se mostraba el producto a los responsables del proyecto LUCA, los cuales daban su aprobación para continuar con el desarrollo y sugerían los cambios y modificaciones que consideraban oportunos. 
 
 %%==============================================================================%%
 %% NOTE(Pablo): Lo de abajo se quita por simplicidad                            %%
@@ -124,10 +136,12 @@ Para refinar estos dos grandes objetivos en una serie de requisitos más concret
 %% Comentar que la arquitectura ya estaba definida, por lo que el proyecto se reduce
 %% a las fases de diseño detallado, implementación y pruebas.
 %%
-%% El proyecto genera como resultado dos módulos grande y bien diferenciados: 
-%%    Process Editor Component y (se va a cambiar). 
+%% El proyecto genera como resultado dos módulos grande y bien diferenciados:
+%%    Process Editor Component y (se va a cambiar).
 %%==============================================================================%%
 
 \section{Sumario}
 
-%% To be written
+Este capítulo ha presentado los objetivos del proyecto descrito en este documento. El objetivo general de dicho proyecto era permitir que la herramienta LUCA soportase el concepto de \emph{proceso}, entendiéndose por \emph{proceso} la ejecución de una serie de consultas concatenadas de recuperación de la información donde las salidas de ciertas consultas sirven como entradas para otras. 
+
+Antes de entrar a profundizar y refinar dicho objetivo, se ha descrito la herramienta LUCA, detallando sus objetivos generales, su estado actual y sus limitaciones. Seguidamente, se han introducido los objetivos concretos de este proyecto, consistentes en aliviar parte de las limitaciones actuales de LUCA. Finalmente se ha definido el alcance concreto del proyecto, resaltando que las fases de Ingeniería de Requisitos y Diseño Arquitectónico quedan fuera del mismo.
