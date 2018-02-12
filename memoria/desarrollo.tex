@@ -38,8 +38,52 @@ El editor gráfico utiliza \emph{GoJS} para crear toda la interfaz visual, este 
 
 El segundo paso, una vez conseguida la estética y estructura de elementos deseada, fue comprobar la funcionalidad del mismo, desde asegurar que al interactuar con el editor se creaban los eventos oportunos, hasta comprobar que los elementos se mostraban en pantalla tal y como se quería.
 
-%% Añadir algo de código. 
+\begin{figure}[!tb]
+	\centering
+	\includegraphics[width=\linewidth]{initalSampleEditor.jpeg}
+	\caption{Primer Contacto Editor}
+	\label{fig:initialSampleEditor}
+\end{figure}
 
+%% Añadir algo de código. 
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	myDiagram.nodeTemplate = $(go.Node, "Table", {
+		locationObjectName : "BODY",
+		locationSpot : go.Spot.Center,
+		selectionObjectName : "BODY"
+	}, new go.Binding("location", "loc", go.Point.parse)
+	.makeTwoWay(go.Point.stringify),
+	
+		$(go.Panel, "Auto", {
+			row : 1,
+			column : 1,
+			name : "BODY",
+			stretch : go.GraphObject.Fill
+		}, 
+			$(go.Shape, "Rectangle", {
+				fill : "#58ACFA",
+				stroke : null,
+				strokeWidth : 0,
+				name : "rectangle",
+				minSize : new go.Size(56, 56)
+			}), 
+				$(go.TextBlock, "CQ Default", {
+					margin : 10,
+					textAlign : "center",
+					font : "14px  Segoe UI,sans-serif",
+					stroke : "white",
+					editable : true
+				}, new go.Binding("text", "name").makeTwoWay()
+			)
+		)
+	);\end{lstlisting}
+	\caption{\emph{Template} Prueba Editor Inicial}
+	\label{fig:initialSampleEditorCode}
+\end{figure}
+
+La figura~\ref{fig:initialSampleEditor} y la figura~\ref{fig:initialSampleEditorCode} muestran el primer boceto de editor, la primera se corresponde con una captura de la interfaz y la segunda con el \emph{template} utilizado para poder crearla. Como se puede comprobar, para el primer contacto se creó un primer área desde la que arrastrar los diferentes elementos (en nuestro caso nodos), y el segundo se corresponde con el contenedor de dichos nodos. El template muestra como se crea un nodo (Figura~\ref{fig:initialSampleEditorCode} Línea 1) y se le asigna un único panel (Figura~\ref{fig:initialSampleEditorCode} Línea 8) que contiene una rectángulo (Figura~\ref{fig:initialSampleEditorCode} Líneas 14-28) y una caja de texto dentro de dicho rectángulo (Figura~\ref{fig:initialSampleEditorCode} Líneas 21-27).
 
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra (y teniendo en 
 %%    cuenta que son cosas gráficas)
