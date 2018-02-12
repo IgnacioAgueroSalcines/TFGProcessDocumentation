@@ -15,13 +15,13 @@
 %% desarrollar el \emph{Process Editor}
 
 El presente capítulo detalla el proceso de desarrollo del proyecto realizado dentro de este Trabajo Fin de Grado. Tal como se ha comentado, el objetivo del proyecto era 
-proporciona al producto LUCA una herramienta gráfica para poder crear \emph{procesos}, es decir, poder encadenar consultas entre sí a raíz de sus valores de entrada y de salida.
+proporciona al producto LUCA una herramienta gráfica para poder crear \emph{procesos}, es decir, poder encadenar consultas entre sí en base a sus valores de entrada y de salida.
 
 Para alcanzar este objetivo, se siguió el esquema de trabajo que se muestra en la Figura~\ref{fig:flujoDesarrollo}.  
 
-La primera etapa consistió en realizar un primer contacto con la herramienta \emph{GoJS}, para ello, se realizó una prueba de concepto donde se creaba un diagrama sencillo con cajas o nodos que se conectan entre sí (Figura~\ref{}).
+La primera etapa consistió en realizar un primer contacto con la herramienta \emph{GoJS}, para ello, se realizó una prueba de concepto donde se creaba un diagrama sencillo con cajas o nodos que se conectan entre sí (Figura~\ref{fig:initialSampleEditor}).
 
-Con la prueba de concepto funcionando, la siguiente etapa consistió en integrar el diagrama en \emph{GoJS} con el framework de \emph{Vaadin} para obtener un proyecto implementado en \emph{Java} que pueda ser utilizado por otro proyectos, es decir, crear un proyecto que actúa de herramienta gráfica de forma genérica a cualquier otro proyecto que le quiera utilizar.
+Con la prueba de concepto funcionando, la siguiente etapa consistió en integrar el diagrama en \emph{GoJS} con el framework de \emph{Vaadin} para obtener un proyecto implementado en \emph{Java}, que pueda ser utilizado por otros proyectos, es decir, crear un proyecto que actúa de herramienta gráfica de forma genérica a cualquier otro proyecto que le quiera utilizar.
 
 La tercera etapa se centró en integrar dicho proyecto \emph{Vaadin}, antes mencionado, en el producto LUCA con el objetivo de ser capaces de mostrar el editor y ser capaces de interactuar con él y recibir los eventos ocurridos.
 
@@ -34,7 +34,7 @@ Las siguientes secciones proporcionan detalles sobre la ejecución de cada etapa
 \section{Desarrollo del Editor Gráfico}
 
 %% Describir los pasos, a nivel general, para crear el editor gráfico sencillo. 
-El editor gráfico utiliza \emph{GoJS} para crear toda la interfaz visual, este framework (como ya se explicó en el apartado de documentación) utiliza \emph{templates} para definir el aspecto estético de los diferentes componentes. Por lo tanto, el primer paso tras tener claro cómo debía de ser un primer boceto de interfaz fue crear todos los \emph{templates} de los que se iba a componer.
+El editor gráfico utiliza \emph{GoJS} para crear toda la interfaz visual, este framework (como ya se explicó en el apartado de documentación) utiliza \emph{templates} para definir el aspecto estético de los diferentes componentes. Por lo tanto, el primer paso, tras tener claro cómo debía de ser un primer boceto de interfaz, fue crear todos los \emph{templates} de los que se iba a componer.
 
 El segundo paso, una vez conseguida la estética y estructura de elementos deseada, fue comprobar la funcionalidad del mismo, desde asegurar que al interactuar con el editor se creaban los eventos oportunos, hasta comprobar que los elementos se mostraban en pantalla tal y como se quería.
 
