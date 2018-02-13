@@ -11,7 +11,7 @@
 	sistemas, necesita acceder a cada uno de estos sistemas, extraer de cada sistema la información que precisa, filtrarla y unificarla para finalmente	obtener los datos requeridos.
 	
 	
-	Por ejemplo, una tienda de electrodomésticos podría tener sistemas informáticos diferentes para el departamento de atención al cliente, para el departamento técnico de postventa y para el departamento de compras y adquisiciones.Por tanto, para conocer el estado actual de una reparación, podríamos necesitar:
+	Por ejemplo, una tienda de electrodomésticos podría tener sistemas informáticos diferentes para el departamento de atención al cliente, para el departamento técnico de postventa y para el departamento de compras y adquisiciones. Por tanto, para conocer el estado actual de una reparación, podríamos necesitar:
 		\begin{itemize}
 			\item  Acceder al primer sistema para obtener el identificador de la incidencia y en qué fase de su gestión se encuentra.
 			\item  Comprobado que la incidencia está actualmente en reparación, recuperaríamos otro sistema el estado detallado de la reparación, comprobando que está a la espera de una pieza.
@@ -27,7 +27,20 @@
 	
 \chapter*{Preface}
 
+	Current companies do not use a single information system that supports their work processes, but an ecosystem of information systems that support different business processes executed within that organization. As a consequence of this new situation, when a user wants to get a specific information whose data exist in several of these
+	systems, you need to access each of these systems, extract the information you need from each system, filter it and unify it to finally obtain the required data.
+	
+	
+	For example, an appliance store could have different computer systems for the customer service department, for the after sales technical department and for the purchasing and procurement department. Therefore, to know the current status of a repair, we might need:
+	\begin{itemize}
+		\item Access the first system to get the identifier of the incident and at what stage of its management it is.
+		\item Checked that the incident is currently under repair, we would recover another system the detailed status of the repair, verifying that it is waiting for a part.
+		\item Finally, we would access the purchase and acquisition system to check when the delivery of said piece is scheduled. Information storage systems can be diverse, including from a web service, a relational database, a file repository accessible via FTP or a NoSQL database.
+	\end{itemize}
+
+
+	The objective of this project is to facilitate this process of composition to the user through the development of a graphic mechanism for the specification of these processes of composition of queries.
 	
 
-\textbf{Keywords}:
-Process, Query, Vaadin, Go.JS, MVP, LUCA.
+	\textbf{Keywords}:
+	Process, Query, Vaadin, Go.JS, MVP, LUCA.
