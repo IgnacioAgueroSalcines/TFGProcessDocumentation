@@ -229,7 +229,7 @@ Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recep
 	\label{fig:processModel}
 \end{figure}
 
-El objetivo de este paso era que LUCA pudiese almacenar y gestionar procesos. Para ello lo primero era definir un modelo conceptual de datos para los procesos. Dicho modelo conceptual se muestra en la Figura~\ref{}.
+El objetivo de este paso era que LUCA pudiese almacenar y gestionar procesos. Para ello lo primero era definir un modelo conceptual de datos para los procesos. Dicho modelo conceptual se muestra en la Figura~\ref{fig:processModel}. En esta figura se puede observar que se encuentras clases con un fondo gris, eso significa que son clases propias del producto LUCA y que por lo tanto no se presentan en su totalidad de características.
 
 %% Explicar que ese modelo concetual de datos se implementa en Java y con JPA se 
 %% genera el esquema relacional y el puente objeto-relacional.
@@ -237,7 +237,7 @@ Este modelo conceptual implementado en \emph{Java} utiliza un conjunto de anotac
 
 %% Indicar qué ha sido necesario modificar en la capa de negocio (control de accesos)
 %% y negocio (servicio). Mostrar ejemplos de código
-La capa de negocio se subdividió en dos subcapas. La primera es la capa de control de acceso (Figura~\ref{}), esta capa se ocupa de verificar que quien desea utilizar la propia capa de negocio posea los privilegios y permisos necesarios para poder usarla, una vez verificados, esta se comunica con la capa propiamente de servicio. La segunda subcapa es propia capa de servicio (Figura~\ref{}), esta gestiona la modificación del proceso y de los diferentes elementos que posee el modelo. Para ello esta capa se comunica con una capa de persistencia que utiliza por debajo \emph{JPA} para la comunicación con la base de datos relacional.
+La capa de negocio se subdividió en dos subcapas. La primera es la capa de control de acceso, esta capa se ocupa de verificar que quien desea utilizar la propia capa de negocio posea los privilegios y permisos necesarios para poder usarla, una vez verificados, esta se comunica con la capa propiamente de servicio. La segunda subcapa es propia capa de servicio, esta gestiona la modificación del proceso y de los diferentes elementos que posee el modelo. Para ello esta capa se comunica con una capa de persistencia que utiliza por debajo \emph{JPA} para la comunicación con la base de datos relacional.
 
 %% ejemplo controlador
 
