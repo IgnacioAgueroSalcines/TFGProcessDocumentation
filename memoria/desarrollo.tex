@@ -246,6 +246,7 @@ La capa de negocio se subdividió en dos subcapas. La primera es la capa de cont
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra.
 En las consecutivas iteraciones se fue puliendo y añadiendo las funcionalidades necesarias para poder persistir el modelo de datos.
 
+
 %% Hablar algo de pruebas, y si las hay, mostrar código.
 La capa de servicio es la capa más rica en pruebas, ya que se automatizaron todos los métodos que se realizan para persistir el modelo. Para realizarlas se utilizó conjuntamente la capa de repositorio, de forma que fue necesario introducir datos en la base de datos previos a cada test. Esto se realizó mediante un fichero \emph{SQL} (Figura~\ref{fig:sqlFile}), de forma que al inicio de cada test se cargan los datos y al final de cada test la base de datos se vacía, de esta forma dicha base de datos queda preparada para la consecutiva ejecución de pruebas sin depender de las anteriores.
 
@@ -279,4 +280,28 @@ La Figura~\ref{fig:testExample} muestra el test de obtención de todos los \emph
 	\caption{Ejemplo Test}
 	\label{fig:testExample}
 \end{figure}
+
+%% explicar el proceso de composicion y ejecucion de procesos
+La figura~\ref{fig:gestionProceso} explica la creación de un proceso. La figura se compone de tres secciones bien diferenciadas, por una parte tenemos una tabla con las diferentes consultas que pueden ser utilizadas en el proceso, esta tabla además, puede ser filtrada en base al grupo al que queremos que pertenezcan las consultas (Figura~\ref{fig:gestionProceso}, etiqueta 1). La sección superior de la figura (Figura~\ref{fig:gestionProceso}, etiqueta 2) representa todas las características necesarias para crear un proceso. La última sección alberga el diagrama cn el que el usuario puede interactuar para construir el proceso utilizando las diferentes consultas que son arrastradas desde la tabla de consultas (Figura~\ref{fig:gestionProceso}, etiqueta 3).
+
+
+\begin{figure}[!tb]
+	\centering
+	\includegraphics[width=\linewidth]{capturasLuca/gestionProceso.png}
+	\caption{Creación de un proceso}
+	\label{fig:gestionProceso}
+\end{figure}
+
+Para terminar, la figura~\ref{fig:ejecucionProceso} muestra la ejecución de un proceso. Esta figura se puede dividir en tres secciones. La primera consta de los campos necesarios para poder ejecutar un proceso (Figura~\ref{fig:ejecucionProceso}, etiqueta 1). En la segunda sección se muestra el diagrama del proceso (esta vez no es editable), en él, durante la ejecución, se podrá ir visualizando el flujo de ejecución del proceso, viendo que consultas o enlaces se han ejecutado correctamente o no (Figura~\ref{fig:ejecucionProceso}, etiqueta 2). La última sección muestra el resultado de ejecutar el proceso, se visualiza una tabla con el conjunto de resultados (Figura~\ref{fig:ejecucionProceso}, etiqueta 3). Además de estas secciones, el usuario si lo desea puede ocultar el diagrama para solo visualizar la tabla de resultados(Figura~\ref{fig:ejecucionProceso}, etiqueta 4).
+
+
+\begin{figure}[!tb]
+	\centering
+	\includegraphics[width=\linewidth]{capturasLuca/ejecucionProceso.png}
+	\caption{Ejecución de un proceso}
+	\label{fig:ejecucionProceso}
+\end{figure}
+
+
+
 

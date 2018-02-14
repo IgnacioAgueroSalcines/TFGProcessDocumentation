@@ -56,20 +56,20 @@ No obstante, para que dichas consultas pueden ser ejecutadas, es necesario un us
 
 \begin{figure}[!tb]
 	\centering
-	\includegraphics[width=\linewidth]{capturasLuca/creacionConsulta.png}
+	\includegraphics[width=\linewidth]{capturasLuca/gestionConsulta.png}
 	\caption{Creación de una Consulta}
-	\label{fig:creacionConsulta}
+	\label{fig:gestionConsulta}
 \end{figure}
 
-Para poder realizar esta tarea, el creador de consultas accedería a la interfaz dedicada a esta tarea (ver Figura~\ref{fig:creacionConsulta}). En esta interfaz, definiría primero las variables de entrada y salida de la consulta (Figura~\ref{fig:creacionConsulta}, etiqueta 1). A continuación, especificaría cómo llevar a cabo dicha consulta a bajo nivel. Para ello puede utilizar una serie de facilidades y primitivas proporcionadas por LUCA. Para la consulta ejemplo, utilizando estas facilidades, se especifica que se desea obtener el nombre, la descripción, el nombre de la tarea asíncrona y el usuario, y se establece como variable de entrada el estado del proceso.
+Para poder realizar esta tarea, el creador de consultas accedería a la interfaz dedicada a esta tarea (ver Figura~\ref{fig:gestionConsulta}). En esta interfaz, definiría primero las variables de entrada y salida de la consulta (Figura~\ref{fig:gestionConsulta}, etiqueta 1). A continuación, especificaría cómo llevar a cabo dicha consulta a bajo nivel. Para ello puede utilizar una serie de facilidades y primitivas proporcionadas por LUCA. Para la consulta ejemplo, utilizando estas facilidades, se especifica que se desea obtener el nombre, la descripción, el nombre de la tarea asíncrona y el usuario, y se establece como variable de entrada el estado del proceso.
 
 Tras guardar la consulta se puede ejecutar directamente desde la ventana de creación, sin embargo, si la consulta ya ha sido ejecutada previamente y el usuario la ha publicado (tras ejecutar una consulta desde la ventana de creación, si se ha ejecutado correctamente se le permite al usuario cambiar su estado de edición a publicada, esto significa que la consulta está preparada para ser ejecutada), el usuario puede ir a la ventada de ejecución de consultas, y desde ahí ejecutarla.
 
 La principal ventaja que aporta LUCA es que el proceso de ejecución de consultas es opaco para el usuario que la ejecuta. El usuario sólo tiene que proporcionar los parámetros necesarios de entrada y seleccionar un formato de salida. Por tanto, el proceso de ejecución de consultas es exactamente el mismo con independencia de la fuente a la cual se accede.
 
-Por ejemplo, en el caso de la consulta \emph{Get Procesos Por Estado} sería necesario proporcionar el estado de los procesos de los que queremos obtener información. Una vez introducido dicho estado, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:ejecucionConsulta}, etiqueta 2). Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, se muestra como una tabla ya que es una consulta a base de datos (Figura~\ref{fig:ejecucionConsulta}, etiqueta 3).
+Por ejemplo, en el caso de la consulta \emph{Get Procesos Por Estado} sería necesario proporcionar el estado de los procesos de los que queremos obtener información. Una vez introducido dicho estado, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:ejecucionConsultas}, etiqueta 2). Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, se muestra como una tabla ya que es una consulta a base de datos (Figura~\ref{fig:ejecucionConsultas}, etiqueta 3).
 
-Lo importante de este proceso es que, una vez definida la consulta, ésta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
+Lo importante de este proceso es que, una vez definida la consulta, esta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
 	\begin{figure}[!tb]
 		\centering
@@ -112,31 +112,6 @@ Consecuentemente, el proyecto queda reducido a las fases de diseño microarquite
 Estas fases de diseño y prueba se realizaron mediante un esquema de desarrollo iterativo e incremental, similar a de las metodologías ágiles, pero sin llegar a adoptar una elementos propios de un proyecto ágil, tales como un \emph{Product Backlog} o la limitación de la duración de las iteraciones a un tiempo concreto.
 
 El desarrollo del producto se dividió en varias iteraciones. En cada iteración, se añadían nuevas funcionalidades al producto, que iba creciendo en complejidad. Al final de cada iteración, se mostraba el producto a los responsables del proyecto LUCA, los cuales daban su aprobación para continuar con el desarrollo y sugerían los cambios y modificaciones que consideraban oportunos. 
-
-%%==============================================================================%%
-%% NOTE(Pablo): Lo de abajo se quita por simplicidad                            %%
-%%==============================================================================%%
-%%
-%% Como ya se ha mencionado, en estos documentos se pueden encontrar los
-%% requisitos técnicos atribuidos al proyecto, pero, de forma resumida, se
-%% centran en tres pilares o requisitos principales:
-%%
-%% \begin{itemize}
-%%  	\item Concatenación de las consultas entre si pertenecientes a un
-%%            mismo proceso.
-%% 	\item Visualización del progreso de ejecución del proceso.
-%% 	\item Aplicar criterios de navegación a partir de los resultados de salidas.
-%% \end{itemize}
-%%
-%%
-%%==============================================================================%%
-%%
-%% Comentar que la arquitectura ya estaba definida, por lo que el proyecto se reduce
-%% a las fases de diseño detallado, implementación y pruebas.
-%%
-%% El proyecto genera como resultado dos módulos grande y bien diferenciados:
-%%    Process Editor Component y (se va a cambiar).
-%%==============================================================================%%
 
 \section{Sumario}
 
