@@ -16,7 +16,7 @@
 {\sc Kay, R.}
 \newblock Rich internet application.
 \newblock
-  \url{computerworld.com/article/2551058/networking/rich-internet-applications.html}.
+  \url{https://www.computerworld.com/article/2551058/networking/rich-internet-applications.html}.
 \newblock 02-14-2018.
 
 \bibitem{ajax}
@@ -26,6 +26,7 @@
 \bibitem{gojs}
 {\sc Software, N.}
 \newblock Gojs.
-\newblock \url{gojs.net/latest/index.html}.
+\newblock \url{https://gojs.net/latest/index.html}.
+\newblock 02-14-2018.
 
 \end{thebibliography}
