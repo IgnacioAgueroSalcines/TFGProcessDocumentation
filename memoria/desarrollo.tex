@@ -240,7 +240,30 @@ Este modelo conceptual implementado en \emph{Java} utiliza un conjunto de anotac
 La capa de negocio se subdividió en dos subcapas. La primera es la capa de control de acceso, esta capa se ocupa de verificar que quien desea utilizar la propia capa de negocio posea los privilegios y permisos necesarios para poder usarla, una vez verificados, esta se comunica con la capa propiamente de servicio. La segunda subcapa es propia capa de servicio, esta gestiona la modificación del proceso y de los diferentes elementos que posee el modelo. Para ello esta capa se comunica con una capa de persistencia que utiliza por debajo \emph{JPA} para la comunicación con la base de datos relacional.
 
 %% ejemplo controlador
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	@PreAuthorize(ProcessPermission.AUTH_PROCESS_CREATE)
+	Process saveProcess(Process process);\end{lstlisting}
+	\caption{Interfaz controladora}
+	\label{fig:interfazControladora}
+\end{figure}
 
+La figura~\ref{fig:interfazControladora} muestra cómo se verificaron los permisos y privilegios del usuario que utiliza el servicio, para llevarlo a cabo, se comprueba previa ejecución del método, que el usuario tiene, en este caso, los permisos para crear un proceso, una vez verificados esos permisos, se ejecuta el método. Internamente, se llama al servicio propio de la capa de negocio para realizar la operación e persistencia (Figura~\ref{fig:interfazControladoraImpl}).
+
+\begin{figure}[!tb]
+	\centering
+	\begin{lstlisting}[language=Java]
+	@Autowire
+	private ProcessService processService;
+	
+	@Override
+	public Process saveProcess(Process process){
+		return processService.saveProcess(process);
+	}\end{lstlisting}
+	\caption{Implementación interfaz controladora}
+	\label{fig:interfazControladoraImpl}
+\end{figure}
 %%ejemplo capa servicio-> linkada al controlador
 
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra.
