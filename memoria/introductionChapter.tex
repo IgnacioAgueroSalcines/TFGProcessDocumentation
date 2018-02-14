@@ -31,19 +31,21 @@ Como hemos comentado anteriormente, a cada uno de estos sistemas podría acceder
 Para aliviar esta situación, dentro de la empresa CIC, se está desarrollando una aplicación denominada LUCA, a la cual contribuye este Trabajo Fin de Grado. Para facilitar este proceso de recuperación de información, LUCA proporciona un lenguaje común para todas las fuentes de datos a unificar, permitiendo al usuario abstraerse de los detalles de cada fuente.
 
 \subsection{Funcionamiento de LUCA}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{capturasLuca/menuLuca.png}
+	\caption{Menu Principal LUCA}
+	\label{fig:menuLuca}
+\end{figure}
+
 
 A continuación, se detalla brevemente el funcionamiento de \emph{LUCA}. Para ello, utilizaremos como ejemplo una consulta a la base de datos de LUCA, esta consulta obtendrá los procesos en función de un estado (los estados pueden ser en edición, publicado, es decir, preparada para ser ejecutada, o borrado).
 
-\begin{figure}[!tb]
-    \centering
- 	\includegraphics[width=\linewidth]{capturasLuca/menuLuca.png}
-	\caption{Menu Principal LUCA}
-    \label{fig:menuLuca}
-\end{figure}
+
 
 En el menu principal de LUCA, nos aparece una vista con un conjunto de consultas que el usuario ha marcado como favoritas (Figura~\ref{fig:menuLuca}), es decir, que suele utilizar con frecuencia. Como se dijo anteriormente, se utilizará la consulta de los procesos por estado.
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{capturasLuca/gestionConsultas.png}
 	\caption{Vista de Gestión de Consultas}
@@ -54,7 +56,7 @@ En la vista de gestión de consultas (Figura~\ref{fig:gestionConsultas}) se pued
 
 No obstante, para que dichas consultas pueden ser ejecutadas, es necesario un usuario con conocimientos suficientes para ello, al que denominaremos en adelante el \emph{creador de consultas}.
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{capturasLuca/gestionConsulta.png}
 	\caption{Creación de una Consulta}
@@ -67,15 +69,17 @@ Tras guardar la consulta se puede ejecutar directamente desde la ventana de crea
 
 La principal ventaja que aporta LUCA es que el proceso de ejecución de consultas es opaco para el usuario que la ejecuta. El usuario sólo tiene que proporcionar los parámetros necesarios de entrada y seleccionar un formato de salida. Por tanto, el proceso de ejecución de consultas es exactamente el mismo con independencia de la fuente a la cual se accede.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{capturasLuca/ejecucionConsulta.png}
+	\caption{Vista de Ejecución de Consultas}\label{fig:ejecucionConsultas}
+\end{figure}
+
 Por ejemplo, en el caso de la consulta \emph{Get Procesos Por Estado} sería necesario proporcionar el estado de los procesos de los que queremos obtener información. Una vez introducido dicho estado, se seleccionaría el botón de ejecución de la consulta (Figura~\ref{fig:ejecucionConsultas}, etiqueta 2). Finalmente, se muestra el resultado de la consulta, el cuál puede ser visualizado de diferentes formas en función del recurso al que se llama. En nuestro caso, se muestra como una tabla ya que es una consulta a base de datos (Figura~\ref{fig:ejecucionConsultas}, etiqueta 3).
 
 Lo importante de este proceso es que, una vez definida la consulta, esta se puede ejecutar fácilmente sin conocer los detalles internos de la misma, incluso hasta el tipo de sistema al que se accede.
 
-	\begin{figure}[!tb]
-		\centering
-		\includegraphics[width=\linewidth]{capturasLuca/ejecucionConsulta.png}
-		\caption{Vista de Ejecución de Consultas}\label{fig:ejecucionConsultas}
-	\end{figure}
+
 
 \subsection{Limitaciones actuales de LUCA}
 

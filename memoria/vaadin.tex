@@ -1,6 +1,6 @@
 
 
-\emph{Vaadin}~\cite{vaadin} es un \emph{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{ria}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en tecnologías web como HTML (\emph{HyperText Markup Language})~\cite{html}, CSS (\emph{Cascading Style Sheets})~\cite{css}, Javascript~\cite{javascript}, HTTP (\emph{Hypertext Transfer Protocol})~\cite{http} o AJAX (\emph{Asynchronous JavaScript and XML})~\cite{ajax}.
+\emph{Vaadin}~\cite{vaadin} es un \emph{framework} para el desarrollo de aplicaciones \emph{web} avanzadas, también conocidas como \emph{Rich-Internet Applications (RIA)}~\cite{ria}. El objetivo del paradigma \emph{RIA} es desarrollar aplicaciones \emph{web} con interfaces avanzadas que les haga asemejarse a las aplicaciones de escritorio. La principal ventaja que aporta \emph{Vaadin} es que permite escribir aplicaciones en código Java, como si fuesen de escritorio, y luego este código es transformado para que funcione en entornos web.
 
 Una de las características diferenciadores de \emph{Vaadin} es que, al contrario de las librerías de JavaScript tradicionales, \emph{Vaadin} también contempla la parte del servidor, por lo se generan tanto las llamadas al servidor desde la interfaz gráfica (\emph{front-end}) como la recepción y tratamiento de esas llamadas en la parte del servidor (\emph{back-end}).
 
@@ -10,58 +10,54 @@ A continuación, para introducir al lector en el funcionamiento de \emph{Vaadin}
 
 \subsection{Desarrollo de Aplicaciones Web con Vaadin}
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{vaadinExampleImage.png}
 	\caption{Árbol de Proyectos}
 	\label{fig:vaadinExampleImage}
 \end{figure}
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	@Override
 	protected void init(VaadinRequest request) {
 	
-	final VerticalLayout layout = new VerticalLayout();
-	layout.setSpacing(true);
-	layout.setMargin(true);
-	
-	final TreeGrid grid = new TreeGrid();
-	grid.setWidth(800, Unit.PIXELS);
-	grid.setHeight(450, Unit.PIXELS);
-	
-	JobContainer container = new JobContainer();
-	grid.setContainerDataSource(container);
-	
-	layout.addComponent(grid);
-	setContent(layout);
+		final VerticalLayout layout = new VerticalLayout();
+		layout.setSpacing(true);
+		layout.setMargin(true);
+		
+		final TreeGrid grid = new TreeGrid();
+		grid.setWidth(800, Unit.PIXELS);
+		grid.setHeight(450, Unit.PIXELS);
+		
+		JobContainer container = new JobContainer();
+		grid.setContainerDataSource(container);
+		
+		layout.addComponent(grid);
+		setContent(layout);
 	}\end{lstlisting}
 	\vspace{-15pt}
 	\caption{Interfaz de Usuario Vaadin}
 	\label{fig:uiVaadin}
 \end{figure}
 
-La Figura~\ref{fig:vaadinExampleImage} muestra la interfaz de una pequeña aplicación web consistente en un árbol de tareas. Para construir este ejemplo en \emph{Vaadin}, en primer lugar definimos su interfaz gráfica. Para crear dicha interfaz gráfica, nos basamos en un componente gráfico, o \emph{widget}, denominado \emph{TreeGrid}  (Figura~\ref{fig:jobContainer}, Línea 8). Como puede observarse, este componente gráfico se usa directamente desde código Java, tal como se crearía una interfaz Java de escritorio, utilizando elementos propios de Java como los \emph{layouts} (Figura~\ref{fig:uiVaadin}, Líneas~4\-6) y no siendo necesario escribir nada en Javascript o HTML. Este componente mostrará los datos proporcionados por el contenedor de datos \emph{JobContainer} (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
-
-La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcionará los datos que se muestran en el \emph{grid}. Esta clase extiende de una clase de Vaadin llamada \emph{HierarchicalContainer} y se encarga de implementar toda la lógica para almacenar de forma jerárquica los nodos. Además, implementa las interfaces de Vaadin \emph{Collapsible} (Figura~\ref{fig:jobContainerCollapsible}) y \emph{Measurable} (Figura~\ref{fig:jobContainerMeasurable}), encargadas de contraer el árbol de elementos y de calcular la profundidad del elemento en la jerarquía, respectivamente.
-
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	public class JobContainer extends HierarchicalContainer
-                               implements Collapsible, Measurable {
+	implements Collapsible, Measurable {
 	
 		static final String PROPERTY_NAME = "Name";
 		static final String PROPERTY_HOURS = "Hours done";
 		static final String PROPERTY_MODIFIED = "Last modified";
 		
 		public JobContainer() {
-			addContainerProperty(PROPERTY_NAME, String.class, "");
-			addContainerProperty(PROPERTY_HOURS, Integer.class, 0);
-			addContainerProperty(PROPERTY_MODIFIED, Date.class, new Date());
-			
-			...	
+		addContainerProperty(PROPERTY_NAME, String.class, "");
+		addContainerProperty(PROPERTY_HOURS, Integer.class, 0);
+		addContainerProperty(PROPERTY_MODIFIED, Date.class, new Date());
+		
+		...	
 		}
 		
 		private Object addItem(Object[] values) {...}
@@ -73,19 +69,20 @@ La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcio
 		@Override
 		public boolean hasChildren(Object itemId) {...}
 	}
-    \end{lstlisting}
+	\end{lstlisting}
 	\caption{Contenedor TreeGrid}
 	\label{fig:jobContainer}
 \end{figure}
 
+La Figura~\ref{fig:vaadinExampleImage} muestra la interfaz de una pequeña aplicación web consistente en un árbol de tareas. Para construir este ejemplo en \emph{Vaadin}, en primer lugar definimos su interfaz gráfica. Para crear dicha interfaz gráfica, nos basamos en un componente gráfico, o \emph{widget}, denominado \emph{TreeGrid}  (Figura~\ref{fig:jobContainer}, Línea 8). Como puede observarse, este componente gráfico se usa directamente desde código Java, tal como se crearía una interfaz Java de escritorio, utilizando elementos propios de Java como los \emph{layouts} (Figura~\ref{fig:uiVaadin}, Líneas~4\-6) y no siendo necesario escribir nada en Javascript o HTML. Este componente mostrará los datos proporcionados por el contenedor de datos \emph{JobContainer} (Figura~\ref{fig:uiVaadin}, Líneas~12-13).
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	public class JobContainer
 		...
 		private Map<Object, Boolean> expandedNodes = new HashMap<>();
-			
+		
 		@Override
 		public void setCollapsed(Object itemId, boolean collapsed) {
 			expandedNodes.put(itemId, !collapsed);	
@@ -105,11 +102,10 @@ La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcio
 	\label{fig:jobContainerCollapsible}
 \end{figure}
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]	
-	public class JobContainer
-	
+	public class JobContainer	
 		...
 		@Override
 		public int getDepth(Object itemId) {
@@ -125,18 +121,20 @@ La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcio
 	\label{fig:jobContainerMeasurable}
 \end{figure}
 
+La clase \emph{JobContainer} (Figura~\ref{fig:jobContainer}) es la que proporcionará los datos que se muestran en el \emph{grid}. Esta clase extiende de una clase de Vaadin llamada \emph{HierarchicalContainer} y se encarga de implementar toda la lógica para almacenar de forma jerárquica los nodos. Además, implementa las interfaces de Vaadin \emph{Collapsible} (Figura~\ref{fig:jobContainerCollapsible}) y \emph{Measurable} (Figura~\ref{fig:jobContainerMeasurable}), encargadas de contraer el árbol de elementos y de calcular la profundidad del elemento en la jerarquía, respectivamente.
+
 Tal como se puede apreciar, no es necesario ningún conocimiento de las tecnologías web tales como \emph{HTML}, \emph{CSS}, \emph{Javascript}, \emph{HTTP} o \emph{AJAX} para construir el ejemplo de la Figura~\ref{fig:vaadinExampleImage} utilizando \emph{Vaadin}.
 
 \subsection{Arquitectura Interna de \emph{Vaadin}}
 
-Las clases descritas en el apartado anterior se transforman, utilizando \emph{Vaadin}, en código \emph{Javascript} que pueda ser procesado en un navegador web, más una serie de llamadas \emph{AJAX} a una serie de funciones desplegadas en el servidor que se encargan de gestionar la interacción con el servidor, de acuerdo al patrón \emph{Model-View-Presenter (MVP)} (ver Sección~\ref{sec:mvp}). La~Figura~\ref{fig:vaadinMVP} muestra el funcionamiento general de este esquema.
-
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.80\linewidth]{vaadin/vaadinArch.png}
+	\includegraphics[width=\linewidth]{vaadin/vaadinArch.png}
 	\caption{Arquitectura Interna Vaadin}
 	\label{fig:vaadinMVP}
 \end{figure}
+
+Las clases descritas en el apartado anterior se transforman, utilizando \emph{Vaadin}, en código \emph{Javascript} que pueda ser procesado en un navegador web, más una serie de llamadas \emph{AJAX} a una serie de funciones desplegadas en el servidor que se encargan de gestionar la interacción con el servidor, de acuerdo al patrón \emph{Model-View-Presenter (MVP)} (ver Sección~\ref{sec:mvp}). La~Figura~\ref{fig:vaadinMVP} muestra el funcionamiento general de este esquema.
 
 Tal como se puede observar en la Figura~\ref{fig:vaadinMVP}, el código generado por \emph{Vaadin} se estructura en tres módulos: (1) \emph{WebBrowser}; (2) \emph{Back End}; y, (2) \emph{Application Server}.
 

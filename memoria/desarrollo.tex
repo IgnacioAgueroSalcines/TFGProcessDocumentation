@@ -3,21 +3,27 @@
 \minitoc
 
 \section{Introducción}
-
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[width=\linewidth]{flujoDesarrollo.png}
-	\caption{Flujo de Desarrollo}
-	\label{fig:flujoDesarrollo}
-\end{figure}
-
 %% Decir qué cuenta esta sección y los pasos generales que se han dado para
 %% desarrollar el \emph{Process Editor}
 
 El presente capítulo detalla el proceso de desarrollo del proyecto realizado dentro de este Trabajo Fin de Grado. Tal como se ha comentado, el objetivo del proyecto era 
 proporciona al producto LUCA una herramienta gráfica para poder crear \emph{procesos}, es decir, poder encadenar consultas entre sí en base a sus valores de entrada y de salida.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{flujoDesarrollo.png}
+	\caption{Flujo de Desarrollo}
+	\label{fig:flujoDesarrollo}
+\end{figure}
+
 Para alcanzar este objetivo, se siguió el esquema de trabajo que se muestra en la Figura~\ref{fig:flujoDesarrollo}.  
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{initalSampleEditor.jpeg}
+	\caption{Primer Contacto Editor}
+	\label{fig:initialSampleEditor}
+\end{figure}
 
 La primera etapa consistió en realizar un primer contacto con la herramienta \emph{GoJS}, para ello, se realizó una prueba de concepto donde se creaba un diagrama sencillo con cajas o nodos que se conectan entre sí (Figura~\ref{fig:initialSampleEditor}).
 
@@ -38,15 +44,10 @@ El editor gráfico utiliza \emph{GoJS} para crear toda la interfaz visual, este 
 
 El segundo paso, una vez conseguida la estética y estructura de elementos deseada, fue comprobar la funcionalidad del mismo, desde asegurar que al interactuar con el editor se creaban los eventos oportunos, hasta comprobar que los elementos se mostraban en pantalla tal y como se quería.
 
-\begin{figure}[!tb]
-	\centering
-	\includegraphics[width=\linewidth]{initalSampleEditor.jpeg}
-	\caption{Primer Contacto Editor}
-	\label{fig:initialSampleEditor}
-\end{figure}
+
 
 %% Añadir algo de código. 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	myDiagram.nodeTemplate = $(go.Node, "Table", {
@@ -90,7 +91,7 @@ La figura~\ref{fig:initialSampleEditor} y la figura~\ref{fig:initialSampleEditor
 Con la primera prueba de concepto terminada, las siguientes iteraciones se centraron en otorgar nuevas funcionalidades al diseño:
 \begin{itemize}
 	\item Permitir cambiar colores y tamaños de los elementos desde el exterior, es decir, desde una aplicación que utilice esta herramienta o gráfico.
-	\item Permitir crear elementos con diferentes formas a partir de formas prediseñadas en \emph{GoJS} o a partir de imágenes \emph{SVG}\cite{svg}.
+	\item Permitir crear elementos con diferentes formas a partir de formas prediseñadas en \emph{GoJS} o a partir de imágenes \emph{SVG}.
 \end{itemize}
 
 %% Código de aquello en lo que te quieras lucir (opcional)
@@ -100,20 +101,8 @@ Debido a que esta herramienta se focaliza en representar información sobre una 
 
 \section{Integración del editor con \emph{Vaadin}}
 
-%% Explicar que necesitamos hacer que los eventos del editor se redirijan a Vaadin
-El objetivo principal del editor gráfico de \emph{procesos} es proporcionar una interfaz, con la que otros proyectos que quieran utilizar este editor se puedan comunicar para poder gestionar los \emph{procesos}. En la figura~\ref{fig:vaadinComponent} se muestra el ejemplo creado para la primera integración. En ella se puede observar cómo se importan los diferentes ficheros \emph{Javascript} necesarios para utilizar el editor creado previamente (Figura~\ref{fig:vaadinComponent} Líneas 3-4). Otro aspecto importante es cómo trata los eventos que se espera que lleguen desde el editor gráfico (Figura~\ref{fig:vaadinComponent} Líneas 9-16), para cada evento se recibe un \emph{array} con los \emph{JSON} que contienen los datos de cada evento, y después se trata dicho evento en función de su objetivo. Por último se muestra como se expone un método de creación de nodos, así como, la interacción con el estado del componente para crear un nodo (Figura~\ref{fig:vaadinComponent} Líneas 18-23).
-
-%% Explicar que la redirección se hace mediante un conector en Javascript
-Para ello es necesario que exista una comunicación entre la herramienta \emph{GoJS} y \emph{Vaadin} mediante eventos. Estos eventos producidos en \emph{GoJS} son trasladados al proyecto \emph{Vaadin}, para que sean comunicados al proyecto que utilice este componente gráfico (en nuestro caso, este papel lo ocupara el producto de LUCA, que deberá decidir que eventos escuchar y como reaccionar ante ellos).
-
-Para que esta comunicación entre \emph{GoJS} y \emph{Vaadin} sea posible, es necesario un fichero que realice las funciones de conector (a partir de ahora lo llamaremos \emph{conector}), su objetivo será comunicar a \emph{Vaadin} de los eventos ocurrido en el editor gráfico y, siguiendo las órdenes de \emph{Vaadin} realizar cambios sobre la interfaz del editor gráfico. La Figura~\ref{fig:connector} muestra el \emph{conector} creado para la prueba de concepto. En él se puede ver cómo se crea el diagrama a partir de la librería importada de \emph{GoJS} (Figura~\ref{fig:connector} Línea 1), también se declara la actuación ante un cambio en el estado (Figura~\ref{fig:connector} Líneas 3-5), además de un ejemplo de cómo se manda un evento al componente de Vaadin (\emph{self} se refiere a dicho componente Vaadin, de forma que se puede llamar a los métodos públicos del mismo,Figura~\ref{fig:connector} Líneas 9-11)
-
-
-De esta forma se produce un diálogo entre ambos conceptos en base a eventos y cambios en la interfaz gráfica.
-
-
 %% Mostrar un trozo de código del conector muy sencillo
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	@JavaScript(
@@ -132,7 +121,7 @@ De esta forma se produce un diálogo entre ambos conceptos en base a eventos y c
 			}
 			...
 		}
-	
+		
 		public void createNode(Node node)
 		{
 			List<Node> nodes = getState().getNodes();
@@ -145,7 +134,13 @@ De esta forma se produce un diálogo entre ambos conceptos en base a eventos y c
 \end{figure}
 
 
-\begin{figure}[!tb]
+%% Explicar que necesitamos hacer que los eventos del editor se redirijan a Vaadin
+El objetivo principal del editor gráfico de \emph{procesos} es proporcionar una interfaz, con la que otros proyectos que quieran utilizar este editor se puedan comunicar para poder gestionar los \emph{procesos}. En la figura~\ref{fig:vaadinComponent} se muestra el ejemplo creado para la primera integración. En ella se puede observar cómo se importan los diferentes ficheros \emph{Javascript} necesarios para utilizar el editor creado previamente (Figura~\ref{fig:vaadinComponent} Líneas 3-4). Otro aspecto importante es cómo trata los eventos que se espera que lleguen desde el editor gráfico (Figura~\ref{fig:vaadinComponent} Líneas 9-16), para cada evento se recibe un \emph{array} con los \emph{JSON} que contienen los datos de cada evento, y después se trata dicho evento en función de su objetivo. Por último se muestra como se expone un método de creación de nodos, así como, la interacción con el estado del componente para crear un nodo (Figura~\ref{fig:vaadinComponent} Líneas 18-23).
+
+%% Explicar que la redirección se hace mediante un conector en Javascript
+Para ello es necesario que exista una comunicación entre la herramienta \emph{GoJS} y \emph{Vaadin} mediante eventos. Estos eventos producidos en \emph{GoJS} son trasladados al proyecto \emph{Vaadin}, para que sean comunicados al proyecto que utilice este componente gráfico (en nuestro caso, este papel lo ocupara el producto de LUCA, que deberá decidir que eventos escuchar y como reaccionar ante ellos).
+
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Javascript]
 	var diagramComponent = new mylibrary.DiagramComponent(element);
@@ -157,19 +152,28 @@ De esta forma se produce un diálogo entre ambos conceptos en base a eventos y c
 	var self = this;
 	
 	myDiagram.addDiagramListener('ObjectDoubleClicked', function(properties) {
-	self.ObjectDoubleClicked(properties.diagram.position);
+		self.ObjectDoubleClicked(properties.diagram.position);
 	});
 	
 	...
-
+	
 	\end{lstlisting}
 	\caption{Conector}
 	\label{fig:connector}
 \end{figure}
 
 
+
+Para que esta comunicación entre \emph{GoJS} y \emph{Vaadin} sea posible, es necesario un fichero que realice las funciones de conector (a partir de ahora lo llamaremos \emph{conector}), su objetivo será comunicar a \emph{Vaadin} de los eventos ocurrido en el editor gráfico y, siguiendo las órdenes de \emph{Vaadin} realizar cambios sobre la interfaz del editor gráfico. La Figura~\ref{fig:connector} muestra el \emph{conector} creado para la prueba de concepto. En él se puede ver cómo se crea el diagrama a partir de la librería importada de \emph{GoJS} (Figura~\ref{fig:connector} Línea 1), también se declara la actuación ante un cambio en el estado (Figura~\ref{fig:connector} Líneas 3-5), además de un ejemplo de cómo se manda un evento al componente de Vaadin (\emph{self} se refiere a dicho componente Vaadin, de forma que se puede llamar a los métodos públicos del mismo,Figura~\ref{fig:connector} Líneas 9-11).De esta forma se produce un diálogo entre ambos conceptos en base a eventos y cambios en la interfaz gráfica.
+
+
+%% Explicar que en algunos casos fue necesario alterar el flujo de funcionamiento 
+%% normal de GoJS y describir el caso del link.
+En algunas ocasiones fue necesaria  modificar el comportamiento interno de algunas funciones de \emph{GoJS}, por ejemplo, cuando se realiza una conexión a nivel gráfico, en el modelo de \emph{GoJS} se instancia un enlace, sin embargo, debido a que no se requería de dicha funcional (sino que lo que se quería era solo mandar el evento de enlazado, para después, si era necesario enlazar), fue necesario sobrescribir dicha funcionalidad para evitar que se produzca dicha instanciación.
+
+
 %% Explicar figura del link
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Javascript]
 	function NotPersistLinkingTool() {
@@ -193,10 +197,7 @@ De esta forma se produce un diálogo entre ambos conceptos en base a eventos y c
 	\caption{Link Tool}
 	\label{fig:linkTool}
 \end{figure}
-
-%% Explicar que en algunos casos fue necesario alterar el flujo de funcionamiento 
-%% normal de GoJS y describir el caso del link.
-En algunas ocasiones fue necesaria  modificar el comportamiento interno de algunas funciones de \emph{GoJS}, por ejemplo, cuando se realiza una conexión a nivel gráfico, en el modelo de \emph{GoJS} se instancia un enlace, sin embargo, debido a que no se requería de dicha funcional (sino que lo que se quería era solo mandar el evento de enlazado, para después, si era necesario enlazar), fue necesario sobrescribir dicha funcionalidad para evitar que se produzca dicha instanciación. 
+ 
 
 En la figura~\ref{fig:linkTool} se explica como se realizó el cambio. Las líneas 1-7 describen la creación de un enlace (constructor) y cómo se sobrescribe la actual clase que permite componer enlaces. Por último las líneas 9-18 describen dos aspectos, por un lado como se establecen los orígenes tanto de los nodos (líneas 12 y 14),como de las variables (líneas 13 y 15), y por otro lado se lanza un evento para comunicar que se quiere crear un enlace (línea 17).
 
@@ -222,7 +223,7 @@ Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recep
 
 \section{Gestión y Persistencia de los Procesos}
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{processModel.png}
 	\caption{Modelo de Datos}
@@ -240,7 +241,7 @@ Este modelo conceptual implementado en \emph{Java} utiliza un conjunto de anotac
 La capa de negocio se subdividió en dos subcapas. La primera es la capa de control de acceso, esta capa se ocupa de verificar que quien desea utilizar la propia capa de negocio posea los privilegios y permisos necesarios para poder usarla, una vez verificados, esta se comunica con la capa propiamente de servicio. La segunda subcapa es propia capa de servicio, esta gestiona la modificación del proceso y de los diferentes elementos que posee el modelo. Para ello esta capa se comunica con una capa de persistencia que utiliza por debajo \emph{JPA} para la comunicación con la base de datos relacional.
 
 %% ejemplo controlador
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	@PreAuthorize(ProcessPermission.AUTH_PROCESS_CREATE)
@@ -249,9 +250,9 @@ La capa de negocio se subdividió en dos subcapas. La primera es la capa de cont
 	\label{fig:interfazControladora}
 \end{figure}
 
-La figura~\ref{fig:interfazControladora} muestra cómo se verificaron los permisos y privilegios del usuario que utiliza el servicio, para llevarlo a cabo, se comprueba previa ejecución del método, que el usuario tiene, en este caso, los permisos para crear un proceso, una vez verificados esos permisos, se ejecuta el método. Internamente, se llama al servicio propio de la capa de negocio para realizar la operación e persistencia (Figura~\ref{fig:interfazControladoraImpl}).
 
-\begin{figure}[!tb]
+
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
 	@Autowire
@@ -265,18 +266,14 @@ La figura~\ref{fig:interfazControladora} muestra cómo se verificaron los permis
 	\label{fig:interfazControladoraImpl}
 \end{figure}
 %%ejemplo capa servicio-> linkada al controlador
+La figura~\ref{fig:interfazControladora} muestra cómo se verificaron los permisos y privilegios del usuario que utiliza el servicio, para llevarlo a cabo, se comprueba previa ejecución del método, que el usuario tiene, en este caso, los permisos para crear un proceso, una vez verificados esos permisos, se ejecuta el método. Internamente, se llama al servicio propio de la capa de negocio para realizar la operación e persistencia (Figura~\ref{fig:interfazControladoraImpl}).
+
 
 %% Qué se hizo en otras iteraciones, a modo de la lista de la compra.
 En las consecutivas iteraciones se fue puliendo y añadiendo las funcionalidades necesarias para poder persistir el modelo de datos.
 
-
-%% Hablar algo de pruebas, y si las hay, mostrar código.
-La capa de servicio es la capa más rica en pruebas, ya que se automatizaron todos los métodos que se realizan para persistir el modelo. Para realizarlas se utilizó conjuntamente la capa de repositorio, de forma que fue necesario introducir datos en la base de datos previos a cada test. Esto se realizó mediante un fichero \emph{SQL} (Figura~\ref{fig:sqlFile}), de forma que al inicio de cada test se cargan los datos y al final de cada test la base de datos se vacía, de esta forma dicha base de datos queda preparada para la consecutiva ejecución de pruebas sin depender de las anteriores.
-
-La Figura~\ref{fig:testExample} muestra el test de obtención de todos los \emph{Procesos} existentes en la base de datos. En éste se puede comprobar como se importa el fichero \emph{SQL} al test (Figura~\ref{fig:testExample}, Línea 2), el test simula una petición a la base de datos a través del servicio creado todos los \emph{procesos} (Figura~\ref{fig:testExample}, Líneas 5-8) para posteriormente comprobar que se han recibido todos los esperados (Figura~\ref{fig:testExample}, Línea 10). Además, aparece el concepto de filtro, el cuál permite (como su propio nombre indica) filtrar en función de las propiedades de un \emph{proceso}. Por ejemplo, si en el filtro se introduce un identificador, solo se traerá el \emph{proceso} coincidente con ese identificador.
-
 %% ejemplo de fichero sql 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Javascript]
 	INSERT INTO 
@@ -285,8 +282,13 @@ La Figura~\ref{fig:testExample} muestra el test de obtención de todos los \emph
 	\caption{Fichero \emph{SQL}}
 	\label{fig:sqlFile}
 \end{figure}
+
+
+%% Hablar algo de pruebas, y si las hay, mostrar código.
+La capa de servicio es la capa más rica en pruebas, ya que se automatizaron todos los métodos que se realizan para persistir el modelo. Para realizarlas se utilizó conjuntamente la capa de repositorio, de forma que fue necesario introducir datos en la base de datos previos a cada test. Esto se realizó mediante un fichero \emph{SQL} (Figura~\ref{fig:sqlFile}), de forma que al inicio de cada test se cargan los datos y al final de cada test la base de datos se vacía, de esta forma dicha base de datos queda preparada para la consecutiva ejecución de pruebas sin depender de las anteriores.
+
 %% ejemplo de prueba de insercion de un proceso
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Javascript]
 	@Test
@@ -304,26 +306,27 @@ La Figura~\ref{fig:testExample} muestra el test de obtención de todos los \emph
 	\label{fig:testExample}
 \end{figure}
 
-%% explicar el proceso de composicion y ejecucion de procesos
-La figura~\ref{fig:gestionProceso} explica la creación de un proceso. La figura se compone de tres secciones bien diferenciadas, por una parte tenemos una tabla con las diferentes consultas que pueden ser utilizadas en el proceso, esta tabla además, puede ser filtrada en base al grupo al que queremos que pertenezcan las consultas (Figura~\ref{fig:gestionProceso}, etiqueta 1). La sección superior de la figura (Figura~\ref{fig:gestionProceso}, etiqueta 2) representa todas las características necesarias para crear un proceso. La última sección alberga el diagrama cn el que el usuario puede interactuar para construir el proceso utilizando las diferentes consultas que son arrastradas desde la tabla de consultas (Figura~\ref{fig:gestionProceso}, etiqueta 3).
 
+La Figura~\ref{fig:testExample} muestra el test de obtención de todos los \emph{Procesos} existentes en la base de datos. En éste se puede comprobar como se importa el fichero \emph{SQL} al test (Figura~\ref{fig:testExample}, Línea 2), el test simula una petición a la base de datos a través del servicio creado todos los \emph{procesos} (Figura~\ref{fig:testExample}, Líneas 5-8) para posteriormente comprobar que se han recibido todos los esperados (Figura~\ref{fig:testExample}, Línea 10). Además, aparece el concepto de filtro, el cuál permite (como su propio nombre indica) filtrar en función de las propiedades de un \emph{proceso}. Por ejemplo, si en el filtro se introduce un identificador, solo se traerá el \emph{proceso} coincidente con ese identificador.
 
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{capturasLuca/gestionProceso.png}
 	\caption{Creación de un proceso}
 	\label{fig:gestionProceso}
 \end{figure}
 
-Para terminar, la figura~\ref{fig:ejecucionProceso} muestra la ejecución de un proceso. Esta figura se puede dividir en tres secciones. La primera consta de los campos necesarios para poder ejecutar un proceso (Figura~\ref{fig:ejecucionProceso}, etiqueta 1). En la segunda sección se muestra el diagrama del proceso (esta vez no es editable), en él, durante la ejecución, se podrá ir visualizando el flujo de ejecución del proceso, viendo que consultas o enlaces se han ejecutado correctamente o no (Figura~\ref{fig:ejecucionProceso}, etiqueta 2). La última sección muestra el resultado de ejecutar el proceso, se visualiza una tabla con el conjunto de resultados (Figura~\ref{fig:ejecucionProceso}, etiqueta 3). Además de estas secciones, el usuario si lo desea puede ocultar el diagrama para solo visualizar la tabla de resultados(Figura~\ref{fig:ejecucionProceso}, etiqueta 4).
+%% explicar el proceso de composicion y ejecucion de procesos
+La figura~\ref{fig:gestionProceso} explica la creación de un proceso. La figura se compone de tres secciones bien diferenciadas, por una parte tenemos una tabla con las diferentes consultas que pueden ser utilizadas en el proceso, esta tabla además, puede ser filtrada en base al grupo al que queremos que pertenezcan las consultas (Figura~\ref{fig:gestionProceso}, etiqueta 1). La sección superior de la figura (Figura~\ref{fig:gestionProceso}, etiqueta 2) representa todas las características necesarias para crear un proceso. La última sección alberga el diagrama cn el que el usuario puede interactuar para construir el proceso utilizando las diferentes consultas que son arrastradas desde la tabla de consultas (Figura~\ref{fig:gestionProceso}, etiqueta 3).
 
-
-\begin{figure}[!tb]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{capturasLuca/ejecucionProceso.png}
 	\caption{Ejecución de un proceso}
 	\label{fig:ejecucionProceso}
 \end{figure}
+
+Para terminar, la figura~\ref{fig:ejecucionProceso} muestra la ejecución de un proceso. Esta figura se puede dividir en tres secciones. La primera consta de los campos necesarios para poder ejecutar un proceso (Figura~\ref{fig:ejecucionProceso}, etiqueta 1). En la segunda sección se muestra el diagrama del proceso (esta vez no es editable), en él, durante la ejecución, se podrá ir visualizando el flujo de ejecución del proceso, viendo que consultas o enlaces se han ejecutado correctamente o no (Figura~\ref{fig:ejecucionProceso}, etiqueta 2). La última sección muestra el resultado de ejecutar el proceso, se visualiza una tabla con el conjunto de resultados (Figura~\ref{fig:ejecucionProceso}, etiqueta 3). Además de estas secciones, el usuario si lo desea puede ocultar el diagrama para solo visualizar la tabla de resultados(Figura~\ref{fig:ejecucionProceso}, etiqueta 4).
 
 
 
