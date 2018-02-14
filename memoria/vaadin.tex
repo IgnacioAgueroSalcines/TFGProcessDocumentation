@@ -129,13 +129,13 @@ Tal como se puede apreciar, no es necesario ningún conocimiento de las tecnolog
 
 \subsection{Arquitectura Interna de \emph{Vaadin}}
 
-Las clases descritas en el apartado anterior se transforman, utilizando \emph{Vaadin}, en código \emph{HTML}, \emph{Javascript} y \emph{CSS} que pueda ser procesado en un navegador web, más una serie de llamadas \emph{AJAX} a una serie de funciones desplegadas en el servidor que se encargan de gestionar la interacción con el servidor, de acuerdo al patrón \emph{Model-View-Presenter (MVP)} (ver Sección~\ref{sec:mvp}). La Figura~\ref{fig:vaadinMVP} muestra el funcionamiento general de este esquema.
+Las clases descritas en el apartado anterior se transforman, utilizando \emph{Vaadin}, en código \emph{Javascript} que pueda ser procesado en un navegador web, más una serie de llamadas \emph{AJAX} a una serie de funciones desplegadas en el servidor que se encargan de gestionar la interacción con el servidor, de acuerdo al patrón \emph{Model-View-Presenter (MVP)} (ver Sección~\ref{sec:mvp}). La~Figura~\ref{fig:vaadinMVP} muestra el funcionamiento general de este esquema.
 
 \begin{figure}[!tb]
 	\centering
 	\includegraphics[width=0.80\linewidth]{vaadin/vaadinArch.png}
 	\caption{Arquitectura Interna Vaadin}
-	\label{fig:fig:vaadinMVP}
+	\label{fig:vaadinMVP}
 \end{figure}
 
 Tal como se puede observar en la Figura~\ref{fig:vaadinMVP}, el código generado por \emph{Vaadin} se estructura en tres módulos: (1) \emph{WebBrowser}; (2) \emph{Back End}; y, (2) \emph{Application Server}.
@@ -150,62 +150,5 @@ Cada evento (\emph{UI Events} en Figura~\ref{fig:vaadinMVP}) realizado sobre la 
 
 Por ejemplo, si se decide desplegar un año dentro del árbol de tareas de la Figura~\ref{fig:vaadinExampleImage}, este evento se delega en la capa de aplicación (\emph{Application Server}), que devuelve los datos necesarios, para actualizar la interfaz gráfica. Si, por otro lado, quisiéramos añadir una nueva tarea a nuestro árbol de tareas, este evento se delegaría de nuevo en la capa de aplicación, la cual llamaría a la parte de negocio (\emph{Back End}) para iniciar una transacción que, tras verificar que se puede añadir dicha tarea de acuerdo con las reglas definidas para el negocio, actualice el estado de los objetos de negocio de manera adecuada, y los refleje en la base de datos correspondiente. 
 
-%%================================================================================%%
-%% NOTe(Pablo): Suprimido                                                         %%
-%%================================================================================%%
-%%
-%% Ambos módulos se comunican entre si a partir de \emph{APIs}\cite{api} propias, 
-%% y tienen un modelo de componentes y elementos gráficos copia en ambos lados. 
-%% De este modo si se produce un evento sobre la interfaz, el lado cliente se 
-%% comunica con la \emph{API} servidora para notificarla los eventos y/o los 
-%% cambios en los componentes, una vez recibida y tratada la llamada en el lado
-%% servidor, este se encarga de conectarse a la \emph{API} cliente junto con los 
-%% nuevos componentes gráficos, es decir, la nueva vista, para que el lado 
-%% cliente la muestre por pantalla.
-%%
-%%
-%% A raíz de este comportamiento, Vaadin suele estar ligado al patrón 
-%% \emph{MVP}\cite{mvp} (explicado en el apartado de la arquitectura de LUCA) 
-%% debido a que aísla la vista del modelo y las conecta a través de un 
-%% intermediario que es el presentador, este se encarga de comunicarse con ambas 
-%% y de ejecutar la lógica de negocio de la aplicación. De este modo cuando en 
-%% la vista se produce un cambio, es notificado en el presenter, este lo gestiona
-%%  (comunicándose con el modelo si es necesario) y después manda a la vista 
-%% recargarse con los cambios producidos. Se puede apreciar que siguiendo este 
-%% patrón, el conjunto de componentes que proporciona la vista para mostrar por 
-%% pantalla estarían de forma duplicada tanto en la parte servidora como cliente 
-%% a espera de recibir eventos o ser recargadas.
-%%
-%%==========================================================================%%
-%% NOTA(Pablo): Decir esto y no decir nada es lo mismo. Te lo he encauzado  %%
-%%    un poco mejor arriba.                                                 %%
-%%==========================================================================%%
-%%
-%% Echando un breve vistazo a la interacción cliente/servidor que facilita
-%%  Vaadin, podemos explicar el código desde un punto de vista cliente y
-%% servidor. El navegador, que realiza las funciones de cliente, recibe el
-%% conjunto de ficheros \emph{HTML},\emph{Javascript} y \emph{CSS}
-%% necesarios para formar la vista, este lado se encarga de cargar y
-%% visualizar dichos ficheros, así como, de recibir las acciones sobre la
-%% vista para comunicarlas a la parte servidora, utilizando para ello
-%% llamadas \emph{AJAX}\cite{ajax}. Desde el punto de vista servidor,
-%% Vaadin recibe las llamadas y las trata para posteriormente recargar
-%% la vista enviando una respuesta al cliente.
-%%
-%% Extrapolando al ejemplo, la \emph{UI} se compilará para poder ser
-%% visualizada por un navegador. El usuario al interactuar con la interfaz,
-%%  enviará eventos a través del contenedor de datos, una vez finalizados
-%% los eventos, se volverá a recargar la vista para hacer visibles los
-%%  cambios. De esta forma, en la parte cliente se almacenarán los ficheros
-%% \emph{HTML},\emph{Javascript} y \emph{CSS} mientras que en la parte
-%% servidora se encontrará toda la lógica.
-%%
-%%==========================================================================%%
-%%
-%% Con estas indicaciones se ha creado un ejemplo sencillo de composición de 
-%% elementos jerárquicos entre sí utilizando Vaadin, como podemos ver ha 
-%% facilitado mucho su implementación respecto a una configuración basada en
-%%  \emph{HTML} o \emph{Javascript}.
-%% 
-%%==========================================================================%%
+
 

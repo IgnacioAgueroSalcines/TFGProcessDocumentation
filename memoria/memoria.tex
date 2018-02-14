@@ -5,6 +5,9 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{afterpage}
+%bibliografia
+\usepackage[backref=page]{hyperref}
+\usepackage{url}
 
 %figuras en un lugar determinado
 \usepackage{float}
@@ -35,8 +38,6 @@
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
-
-
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
 
@@ -88,12 +89,31 @@
 % cambiando nombre por defecto de los minitoc
 \renewcommand{\mtctitle}{Índice}
 
+% paginacion
+
+\usepackage{emptypage} 
+\usepackage{fancyhdr} 
+% encabezados
+\lhead[]{}
+\chead[]{}
+\rhead[\leftmark]{\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% pie de pagina
+
+\cfoot[\thepage]{\thepage}
+\rfoot[Ignacio Aguero Salcines]{Ignacio Aguero Salcines}
+\renewcommand{\footrulewidth}{0.5pt}
+
+
+
+
+
 \begin{document}
 	
 	\pagenumbering{roman}
-	
+	\pagestyle{empty}
 	\input{indexChapter.tex}
-
 	
 	\dominitoc
 	\tableofcontents
@@ -104,7 +124,7 @@
 
 	\pagenumbering{arabic}
 	
-	
+	\pagestyle{fancy}
 	\input{introductionChapter.tex}
 	
 	

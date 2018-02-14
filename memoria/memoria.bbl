@@ -1,32 +1,31 @@
 \begin{thebibliography}{1}
 
-\bibitem{vaadin}
-{\sc {Ari Handler Gamboa: Vaadin Definition}}.
-\newblock \texttt{adictosaltrabajo.com/tutoriales/introduccion-a-vaadin/}.
-
-\bibitem{ajax}
-{\sc {Mozilla: AJAX}}.
-\newblock \texttt{developer.mozilla.org/es/docs/Web/Guide/AJAX}.
+\bibitem{jpa}
+{\sc Caules, C.~A.}
+\newblock Arquitectura java jpa domain driven design.
 
 \bibitem{javascript}
-{\sc {Mozilla: Javascript}}.
-\newblock \texttt{developer.mozilla.org/es/docs/Web/JavaScript}.
+{\sc Haverbeke, M.}
+\newblock Eloquent javascript: A modern introduction to programming.
 
-\bibitem{gojs}
-{\sc {Northwoods Software: GoJS}}.
-\newblock \texttt{gojs.net/latest/index.html}.
-
-\bibitem{jpa}
-{\sc {Pivotal Software: JPA}}.
-\newblock \texttt{docs.spring.io/spring-data/jpa/docs/current/reference/html}.
+\bibitem{vaadin}
+{\sc Holan, J., and Kvasnovsky, O.}
+\newblock Vaadin 7 cookbook.
 
 \bibitem{ria}
-{\sc {Russell Kay: RIA}}.
+{\sc Kay, R.}
+\newblock Rich internet application.
 \newblock
-  \texttt{computerworld.com/article/2551058/networking/rich-internet-applications.html}.
+  \url{computerworld.com/article/2551058/networking/rich-internet-applications.html}.
+\newblock 02-14-2018.
 
-\bibitem{svg}
-{\sc {W3: SVG}}.
-\newblock \texttt{www.w3.org/Graphics/SVG/About.html}.
+\bibitem{ajax}
+{\sc Ocaña, A.~S.}
+\newblock Programación ajax y jquery.
+
+\bibitem{gojs}
+{\sc Software, N.}
+\newblock Gojs.
+\newblock \url{gojs.net/latest/index.html}.
 
 \end{thebibliography}

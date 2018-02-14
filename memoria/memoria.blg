@@ -1,21 +1,12 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: memoria.aux
 The style file: acm.bst
 Database file #1: Bibliografia.bib
-Warning--entry type for "javascript" isn't style-file defined
---line 12 of file Bibliografia.bib
-Warning--entry type for "ria" isn't style-file defined
---line 17 of file Bibliografia.bib
-Warning--entry type for "ajax" isn't style-file defined
---line 22 of file Bibliografia.bib
-Warning--entry type for "vaadin" isn't style-file defined
---line 27 of file Bibliografia.bib
-Warning--entry type for "gojs" isn't style-file defined
---line 37 of file Bibliografia.bib
-Warning--entry type for "jpa" isn't style-file defined
---line 57 of file Bibliografia.bib
-Warning--entry type for "svg" isn't style-file defined
---line 103 of file Bibliografia.bib
 Warning--I didn't find a database entry for "html"
 Warning--I didn't find a database entry for "css"
 Warning--I didn't find a database entry for "http"
-(There were 10 warnings)
+Warning--I didn't find a database entry for "svg"
+Warning--empty journal in jpa
+Warning--empty journal in javascript
+Warning--empty journal in vaadin
+Warning--empty journal in ajax
+(There were 8 warnings)
