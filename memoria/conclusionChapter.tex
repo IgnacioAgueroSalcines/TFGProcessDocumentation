@@ -1,40 +1,41 @@
 \chapter{Sumario, Conclusiones y Trabajos Futuros}
 
-%%===============================================================================%%
-%% NOTe(Pablo): Esto distribuyelo como veas por las nuevas secciones             %%
-%%===============================================================================%%
-
 \section{Sumario}
 
-%% Repasas lo que ha descrito el documento.
-El trabajo actual, enmarcado dentro del proyecto LUCA, ha descrito el objetivo de LUCA de obtener una interfaz de aceso uniforme a fuentes de datos heterogéneas. Se ha explicado la arquitectura y funcionamiento de LUCA antes y después de realizar este proyecto, y se ha expuesto el alcance del proyecto.
+El presente documento ha descrito el trabajo realizado para integrar el concepto de \emph{proceso} en LUCA. Gracias a este trabajo es posible ejecutar en LUCA procesos de recuperación de la información que requieran de la ejecución de varias consultas encadenadas, donde las salidas de ciertas consults sirvan como entradas de otras. 
 
-En un apartado de documentación se ha explicado la herramienta de \emph{GoJS}, el framework de \emph{Vaadin} y el patrón \emph{Model-View-Presenter}. En la etapa de desarrollo se ha explicado el flujo iterativo de construcción del proyecto, pasando por la construcción del editor gráfico, y su integración con \emph{Vaadin} y LUCA, además, del desarrollo de la gestión y persistencia de los \emph{procesos}.
+Dado que el trabajo presentado se enmarca dentro del proyecto LUCA, en primer lugar se ha descrito dicho proyecto en profundidad; detallando su objetivo, que es el de proporcionar mecanismos de acceso uniforme a fuentes de datos heterogéneas, y sus limitaciones. Entre dichas limitaciones se encontraba la carencia de un soporte adecuado para ejecutar procesos de recuperación de la información que precisasen de la ejecución de varias consultadas encadenadas. Antes del desarrollo del proyecto, el usuario debía ejecutar cada consulta del conjunto de consultas encadenadas manualmente, guardar sus resultados y manipularlos adecuadamente para posteriormente poder usarlos como entradas para otras consultas. 
+
+Para paliar esta deficiencia, los directores de LUCA habían elaborado una especificación de requisitos para un nuevo módulo de LUCA que soportase el concepto de proceso, incluyendo tanto su especificación, la definición del proceso, como su ejecución. Dado que la especificación de requisitos ya estaba hecha, y la arquitectura definida, este proyecto fin de carrera se circunscribe a las fase de diseño detallado, implementación y pruebas. 
+
+Una vez definidas la motivación y el alcance del proyecto, se describieron una serie de tecnologías necesarias para entender su funcionamiento. En primer lugar se explicó el funcionamiento del framework \emph{GoJS} cuyo objetivo es facilitar la creación de editores gráficos en Javascript, el cual fue utilizado en el desarrollo del proyecto para la creación del editor gráfico de procesos. A continuación, se describió la arquitectura de LUCA, que es el proyecto raíz donde se integra el módulo desarrollado en este Trabajo Fin de Grado. Dado que LUCA está construido sobre \emph{Vaadin}, un framework para el desarrollo de aplicaciones web enriquecidas desde código Java, y que \emph{Vaadin} sigue el patrón \emph{Model-View-Presenter}, antes de describir la arquitectura de LUCA se introdujeron ambos elementos. 
+
+Finalmente, se describieron las diversas fases del desarrollo del presente proyecto. El proyecto se ha desarrollado de manera iterativa, moviéndonos en cada iteración desde la capa de presentación a la capa de persistencia. 
 
 \section{Resultados}
 
-%% Lista de cosas que hace tu proyecto
-El proyecto desarrollado, el cual incorpora al actual LUCA la capacidad de gestionar \emph{procesos}, proporciona las siguientes características:
-\begin{itemize}
-	\item Gestionar y ejecutar procesos de forma gráfica.
-	\item Comprobar restricciones en los enlaces entre consultas.
-	\item Visualizar las consultas, así como, información de las mismas y de sus enlaces.
-	\item Dar información parcial durante la ejecución.
+Gracias a este proyecto, LUCA soporta actualmente el concepto de \emph{proceso}. Más concretamente, gracias a este proyecto, LUCA soporta ahora las siguientes funcionalidades. 
+
+\begin{enumerate}
+	\item Especificación gráfica de \emph{procesos}, mediante la definición de las consultas que componen dicho proceso y su interconexión.
+	\item Alteración de la ejecución del flujo de ejecución de un proceso en función de los valores de las salidas.
+    \item Comprobación de la corrección de la conexión entre salidas y entradas de las consultas que componen un proceso.
+    \item Ejecución de procesos.
+	\item Ejecución paso a paso de los procesos.
 	\item Exportar los resultados de los procesos.
-	\item Modificar el flujo de ejecución en función de los valores de las salidas.
-\end{itemize}
+\end{enumerate}
 
 \section{Conclusiones}
 
-%% Experiencia propia
-La experiencia durante el desarrollo del proyecto ha sido más que satisfactoria, ya que los conocimiento que he aprendido a lo largo del grado me han sido indispensables para poder llevarlo a cabo, además, debido al uso de nuevos frameworks y herramientas, he sido capaz de ampliar mis conocimientos en \emph{Vaadin} y en \emph{GoJS}.
+%% Detalla qué conocimientos del Grado te han sido especialmente útiles.
+
+La experiencia durante el desarrollo del proyecto ha sido más que satisfactoria, ya que los conocimiento que he aprendido a lo largo del grado me han sido indispensables para poder llevarlo a cabo. Además, debido al uso de nuevos frameworks y herramientas, he sido capaz de ampliar mis conocimientos, a los que he incorporado la utilización de frameworks como \emph{Vaadin} y \emph{GoJS}.
 
 La oportunidad de llevar a cabo el proyecto en la empresa CIC Consulting Informático, me ha permitido adquirir un hábito de trabajo, así como de responsabilidades y fijaciones a horarios que no se puede aprender de ninguna otra forma. Además, el apoyo recibido por el equipo de LUCA ha sido excepcional y he podido aprender mucho con ellos.
 
 \section{Trabajos Futuros}
 
-%% Qué se va a hacer en el futuro, tanto en LUCa como en la parte de tu proyecto
-Con el proyecto integrado en LUCA, se espera poder realizar ampliaciones de sucesivas versiones del producto tales como la capacidad de concatenar procesos (tal y como se utilizan consultas, poder utilizar los procesos ya creados), o crear consultas desde una consola gráfica, utilizando el editor gráfico, de forma que se agilice el actual proceso de formularios para poder construir una.
+Con el proyecto integrado en LUCA, se espera poder realizar el trabajo realizado en futuras versiones del producto. Concretamente, se plantea la posibilidad de soportar procesos anidados, es decir, la capacidad de utilizar procesos ya definidos como si fuesen consultas simples para la definición de un nuevo proceso. Es decir, permitir que los procesos puedan contener procesos. También se plantea la posibilidad de crear consultas desde una consola gráfica, utilizando el editor gráfico, ya que en algunos casos este estilo de especificación puede resultar más conveniente.
 
 
 	
