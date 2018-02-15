@@ -256,6 +256,8 @@ Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recep
 \end{figure}
 
 El objetivo de este paso era que LUCA pudiese almacenar los procesos definidos en una base de datos, de manera que éstos fuesen perdurables. Para ello lo primero era definir un modelo conceptual de datos para los procesos. Dicho modelo conceptual se muestra en la Figura~\ref{fig:processModel}. En esta Figura, las clases con un fondo gris son clases propias del producto LUCA, a las que referencian las clases creadas  en este proyecto.
+
+El modelo consta de una clase principal llamada Process, esta es la encargada de albergar todos los datos necesarios para poder crear un proceso, tiene establecida un estado (para determinar si es un proceso preparado para ser ejecutado o no, o si ha sido eliminado), se compone de una lista de las variables de entrada y de salida, se decriben a raíz del subproceso al que pertenecen y la variable de entrada o de salida que conecta. El proceso contiene a su vez una la lista de subprocesos. Un SubProceso tiene asociada una consulta, que será la que se ejecute una vez definido el process. Cada enlace entre subprocesos y entre el subproceso y el proceso, se persiste gracias a un SubProcessRelation, este simula un enlace, y por lo tanto contiene la información de las variables de los procesos que conecta, además, existe otra variante de él, el RelationCondition, el cuál informa de un enlace hacia un nodo de condición, por lo tanto también alberga la variable del nuevo subproceso al que conecta.
 %%==============================================================================%%
 %% NOTA(Pablo): Describir un poco el modelo desde texto
 %%==============================================================================%%
