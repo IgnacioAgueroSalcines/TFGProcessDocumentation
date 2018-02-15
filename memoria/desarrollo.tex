@@ -132,7 +132,8 @@ Debido a que esta herramienta se focaliza en representar información sobre una 
 	\begin{lstlisting}[language=Java]
 	@JavaScript(
 	{
-		"vaadin://procesos/js/componentsLibrary.js", "vaadin://procesos/js/connectorSample.js",
+		"vaadin://procesos/js/componentsLibrary.js",
+		"vaadin://procesos/js/connectorSample.js",
 		"vaadin://procesos/js/go.js"
 	})
 	public class DiagramComponent extends AbstractJavaScriptComponent
@@ -142,7 +143,36 @@ Debido a que esta herramienta se focaliza en representar información sobre una 
 		{
 			addFunction("ExternalObjectsDropped", new JavaScriptFunction(){
 				@Override
-				public void call(JsonArray arguments){...}
+				public void call(JsonArray arguments){
+			
+					Map<String, String> map = new HashMap<>();
+					if(arguments != null){
+						try	{
+							String srt = arguments.toJson();
+							map = JsonUtils.jsonToMap
+							(srt.substring(1, srt.length() - 1));
+						}	catch (JSONException e){
+							e.printStackTrace();
+						}
+					}
+					List<Node> nodes = getState().getNodes();
+			
+					boolean newObj = true;
+					for (Node node : nodes){
+						String idNew = map.get("id");
+						if(idNew != null){
+							if(node.getId() == Long.parseLong(map.get("id")))
+								newObj = false;
+						}
+			
+						if(newObj)	{
+							Node newNode = new Node(map.get("name"),map.get("loc"));
+							List<Node> updatedNodes = getState().getNodes();
+							updatedNodes.add(newNode);
+							getState().setNodes(updatedNodes);
+							System.out.println("Created element :"+map.get("name"));
+						}
+					}
 			}
 			...
 		}
@@ -188,13 +218,11 @@ Para que lo anterior funcione, es necesario que exista una comunicación entre l
 	
 	var self = this;
 	
-	myDiagram.addDiagramListener('ObjectDoubleClicked', function(properties) {
-		self.ObjectDoubleClicked(properties.diagram.position);
+	myDiagram.addDiagramListener('ExternalObjectsDropped', function(properties) {
+		self.ExternalObjectsDropped(properties.subject.Ca.key.Vd);
 	});
 	
-	...
-	
-	\end{lstlisting}
+	...\end{lstlisting}
 	\caption{Conector}
 	\label{fig:connector}
 \end{figure}

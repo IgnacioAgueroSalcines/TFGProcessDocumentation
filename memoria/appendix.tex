@@ -1,0 +1,84 @@
+\appendix
+\chapter{Tratamiento de eventos de la clase Diagram Component}\label{aped.A}
+A continuación se muestran el resto de eventos que son tratado en el ejemplo del editor gráfico y su integración con Vaadin.
+
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	addFunction("SelectionMoved", new JavaScriptFunction()
+	{
+	
+		@Override
+		public void call(JsonArray arguments)
+		{
+		
+			List<Node> nodes = getState().getNodes();
+			for (Node node : nodes)
+			{
+				node.update();
+			}
+			System.out.println("SelectionMoved at " + arguments.toJson());
+		}
+	});\end{lstlisting}
+	\caption{Conector}
+	\label{fig:connector}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	addFunction("TextEdited", new JavaScriptFunction()
+	{
+	
+		@Override
+		public void call(JsonArray arguments)
+		{
+		
+			Map<String, String> map = new HashMap<>();
+			if(arguments != null)
+			{
+				try
+				{
+					String srt = arguments.toJson();
+					map = JsonUtils.jsonToMap(
+					srt.substring(1, srt.length() - 1));
+				}
+				catch (JSONException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			List<Node> nodes = getState().getNodes();
+			for (Node node : nodes)
+			{
+				if(map.get("oldValue").equals(node.getName()))
+				{
+					node.setName(map.get("newValue"));
+				}	
+			}
+			System.out.println("TextEdited at " + arguments.toJson());
+		}
+	});\end{lstlisting}
+	\caption{Conector}
+	\label{fig:connector}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	addFunction("ObjectDoubleClicked", new JavaScriptFunction()
+	{
+	
+		@Override
+		public void call(JsonArray arguments)
+		{
+		
+			System.out.println("ObjectDoubleClicked at " 
+			+ arguments.toJson());
+		}
+	});\end{lstlisting}
+	\caption{Conector}
+	\label{fig:connector}
+\end{figure}
