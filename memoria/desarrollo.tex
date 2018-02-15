@@ -95,6 +95,34 @@ Durante el proceso gráfico de enlazado de elementos, fue necesaria la modificac
 %%    poco.                                                                     %%
 %%==============================================================================%%
 
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Javascript]
+	function NotPersistLinkingTool() {
+		go.LinkingTool.call(this);
+		this.name = "NotPersistLinkingTool";
+		this.portGravity = 0;
+	}
+	
+	go.Diagram.inherit(NotPersistLinkingTool, go.LinkingTool);
+	
+	NotPersistLinkingTool.prototype.insertLink =
+	function(fromnode, fromport, tonode,toport) {
+		this.archetypeLinkData = {
+			from:fromnode.data.key,
+			fromPort:fromport.data.key,
+			to:tonode.data.key,
+			toPort:toport.data.key
+		}
+		myDiagram.raiseDiagramEvent('LinkDrawn', this.archetypeLinkData);
+	};\end{lstlisting}
+	\caption{Link Tool}
+	\label{fig:linkTool}
+\end{figure}
+
+
+En la figura~\ref{fig:linkTool} se explica como se realizó dicha modificación. Las líneas 1-7 describen la creación de un enlace (constructor) y cómo se sobrescribe la actual clase que permite componer enlaces. Por último las líneas 9-18 describen dos aspectos: por un lado, cómo se establecen los orígenes tanto de los nodos (líneas 12 y 14) como de las variables (líneas 13 y 15); y, por otro lado se lanza un evento para comunicar que se quiere crear un enlace (línea 17).
+
 Debido a que esta herramienta se focaliza en representar información sobre una interfaz, las pruebas realizadas se definieron y ejecutaron de manera sistemática, pero no se automatizaron utilizando ningún \emph{framework} tipo \emph{Selenium}~\cite{} debido a su alta complejidad, inversión de tiempo e inestabilidad frente a los cambios.
 
 \section{Integración del editor con \emph{Vaadin}}
@@ -173,37 +201,6 @@ Para que lo anterior funcione, es necesario que exista una comunicación entre l
 
 Para que esta comunicación entre \emph{GoJS} y \emph{Vaadin} sea posible, es necesario un fichero que realice las funciones de \emph{conector}. El objetivo de este conector será recoger los eventos producidos en el editor gráfico, redirigirlos a \emph{Vaadin}. A continuación, siguiendo las órdenes de \emph{Vaadin}, el conector realizará los cambios pertinentes sobre la interfaz del editor gráfico. La Figura~\ref{fig:connector} muestra el \emph{conector} creado para la prueba de concepto. En él se puede ver cómo se crea el diagrama a partir de la librería importada de \emph{GoJS} (Figura~\ref{fig:connector} Línea 1). A continuación se declara la actuación ante un cambio en el estado (Figura~\ref{fig:connector}, Líneas 3-5). Por último, se muestra un ejemplo de cómo se manda un evento al componente de \emph{Vaadin} (Figura~\ref{fig:connector} Líneas 9-11), referenciado por la variable \emph{self}. De esta forma se produce un diálogo entre ambos conceptos en base a eventos y cambios en la interfaz gráfica.
 
-En algunas ocasiones fue necesaria  modificar el comportamiento interno de algunas funciones de \emph{GoJS}. Por ejemplo, cuando se realiza una conexión a nivel gráfico, es decir, cuando se crea un enlace, en el modelo de \emph{GoJS} se instancia la clase enlace. Sin embargo, debido a que no se requería de dicha funcionalidad,  sino solo mandar el evento de enlazado al presentador, fue necesario sobrescribir dicha funcionalidad para evitar que se produjese dicha instanciación.
-
-
-%% Explicar figura del link
-\begin{figure}[H]
-	\centering
-	\begin{lstlisting}[language=Javascript]
-	function NotPersistLinkingTool() {
-		go.LinkingTool.call(this);
-		this.name = "NotPersistLinkingTool";
-		this.portGravity = 0;
-	}
-	
-	go.Diagram.inherit(NotPersistLinkingTool, go.LinkingTool);
-	
-	NotPersistLinkingTool.prototype.insertLink =
-	function(fromnode, fromport, tonode,toport) {
-		this.archetypeLinkData = {
-			from:fromnode.data.key,
-			fromPort:fromport.data.key,
-			to:tonode.data.key,
-			toPort:toport.data.key
-		}
-		myDiagram.raiseDiagramEvent('LinkDrawn', this.archetypeLinkData);
-	};\end{lstlisting}
-	\caption{Link Tool}
-	\label{fig:linkTool}
-\end{figure}
-
-
-En la figura~\ref{fig:linkTool} se explica como se realizó dicha modificación. Las líneas 1-7 describen la creación de un enlace (constructor) y cómo se sobrescribe la actual clase que permite componer enlaces. Por último las líneas 9-18 describen dos aspectos: por un lado, cómo se establecen los orígenes tanto de los nodos (líneas 12 y 14) como de las variables (líneas 13 y 15); y, por otro lado se lanza un evento para comunicar que se quiere crear un enlace (línea 17).
 
 En cada iteración se fueron incorporando tanto al presentador de \emph{Vaadin} como al conector la gestión de los nuevos eventos que se fueron añadiendo al editor gráfico.
 
