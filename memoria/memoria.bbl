@@ -4,10 +4,6 @@
 {\sc Caules, C.~A.}
 \newblock Arquitectura java jpa domain driven design.
 
-\bibitem{javascript}
-{\sc Haverbeke, M.}
-\newblock Eloquent javascript: A modern introduction to programming.
-
 \bibitem{vaadin}
 {\sc Holan, J., and Kvasnovsky, O.}
 \newblock Vaadin 7 cookbook.
@@ -18,10 +14,6 @@
 \newblock
   \url{https://www.computerworld.com/article/2551058/networking/rich-internet-applications.html}.
 \newblock 02-14-2018.
-
-\bibitem{ajax}
-{\sc Ocaña, A.~S.}
-\newblock Programación ajax y jquery.
 
 \bibitem{gojs}
 {\sc Software, N.}

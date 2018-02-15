@@ -25,22 +25,35 @@ A continuación, se debe realizar una serie de acciones a nivel de Javascript pa
 	\centering
 	\begin{lstlisting}[language=JavaScript]
 	myDiagram =
-	$(go.Diagram, "myDiagramDiv",
-	{
-	grid: $(go.Panel, "Grid",
-	$(go.Shape, "LineH", { stroke: "lightgray", strokeWidth: 0.5 }),
-	$(go.Shape, "LineH", { stroke: "gray", strokeWidth: 0.5, interval: 10 }),
-	$(go.Shape, "LineV", { stroke: "lightgray", strokeWidth: 0.5 }),
-	$(go.Shape, "LineV", { stroke: "gray", strokeWidth: 0.5, interval: 10 })
+	$(go.Diagram, "myDiagramDiv",{
+		grid: $(go.Panel, "Grid",
+		$(go.Shape, "LineH", {
+			 stroke: "lightgray",
+			 strokeWidth: 0.5 
+		}),
+		$(go.Shape, "LineH", {
+			stroke: "gray", 
+			strokeWidth: 0.5, 
+			interval: 10 
+		}),
+		$(go.Shape, "LineV", {
+			stroke: "lightgray", 
+			strokeWidth: 0.5 
+		}),
+		$(go.Shape, "LineV", {
+			stroke: "gray", 
+			strokeWidth: 0.5, 
+			interval: 10 
+		})
 	),
-	allowDrop: true,
-	}
-	);\end{lstlisting}
+	allowDrop: true
+	});\end{lstlisting}
 	\caption{Creación de un diagrama en GoJS}
 	\label{fig:creacionDiagrama}
 \end{figure}
 
 Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura~\ref{fig:creacionDiagrama}, Líneas~01-13), asignándole un \emph{grid} o cuadrícula de fondo (Figura~\ref{fig:creacionDiagrama}, Líneas~04-09), especificando los colores de las líneas de la cuadrícula (mediante la propiedad \emph{stroke}) y dándole la capacidad de poder arrastrar elementos sobre él (Figura~\ref{fig:creacionDiagrama}, Línea~10).
+
 
 \begin{figure}[H]
 	\centering
@@ -124,12 +137,12 @@ Una vez definidas las propiedades básicas de un nodo, el siguiente paso es defi
 	\begin{lstlisting}[language=JavaScript]
 	myDiagram.nodeTemplate =
 	$(go.Node, "Spot",
-	{ locationSpot: go.Spot.Center },
-	...
-	makePort("T", go.Spot.Top),
-	makePort("L", go.Spot.Left),
-	makePort("R", go.Spot.Right),
-	makePort("B", go.Spot.Bottom)
+		{ locationSpot: go.Spot.Center },
+		...
+		makePort("T", go.Spot.Top),
+		makePort("L", go.Spot.Left),
+		makePort("R", go.Spot.Right),
+		makePort("B", go.Spot.Bottom)
 	);\end{lstlisting}
 	\caption{Patrón Nodo con Puertos}
 	\label{fig:patronNodoFinal}
@@ -142,11 +155,11 @@ Para añadir puertos a los nodos se ha creado una función una función llamada 
 	\begin{lstlisting}[language=JavaScript]
 	myDiagram.linkTemplate =
 	$(go.Link,
-	$(go.Shape,
-	{ isPanelMain: true, strokeWidth: 2 }),
-	$(go.Shape,
-	{ toArrow: "Standard", stroke: null }
-	)
+		$(go.Shape,
+		{ isPanelMain: true, strokeWidth: 2 }),
+		$(go.Shape,
+			{ toArrow: "Standard", stroke: null }
+		)
 	)\end{lstlisting}
 	\caption{Declaración del patrón del Link}
 	\label{fig:patronlink}
