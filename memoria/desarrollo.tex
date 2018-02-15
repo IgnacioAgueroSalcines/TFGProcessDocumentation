@@ -242,6 +242,90 @@ El objetivo de hacer el editor gráfico como un componente propio de \emph{Vaadi
 %% NOTA(Pablo): Poner algo de código de cómo se usa la vista y describirlo      %%
 %%==============================================================================%%
 
+
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Java]
+	public class ProcessConfigurationView {
+			
+		private VerticalLayout content;
+		private DiagramComponent diagramComponent;
+		
+		public VerticalLayout getContent()
+		{
+			if(content == null)
+			{
+				content = new VerticalLayout();
+				content.setSizeFull();
+				content.setSpacing(true);
+				content.addComponent(getSplitPanel());
+			}
+			return content;
+		}
+		
+		public DiagramComponent getDiagramComponent()
+		{
+			if(diagramComponent == null)
+			{
+				diagramComponent = new DiagramComponent();
+				diagramComponent.setSizeFull();
+			}
+			return diagramComponent;
+		}
+	}\end{lstlisting}
+	\caption{Ejemplo de vista}
+	\label{fig:viewExample}
+\end{figure}
+
+La figura~\ref{fig:viewExample} muestra una de las vistas utilizadas en el proyecto. En esta vista se declara el componente creado (editor gráfico,Figura~\ref{fig:viewExample} Líneas 4 y 18-26) y es insertado en el contexto de la vista (Figura~\ref{fig:viewExample} Línea 13).
+
+
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Java]
+	public class ProcessConfigurationPresenter extends 
+	AbstractPresenter<ProcessConfigurationView>{
+
+		private static final Logger LOGGER = 
+		LoggerFactory.getLogger(ProcessConfigurationPresenter.class);
+		
+		@Override
+		protected void init()
+		{	
+			super.init();
+			getView().getDiagramComponent().getDiagramListener().
+			addLinkDrawnListener(new LinkDrawnListenerImpl());
+		}
+		
+		@Override
+		public void queryAdded(CustomQuery customQuery)
+		{
+		
+			LucaSubProcessBox subProcessBox = 
+			new LucaSubProcessBox(customQuery);
+			subProcessBox.setId(customQuery.getId().toString());
+			subProcessBox.setName(customQuery.getName());
+			subProcessBox.setLocation(new Location(100, 100));
+		
+			try
+			{	
+				String typeResource = getDatasourceType(customQuery);
+				getView().getDiagramComponent().
+				addSubProcessBox(subProcessBox, typeResource);
+				LOGGER.debug("Added CustomQuery [{}]", customQuery.getName());
+			}
+			catch (BadSubProcessBoxExeption | SubProcessBoxExists e)
+			{
+				LOGGER.error("Invalid subprocess box: " + e.getMessage());
+			{
+		}
+	}\end{lstlisting}
+	\caption{Ejemplo de presentador}
+	\label{fig:presenterExample}
+\end{figure}
+
+El presentador de la figura~\ref{fig:presenterExample} utiliza la vista descrita anteriormente y realiza una acción de inserción de un subproceso utilizando el editor gráfico. En su método constructor define los eventos que desea escuchar del editor gráfico (Figura~\ref{fig:presenterExample} Líneas 7-13). El método de inserción de subprocesos (Figura~\ref{fig:presenterExample} Líneas 15-35) recibe la consulta que albergará dicho subproceso y se divide en dos partes, en la primera se declara el subproceso que será enviado al editor gráfico para mostrar el elemento (Figura~\ref{fig:presenterExample} Líneas 19-23), por último, en la segunda parte se realiza la llamada al editor gráfico para conseguir lo descrito anteriormente (Figura~\ref{fig:presenterExample} Líneas 25-35).
+
 En las siguientes iteraciones en esta etapa, se creó la vista de gestión para la creación, edición y eliminación de procesos. Una vez que LUCA era capaz de soportar el concepto de proceso, éstos debían gestionarse del mismo modo que las consultas. Además se enriqueció la vista de gestión creada inicialmente para construir un proceso utilizando el editor gráfico.
 
 Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recepción de los eventos que se producen entre el editor gráfico y LUCA. Sin embargo, no se realizó un automatización del las pruebas debido a la complejidad de automatizar pruebas sobre \emph{Vaadin}.
@@ -255,12 +339,13 @@ Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recep
 	\label{fig:processModel}
 \end{figure}
 
-El objetivo de este paso era que LUCA pudiese almacenar los procesos definidos en una base de datos, de manera que éstos fuesen perdurables. Para ello lo primero era definir un modelo conceptual de datos para los procesos. Dicho modelo conceptual se muestra en la Figura~\ref{fig:processModel}. En esta Figura, las clases con un fondo gris son clases propias del producto LUCA, a las que referencian las clases creadas  en este proyecto.
+El objetivo de este paso era que LUCA pudiese almacenar los procesos definidos en una base de datos, de manera que éstos fuesen perdurables. Para ello lo primero era definir un modelo conceptual de datos para los procesos. Dicho modelo conceptual se muestra en la Figura~\ref{fig:processModel}. En esta Figura, las clases sombreadas son clases propias del producto LUCA, a las que referencian las clases creadas  en este proyecto.
 
 El modelo consta de una clase principal llamada Process, esta es la encargada de albergar todos los datos necesarios para poder crear un proceso, tiene establecida un estado (para determinar si es un proceso preparado para ser ejecutado o no, o si ha sido eliminado), se compone de una lista de las variables de entrada y de salida, se decriben a raíz del subproceso al que pertenecen y la variable de entrada o de salida que conecta. El proceso contiene a su vez una la lista de subprocesos. Un SubProceso tiene asociada una consulta, que será la que se ejecute una vez definido el process. Cada enlace entre subprocesos y entre el subproceso y el proceso, se persiste gracias a un SubProcessRelation, este simula un enlace, y por lo tanto contiene la información de las variables de los procesos que conecta, además, existe otra variante de él, el RelationCondition, el cuál informa de un enlace hacia un nodo de condición, por lo tanto también alberga la variable del nuevo subproceso al que conecta.
 %%==============================================================================%%
 %% NOTA(Pablo): Describir un poco el modelo desde texto
 %%==============================================================================%%
+
 
 Este modelo conceptual de datos fue implementado en \emph{Java}, utilizando POJOs (\emph{Plain Old Java Objects}) y posteriormente anotado usando \emph{JPA (Java Persistence API)}~\cite{jpa} para indicar cómo debían crearse las tablas de la base de datos relacional que daría soporte a dicho modelo. De esta forma, es \emph{JPA} quién automáticamente creará el esquema de base de datos, así como las interfaces de los repositorios pertinentes para manipular los objetos de negocio definidos por nuestro modelo conceptual de datos. Además, esta herramienta asegura el correcto funcionamiento de la capa de persistencia, por lo tanto no siendo necesario crear pruebas a este nivel.
 
