@@ -421,13 +421,6 @@ La Figura~\ref{fig:testExample} muestra el caso de prueba para la obtención de 
 
 La Figura~\ref{fig:gestionProceso} ilustra, para cerrar la descripción del editor gráfico, la interfaz de creación de un proceso. La interfaz se compone de tres secciones bien diferenciadas, por una parte tenemos una tabla con las diferentes consultas que pueden ser utilizadas en el proceso. Esta tabla además, puede ser filtrada en base al grupo al que queremos que pertenezcan las consultas (Figura~\ref{fig:gestionProceso}, etiqueta 1). La sección superior de la figura (Figura~\ref{fig:gestionProceso}, etiqueta 2) muestra todas las características necesarias para crear un proceso. La última sección alberga el diagrama con el que el usuario puede interactuar para construir el proceso utilizando las diferentes consultas que son arrastradas desde la tabla de consultas (Figura~\ref{fig:gestionProceso}, etiqueta 3).
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{capturasLuca/ejecucionProceso.png}
-	\caption{Ejecución de un proceso}
-	\label{fig:ejecucionProceso}
-\end{figure}
-
 \section{Ejecución de Procesos}
 
 %%==============================================================================%%
@@ -435,8 +428,40 @@ La Figura~\ref{fig:gestionProceso} ilustra, para cerrar la descripción del edit
 %%    proceso y poner algo de código relativo a la ejecución de los procesos
 %%==============================================================================%%
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{capturasLuca/ejecucionProceso.png}
+	\caption{Ejecución de un proceso}
+	\label{fig:ejecucionProceso}
+\end{figure}
 
 Para finalizar, la Figura~\ref{fig:ejecucionProceso} muestra la ejecución de un proceso. Esta figura se puede dividir en tres secciones. La primera consta de los campos necesarios para poder ejecutar un proceso (Figura~\ref{fig:ejecucionProceso}, etiqueta 1). En la segunda sección se muestra el diagrama del proceso (esta vez no es editable), en él, durante la ejecución, se podrá ir visualizando el flujo de ejecución del proceso, viendo que consultas o enlaces se han ejecutado correctamente o no (Figura~\ref{fig:ejecucionProceso}, etiqueta 2). La última sección muestra el resultado de ejecutar el proceso, se visualiza una tabla con el conjunto de resultados (Figura~\ref{fig:ejecucionProceso}, etiqueta 3). Además de estas secciones, el usuario si lo desea puede ocultar el diagrama para solo visualizar la tabla de resultados(Figura~\ref{fig:ejecucionProceso}, etiqueta 4).
+
+\begin{figure}[H]
+	\centering
+	\begin{lstlisting}[language=Java]
+	@Service
+	public class ProcessExecutorImpl implements ProcessExecutor{
+	
+		@Override
+		public ResultExecution executeProcess(AbstractState state, 
+		Set<InputVariable> inputVariables, 
+		EnviromentExecution enviromentExecution){
+		
+			ResultExecution resultExecution = 
+			execute(inputVariables, enviromentExecution);
+			
+			ResultExecution sortResultExecution = 
+			buildResponse(resultExecution);
+			
+			return sortResultExecution;
+		}
+	}\end{lstlisting}
+	\caption{Ejemplo Servicio de ejecución}
+	\label{fig:executionExample}
+\end{figure}
+
+La ejecución se delega en un servicio de ejecución (Figura~\ref{fig:ejecucionProceso}, Líneas 9-10), cuyo cometido reside en ir recorriendo todas las consultas e ir ejecutándolas. Detallando más, cuando ejecuta una consulta, recoge sus resultados pare ser enviados a la siguiente consulta a través de los enlaces del subproceso, una vez que la siguiente consulta ha recibido los datos de todas sus variables de entrada, se ejecuta la nueva consulta, creando así un bucle iterativo hasta que los resultado llegan a las variables de salida del proceso y se establecen sus valores finales. Una vez recibidos los resultados, se ordenan y procesan para que el presenter que los reciba pueda utilizarlos tal y como él los espera (Figura~\ref{fig:ejecucionProceso}, Líneas 12-13).
 
 
 
