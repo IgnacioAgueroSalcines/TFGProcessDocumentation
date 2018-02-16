@@ -123,60 +123,25 @@ Durante el proceso gráfico de enlazado de elementos, fue necesaria la modificac
 
 En la figura~\ref{fig:linkTool} se explica como se realizó dicha modificación. Las líneas 1-7 describen la creación de un enlace (constructor) y cómo se sobrescribe la actual clase que permite componer enlaces. Por último las líneas 9-18 describen dos aspectos: por un lado, cómo se establecen los orígenes tanto de los nodos (líneas 12 y 14) como de las variables (líneas 13 y 15); y, por otro lado se lanza un evento para comunicar que se quiere crear un enlace (línea 17).
 
-Debido a que esta herramienta se focaliza en representar información sobre una interfaz, las pruebas realizadas se definieron y ejecutaron de manera sistemática, pero no se automatizaron utilizando ningún \emph{framework} tipo \emph{Selenium}~\cite{} debido a su alta complejidad, inversión de tiempo e inestabilidad frente a los cambios.
+Debido a que esta herramienta se focaliza en representar información sobre una interfaz, las pruebas realizadas se definieron y ejecutaron de manera sistemática, pero no se automatizaron utilizando ningún \emph{framework} tipo \emph{Selenium} debido a su alta complejidad, inversión de tiempo e inestabilidad frente a los cambios.
 
 \section{Integración del editor con \emph{Vaadin}}
 
 \begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=Java]
-	@JavaScript(
-	{
+	@JavaScript({
 		"vaadin://procesos/js/componentsLibrary.js",
 		"vaadin://procesos/js/connectorSample.js",
 		"vaadin://procesos/js/go.js"
 	})
-	public class DiagramComponent extends AbstractJavaScriptComponent
-	{
-	
-		public DiagramComponent()
-		{
+	public class DiagramComponent extends AbstractJavaScriptComponent{
+		public DiagramComponent(){
 			addFunction("ExternalObjectsDropped", new JavaScriptFunction(){
 				@Override
-				public void call(JsonArray arguments){
-			
-					Map<String, String> map = new HashMap<>();
-					if(arguments != null){
-						try	{
-							String srt = arguments.toJson();
-							map = JsonUtils.jsonToMap
-							(srt.substring(1, srt.length() - 1));
-						}	catch (JSONException e){
-							e.printStackTrace();
-						}
-					}
-					List<Node> nodes = getState().getNodes();
-			
-					boolean newObj = true;
-					for (Node node : nodes){
-						String idNew = map.get("id");
-						if(idNew != null){
-							if(node.getId() == Long.parseLong(map.get("id")))
-								newObj = false;
-						}
-			
-						if(newObj)	{
-							Node newNode = new Node(map.get("name"),map.get("loc"));
-							List<Node> updatedNodes = getState().getNodes();
-							updatedNodes.add(newNode);
-							getState().setNodes(updatedNodes);
-							System.out.println("Created element :"+map.get("name"));
-						}
-					}
-			}
-			...
+				public void call(JsonArray arguments){}
+				...
 		}
-		
 		public void createNode(Node node)
 		{
 			List<Node> nodes = getState().getNodes();
@@ -191,7 +156,7 @@ Debido a que esta herramienta se focaliza en representar información sobre una 
 
 El objetivo principal del editor gráfico de procesos es proporcionar un editor gráficos que cualquier proyecto \emph{Vaadin} pueda utilizar para modelar procesos. Para ello es necesario hacer que el editor gráfico creado en la sección anterior se integre con \emph{Vaadin}, enviando los eventos que genere al \emph{presentador} de \emph{Vaadin} y reaccionando adecuadamente a las respuestas de éste. 
 
-En la Figura~\ref{fig:vaadinComponent} se muestra el ejemplo creado para la primera integración. En ella se puede observar cómo se importan los diferentes ficheros \emph{Javascript} necesarios para utilizar el editor creado previamente (Figura~\ref{fig:vaadinComponent} Líneas 3-4). A continuación se indica cómo se han de tratar los eventos que se espera que lleguen desde el editor gráfico (Figura~\ref{fig:vaadinComponent} Líneas 9-16). 
+En la Figura~\ref{fig:vaadinComponent} se muestra el ejemplo creado para la primera integración. En ella se puede observar cómo se importan los diferentes ficheros \emph{Javascript} necesarios para utilizar el editor creado previamente (Figura~\ref{fig:vaadinComponent}~Líneas~2-4). A continuación se indica cómo se han de tratar los eventos que se espera que lleguen desde el editor gráfico (Figura~\ref{fig:vaadinComponent} Líneas 9-12. Los eventos implementados se encuentran en el anexo apéndice~\ref{sec:aped.A}). 
 
 %%==============================================================================%%
 %% NOTA(Pablo): Si podemos poner código de cómo se procesa cada evento, mejor.  %%
