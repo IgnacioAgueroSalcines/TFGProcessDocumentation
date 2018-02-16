@@ -6,7 +6,7 @@
 	 Para finalizar, me gustaría gradecer a mi mentor Pablo, por guiarme durante el desarrollo del proyecto con eficacia y ayudarme a afrontar este trabajo de fin de grado.
 
 	
-	\chapter*{Resumen}
+\chapter*{Resumen}
 	Las empresas actuales no utilizan un único sistema de información que de soporte a sus procesos de trabajo, sino un  ecosistema de sistemas información que dan soporte a diferentes procesos de negocio ejecutados dentro de dicha organización. Como consecuencia de esta nueva situación, cuando un usuario	quiere obtener una información concreta cuyos datos residen en varios de estos
 	sistemas, necesita acceder a cada uno de estos sistemas, extraer de cada sistema la información que precisa, filtrarla y unificarla para finalmente	obtener los datos requeridos.
 	
@@ -19,7 +19,7 @@
 		\end{itemize}
 	
 	
-	El objetivo de este proyecto es facilitar dicho proceso de composición al usuario mediante el desarrollo de un mecanismo gráfico para la especificación de estos procesos de composición de consultas.
+El objetivo de este proyecto es facilitar dicho proceso de composición al usuario mediante el desarrollo de un mecanismo gráfico para la especificación de estos procesos de composición de consultas.
 
 	
  \textbf{Palabras clave}
@@ -27,20 +27,20 @@
 	
 \chapter*{Preface}
 
-	Current companies do not use a single information system that supports their work processes, but an ecosystem of information systems that support different business processes executed within that organization. As a consequence of this new situation, when a user wants to get a specific information whose data exist in several of these
-	systems, you need to access each of these systems, extract the information you need from each system, filter it and unify it to finally obtain the required data.
+Currently, companies rarely use a single software software system to support their business processes. Instead, several software systems, typically one per department or business unit, are used.  As a consequence of this situation, when a user wants to retrieve a piece of information whose data are stored across these
+systems, she would need to access each one of these systems; extract the required information from each system; filter this information; and, finally, unify it to obtain the appropriate data.
 	
-	
-	For example, an appliance store could have different computer systems for the customer service department, for the after sales technical department and for the purchasing and procurement department. Therefore, to know the current status of a repair, we might need:
-	\begin{itemize}
-		\item Access the first system to get the identifier of the incident and at what stage of its management it is.
-		\item Checked that the incident is currently under repair, we would recover another system the detailed status of the repair, verifying that it is waiting for a part.
-		\item Finally, we would access the purchase and acquisition system to check when the delivery of said piece is scheduled. Information storage systems can be diverse, including from a web service, a relational database, a file repository accessible via FTP or a NoSQL database.
+For example, an appliance store could have different information systems: one for the customer service department; one for technical assistance department; and one for the purchasing and procurement department. Therefore, to know the current status of a repair, it be might needed:
+
+\begin{itemize}
+
+    \item To access the customer service system to get the identifier of the identifier of the repair order and to know at what stage of the repair process this order is.
+    \item After checking that order is currently being processed, it might be needed to access the information system of the technical assistance department to find the details of the repair status. In this case, it might be discovered that the technicians are waiting for a component to complete the repair.
+	\item Finally, to know when this component is expected to be delivered, we would need to access the information system of the purchase and acquisition department.
 	\end{itemize}
 
+Each one of these systems may store its data into a different kind of system, ranging from a web service to a relational database, a file repository accessible via FTP or a NoSQL database, among other options. The objective of this project is to develop a graphical editor that support the specification of this complex information retrieval processes, so that business people can easily recover this information by simply executing this processes, and abstracting from the details of the sources for these data.
 
-	The objective of this project is to facilitate this process of composition to the user through the development of a graphic mechanism for the specification of these processes of composition of queries.
-	
 
 	\textbf{Keywords}:
-	Process, Query, Vaadin, Go.JS, MVP, LUCA.
+	Process, Query, Vaadin, Go.JS, MVP, LUCA. 
