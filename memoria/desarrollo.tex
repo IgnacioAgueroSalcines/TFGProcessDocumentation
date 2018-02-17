@@ -5,7 +5,7 @@
 \section{Introducción}
 
 El presente capítulo detalla el proceso de desarrollo del proyecto realizado dentro de este Trabajo Fin de Grado. Tal como se ha comentado, el objetivo del proyecto era
-proporciona al producto LUCA una herramienta gráfica para poder crear \emph{procesos}, es decir, poder encadenar consultas entre sí en base a sus valores de entrada y de salida.
+proporcionar al producto LUCA una herramienta gráfica para poder crear \emph{procesos}, es decir, poder encadenar consultas entre sí en base a sus valores de entrada y de salida.
 
 \begin{figure}[H]
 	\centering
@@ -295,7 +295,7 @@ En las siguientes iteraciones en esta etapa, se creó la vista de gestión para 
 
 Las pruebas que se realizaron sobre esta etapa consistieron en el envío y recepción de los eventos que se producen entre el editor gráfico y LUCA. Sin embargo, no se realizó un automatización del las pruebas debido a la complejidad de automatizar pruebas sobre \emph{Vaadin}.
 
-\section{Gestión y Persistencia de los Procesos}
+\section{Gestión, ejecución y Persistencia de los Procesos}
 
 \begin{figure}[H]
 	\centering
@@ -386,7 +386,7 @@ La Figura~\ref{fig:testExample} muestra el caso de prueba para la obtención de 
 
 La Figura~\ref{fig:gestionProceso} ilustra, para cerrar la descripción del editor gráfico, la interfaz de creación de un proceso. La interfaz se compone de tres secciones bien diferenciadas, por una parte tenemos una tabla con las diferentes consultas que pueden ser utilizadas en el proceso. Esta tabla además, puede ser filtrada en base al grupo al que queremos que pertenezcan las consultas (Figura~\ref{fig:gestionProceso}, etiqueta 1). La sección superior de la figura (Figura~\ref{fig:gestionProceso}, etiqueta 2) muestra todas las características necesarias para crear un proceso. La última sección alberga el diagrama con el que el usuario puede interactuar para construir el proceso utilizando las diferentes consultas que son arrastradas desde la tabla de consultas (Figura~\ref{fig:gestionProceso}, etiqueta 3).
 
-\section{Ejecución de Procesos}
+\subsection{Ejecución de Procesos}
 
 %%==============================================================================%%
 %% NOTA(Pablo): Describir aquí un poco a nivel técnico cómo se ejecuta un 
@@ -428,6 +428,6 @@ Para finalizar, la Figura~\ref{fig:ejecucionProceso} muestra la ejecución de un
 
 La ejecución se delega en un servicio de ejecución (Figura~\ref{fig:ejecucionProceso}, Líneas 9-10), cuyo cometido reside en ir recorriendo todas las consultas e ir ejecutándolas. Detallando más, cuando ejecuta una consulta, recoge sus resultados pare ser enviados a la siguiente consulta a través de los enlaces del subproceso, una vez que la siguiente consulta ha recibido los datos de todas sus variables de entrada, se ejecuta la nueva consulta, creando así un bucle iterativo hasta que los resultado llegan a las variables de salida del proceso y se establecen sus valores finales. Una vez recibidos los resultados, se ordenan y procesan para que el presenter que los reciba pueda utilizarlos tal y como él los espera (Figura~\ref{fig:ejecucionProceso}, Líneas 12-13).
 
-
-
+\section{Sumario}
+El presente capítulo ha presentado el flujo del desarrollo del proyecto cuyo objetivo era proporcionar al producto LUCA una herramienta gráfica para poder crear \emph{procesos}. El desarrollo se dividió en cuatro etapas iterativas  (Figura~\ref{fig:flujoDesarrollo}): Desarrollo del editor gráfico, integración del editor con \emph{Vaadin}, integración del editor con LUCA y por último la gestión, ejecución y persistencia de los procesos.
 
