@@ -7,7 +7,7 @@
 
 La Figura \ref{fig:funcionamientoLuca} muestra la arquitectura a alto nivel de \emph{LUCA}. \emph{LUCA} utiliza una arquitectura en capas, basada en la arquitectura inicial de \emph{Vaadin}. Se distinguen tres capas principales, propias de los sistemas empresariales: \emph{presentación}, \emph{negocio} y \emph{persistencia}.
 
-La capa de \emph{presentación} se organizar de acuerdo con el patrón MVP y se genera automáticamente desde ficheros Java que describen la interfaz de usuario gracias al uso del framework \emph{Vaadin}.
+La capa de \emph{presentación} se organiza de acuerdo con el patrón MVP y se genera automáticamente desde ficheros Java que describen la interfaz de usuario gracias al uso del framework \emph{Vaadin}.
 
 La capa de \emph{negocio} se subdivide en dos subcapas: \emph{Access Control Layer} y \emph{Business Layer}. La primera subcapa se encarga de comprobar que quién realiza peticiones sobre la capa de negocio tiene los permisos y privilegios necesarios para ejecutar dichas acciones. Una vez otorgado dicho acceso, la petición se pasa a la capa de negocio propiamente dicha (\emph{Business Layer}), que es la que se encarga de actualizar los objetos del dominio de acuerdo con las reglas de negocio definidas. Para actualizar dichos objetos de dominio puede ser necesario recuperar ciertos elementos desde los sistemas donde se hallen almacenados, así como salvarlos en los mismos. Para realizar estas acciones, la capa de negocio se comunica con la capa de persistencia. 
 
