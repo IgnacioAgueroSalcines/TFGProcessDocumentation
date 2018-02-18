@@ -52,32 +52,24 @@ A continuación, se debe realizar una serie de acciones a nivel de Javascript pa
 	\label{fig:creacionDiagrama}
 \end{figure}
 
-Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura~\ref{fig:creacionDiagrama}, Líneas~01-13), asignándole un \emph{grid} o cuadrícula de fondo (Figura~\ref{fig:creacionDiagrama}, Líneas~04-09), especificando los colores de las líneas de la cuadrícula (mediante la propiedad \emph{stroke}) y dándole la capacidad de poder arrastrar elementos sobre él (Figura~\ref{fig:creacionDiagrama}, Línea~10).
+Seguidamente, se personaliza la sección HTML reservada al diagrama, denominada \texttt{myDiagramDiv} (Figura~\ref{fig:creacionDiagrama}), asignándole un \emph{grid} o cuadrícula de fondo (Figura~\ref{fig:creacionDiagrama}, Líneas~3-22), especificando los colores de las líneas de la cuadrícula (mediante la propiedad \emph{stroke}) y dándole la capacidad de poder arrastrar elementos sobre él (Figura~\ref{fig:creacionDiagrama}, Línea~23).
 
 
 \begin{figure}[H]
 	\centering
 	\begin{lstlisting}[language=JavaScript]
 	myDiagram.nodeTemplate =
-		$(go.Node, "Spot",
-		{ 
+		$(go.Node, "Spot",{ 
 			locationSpot: go.Spot.Center 
-		},
-		new go.Binding("location").makeTwoWay(go.Point.stringify),
-		{ 
 			selectable: true, 
-			selectionAdornmentTemplate: nodeSelectionAdornment 
-		},
-		{ 
+			selectionAdornmentTemplate: nodeSelectionAdornment  
 			resizable: true, 
 			resizeObjectName: "PANEL", 
 			resizeAdornmentTemplate: nodeResizeAdornment 
-		},
-		{ 
 			rotatable: true, 
 			rotateAdornmentTemplate: nodeRotateAdornment 
 		},
-		
+		new go.Binding("location").makeTwoWay(go.Point.stringify),
 		$(go.Panel, "Auto",
 		{ 
 			name: "PANEL" 
@@ -106,11 +98,11 @@ A continuación deberemos definir lo que en GoJS se conoce como la \emph{plantil
 
 
 
-Para crear la definición un nodo lo primero es declarar el nodo con \texttt{\$(go.Node} (Figura~\ref{fig:patronNodo},~Línea~2).
-A continuación, especificamos, mediante la definición de ciertas propiedades, cómo se comportará el nodo (Figura~\ref{fig:patronNodo}, Líneas~5-24). En nuestro caso, se indica que los nodo, con carácter general, podrán ser seleccionados, redimensionados y rotados (Figura~\ref{fig:patronNodo}, Líneas~7-19, respectivamente). Se establece que los nodos aparecerán localizados por defecto en el centro del diagrama en el momento de su creación (Figura~\ref{fig:patronNodo}, Línea~4).
-Además, se indica que la propiedad \texttt{location}, que establece la posición del nodo, queda expuesta para su modificación desde el exterior (Figura~\ref{fig:patronNodo}, Línea~04).
+Para crear la definición un nodo lo primero es declarar el nodo con \emph{go.Node}(Figura~\ref{fig:patronNodo},~Línea~2).
+A continuación, especificamos, mediante la definición de ciertas propiedades, cómo se comportará el nodo (Figura~\ref{fig:patronNodo}, Líneas~3-10). En nuestro caso, se indica que los nodo, con carácter general, podrán ser seleccionados, redimensionados y rotados (Figura~\ref{fig:patronNodo}, Líneas~10-10, respectivamente). Se establece que los nodos aparecerán localizados por defecto en el centro del diagrama en el momento de su creación (Figura~\ref{fig:patronNodo}, Línea~43).
+Además, se indica que la propiedad \texttt{location}, que establece la posición del nodo, queda expuesta para su modificación desde el exterior (Figura~\ref{fig:patronNodo}, Línea~12).
 
-Siempre que se crea un nodo, se reserva un espacio sobre el que se van a situar los diferentes elementos del nodo. En nuestro ejemplo, este espacio recibe el nombre de \emph{panel}(Figura~\ref{fig:patronNodo}, Línea~21). El panel actúa como contenedor de la figura (\emph{shape}) (Figura~\ref{fig:patronNodo}, Línea~25), que es la encargada de definir la forma del nodo. En nuestro caso, dicho panel podrá poseer diferentes formas (como serán el circulo y el rectángulo) y colores gracias a los \emph{bindings}, que son los que hacen que estas propiedades sean modificables programáticamente (Figura~\ref{fig:patronNodo}, Líneas~30-31). Además, cada nodo poseerá un identificador propio, denominado \emph{portId} (Figura~\ref{fig:patronNodo}, Línea~27) y todos los nodos pueden recibir conexiones tanto de entrado como de salida (\emph{toLinkable} y \texttt{fromLinkable}) (Figura~\ref{fig:patronNodo}, Línea~28). Por último, cada nodo poseerá una etiqueta de texto que permitirá especificar su nombre, el cual también puede ser modificado externamente (Figura~\ref{fig:patronNodo}, Líneas~32-38).
+Siempre que se crea un nodo, se reserva un espacio sobre el que se van a situar los diferentes elementos del nodo. En nuestro ejemplo, este espacio recibe el nombre de \emph{panel}(Figura~\ref{fig:patronNodo}, Línea~13). El panel actúa como contenedor de la figura (\emph{shape}) (Figura~\ref{fig:patronNodo}, Línea~17), que es la encargada de definir la forma del nodo. En nuestro caso, dicho panel podrá poseer diferentes formas (como serán el circulo y el rectángulo) y colores gracias a los \emph{bindings}, que son los que hacen que estas propiedades sean modificables programáticamente (Figura~\ref{fig:patronNodo}, Líneas~22-23). Además, cada nodo poseerá un identificador propio, denominado \emph{portId} (Figura~\ref{fig:patronNodo}, Línea~19) y todos los nodos pueden recibir conexiones tanto de entrado como de salida (\emph{toLinkable} y \texttt{fromLinkable}) (Figura~\ref{fig:patronNodo}, Línea~20). Por último, cada nodo poseerá una etiqueta de texto que permitirá especificar su nombre, el cual también puede ser modificado externamente (Figura~\ref{fig:patronNodo}, Líneas~24-31).
 
 Una vez definidas las propiedades básicas de un nodo, el siguiente paso es definir cómo enlazar dichos nodos. Para ello debemos definir dos elementos: \emph{puertos} y \emph{enlaces}. Los enlaces son los elementos que permiten conectar nodos, y los puertos de un nodo son los puntos de dicho nodo desde donde puede partir un enlace o a dónde puede llegar un enlace.  En la Figura~\ref{fig:gojssample}, estos puertos aparecen aparecen como unos círculos negros en los extremos de las figuras.
 
@@ -195,6 +187,6 @@ myPalette =
 \label{fig:paletaNodos}
 \end{figure}
 
-Por último, se procede a crear la paleta que contendrá los círculos y los rectángulos, tal como se muestra en la Figura~\ref{fig:paletaNodos}. Como se puede observar, la paleta se sitúa sobre una sección HTML denominada \emph{myPalleteDiv} (Figura~\ref{fig:paletaNodos}, Línea~XX), la cual fue reservada con anterioridad. Para la definición de los nodos que estarán dentro de la paleta se utiliza el mismo patrón e nodos creado con anterioridad (Figura~\ref{fig:paletaNodos}). Finalmente, por último, se declara el \emph{modelo}, que es el conjunto de figuras concretas que poseerá dicha paleta. Para crear los elementos del modelo, se instancia la plantilla de nodos y se cambian sus propiedades con objeto de crear objetos diferentes. En nuestro caso, creamos círculo de color verde (Figura~\ref{fig:paletaNodos}, Línea~06) y rectángulos de color gris (Figura~\ref{fig:paletaNodos}, Línea~07), ambos con \texttt{Name} como nombre por defecto, el cual podrá ser luego editado.
+Por último, se procede a crear la paleta que contendrá los círculos y los rectángulos, tal como se muestra en la Figura~\ref{fig:paletaNodos}. Como se puede observar, la paleta se sitúa sobre una sección HTML denominada \emph{myPalleteDiv} (Figura~\ref{fig:paletaNodos}, Línea~2), la cual fue reservada con anterioridad. Para la definición de los nodos que estarán dentro de la paleta se utiliza el mismo patrón e nodos creado con anterioridad (Figura~\ref{fig:paletaNodos}). Finalmente, por último, se declara el \emph{modelo}, que es el conjunto de figuras concretas que poseerá dicha paleta. Para crear los elementos del modelo, se instancia la plantilla de nodos y se cambian sus propiedades con objeto de crear objetos diferentes. En nuestro caso, creamos círculos de color verde (Figura~\ref{fig:paletaNodos}, Línea~06-10) y rectángulos de color gris (Figura~\ref{fig:paletaNodos}, Línea~11-15), ambos con \texttt{Name} como nombre por defecto, el cual podrá ser luego editado.
 
 Una vez definidos estos elementos, nuestro editor gráfico queda implementado, y GoJS se encargará de dibujar la paleta y el diagrama, así como, de pintar los elementos sobre el área de dibujo cuando éstos sean seleccionados en la paleta, permitiendo arrastrarlos, redimensionarlos o renombrarlos, entre otras funciones.
