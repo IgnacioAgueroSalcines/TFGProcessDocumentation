@@ -1,0 +1,115 @@
+# Carátula
+
+* Añadir logo de la UC y de CIC
+* Ponte tú más grande como autor y centrado en la página.
+* Justificar lo que esté a la derecha con justificación derecha.
+
+# Índice
+
+* Poner el índice cuando esté todo terminado.
+
+# Introducción
+
+## Objetivo del Proyecto
+
+* Poner transparencia con el objetivo del proyecto. Una frase se lee y
+  como no se entiende, se pasa directamente a describir LUCA.
+
+## Antecedentes: LUCA
+
+* Dos o tres puntos con el objetivo de LUCA.
+* Capturas de LUCA (vídeo de consulta).
+* Comentar que existen dos roles: ejecutor de consultas y el gestor de consultas.
+
+## Motivación
+
+* Comentar el problema de las consultas encadenadas, en adelante procesos.
+
+## Objetivos del proyecto
+
+* Poner una lista de objetivos más concretos del proyecto
+
+# Planificación del Proyecto
+
+## Requisitos
+
+* Comentar rápidamente que ya estaban hechos.
+
+## Arquitectura
+
+* Ya definida.
+* Poner diagrama y especificar cómo se realiza una operación atravesando todas
+  las capas.
+* Comentar Vaadin y MVP.
+
+## Metodología
+
+* Iterativa, no bien definida y basada en principios ágiles.
+
+# Desarrollo
+
+## Editor Gráfico
+
+* GoJS
+* Pon captura que luzca.
+* Cuenta restricciones.
+* Cuenta que ha habido que modificar comportamientos por defecto, por razones
+  que se explican en la siguiente sección.
+
+## Conector Javascript
+
+* Explicar por qué había que crearlo.
+* Cuenta el caso de los links.
+
+## Integración Vaadin
+
+* Comentar que esto es código Vaadin.
+* Explicar que hasta aquí esto es genérico.
+
+## Integración LUCA.
+
+* Explicar qué se ha hecho exactamente.
+* Poner alguna captura de cómo ha quedado la cosa.
+* Listar operaciones que se pueden realizar desde LUCA con los procesos.
+
+## Negocio y Persistencia
+
+* Explica por qué esto es necesario
+* Modelo Conceptual de Datos (comentar persistido en JPA).
+* Se accede por Spring Repositories (pon código aquí).
+
+ ## Ejecución de procesos
+
+* Comentar detalles de qué se ha hecho aquí y en qué se diferencia de ejecutar
+  consultas.
+* Pon ejemplo sencillo usando vídeo corto donde
+  - Se vaya a ejecutar un proceso.
+  - Se muestre la especificación de la consulta antes de ejecutarla.
+  - Ejecutar una consulta con éxito.
+  - ejecutar una consulta con fallo.
+
+## Pruebas
+
+* Comentar qué se ha probado, que se ha automatizado y que no.
+
+# Conclusiones
+
+## Sumario
+
+* Lo hemos hecho, repasa objetivos cumplidos.
+
+## Experiencia Personal
+
+* Sigo en CIC.
+
+## Trabajos Futuros
+
+* Procesos anidados (imagen inicial)
+
+## Cierre
+
+Opciones:
+
+* Sumario again.
+* Interrogación
+* Gracias Atención y Datos Personales.
