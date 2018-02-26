@@ -1,0 +1,9 @@
+﻿name;description;asyncjob;user
+Nombre Usuario;Nombre Usuario;NombreUsuario_Job;iaguero
+Flota Autobuses;Flota Autobuses;FlotaAutobuses_Job;iaguero
+Info Usuario Por Apellido;Info Usuario Por Apellido;InfoUsuario_Job;iaguero
+Registro Ejecuciones Usuario;Registro Ejecuciones Usuario;Registro Ejecuciones Usuario-Job;iaguero
+Información Procesos Por Estado;Información Procesos Por Estado;Información Procesos Por Estado-Job;iaguero
+Estados de las tareas asíncronas;Estados de las tareas asíncronas (Criticidades);Estados de las tareas asíncronas-Job;iaguero
+Prueba Proceso INPUT/FREE;Prueba Proceso INPUT/FREE;Prueba Proceso INPUT/FREE-Job;iaguero
+NAv;Proceso;NAv-Job;iaguero
